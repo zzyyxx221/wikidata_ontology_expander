@@ -1,6 +1,6 @@
 {
   "language": "en",
-  "max_candidates_per_seed": 5,
+  "max_candidates_per_seed": 2,
   "min_accept_score": 0.72,
   "min_review_score": 0.45,
   "property_map": {
@@ -56,4 +56,3 @@
     }
   ]
 }
-

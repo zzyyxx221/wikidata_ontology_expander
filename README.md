@@ -51,6 +51,9 @@ python -m wikidata_ontology_expander.cli expand `
   --output E:\vs_projects\Ontology\wikidata_ontology_expander\out\changeset.json
 ```
 
+默认示例是小规模试跑：`examples/seed_schema.json` 中有 4 个种子实体，`examples/config.json` 中
+`max_candidates_per_seed` 为 2，因此最多深入拉取 8 个 Wikidata 候选实体。
+
 输出的 `changeset.json` 包含：
 
 - `add_entity`: 建议新增的本体实体或分类节点。

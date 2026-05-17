@@ -32,10 +32,15 @@ class ExpansionEngine:
         for seed in seeds:
             seen_qids: set[str] = set()
             for term in seed.search_terms:
-                for candidate in self.client.search(term, limit=self.config.max_candidates_per_seed):
+                remaining = self.config.max_candidates_per_seed - len(seen_qids)
+                if remaining <= 0:
+                    break
+                for candidate in self.client.search(term, limit=remaining):
                     if candidate.qid in seen_qids:
                         continue
                     seen_qids.add(candidate.qid)
+                    if len(seen_qids) > self.config.max_candidates_per_seed:
+                        break
                     enriched = self.client.get_entity(candidate.qid, properties=properties)
                     scored = self.gate.score(seed, enriched)
                     if scored.score < self.config.min_review_score:
@@ -191,4 +196,3 @@ def load_config(path: Path) -> ExpansionConfig:
         modules=modules,
         property_map=dict(data.get("property_map", {})),
     )
-
