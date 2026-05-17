@@ -1,0 +1,136 @@
+{
+  "search": {
+    "semiconductor": ["Q11456"],
+    "semiconductor industry": ["Q11456"],
+    "electric vehicle": ["Q193692"],
+    "ev industry": ["Q193692"],
+    "electric car": ["Q193692"],
+    "lithium-ion battery": ["Q2294"],
+    "li-ion battery": ["Q2294"],
+    "lithium ion battery": ["Q2294"],
+    "silicon wafer": ["Q667205"],
+    "semiconductor wafer": ["Q667205"],
+    "tesla, inc.": ["Q478214"],
+    "tesla": ["Q478214"],
+    "taiwan semiconductor manufacturing company": ["Q713477"],
+    "tsmc": ["Q713477"],
+    "photolithography": ["Q183907"],
+    "optical lithography": ["Q183907"],
+    "extreme ultraviolet lithography": ["Q1365042"],
+    "euv lithography": ["Q1365042"],
+    "patent": ["Q253623"],
+    "patent document": ["Q253623"],
+    "shanghai": ["Q8686"],
+    "shanghai municipality": ["Q8686"]
+  },
+  "entities": [
+    {
+      "qid": "Q11456",
+      "label": "Semiconductor",
+      "description": "material with electrical conductivity between conductor and insulator",
+      "aliases": ["semiconductor material"],
+      "statements": [
+        {"property_id": "P31", "property_label": "instance of", "value_id": "Q214609", "value_label": "material"},
+        {"property_id": "P279", "property_label": "subclass of", "value_id": "Q79529", "value_label": "electronic component"}
+      ]
+    },
+    {
+      "qid": "Q193692",
+      "label": "Electric vehicle",
+      "description": "vehicle using one or more electric motors for propulsion",
+      "aliases": ["EV", "electric car"],
+      "statements": [
+        {"property_id": "P31", "property_label": "instance of", "value_id": "Q42889", "value_label": "vehicle"},
+        {"property_id": "P279", "property_label": "subclass of", "value_id": "Q1420", "value_label": "motor car"},
+        {"property_id": "P452", "property_label": "industry", "value_id": "Q190117", "value_label": "automotive industry"}
+      ]
+    },
+    {
+      "qid": "Q2294",
+      "label": "Lithium-ion battery",
+      "description": "type of rechargeable battery",
+      "aliases": ["Li-ion battery", "LIB"],
+      "statements": [
+        {"property_id": "P31", "property_label": "instance of", "value_id": "Q28877", "value_label": "battery"},
+        {"property_id": "P279", "property_label": "subclass of", "value_id": "Q28877", "value_label": "battery"},
+        {"property_id": "P186", "property_label": "made from material", "value_id": "Q568", "value_label": "lithium"},
+        {"property_id": "P527", "property_label": "has part", "value_id": "Q1778062", "value_label": "electrolyte"}
+      ]
+    },
+    {
+      "qid": "Q667205",
+      "label": "Wafer",
+      "description": "thin slice of semiconductor material used in electronics",
+      "aliases": ["silicon wafer", "semiconductor wafer"],
+      "statements": [
+        {"property_id": "P31", "property_label": "instance of", "value_id": "Q214609", "value_label": "material"},
+        {"property_id": "P279", "property_label": "subclass of", "value_id": "Q11456", "value_label": "semiconductor"},
+        {"property_id": "P186", "property_label": "made from material", "value_id": "Q670", "value_label": "silicon"}
+      ]
+    },
+    {
+      "qid": "Q478214",
+      "label": "Tesla, Inc.",
+      "description": "American automotive, energy storage and solar power company",
+      "aliases": ["Tesla Motors", "Tesla"],
+      "statements": [
+        {"property_id": "P31", "property_label": "instance of", "value_id": "Q4830453", "value_label": "business"},
+        {"property_id": "P452", "property_label": "industry", "value_id": "Q190117", "value_label": "automotive industry"},
+        {"property_id": "P856", "property_label": "official website", "value_label": "https://www.tesla.com/"},
+        {"property_id": "P571", "property_label": "inception", "value_label": "+2003-07-01T00:00:00Z"}
+      ]
+    },
+    {
+      "qid": "Q713477",
+      "label": "Taiwan Semiconductor Manufacturing Company",
+      "description": "Taiwanese multinational semiconductor contract manufacturing and design company",
+      "aliases": ["TSMC", "Taiwan Semiconductor"],
+      "statements": [
+        {"property_id": "P31", "property_label": "instance of", "value_id": "Q4830453", "value_label": "business"},
+        {"property_id": "P452", "property_label": "industry", "value_id": "Q11456", "value_label": "semiconductor industry"},
+        {"property_id": "P856", "property_label": "official website", "value_label": "https://www.tsmc.com/"},
+        {"property_id": "P571", "property_label": "inception", "value_label": "+1987-02-21T00:00:00Z"}
+      ]
+    },
+    {
+      "qid": "Q183907",
+      "label": "Photolithography",
+      "description": "process used in microfabrication to pattern parts of a thin film",
+      "aliases": ["optical lithography", "UV lithography"],
+      "statements": [
+        {"property_id": "P31", "property_label": "instance of", "value_id": "Q2995644", "value_label": "manufacturing process"},
+        {"property_id": "P279", "property_label": "subclass of", "value_id": "Q11023", "value_label": "engineering"}
+      ]
+    },
+    {
+      "qid": "Q1365042",
+      "label": "Extreme ultraviolet lithography",
+      "description": "photolithography technology using extreme ultraviolet wavelengths",
+      "aliases": ["EUV lithography", "EUVL"],
+      "statements": [
+        {"property_id": "P31", "property_label": "instance of", "value_id": "Q183907", "value_label": "photolithography"},
+        {"property_id": "P279", "property_label": "subclass of", "value_id": "Q183907", "value_label": "photolithography"}
+      ]
+    },
+    {
+      "qid": "Q253623",
+      "label": "Patent",
+      "description": "set of exclusive rights granted by a sovereign state to an inventor or assignee",
+      "aliases": ["patent document", "patent right"],
+      "statements": [
+        {"property_id": "P31", "property_label": "instance of", "value_id": "Q49848", "value_label": "document"},
+        {"property_id": "P279", "property_label": "subclass of", "value_id": "Q49848", "value_label": "document"}
+      ]
+    },
+    {
+      "qid": "Q8686",
+      "label": "Shanghai",
+      "description": "provincial-level municipality in China",
+      "aliases": ["Shanghai Municipality"],
+      "statements": [
+        {"property_id": "P31", "property_label": "instance of", "value_id": "Q13218391", "value_label": "municipality of China"},
+        {"property_id": "P131", "property_label": "located in administrative territorial entity", "value_id": "Q148", "value_label": "China"}
+      ]
+    }
+  ]
+}

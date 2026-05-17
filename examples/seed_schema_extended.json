@@ -1,0 +1,68 @@
+{
+  "seeds": [
+    {
+      "name": "semiconductor",
+      "entity_type": "Industry",
+      "aliases": ["semiconductor industry"],
+      "module": "industry",
+      "parent": "Electronic components"
+    },
+    {
+      "name": "electric vehicle",
+      "entity_type": "Industry",
+      "aliases": ["EV industry", "electric car"],
+      "module": "industry",
+      "parent": "Automotive industry"
+    },
+    {
+      "name": "lithium-ion battery",
+      "entity_type": "Product",
+      "aliases": ["Li-ion battery", "lithium ion battery"],
+      "module": "product",
+      "parent": "Battery"
+    },
+    {
+      "name": "silicon wafer",
+      "entity_type": "Product",
+      "aliases": ["semiconductor wafer"],
+      "module": "product",
+      "parent": "Semiconductor material"
+    },
+    {
+      "name": "Tesla, Inc.",
+      "entity_type": "Enterprise",
+      "aliases": ["Tesla"],
+      "module": "enterprise"
+    },
+    {
+      "name": "Taiwan Semiconductor Manufacturing Company",
+      "entity_type": "Enterprise",
+      "aliases": ["TSMC"],
+      "module": "enterprise"
+    },
+    {
+      "name": "photolithography",
+      "entity_type": "Technology",
+      "aliases": ["optical lithography"],
+      "module": "technology"
+    },
+    {
+      "name": "extreme ultraviolet lithography",
+      "entity_type": "Technology",
+      "aliases": ["EUV lithography"],
+      "module": "technology"
+    },
+    {
+      "name": "patent",
+      "entity_type": "Patent",
+      "aliases": ["patent document"],
+      "module": "technology"
+    },
+    {
+      "name": "Shanghai",
+      "entity_type": "Region",
+      "aliases": ["Shanghai Municipality"],
+      "module": "region"
+    }
+  ]
+}

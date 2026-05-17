@@ -3,6 +3,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+import requests
+
 from .models import (
     Change,
     ChangeSet,
@@ -17,10 +19,16 @@ from .wikidata import WikidataClient
 
 
 class ExpansionEngine:
-    def __init__(self, client: WikidataClient, config: ExpansionConfig):
+    def __init__(
+        self,
+        client: WikidataClient,
+        config: ExpansionConfig,
+        continue_on_error: bool = False,
+    ):
         self.client = client
         self.config = config
         self.gate = GatePolicy(config.modules)
+        self.continue_on_error = continue_on_error
 
     def expand(self, schema_path: Path, seeds: list[SeedEntity]) -> ChangeSet:
         schema = parse_schema(schema_path)
@@ -35,13 +43,22 @@ class ExpansionEngine:
                 remaining = self.config.max_candidates_per_seed - len(seen_qids)
                 if remaining <= 0:
                     break
-                for candidate in self.client.search(term, limit=remaining):
+                try:
+                    candidates = self.client.search(term, limit=remaining)
+                except requests.RequestException as exc:
+                    self._handle_request_error(f"search term '{term}'", exc)
+                    continue
+                for candidate in candidates:
                     if candidate.qid in seen_qids:
                         continue
                     seen_qids.add(candidate.qid)
                     if len(seen_qids) > self.config.max_candidates_per_seed:
                         break
-                    enriched = self.client.get_entity(candidate.qid, properties=properties)
+                    try:
+                        enriched = self.client.get_entity(candidate.qid, properties=properties)
+                    except requests.RequestException as exc:
+                        self._handle_request_error(f"entity '{candidate.qid}'", exc)
+                        continue
                     scored = self.gate.score(seed, enriched)
                     if scored.score < self.config.min_review_score:
                         continue
@@ -67,6 +84,11 @@ class ExpansionEngine:
                     self._add_property_enrichment(changeset, seed, enriched, scored.score, review_required)
                     self._add_relation_expansion(changeset, seed, enriched, scored.score, review_required)
         return changeset
+
+    def _handle_request_error(self, context: str, exc: requests.RequestException) -> None:
+        if not self.continue_on_error:
+            raise exc
+        print(f"[warn] skipped Wikidata {context}: {exc}")
 
     def _properties_to_fetch(self) -> tuple[str, ...]:
         pids = set(self.config.property_map.values())

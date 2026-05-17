@@ -48,7 +48,9 @@ python -m wikidata_ontology_expander.cli expand `
   --schema E:\vs_projects\Ontology\IncCoreV2.schema `
   --seeds E:\vs_projects\Ontology\wikidata_ontology_expander\examples\seed_schema.json `
   --config E:\vs_projects\Ontology\wikidata_ontology_expander\examples\config.json `
-  --output E:\vs_projects\Ontology\wikidata_ontology_expander\out\changeset.json
+  --output E:\vs_projects\Ontology\wikidata_ontology_expander\out\changeset.json `
+  --timeout 60 `
+  --continue-on-error
 ```
 
 默认示例是小规模试跑：`examples/seed_schema.json` 中有 4 个种子实体，`examples/config.json` 中
@@ -97,3 +99,31 @@ E:\vs_projects\Ontology\wikidata_ontology_expander\review_ui\index.html
 - 编辑实体类型、模块、字段、父节点、建议值和审查意见
 - 将每条变更标记为接受、拒绝或需复核
 - 导出 `reviewed_changeset.json`
+
+## 离线小样本运行
+
+如果服务器无法访问 `www.wikidata.org`，可以先用离线 fixture 验证全流程：
+
+```bash
+python -m wikidata_ontology_expander.cli expand \
+  --schema data/IncCoreV2.schema \
+  --seeds examples/seed_schema.json \
+  --config examples/config.json \
+  --output out/changeset.json \
+  --offline-fixture examples/offline_wikidata_fixture.json
+```
+
+这个模式只使用 `examples/offline_wikidata_fixture.json` 中的 4 个 Wikidata-like 实体，不访问网络。
+
+如果想用稍大的离线样本测试，可以运行：
+
+```bash
+python -m wikidata_ontology_expander.cli expand \
+  --schema data/IncCoreV2.schema \
+  --seeds examples/seed_schema_extended.json \
+  --config examples/config.json \
+  --output out/changeset_extended.json \
+  --offline-fixture examples/offline_wikidata_fixture_extended.json
+```
+
+扩展样本包含 10 个种子实体和 10 个 Wikidata-like 实体，覆盖产业、产品、企业、技术、专利和区域。
