@@ -1,0 +1,59 @@
+{
+  "language": "en",
+  "max_candidates_per_seed": 5,
+  "min_accept_score": 0.72,
+  "min_review_score": 0.45,
+  "property_map": {
+    "officialName": "P1448",
+    "shortName": "P1813",
+    "officialWebsite": "P856",
+    "inception": "P571",
+    "publishDate": "P577"
+  },
+  "modules": [
+    {
+      "name": "industry",
+      "entity_types": ["EconomicSector", "IndustryGroup", "Industry"],
+      "gate_properties": ["P31", "P279", "P452"],
+      "indicator_terms": ["industry", "sector", "manufacturing", "market"],
+      "relation_properties": {
+        "subclassOf": "P279",
+        "industry": "P452"
+      }
+    },
+    {
+      "name": "product",
+      "entity_types": ["Product", "ProductModel", "ProductTerm"],
+      "gate_properties": ["P31", "P279", "P176", "P186", "P527"],
+      "indicator_terms": ["product", "material", "component", "equipment"],
+      "relation_properties": {
+        "subclassOf": "P279",
+        "manufacturer": "P176",
+        "rawMaterial": "P186",
+        "component": "P527"
+      }
+    },
+    {
+      "name": "enterprise",
+      "entity_types": ["Enterprise"],
+      "gate_properties": ["P31", "P452", "P856", "P571", "P127", "P355"],
+      "indicator_terms": ["company", "enterprise", "manufacturer", "corporation"],
+      "relation_properties": {
+        "belongsToIndustry": "P452",
+        "shareholder": "P127",
+        "childOrganization": "P355"
+      }
+    },
+    {
+      "name": "technology",
+      "entity_types": ["Technology", "Patent"],
+      "gate_properties": ["P31", "P279", "P178", "P577"],
+      "indicator_terms": ["technology", "method", "process", "patent"],
+      "relation_properties": {
+        "subclassOf": "P279",
+        "developer": "P178"
+      }
+    }
+  ]
+}
+

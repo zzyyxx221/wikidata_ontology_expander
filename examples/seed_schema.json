@@ -1,0 +1,31 @@
+{
+  "seeds": [
+    {
+      "name": "semiconductor",
+      "entity_type": "Industry",
+      "aliases": ["semiconductor industry"],
+      "module": "industry",
+      "parent": "Electronic components"
+    },
+    {
+      "name": "lithium-ion battery",
+      "entity_type": "Product",
+      "aliases": ["Li-ion battery", "lithium ion battery"],
+      "module": "product",
+      "parent": "Battery"
+    },
+    {
+      "name": "Tesla, Inc.",
+      "entity_type": "Enterprise",
+      "aliases": ["Tesla"],
+      "module": "enterprise"
+    },
+    {
+      "name": "photolithography",
+      "entity_type": "Technology",
+      "aliases": ["optical lithography"],
+      "module": "technology"
+    }
+  ]
+}
+

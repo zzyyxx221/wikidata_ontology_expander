@@ -1,0 +1,47 @@
+{
+  "changes": [
+    {
+      "action": "enrich_existing",
+      "entity_type": "Product",
+      "label": "Lithium-ion battery",
+      "wikidata_id": "Q2294",
+      "confidence": 0.86,
+      "module": "product",
+      "parent": "Battery",
+      "field": null,
+      "value": null,
+      "evidence": [
+        {
+          "source": "label",
+          "detail": "exact label match: Lithium-ion battery",
+          "weight": 0.42
+        },
+        {
+          "source": "gate",
+          "detail": "gate properties: P31, P279",
+          "weight": 0.16
+        }
+      ],
+      "review_required": false
+    },
+    {
+      "action": "add_relation",
+      "entity_type": "Product",
+      "label": "Lithium-ion battery",
+      "wikidata_id": "Q2294",
+      "confidence": 0.74,
+      "module": "product",
+      "parent": "Battery",
+      "field": "manufacturer",
+      "value": "Panasonic (Q53247)",
+      "evidence": [
+        {
+          "source": "relation",
+          "detail": "manufacturer from Wikidata P176",
+          "weight": 0.2
+        }
+      ],
+      "review_required": true
+    }
+  ]
+}
