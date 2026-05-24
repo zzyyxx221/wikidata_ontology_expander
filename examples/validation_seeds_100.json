@@ -1,0 +1,1044 @@
+{
+  "seeds": [
+    {
+      "name": "Semiconductor industry",
+      "entity_type": "Industry",
+      "aliases": [
+        "Semiconductor industry",
+        "SI"
+      ],
+      "module": "industry",
+      "parent": "Economic sector",
+      "expected_category": "industry"
+    },
+    {
+      "name": "Automotive industry",
+      "entity_type": "Industry",
+      "aliases": [
+        "Automotive industry",
+        "AI"
+      ],
+      "module": "industry",
+      "parent": "Economic sector",
+      "expected_category": "industry"
+    },
+    {
+      "name": "Pharmaceutical industry",
+      "entity_type": "Industry",
+      "aliases": [
+        "Pharmaceutical industry",
+        "PI"
+      ],
+      "module": "industry",
+      "parent": "Economic sector",
+      "expected_category": "industry"
+    },
+    {
+      "name": "Chemical industry",
+      "entity_type": "Industry",
+      "aliases": [
+        "Chemical industry",
+        "CI"
+      ],
+      "module": "industry",
+      "parent": "Economic sector",
+      "expected_category": "industry"
+    },
+    {
+      "name": "Aerospace industry",
+      "entity_type": "Industry",
+      "aliases": [
+        "Aerospace industry",
+        "AI"
+      ],
+      "module": "industry",
+      "parent": "Economic sector",
+      "expected_category": "industry"
+    },
+    {
+      "name": "Steel industry",
+      "entity_type": "Industry",
+      "aliases": [
+        "Steel industry",
+        "SI"
+      ],
+      "module": "industry",
+      "parent": "Economic sector",
+      "expected_category": "industry"
+    },
+    {
+      "name": "Textile industry",
+      "entity_type": "Industry",
+      "aliases": [
+        "Textile industry",
+        "TI"
+      ],
+      "module": "industry",
+      "parent": "Economic sector",
+      "expected_category": "industry"
+    },
+    {
+      "name": "Renewable energy industry",
+      "entity_type": "Industry",
+      "aliases": [
+        "Renewable energy industry",
+        "REI"
+      ],
+      "module": "industry",
+      "parent": "Economic sector",
+      "expected_category": "industry"
+    },
+    {
+      "name": "Electronics industry",
+      "entity_type": "Industry",
+      "aliases": [
+        "Electronics industry",
+        "EI"
+      ],
+      "module": "industry",
+      "parent": "Economic sector",
+      "expected_category": "industry"
+    },
+    {
+      "name": "Telecommunications industry",
+      "entity_type": "Industry",
+      "aliases": [
+        "Telecommunications industry",
+        "TI"
+      ],
+      "module": "industry",
+      "parent": "Economic sector",
+      "expected_category": "industry"
+    },
+    {
+      "name": "Shipbuilding industry",
+      "entity_type": "Industry",
+      "aliases": [
+        "Shipbuilding industry",
+        "SI"
+      ],
+      "module": "industry",
+      "parent": "Economic sector",
+      "expected_category": "industry"
+    },
+    {
+      "name": "Mining industry",
+      "entity_type": "Industry",
+      "aliases": [
+        "Mining industry",
+        "MI"
+      ],
+      "module": "industry",
+      "parent": "Economic sector",
+      "expected_category": "industry"
+    },
+    {
+      "name": "Construction industry",
+      "entity_type": "Industry",
+      "aliases": [
+        "Construction industry",
+        "CI"
+      ],
+      "module": "industry",
+      "parent": "Economic sector",
+      "expected_category": "industry"
+    },
+    {
+      "name": "Food industry",
+      "entity_type": "Industry",
+      "aliases": [
+        "Food industry",
+        "FI"
+      ],
+      "module": "industry",
+      "parent": "Economic sector",
+      "expected_category": "industry"
+    },
+    {
+      "name": "Petroleum industry",
+      "entity_type": "Industry",
+      "aliases": [
+        "Petroleum industry",
+        "PI"
+      ],
+      "module": "industry",
+      "parent": "Economic sector",
+      "expected_category": "industry"
+    },
+    {
+      "name": "Banking industry",
+      "entity_type": "Industry",
+      "aliases": [
+        "Banking industry",
+        "BI"
+      ],
+      "module": "industry",
+      "parent": "Economic sector",
+      "expected_category": "industry"
+    },
+    {
+      "name": "Insurance industry",
+      "entity_type": "Industry",
+      "aliases": [
+        "Insurance industry",
+        "II"
+      ],
+      "module": "industry",
+      "parent": "Economic sector",
+      "expected_category": "industry"
+    },
+    {
+      "name": "Retail industry",
+      "entity_type": "Industry",
+      "aliases": [
+        "Retail industry",
+        "RI"
+      ],
+      "module": "industry",
+      "parent": "Economic sector",
+      "expected_category": "industry"
+    },
+    {
+      "name": "Film industry",
+      "entity_type": "Industry",
+      "aliases": [
+        "Film industry",
+        "FI"
+      ],
+      "module": "industry",
+      "parent": "Economic sector",
+      "expected_category": "industry"
+    },
+    {
+      "name": "Video game industry",
+      "entity_type": "Industry",
+      "aliases": [
+        "Video game industry",
+        "VGI"
+      ],
+      "module": "industry",
+      "parent": "Economic sector",
+      "expected_category": "industry"
+    },
+    {
+      "name": "Music industry",
+      "entity_type": "Industry",
+      "aliases": [
+        "Music industry",
+        "MI"
+      ],
+      "module": "industry",
+      "parent": "Economic sector",
+      "expected_category": "industry"
+    },
+    {
+      "name": "Paper industry",
+      "entity_type": "Industry",
+      "aliases": [
+        "Paper industry",
+        "PI"
+      ],
+      "module": "industry",
+      "parent": "Economic sector",
+      "expected_category": "industry"
+    },
+    {
+      "name": "Fashion industry",
+      "entity_type": "Industry",
+      "aliases": [
+        "Fashion industry",
+        "FI"
+      ],
+      "module": "industry",
+      "parent": "Economic sector",
+      "expected_category": "industry"
+    },
+    {
+      "name": "Rail transport industry",
+      "entity_type": "Industry",
+      "aliases": [
+        "Rail transport industry",
+        "RTI"
+      ],
+      "module": "industry",
+      "parent": "Economic sector",
+      "expected_category": "industry"
+    },
+    {
+      "name": "Medical device industry",
+      "entity_type": "Industry",
+      "aliases": [
+        "Medical device industry",
+        "MDI"
+      ],
+      "module": "industry",
+      "parent": "Economic sector",
+      "expected_category": "industry"
+    },
+    {
+      "name": "Lithium-ion battery",
+      "entity_type": "Product",
+      "aliases": [
+        "Lithium ion battery",
+        "LIB"
+      ],
+      "module": "product",
+      "parent": "Product",
+      "expected_category": "product"
+    },
+    {
+      "name": "Silicon wafer",
+      "entity_type": "Product",
+      "aliases": [
+        "Silicon wafer",
+        "SW"
+      ],
+      "module": "product",
+      "parent": "Product",
+      "expected_category": "product"
+    },
+    {
+      "name": "Electric vehicle",
+      "entity_type": "Product",
+      "aliases": [
+        "Electric vehicle",
+        "EV"
+      ],
+      "module": "product",
+      "parent": "Product",
+      "expected_category": "product"
+    },
+    {
+      "name": "Smartphone",
+      "entity_type": "Product",
+      "aliases": [],
+      "module": "product",
+      "parent": "Product",
+      "expected_category": "product"
+    },
+    {
+      "name": "Solar panel",
+      "entity_type": "Product",
+      "aliases": [
+        "Solar panel",
+        "SP"
+      ],
+      "module": "product",
+      "parent": "Product",
+      "expected_category": "product"
+    },
+    {
+      "name": "Microprocessor",
+      "entity_type": "Product",
+      "aliases": [],
+      "module": "product",
+      "parent": "Product",
+      "expected_category": "product"
+    },
+    {
+      "name": "Integrated circuit",
+      "entity_type": "Product",
+      "aliases": [
+        "Integrated circuit",
+        "IC"
+      ],
+      "module": "product",
+      "parent": "Product",
+      "expected_category": "product"
+    },
+    {
+      "name": "OLED display",
+      "entity_type": "Product",
+      "aliases": [
+        "OLED display",
+        "OD"
+      ],
+      "module": "product",
+      "parent": "Product",
+      "expected_category": "product"
+    },
+    {
+      "name": "Wind turbine",
+      "entity_type": "Product",
+      "aliases": [
+        "Wind turbine",
+        "WT"
+      ],
+      "module": "product",
+      "parent": "Product",
+      "expected_category": "product"
+    },
+    {
+      "name": "Electric motor",
+      "entity_type": "Product",
+      "aliases": [
+        "Electric motor",
+        "EM"
+      ],
+      "module": "product",
+      "parent": "Product",
+      "expected_category": "product"
+    },
+    {
+      "name": "LED lamp",
+      "entity_type": "Product",
+      "aliases": [
+        "LED lamp",
+        "LL"
+      ],
+      "module": "product",
+      "parent": "Product",
+      "expected_category": "product"
+    },
+    {
+      "name": "Aircraft engine",
+      "entity_type": "Product",
+      "aliases": [
+        "Aircraft engine",
+        "AE"
+      ],
+      "module": "product",
+      "parent": "Product",
+      "expected_category": "product"
+    },
+    {
+      "name": "Semiconductor device",
+      "entity_type": "Product",
+      "aliases": [
+        "Semiconductor device",
+        "SD"
+      ],
+      "module": "product",
+      "parent": "Product",
+      "expected_category": "product"
+    },
+    {
+      "name": "Printed circuit board",
+      "entity_type": "Product",
+      "aliases": [
+        "Printed circuit board",
+        "PCB"
+      ],
+      "module": "product",
+      "parent": "Product",
+      "expected_category": "product"
+    },
+    {
+      "name": "Insulin pump",
+      "entity_type": "Product",
+      "aliases": [
+        "Insulin pump",
+        "IP"
+      ],
+      "module": "product",
+      "parent": "Product",
+      "expected_category": "product"
+    },
+    {
+      "name": "Medical device",
+      "entity_type": "Product",
+      "aliases": [
+        "Medical device",
+        "MD"
+      ],
+      "module": "product",
+      "parent": "Product",
+      "expected_category": "product"
+    },
+    {
+      "name": "Laptop computer",
+      "entity_type": "Product",
+      "aliases": [
+        "Laptop computer",
+        "LC"
+      ],
+      "module": "product",
+      "parent": "Product",
+      "expected_category": "product"
+    },
+    {
+      "name": "Tablet computer",
+      "entity_type": "Product",
+      "aliases": [
+        "Tablet computer",
+        "TC"
+      ],
+      "module": "product",
+      "parent": "Product",
+      "expected_category": "product"
+    },
+    {
+      "name": "Computer server",
+      "entity_type": "Product",
+      "aliases": [
+        "Computer server",
+        "CS"
+      ],
+      "module": "product",
+      "parent": "Product",
+      "expected_category": "product"
+    },
+    {
+      "name": "Network router",
+      "entity_type": "Product",
+      "aliases": [
+        "Network router",
+        "NR"
+      ],
+      "module": "product",
+      "parent": "Product",
+      "expected_category": "product"
+    },
+    {
+      "name": "3D printer",
+      "entity_type": "Product",
+      "aliases": [
+        "3D printer",
+        "3P"
+      ],
+      "module": "product",
+      "parent": "Product",
+      "expected_category": "product"
+    },
+    {
+      "name": "Industrial robot",
+      "entity_type": "Product",
+      "aliases": [
+        "Industrial robot",
+        "IR"
+      ],
+      "module": "product",
+      "parent": "Product",
+      "expected_category": "product"
+    },
+    {
+      "name": "Battery electric bus",
+      "entity_type": "Product",
+      "aliases": [
+        "Battery electric bus",
+        "BEB"
+      ],
+      "module": "product",
+      "parent": "Product",
+      "expected_category": "product"
+    },
+    {
+      "name": "Memory card",
+      "entity_type": "Product",
+      "aliases": [
+        "Memory card",
+        "MC"
+      ],
+      "module": "product",
+      "parent": "Product",
+      "expected_category": "product"
+    },
+    {
+      "name": "Hard disk drive",
+      "entity_type": "Product",
+      "aliases": [
+        "Hard disk drive",
+        "HDD"
+      ],
+      "module": "product",
+      "parent": "Product",
+      "expected_category": "product"
+    },
+    {
+      "name": "Tesla, Inc.",
+      "entity_type": "Enterprise",
+      "aliases": [
+        "Tesla Inc",
+        "TI"
+      ],
+      "module": "enterprise",
+      "parent": "Enterprise",
+      "expected_category": "enterprise"
+    },
+    {
+      "name": "Apple Inc.",
+      "entity_type": "Enterprise",
+      "aliases": [
+        "Apple Inc",
+        "AI"
+      ],
+      "module": "enterprise",
+      "parent": "Enterprise",
+      "expected_category": "enterprise"
+    },
+    {
+      "name": "Samsung Electronics",
+      "entity_type": "Enterprise",
+      "aliases": [
+        "Samsung Electronics",
+        "SE"
+      ],
+      "module": "enterprise",
+      "parent": "Enterprise",
+      "expected_category": "enterprise"
+    },
+    {
+      "name": "Taiwan Semiconductor Manufacturing Company",
+      "entity_type": "Enterprise",
+      "aliases": [
+        "Taiwan Semiconductor Manufacturing Company",
+        "TSMC"
+      ],
+      "module": "enterprise",
+      "parent": "Enterprise",
+      "expected_category": "enterprise"
+    },
+    {
+      "name": "Intel Corporation",
+      "entity_type": "Enterprise",
+      "aliases": [
+        "Intel Corporation",
+        "IC"
+      ],
+      "module": "enterprise",
+      "parent": "Enterprise",
+      "expected_category": "enterprise"
+    },
+    {
+      "name": "Toyota Motor Corporation",
+      "entity_type": "Enterprise",
+      "aliases": [
+        "Toyota Motor Corporation",
+        "TMC"
+      ],
+      "module": "enterprise",
+      "parent": "Enterprise",
+      "expected_category": "enterprise"
+    },
+    {
+      "name": "Volkswagen Group",
+      "entity_type": "Enterprise",
+      "aliases": [
+        "Volkswagen Group",
+        "VG"
+      ],
+      "module": "enterprise",
+      "parent": "Enterprise",
+      "expected_category": "enterprise"
+    },
+    {
+      "name": "Microsoft",
+      "entity_type": "Enterprise",
+      "aliases": [],
+      "module": "enterprise",
+      "parent": "Enterprise",
+      "expected_category": "enterprise"
+    },
+    {
+      "name": "Amazon",
+      "entity_type": "Enterprise",
+      "aliases": [],
+      "module": "enterprise",
+      "parent": "Enterprise",
+      "expected_category": "enterprise"
+    },
+    {
+      "name": "Alphabet Inc.",
+      "entity_type": "Enterprise",
+      "aliases": [
+        "Alphabet Inc",
+        "AI"
+      ],
+      "module": "enterprise",
+      "parent": "Enterprise",
+      "expected_category": "enterprise"
+    },
+    {
+      "name": "Nvidia",
+      "entity_type": "Enterprise",
+      "aliases": [],
+      "module": "enterprise",
+      "parent": "Enterprise",
+      "expected_category": "enterprise"
+    },
+    {
+      "name": "Sony Group",
+      "entity_type": "Enterprise",
+      "aliases": [
+        "Sony Group",
+        "SG"
+      ],
+      "module": "enterprise",
+      "parent": "Enterprise",
+      "expected_category": "enterprise"
+    },
+    {
+      "name": "Panasonic Holdings",
+      "entity_type": "Enterprise",
+      "aliases": [
+        "Panasonic Holdings",
+        "PH"
+      ],
+      "module": "enterprise",
+      "parent": "Enterprise",
+      "expected_category": "enterprise"
+    },
+    {
+      "name": "BYD Company",
+      "entity_type": "Enterprise",
+      "aliases": [
+        "BYD Company",
+        "BC"
+      ],
+      "module": "enterprise",
+      "parent": "Enterprise",
+      "expected_category": "enterprise"
+    },
+    {
+      "name": "Huawei",
+      "entity_type": "Enterprise",
+      "aliases": [],
+      "module": "enterprise",
+      "parent": "Enterprise",
+      "expected_category": "enterprise"
+    },
+    {
+      "name": "Siemens",
+      "entity_type": "Enterprise",
+      "aliases": [],
+      "module": "enterprise",
+      "parent": "Enterprise",
+      "expected_category": "enterprise"
+    },
+    {
+      "name": "General Electric",
+      "entity_type": "Enterprise",
+      "aliases": [
+        "General Electric",
+        "GE"
+      ],
+      "module": "enterprise",
+      "parent": "Enterprise",
+      "expected_category": "enterprise"
+    },
+    {
+      "name": "Boeing",
+      "entity_type": "Enterprise",
+      "aliases": [],
+      "module": "enterprise",
+      "parent": "Enterprise",
+      "expected_category": "enterprise"
+    },
+    {
+      "name": "Airbus",
+      "entity_type": "Enterprise",
+      "aliases": [],
+      "module": "enterprise",
+      "parent": "Enterprise",
+      "expected_category": "enterprise"
+    },
+    {
+      "name": "Pfizer",
+      "entity_type": "Enterprise",
+      "aliases": [],
+      "module": "enterprise",
+      "parent": "Enterprise",
+      "expected_category": "enterprise"
+    },
+    {
+      "name": "Roche",
+      "entity_type": "Enterprise",
+      "aliases": [],
+      "module": "enterprise",
+      "parent": "Enterprise",
+      "expected_category": "enterprise"
+    },
+    {
+      "name": "BASF",
+      "entity_type": "Enterprise",
+      "aliases": [],
+      "module": "enterprise",
+      "parent": "Enterprise",
+      "expected_category": "enterprise"
+    },
+    {
+      "name": "Shell plc",
+      "entity_type": "Enterprise",
+      "aliases": [
+        "Shell plc",
+        "SP"
+      ],
+      "module": "enterprise",
+      "parent": "Enterprise",
+      "expected_category": "enterprise"
+    },
+    {
+      "name": "ExxonMobil",
+      "entity_type": "Enterprise",
+      "aliases": [],
+      "module": "enterprise",
+      "parent": "Enterprise",
+      "expected_category": "enterprise"
+    },
+    {
+      "name": "IBM",
+      "entity_type": "Enterprise",
+      "aliases": [],
+      "module": "enterprise",
+      "parent": "Enterprise",
+      "expected_category": "enterprise"
+    },
+    {
+      "name": "Photolithography",
+      "entity_type": "Technology",
+      "aliases": [],
+      "module": "technology",
+      "parent": "Technology",
+      "expected_category": "technology"
+    },
+    {
+      "name": "Extreme ultraviolet lithography",
+      "entity_type": "Technology",
+      "aliases": [
+        "Extreme ultraviolet lithography",
+        "EUL"
+      ],
+      "module": "technology",
+      "parent": "Technology",
+      "expected_category": "technology"
+    },
+    {
+      "name": "Machine learning",
+      "entity_type": "Technology",
+      "aliases": [
+        "Machine learning",
+        "ML"
+      ],
+      "module": "technology",
+      "parent": "Technology",
+      "expected_category": "technology"
+    },
+    {
+      "name": "Artificial intelligence",
+      "entity_type": "Technology",
+      "aliases": [
+        "Artificial intelligence",
+        "AI"
+      ],
+      "module": "technology",
+      "parent": "Technology",
+      "expected_category": "technology"
+    },
+    {
+      "name": "Blockchain",
+      "entity_type": "Technology",
+      "aliases": [],
+      "module": "technology",
+      "parent": "Technology",
+      "expected_category": "technology"
+    },
+    {
+      "name": "5G technology",
+      "entity_type": "Technology",
+      "aliases": [
+        "5G technology",
+        "5T"
+      ],
+      "module": "technology",
+      "parent": "Technology",
+      "expected_category": "technology"
+    },
+    {
+      "name": "Cloud computing",
+      "entity_type": "Technology",
+      "aliases": [
+        "Cloud computing",
+        "CC"
+      ],
+      "module": "technology",
+      "parent": "Technology",
+      "expected_category": "technology"
+    },
+    {
+      "name": "Quantum computing",
+      "entity_type": "Technology",
+      "aliases": [
+        "Quantum computing",
+        "QC"
+      ],
+      "module": "technology",
+      "parent": "Technology",
+      "expected_category": "technology"
+    },
+    {
+      "name": "Additive manufacturing",
+      "entity_type": "Technology",
+      "aliases": [
+        "Additive manufacturing",
+        "AM"
+      ],
+      "module": "technology",
+      "parent": "Technology",
+      "expected_category": "technology"
+    },
+    {
+      "name": "CRISPR",
+      "entity_type": "Technology",
+      "aliases": [],
+      "module": "technology",
+      "parent": "Technology",
+      "expected_category": "technology"
+    },
+    {
+      "name": "Gene therapy",
+      "entity_type": "Technology",
+      "aliases": [
+        "Gene therapy",
+        "GT"
+      ],
+      "module": "technology",
+      "parent": "Technology",
+      "expected_category": "technology"
+    },
+    {
+      "name": "mRNA vaccine technology",
+      "entity_type": "Technology",
+      "aliases": [
+        "mRNA vaccine technology",
+        "MVT"
+      ],
+      "module": "technology",
+      "parent": "Technology",
+      "expected_category": "technology"
+    },
+    {
+      "name": "Solar cell technology",
+      "entity_type": "Technology",
+      "aliases": [
+        "Solar cell technology",
+        "SCT"
+      ],
+      "module": "technology",
+      "parent": "Technology",
+      "expected_category": "technology"
+    },
+    {
+      "name": "Wind power technology",
+      "entity_type": "Technology",
+      "aliases": [
+        "Wind power technology",
+        "WPT"
+      ],
+      "module": "technology",
+      "parent": "Technology",
+      "expected_category": "technology"
+    },
+    {
+      "name": "Hydrogen fuel cell",
+      "entity_type": "Technology",
+      "aliases": [
+        "Hydrogen fuel cell",
+        "HFC"
+      ],
+      "module": "technology",
+      "parent": "Technology",
+      "expected_category": "technology"
+    },
+    {
+      "name": "Carbon capture and storage",
+      "entity_type": "Technology",
+      "aliases": [
+        "Carbon capture and storage",
+        "CCAS"
+      ],
+      "module": "technology",
+      "parent": "Technology",
+      "expected_category": "technology"
+    },
+    {
+      "name": "Robotics",
+      "entity_type": "Technology",
+      "aliases": [],
+      "module": "technology",
+      "parent": "Technology",
+      "expected_category": "technology"
+    },
+    {
+      "name": "Autonomous vehicle technology",
+      "entity_type": "Technology",
+      "aliases": [
+        "Autonomous vehicle technology",
+        "AVT"
+      ],
+      "module": "technology",
+      "parent": "Technology",
+      "expected_category": "technology"
+    },
+    {
+      "name": "Natural language processing",
+      "entity_type": "Technology",
+      "aliases": [
+        "Natural language processing",
+        "NLP"
+      ],
+      "module": "technology",
+      "parent": "Technology",
+      "expected_category": "technology"
+    },
+    {
+      "name": "Computer vision",
+      "entity_type": "Technology",
+      "aliases": [
+        "Computer vision",
+        "CV"
+      ],
+      "module": "technology",
+      "parent": "Technology",
+      "expected_category": "technology"
+    },
+    {
+      "name": "Internet of things",
+      "entity_type": "Technology",
+      "aliases": [
+        "Internet of things",
+        "IOT"
+      ],
+      "module": "technology",
+      "parent": "Technology",
+      "expected_category": "technology"
+    },
+    {
+      "name": "Virtual reality",
+      "entity_type": "Technology",
+      "aliases": [
+        "Virtual reality",
+        "VR"
+      ],
+      "module": "technology",
+      "parent": "Technology",
+      "expected_category": "technology"
+    },
+    {
+      "name": "Augmented reality",
+      "entity_type": "Technology",
+      "aliases": [
+        "Augmented reality",
+        "AR"
+      ],
+      "module": "technology",
+      "parent": "Technology",
+      "expected_category": "technology"
+    },
+    {
+      "name": "Nanotechnology",
+      "entity_type": "Technology",
+      "aliases": [],
+      "module": "technology",
+      "parent": "Technology",
+      "expected_category": "technology"
+    },
+    {
+      "name": "Biotechnology",
+      "entity_type": "Technology",
+      "aliases": [],
+      "module": "technology",
+      "parent": "Technology",
+      "expected_category": "technology"
+    }
+  ]
+}

@@ -37,6 +37,9 @@ class FixtureWikidataClient:
             url=entity.url,
         )
 
+    def all_entities(self, properties=None) -> list[WikidataEntity]:
+        return [self.get_entity(qid, properties=properties) for qid in self.entities]
+
 
 def _entity_from_dict(item: dict) -> WikidataEntity:
     return WikidataEntity(

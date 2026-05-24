@@ -3,7 +3,10 @@ from __future__ import annotations
 from collections.abc import Iterable
 from typing import Any
 
-import requests
+try:
+    import requests
+except ImportError:  # pragma: no cover - optional in offline/test environments
+    requests = None
 
 from .models import WikidataEntity, WikidataStatement
 
@@ -13,6 +16,8 @@ class WikidataClient:
     ENTITY_URL = "https://www.wikidata.org/wiki/Special:EntityData/{qid}.json"
 
     def __init__(self, language: str = "en", timeout: int = 20, user_agent: str | None = None):
+        if requests is None:
+            raise RuntimeError("requests is required to use WikidataClient")
         self.language = language
         self.timeout = timeout
         self.session = requests.Session()
@@ -116,4 +121,3 @@ def _claim_to_statement(pid: str, claim: dict[str, Any], language: str) -> Wikid
         value_label=value_label,
         raw_value=raw_value,
     )
-

@@ -20,7 +20,40 @@ class EntityType:
     name: str
     label: str
     kind: str
+    domain: str | None = None
     fields: tuple[SchemaField, ...] = ()
+
+
+@dataclass(frozen=True)
+class SchemaConceptType:
+    name: str
+    label: str
+    kind: str
+
+
+@dataclass(frozen=True)
+class SchemaModule:
+    name: str
+    domain: str
+    kind: str
+    entity_types: tuple[str, ...] = ()
+    property_fields: tuple[str, ...] = ()
+    relation_fields: tuple[str, ...] = ()
+
+
+@dataclass(frozen=True)
+class SchemaDomain:
+    name: str
+    key: str
+    entity_types: tuple[str, ...] = ()
+
+
+@dataclass(frozen=True)
+class SchemaDocument:
+    concept_types: tuple[SchemaConceptType, ...]
+    domains: tuple[SchemaDomain, ...]
+    modules: tuple[SchemaModule, ...]
+    entities: dict[str, EntityType]
 
 
 @dataclass(frozen=True)
@@ -66,6 +99,10 @@ class ModuleProfile:
     gate_properties: tuple[str, ...] = ()
     indicator_terms: tuple[str, ...] = ()
     relation_properties: dict[str, str] = field(default_factory=dict)
+    kind: str = "intrinsic"
+    property_fields: tuple[str, ...] = ()
+    relation_fields: tuple[str, ...] = ()
+    domains: tuple[str, ...] = ()
 
 
 @dataclass(frozen=True)
@@ -100,9 +137,22 @@ class Change:
     review_required: bool = False
 
 
+@dataclass(frozen=True)
+class RefinementReport:
+    total_candidates: int
+    classified_candidates: int
+    unclassified_candidates: int
+    module_free_candidates: int
+    category_counts: dict[str, int]
+    module_counts: dict[str, int]
+    uncovered_categories: tuple[str, ...]
+    uncovered_modules: tuple[str, ...]
+
+
 @dataclass
 class ChangeSet:
     changes: list[Change] = field(default_factory=list)
+    report: RefinementReport | None = None
 
     def add(self, change: Change) -> None:
         key = (
@@ -121,5 +171,7 @@ class ChangeSet:
             self.changes.append(change)
 
     def to_dict(self) -> dict[str, Any]:
-        return {"changes": [asdict(change) for change in self.changes]}
-
+        data: dict[str, Any] = {"changes": [asdict(change) for change in self.changes]}
+        if self.report is not None:
+            data["refinement_report"] = asdict(self.report)
+        return data

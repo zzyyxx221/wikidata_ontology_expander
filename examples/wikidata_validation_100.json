@@ -1,0 +1,4252 @@
+{
+  "metadata": {
+    "source": "synthetic_wikidata_like_validation_fixture",
+    "entity_count": 100,
+    "category_counts": {
+      "industry": 25,
+      "product": 25,
+      "enterprise": 25,
+      "technology": 25
+    },
+    "note": "Synthetic Wikidata-like entities for offline category gate routing validation. QIDs are local placeholders."
+  },
+  "search": {
+    "semiconductor industry": [
+      "Q900001"
+    ],
+    "si": [
+      "Q900001",
+      "Q900006",
+      "Q900011"
+    ],
+    "automotive industry": [
+      "Q900002"
+    ],
+    "ai": [
+      "Q900002",
+      "Q900005",
+      "Q900052",
+      "Q900060",
+      "Q900079"
+    ],
+    "pharmaceutical industry": [
+      "Q900003"
+    ],
+    "pi": [
+      "Q900003",
+      "Q900015",
+      "Q900022"
+    ],
+    "chemical industry": [
+      "Q900004"
+    ],
+    "ci": [
+      "Q900004",
+      "Q900013"
+    ],
+    "aerospace industry": [
+      "Q900005"
+    ],
+    "steel industry": [
+      "Q900006"
+    ],
+    "textile industry": [
+      "Q900007"
+    ],
+    "ti": [
+      "Q900007",
+      "Q900010",
+      "Q900051"
+    ],
+    "renewable energy industry": [
+      "Q900008"
+    ],
+    "rei": [
+      "Q900008"
+    ],
+    "electronics industry": [
+      "Q900009"
+    ],
+    "ei": [
+      "Q900009"
+    ],
+    "telecommunications industry": [
+      "Q900010"
+    ],
+    "shipbuilding industry": [
+      "Q900011"
+    ],
+    "mining industry": [
+      "Q900012"
+    ],
+    "mi": [
+      "Q900012",
+      "Q900021"
+    ],
+    "construction industry": [
+      "Q900013"
+    ],
+    "food industry": [
+      "Q900014"
+    ],
+    "fi": [
+      "Q900014",
+      "Q900019",
+      "Q900023"
+    ],
+    "petroleum industry": [
+      "Q900015"
+    ],
+    "banking industry": [
+      "Q900016"
+    ],
+    "bi": [
+      "Q900016"
+    ],
+    "insurance industry": [
+      "Q900017"
+    ],
+    "ii": [
+      "Q900017"
+    ],
+    "retail industry": [
+      "Q900018"
+    ],
+    "ri": [
+      "Q900018"
+    ],
+    "film industry": [
+      "Q900019"
+    ],
+    "video game industry": [
+      "Q900020"
+    ],
+    "vgi": [
+      "Q900020"
+    ],
+    "music industry": [
+      "Q900021"
+    ],
+    "paper industry": [
+      "Q900022"
+    ],
+    "fashion industry": [
+      "Q900023"
+    ],
+    "rail transport industry": [
+      "Q900024"
+    ],
+    "rti": [
+      "Q900024"
+    ],
+    "medical device industry": [
+      "Q900025"
+    ],
+    "mdi": [
+      "Q900025"
+    ],
+    "lithium-ion battery": [
+      "Q900026"
+    ],
+    "lithium ion battery": [
+      "Q900026"
+    ],
+    "lib": [
+      "Q900026"
+    ],
+    "silicon wafer": [
+      "Q900027"
+    ],
+    "sw": [
+      "Q900027"
+    ],
+    "electric vehicle": [
+      "Q900028"
+    ],
+    "ev": [
+      "Q900028"
+    ],
+    "smartphone": [
+      "Q900029"
+    ],
+    "solar panel": [
+      "Q900030"
+    ],
+    "sp": [
+      "Q900030",
+      "Q900073"
+    ],
+    "microprocessor": [
+      "Q900031"
+    ],
+    "integrated circuit": [
+      "Q900032"
+    ],
+    "ic": [
+      "Q900032",
+      "Q900055"
+    ],
+    "oled display": [
+      "Q900033"
+    ],
+    "od": [
+      "Q900033"
+    ],
+    "wind turbine": [
+      "Q900034"
+    ],
+    "wt": [
+      "Q900034"
+    ],
+    "electric motor": [
+      "Q900035"
+    ],
+    "em": [
+      "Q900035"
+    ],
+    "led lamp": [
+      "Q900036"
+    ],
+    "ll": [
+      "Q900036"
+    ],
+    "aircraft engine": [
+      "Q900037"
+    ],
+    "ae": [
+      "Q900037"
+    ],
+    "semiconductor device": [
+      "Q900038"
+    ],
+    "sd": [
+      "Q900038"
+    ],
+    "printed circuit board": [
+      "Q900039"
+    ],
+    "pcb": [
+      "Q900039"
+    ],
+    "insulin pump": [
+      "Q900040"
+    ],
+    "ip": [
+      "Q900040"
+    ],
+    "medical device": [
+      "Q900041"
+    ],
+    "md": [
+      "Q900041"
+    ],
+    "laptop computer": [
+      "Q900042"
+    ],
+    "lc": [
+      "Q900042"
+    ],
+    "tablet computer": [
+      "Q900043"
+    ],
+    "tc": [
+      "Q900043"
+    ],
+    "computer server": [
+      "Q900044"
+    ],
+    "cs": [
+      "Q900044"
+    ],
+    "network router": [
+      "Q900045"
+    ],
+    "nr": [
+      "Q900045"
+    ],
+    "3d printer": [
+      "Q900046"
+    ],
+    "3p": [
+      "Q900046"
+    ],
+    "industrial robot": [
+      "Q900047"
+    ],
+    "ir": [
+      "Q900047"
+    ],
+    "battery electric bus": [
+      "Q900048"
+    ],
+    "beb": [
+      "Q900048"
+    ],
+    "memory card": [
+      "Q900049"
+    ],
+    "mc": [
+      "Q900049"
+    ],
+    "hard disk drive": [
+      "Q900050"
+    ],
+    "hdd": [
+      "Q900050"
+    ],
+    "tesla, inc.": [
+      "Q900051"
+    ],
+    "tesla inc": [
+      "Q900051"
+    ],
+    "apple inc.": [
+      "Q900052"
+    ],
+    "apple inc": [
+      "Q900052"
+    ],
+    "samsung electronics": [
+      "Q900053"
+    ],
+    "se": [
+      "Q900053"
+    ],
+    "taiwan semiconductor manufacturing company": [
+      "Q900054"
+    ],
+    "tsmc": [
+      "Q900054"
+    ],
+    "intel corporation": [
+      "Q900055"
+    ],
+    "toyota motor corporation": [
+      "Q900056"
+    ],
+    "tmc": [
+      "Q900056"
+    ],
+    "volkswagen group": [
+      "Q900057"
+    ],
+    "vg": [
+      "Q900057"
+    ],
+    "microsoft": [
+      "Q900058"
+    ],
+    "amazon": [
+      "Q900059"
+    ],
+    "alphabet inc.": [
+      "Q900060"
+    ],
+    "alphabet inc": [
+      "Q900060"
+    ],
+    "nvidia": [
+      "Q900061"
+    ],
+    "sony group": [
+      "Q900062"
+    ],
+    "sg": [
+      "Q900062"
+    ],
+    "panasonic holdings": [
+      "Q900063"
+    ],
+    "ph": [
+      "Q900063"
+    ],
+    "byd company": [
+      "Q900064"
+    ],
+    "bc": [
+      "Q900064"
+    ],
+    "huawei": [
+      "Q900065"
+    ],
+    "siemens": [
+      "Q900066"
+    ],
+    "general electric": [
+      "Q900067"
+    ],
+    "ge": [
+      "Q900067"
+    ],
+    "boeing": [
+      "Q900068"
+    ],
+    "airbus": [
+      "Q900069"
+    ],
+    "pfizer": [
+      "Q900070"
+    ],
+    "roche": [
+      "Q900071"
+    ],
+    "basf": [
+      "Q900072"
+    ],
+    "shell plc": [
+      "Q900073"
+    ],
+    "exxonmobil": [
+      "Q900074"
+    ],
+    "ibm": [
+      "Q900075"
+    ],
+    "photolithography": [
+      "Q900076"
+    ],
+    "extreme ultraviolet lithography": [
+      "Q900077"
+    ],
+    "eul": [
+      "Q900077"
+    ],
+    "machine learning": [
+      "Q900078"
+    ],
+    "ml": [
+      "Q900078"
+    ],
+    "artificial intelligence": [
+      "Q900079"
+    ],
+    "blockchain": [
+      "Q900080"
+    ],
+    "5g technology": [
+      "Q900081"
+    ],
+    "5t": [
+      "Q900081"
+    ],
+    "cloud computing": [
+      "Q900082"
+    ],
+    "cc": [
+      "Q900082"
+    ],
+    "quantum computing": [
+      "Q900083"
+    ],
+    "qc": [
+      "Q900083"
+    ],
+    "additive manufacturing": [
+      "Q900084"
+    ],
+    "am": [
+      "Q900084"
+    ],
+    "crispr": [
+      "Q900085"
+    ],
+    "gene therapy": [
+      "Q900086"
+    ],
+    "gt": [
+      "Q900086"
+    ],
+    "mrna vaccine technology": [
+      "Q900087"
+    ],
+    "mvt": [
+      "Q900087"
+    ],
+    "solar cell technology": [
+      "Q900088"
+    ],
+    "sct": [
+      "Q900088"
+    ],
+    "wind power technology": [
+      "Q900089"
+    ],
+    "wpt": [
+      "Q900089"
+    ],
+    "hydrogen fuel cell": [
+      "Q900090"
+    ],
+    "hfc": [
+      "Q900090"
+    ],
+    "carbon capture and storage": [
+      "Q900091"
+    ],
+    "ccas": [
+      "Q900091"
+    ],
+    "robotics": [
+      "Q900092"
+    ],
+    "autonomous vehicle technology": [
+      "Q900093"
+    ],
+    "avt": [
+      "Q900093"
+    ],
+    "natural language processing": [
+      "Q900094"
+    ],
+    "nlp": [
+      "Q900094"
+    ],
+    "computer vision": [
+      "Q900095"
+    ],
+    "cv": [
+      "Q900095"
+    ],
+    "internet of things": [
+      "Q900096"
+    ],
+    "iot": [
+      "Q900096"
+    ],
+    "virtual reality": [
+      "Q900097"
+    ],
+    "vr": [
+      "Q900097"
+    ],
+    "augmented reality": [
+      "Q900098"
+    ],
+    "ar": [
+      "Q900098"
+    ],
+    "nanotechnology": [
+      "Q900099"
+    ],
+    "biotechnology": [
+      "Q900100"
+    ]
+  },
+  "entities": [
+    {
+      "qid": "Q900001",
+      "label": "Semiconductor industry",
+      "description": "semiconductor industry sector used as an industry validation entity for ontology category routing",
+      "aliases": [
+        "Semiconductor industry",
+        "SI"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q8148",
+          "value_label": "industry"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q8148",
+          "value_label": "industry"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "Q11456",
+          "value_label": "semiconductor industry"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900001",
+      "expected_category": "industry"
+    },
+    {
+      "qid": "Q900002",
+      "label": "Automotive industry",
+      "description": "automotive industry sector used as an industry validation entity for ontology category routing",
+      "aliases": [
+        "Automotive industry",
+        "AI"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q8148",
+          "value_label": "industry"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q8148",
+          "value_label": "industry"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "Q507443",
+          "value_label": "pharmaceutical industry"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900002",
+      "expected_category": "industry"
+    },
+    {
+      "qid": "Q900003",
+      "label": "Pharmaceutical industry",
+      "description": "pharmaceutical industry sector used as an industry validation entity for ontology category routing",
+      "aliases": [
+        "Pharmaceutical industry",
+        "PI"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q8148",
+          "value_label": "industry"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q8148",
+          "value_label": "industry"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "Q11358",
+          "value_label": "chemical industry"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900003",
+      "expected_category": "industry"
+    },
+    {
+      "qid": "Q900004",
+      "label": "Chemical industry",
+      "description": "chemical industry sector used as an industry validation entity for ontology category routing",
+      "aliases": [
+        "Chemical industry",
+        "CI"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q8148",
+          "value_label": "industry"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q8148",
+          "value_label": "industry"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "Q187939",
+          "value_label": "aerospace industry"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900004",
+      "expected_category": "industry"
+    },
+    {
+      "qid": "Q900005",
+      "label": "Aerospace industry",
+      "description": "aerospace industry sector used as an industry validation entity for ontology category routing",
+      "aliases": [
+        "Aerospace industry",
+        "AI"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q8148",
+          "value_label": "industry"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q8148",
+          "value_label": "industry"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "Q2151621",
+          "value_label": "steel industry"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900005",
+      "expected_category": "industry"
+    },
+    {
+      "qid": "Q900006",
+      "label": "Steel industry",
+      "description": "steel industry sector used as an industry validation entity for ontology category routing",
+      "aliases": [
+        "Steel industry",
+        "SI"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q8148",
+          "value_label": "industry"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q8148",
+          "value_label": "industry"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "Q28823",
+          "value_label": "textile industry"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900006",
+      "expected_category": "industry"
+    },
+    {
+      "qid": "Q900007",
+      "label": "Textile industry",
+      "description": "textile industry sector used as an industry validation entity for ontology category routing",
+      "aliases": [
+        "Textile industry",
+        "TI"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q8148",
+          "value_label": "industry"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q8148",
+          "value_label": "industry"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "Q12705",
+          "value_label": "renewable energy"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900007",
+      "expected_category": "industry"
+    },
+    {
+      "qid": "Q900008",
+      "label": "Renewable energy industry",
+      "description": "renewable energy industry sector used as an industry validation entity for ontology category routing",
+      "aliases": [
+        "Renewable energy industry",
+        "REI"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q8148",
+          "value_label": "industry"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q8148",
+          "value_label": "industry"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "Q11650",
+          "value_label": "electronics"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900008",
+      "expected_category": "industry"
+    },
+    {
+      "qid": "Q900009",
+      "label": "Electronics industry",
+      "description": "electronics industry sector used as an industry validation entity for ontology category routing",
+      "aliases": [
+        "Electronics industry",
+        "EI"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q8148",
+          "value_label": "industry"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q8148",
+          "value_label": "industry"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "Q190117",
+          "value_label": "automotive industry"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900009",
+      "expected_category": "industry"
+    },
+    {
+      "qid": "Q900010",
+      "label": "Telecommunications industry",
+      "description": "telecommunications industry sector used as an industry validation entity for ontology category routing",
+      "aliases": [
+        "Telecommunications industry",
+        "TI"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q8148",
+          "value_label": "industry"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q8148",
+          "value_label": "industry"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "Q11456",
+          "value_label": "semiconductor industry"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900010",
+      "expected_category": "industry"
+    },
+    {
+      "qid": "Q900011",
+      "label": "Shipbuilding industry",
+      "description": "shipbuilding industry sector used as an industry validation entity for ontology category routing",
+      "aliases": [
+        "Shipbuilding industry",
+        "SI"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q8148",
+          "value_label": "industry"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q8148",
+          "value_label": "industry"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "Q507443",
+          "value_label": "pharmaceutical industry"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900011",
+      "expected_category": "industry"
+    },
+    {
+      "qid": "Q900012",
+      "label": "Mining industry",
+      "description": "mining industry sector used as an industry validation entity for ontology category routing",
+      "aliases": [
+        "Mining industry",
+        "MI"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q8148",
+          "value_label": "industry"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q8148",
+          "value_label": "industry"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "Q11358",
+          "value_label": "chemical industry"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900012",
+      "expected_category": "industry"
+    },
+    {
+      "qid": "Q900013",
+      "label": "Construction industry",
+      "description": "construction industry sector used as an industry validation entity for ontology category routing",
+      "aliases": [
+        "Construction industry",
+        "CI"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q8148",
+          "value_label": "industry"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q8148",
+          "value_label": "industry"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "Q187939",
+          "value_label": "aerospace industry"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900013",
+      "expected_category": "industry"
+    },
+    {
+      "qid": "Q900014",
+      "label": "Food industry",
+      "description": "food industry sector used as an industry validation entity for ontology category routing",
+      "aliases": [
+        "Food industry",
+        "FI"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q8148",
+          "value_label": "industry"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q8148",
+          "value_label": "industry"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "Q2151621",
+          "value_label": "steel industry"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900014",
+      "expected_category": "industry"
+    },
+    {
+      "qid": "Q900015",
+      "label": "Petroleum industry",
+      "description": "petroleum industry sector used as an industry validation entity for ontology category routing",
+      "aliases": [
+        "Petroleum industry",
+        "PI"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q8148",
+          "value_label": "industry"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q8148",
+          "value_label": "industry"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "Q28823",
+          "value_label": "textile industry"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900015",
+      "expected_category": "industry"
+    },
+    {
+      "qid": "Q900016",
+      "label": "Banking industry",
+      "description": "banking industry sector used as an industry validation entity for ontology category routing",
+      "aliases": [
+        "Banking industry",
+        "BI"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q8148",
+          "value_label": "industry"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q8148",
+          "value_label": "industry"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "Q12705",
+          "value_label": "renewable energy"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900016",
+      "expected_category": "industry"
+    },
+    {
+      "qid": "Q900017",
+      "label": "Insurance industry",
+      "description": "insurance industry sector used as an industry validation entity for ontology category routing",
+      "aliases": [
+        "Insurance industry",
+        "II"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q8148",
+          "value_label": "industry"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q8148",
+          "value_label": "industry"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "Q11650",
+          "value_label": "electronics"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900017",
+      "expected_category": "industry"
+    },
+    {
+      "qid": "Q900018",
+      "label": "Retail industry",
+      "description": "retail industry sector used as an industry validation entity for ontology category routing",
+      "aliases": [
+        "Retail industry",
+        "RI"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q8148",
+          "value_label": "industry"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q8148",
+          "value_label": "industry"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "Q190117",
+          "value_label": "automotive industry"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900018",
+      "expected_category": "industry"
+    },
+    {
+      "qid": "Q900019",
+      "label": "Film industry",
+      "description": "film industry sector used as an industry validation entity for ontology category routing",
+      "aliases": [
+        "Film industry",
+        "FI"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q8148",
+          "value_label": "industry"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q8148",
+          "value_label": "industry"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "Q11456",
+          "value_label": "semiconductor industry"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900019",
+      "expected_category": "industry"
+    },
+    {
+      "qid": "Q900020",
+      "label": "Video game industry",
+      "description": "video game industry sector used as an industry validation entity for ontology category routing",
+      "aliases": [
+        "Video game industry",
+        "VGI"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q8148",
+          "value_label": "industry"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q8148",
+          "value_label": "industry"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "Q507443",
+          "value_label": "pharmaceutical industry"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900020",
+      "expected_category": "industry"
+    },
+    {
+      "qid": "Q900021",
+      "label": "Music industry",
+      "description": "music industry sector used as an industry validation entity for ontology category routing",
+      "aliases": [
+        "Music industry",
+        "MI"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q8148",
+          "value_label": "industry"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q8148",
+          "value_label": "industry"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "Q11358",
+          "value_label": "chemical industry"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900021",
+      "expected_category": "industry"
+    },
+    {
+      "qid": "Q900022",
+      "label": "Paper industry",
+      "description": "paper industry sector used as an industry validation entity for ontology category routing",
+      "aliases": [
+        "Paper industry",
+        "PI"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q8148",
+          "value_label": "industry"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q8148",
+          "value_label": "industry"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "Q187939",
+          "value_label": "aerospace industry"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900022",
+      "expected_category": "industry"
+    },
+    {
+      "qid": "Q900023",
+      "label": "Fashion industry",
+      "description": "fashion industry sector used as an industry validation entity for ontology category routing",
+      "aliases": [
+        "Fashion industry",
+        "FI"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q8148",
+          "value_label": "industry"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q8148",
+          "value_label": "industry"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "Q2151621",
+          "value_label": "steel industry"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900023",
+      "expected_category": "industry"
+    },
+    {
+      "qid": "Q900024",
+      "label": "Rail transport industry",
+      "description": "rail transport industry sector used as an industry validation entity for ontology category routing",
+      "aliases": [
+        "Rail transport industry",
+        "RTI"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q8148",
+          "value_label": "industry"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q8148",
+          "value_label": "industry"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "Q28823",
+          "value_label": "textile industry"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900024",
+      "expected_category": "industry"
+    },
+    {
+      "qid": "Q900025",
+      "label": "Medical device industry",
+      "description": "medical device industry sector used as an industry validation entity for ontology category routing",
+      "aliases": [
+        "Medical device industry",
+        "MDI"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q8148",
+          "value_label": "industry"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q8148",
+          "value_label": "industry"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "Q12705",
+          "value_label": "renewable energy"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900025",
+      "expected_category": "industry"
+    },
+    {
+      "qid": "Q900026",
+      "label": "Lithium-ion battery",
+      "description": "lithium-ion battery product or equipment used as a product validation entity",
+      "aliases": [
+        "Lithium ion battery",
+        "LIB"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q2424752",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q2424752",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P176",
+          "property_label": "manufacturer",
+          "value_id": "Q312",
+          "value_label": "Apple Inc."
+        },
+        {
+          "property_id": "P186",
+          "property_label": "made from material",
+          "value_id": "Q670",
+          "value_label": "silicon"
+        },
+        {
+          "property_id": "P527",
+          "property_label": "has part",
+          "value_id": "Q183484",
+          "value_label": "battery cell"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900026",
+      "expected_category": "product"
+    },
+    {
+      "qid": "Q900027",
+      "label": "Silicon wafer",
+      "description": "silicon wafer product or equipment used as a product validation entity",
+      "aliases": [
+        "Silicon wafer",
+        "SW"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q2424752",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q2424752",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P176",
+          "property_label": "manufacturer",
+          "value_id": "Q20718",
+          "value_label": "Samsung Electronics"
+        },
+        {
+          "property_id": "P186",
+          "property_label": "made from material",
+          "value_id": "Q753",
+          "value_label": "copper"
+        },
+        {
+          "property_id": "P527",
+          "property_label": "has part",
+          "value_id": "Q7397",
+          "value_label": "software"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900027",
+      "expected_category": "product"
+    },
+    {
+      "qid": "Q900028",
+      "label": "Electric vehicle",
+      "description": "electric vehicle product or equipment used as a product validation entity",
+      "aliases": [
+        "Electric vehicle",
+        "EV"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q2424752",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q2424752",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P176",
+          "property_label": "manufacturer",
+          "value_id": "Q713477",
+          "value_label": "TSMC"
+        },
+        {
+          "property_id": "P186",
+          "property_label": "made from material",
+          "value_id": "Q677",
+          "value_label": "iron"
+        },
+        {
+          "property_id": "P527",
+          "property_label": "has part",
+          "value_id": "Q8366",
+          "value_label": "algorithm"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900028",
+      "expected_category": "product"
+    },
+    {
+      "qid": "Q900029",
+      "label": "Smartphone",
+      "description": "smartphone product or equipment used as a product validation entity",
+      "aliases": [],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q2424752",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q2424752",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P176",
+          "property_label": "manufacturer",
+          "value_id": "Q248",
+          "value_label": "Intel"
+        },
+        {
+          "property_id": "P186",
+          "property_label": "made from material",
+          "value_id": "Q663",
+          "value_label": "aluminium"
+        },
+        {
+          "property_id": "P527",
+          "property_label": "has part",
+          "value_id": "Q11650",
+          "value_label": "electronics"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900029",
+      "expected_category": "product"
+    },
+    {
+      "qid": "Q900030",
+      "label": "Solar panel",
+      "description": "solar panel product or equipment used as a product validation entity",
+      "aliases": [
+        "Solar panel",
+        "SP"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q2424752",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q2424752",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P176",
+          "property_label": "manufacturer",
+          "value_id": "Q53268",
+          "value_label": "Toyota"
+        },
+        {
+          "property_id": "P186",
+          "property_label": "made from material",
+          "value_id": "Q568",
+          "value_label": "lithium"
+        },
+        {
+          "property_id": "P527",
+          "property_label": "has part",
+          "value_id": "Q1778062",
+          "value_label": "electrolyte"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900030",
+      "expected_category": "product"
+    },
+    {
+      "qid": "Q900031",
+      "label": "Microprocessor",
+      "description": "microprocessor product or equipment used as a product validation entity",
+      "aliases": [],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q2424752",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q2424752",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P176",
+          "property_label": "manufacturer",
+          "value_id": "Q156578",
+          "value_label": "Volkswagen Group"
+        },
+        {
+          "property_id": "P186",
+          "property_label": "made from material",
+          "value_id": "Q670",
+          "value_label": "silicon"
+        },
+        {
+          "property_id": "P527",
+          "property_label": "has part",
+          "value_id": "Q183484",
+          "value_label": "battery cell"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900031",
+      "expected_category": "product"
+    },
+    {
+      "qid": "Q900032",
+      "label": "Integrated circuit",
+      "description": "integrated circuit product or equipment used as a product validation entity",
+      "aliases": [
+        "Integrated circuit",
+        "IC"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q2424752",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q2424752",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P176",
+          "property_label": "manufacturer",
+          "value_id": "Q2283",
+          "value_label": "Microsoft"
+        },
+        {
+          "property_id": "P186",
+          "property_label": "made from material",
+          "value_id": "Q753",
+          "value_label": "copper"
+        },
+        {
+          "property_id": "P527",
+          "property_label": "has part",
+          "value_id": "Q7397",
+          "value_label": "software"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900032",
+      "expected_category": "product"
+    },
+    {
+      "qid": "Q900033",
+      "label": "OLED display",
+      "description": "oled display product or equipment used as a product validation entity",
+      "aliases": [
+        "OLED display",
+        "OD"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q2424752",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q2424752",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P176",
+          "property_label": "manufacturer",
+          "value_id": "Q478214",
+          "value_label": "Tesla, Inc."
+        },
+        {
+          "property_id": "P186",
+          "property_label": "made from material",
+          "value_id": "Q677",
+          "value_label": "iron"
+        },
+        {
+          "property_id": "P527",
+          "property_label": "has part",
+          "value_id": "Q8366",
+          "value_label": "algorithm"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900033",
+      "expected_category": "product"
+    },
+    {
+      "qid": "Q900034",
+      "label": "Wind turbine",
+      "description": "wind turbine product or equipment used as a product validation entity",
+      "aliases": [
+        "Wind turbine",
+        "WT"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q2424752",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q2424752",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P176",
+          "property_label": "manufacturer",
+          "value_id": "Q312",
+          "value_label": "Apple Inc."
+        },
+        {
+          "property_id": "P186",
+          "property_label": "made from material",
+          "value_id": "Q663",
+          "value_label": "aluminium"
+        },
+        {
+          "property_id": "P527",
+          "property_label": "has part",
+          "value_id": "Q11650",
+          "value_label": "electronics"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900034",
+      "expected_category": "product"
+    },
+    {
+      "qid": "Q900035",
+      "label": "Electric motor",
+      "description": "electric motor product or equipment used as a product validation entity",
+      "aliases": [
+        "Electric motor",
+        "EM"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q2424752",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q2424752",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P176",
+          "property_label": "manufacturer",
+          "value_id": "Q20718",
+          "value_label": "Samsung Electronics"
+        },
+        {
+          "property_id": "P186",
+          "property_label": "made from material",
+          "value_id": "Q568",
+          "value_label": "lithium"
+        },
+        {
+          "property_id": "P527",
+          "property_label": "has part",
+          "value_id": "Q1778062",
+          "value_label": "electrolyte"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900035",
+      "expected_category": "product"
+    },
+    {
+      "qid": "Q900036",
+      "label": "LED lamp",
+      "description": "led lamp product or equipment used as a product validation entity",
+      "aliases": [
+        "LED lamp",
+        "LL"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q2424752",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q2424752",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P176",
+          "property_label": "manufacturer",
+          "value_id": "Q713477",
+          "value_label": "TSMC"
+        },
+        {
+          "property_id": "P186",
+          "property_label": "made from material",
+          "value_id": "Q670",
+          "value_label": "silicon"
+        },
+        {
+          "property_id": "P527",
+          "property_label": "has part",
+          "value_id": "Q183484",
+          "value_label": "battery cell"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900036",
+      "expected_category": "product"
+    },
+    {
+      "qid": "Q900037",
+      "label": "Aircraft engine",
+      "description": "aircraft engine product or equipment used as a product validation entity",
+      "aliases": [
+        "Aircraft engine",
+        "AE"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q2424752",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q2424752",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P176",
+          "property_label": "manufacturer",
+          "value_id": "Q248",
+          "value_label": "Intel"
+        },
+        {
+          "property_id": "P186",
+          "property_label": "made from material",
+          "value_id": "Q753",
+          "value_label": "copper"
+        },
+        {
+          "property_id": "P527",
+          "property_label": "has part",
+          "value_id": "Q7397",
+          "value_label": "software"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900037",
+      "expected_category": "product"
+    },
+    {
+      "qid": "Q900038",
+      "label": "Semiconductor device",
+      "description": "semiconductor device product or equipment used as a product validation entity",
+      "aliases": [
+        "Semiconductor device",
+        "SD"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q2424752",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q2424752",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P176",
+          "property_label": "manufacturer",
+          "value_id": "Q53268",
+          "value_label": "Toyota"
+        },
+        {
+          "property_id": "P186",
+          "property_label": "made from material",
+          "value_id": "Q677",
+          "value_label": "iron"
+        },
+        {
+          "property_id": "P527",
+          "property_label": "has part",
+          "value_id": "Q8366",
+          "value_label": "algorithm"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900038",
+      "expected_category": "product"
+    },
+    {
+      "qid": "Q900039",
+      "label": "Printed circuit board",
+      "description": "printed circuit board product or equipment used as a product validation entity",
+      "aliases": [
+        "Printed circuit board",
+        "PCB"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q2424752",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q2424752",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P176",
+          "property_label": "manufacturer",
+          "value_id": "Q156578",
+          "value_label": "Volkswagen Group"
+        },
+        {
+          "property_id": "P186",
+          "property_label": "made from material",
+          "value_id": "Q663",
+          "value_label": "aluminium"
+        },
+        {
+          "property_id": "P527",
+          "property_label": "has part",
+          "value_id": "Q11650",
+          "value_label": "electronics"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900039",
+      "expected_category": "product"
+    },
+    {
+      "qid": "Q900040",
+      "label": "Insulin pump",
+      "description": "insulin pump product or equipment used as a product validation entity",
+      "aliases": [
+        "Insulin pump",
+        "IP"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q2424752",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q2424752",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P176",
+          "property_label": "manufacturer",
+          "value_id": "Q2283",
+          "value_label": "Microsoft"
+        },
+        {
+          "property_id": "P186",
+          "property_label": "made from material",
+          "value_id": "Q568",
+          "value_label": "lithium"
+        },
+        {
+          "property_id": "P527",
+          "property_label": "has part",
+          "value_id": "Q1778062",
+          "value_label": "electrolyte"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900040",
+      "expected_category": "product"
+    },
+    {
+      "qid": "Q900041",
+      "label": "Medical device",
+      "description": "medical device product or equipment used as a product validation entity",
+      "aliases": [
+        "Medical device",
+        "MD"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q2424752",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q2424752",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P176",
+          "property_label": "manufacturer",
+          "value_id": "Q478214",
+          "value_label": "Tesla, Inc."
+        },
+        {
+          "property_id": "P186",
+          "property_label": "made from material",
+          "value_id": "Q670",
+          "value_label": "silicon"
+        },
+        {
+          "property_id": "P527",
+          "property_label": "has part",
+          "value_id": "Q183484",
+          "value_label": "battery cell"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900041",
+      "expected_category": "product"
+    },
+    {
+      "qid": "Q900042",
+      "label": "Laptop computer",
+      "description": "laptop computer product or equipment used as a product validation entity",
+      "aliases": [
+        "Laptop computer",
+        "LC"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q2424752",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q2424752",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P176",
+          "property_label": "manufacturer",
+          "value_id": "Q312",
+          "value_label": "Apple Inc."
+        },
+        {
+          "property_id": "P186",
+          "property_label": "made from material",
+          "value_id": "Q753",
+          "value_label": "copper"
+        },
+        {
+          "property_id": "P527",
+          "property_label": "has part",
+          "value_id": "Q7397",
+          "value_label": "software"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900042",
+      "expected_category": "product"
+    },
+    {
+      "qid": "Q900043",
+      "label": "Tablet computer",
+      "description": "tablet computer product or equipment used as a product validation entity",
+      "aliases": [
+        "Tablet computer",
+        "TC"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q2424752",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q2424752",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P176",
+          "property_label": "manufacturer",
+          "value_id": "Q20718",
+          "value_label": "Samsung Electronics"
+        },
+        {
+          "property_id": "P186",
+          "property_label": "made from material",
+          "value_id": "Q677",
+          "value_label": "iron"
+        },
+        {
+          "property_id": "P527",
+          "property_label": "has part",
+          "value_id": "Q8366",
+          "value_label": "algorithm"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900043",
+      "expected_category": "product"
+    },
+    {
+      "qid": "Q900044",
+      "label": "Computer server",
+      "description": "computer server product or equipment used as a product validation entity",
+      "aliases": [
+        "Computer server",
+        "CS"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q2424752",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q2424752",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P176",
+          "property_label": "manufacturer",
+          "value_id": "Q713477",
+          "value_label": "TSMC"
+        },
+        {
+          "property_id": "P186",
+          "property_label": "made from material",
+          "value_id": "Q663",
+          "value_label": "aluminium"
+        },
+        {
+          "property_id": "P527",
+          "property_label": "has part",
+          "value_id": "Q11650",
+          "value_label": "electronics"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900044",
+      "expected_category": "product"
+    },
+    {
+      "qid": "Q900045",
+      "label": "Network router",
+      "description": "network router product or equipment used as a product validation entity",
+      "aliases": [
+        "Network router",
+        "NR"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q2424752",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q2424752",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P176",
+          "property_label": "manufacturer",
+          "value_id": "Q248",
+          "value_label": "Intel"
+        },
+        {
+          "property_id": "P186",
+          "property_label": "made from material",
+          "value_id": "Q568",
+          "value_label": "lithium"
+        },
+        {
+          "property_id": "P527",
+          "property_label": "has part",
+          "value_id": "Q1778062",
+          "value_label": "electrolyte"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900045",
+      "expected_category": "product"
+    },
+    {
+      "qid": "Q900046",
+      "label": "3D printer",
+      "description": "3d printer product or equipment used as a product validation entity",
+      "aliases": [
+        "3D printer",
+        "3P"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q2424752",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q2424752",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P176",
+          "property_label": "manufacturer",
+          "value_id": "Q53268",
+          "value_label": "Toyota"
+        },
+        {
+          "property_id": "P186",
+          "property_label": "made from material",
+          "value_id": "Q670",
+          "value_label": "silicon"
+        },
+        {
+          "property_id": "P527",
+          "property_label": "has part",
+          "value_id": "Q183484",
+          "value_label": "battery cell"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900046",
+      "expected_category": "product"
+    },
+    {
+      "qid": "Q900047",
+      "label": "Industrial robot",
+      "description": "industrial robot product or equipment used as a product validation entity",
+      "aliases": [
+        "Industrial robot",
+        "IR"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q2424752",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q2424752",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P176",
+          "property_label": "manufacturer",
+          "value_id": "Q156578",
+          "value_label": "Volkswagen Group"
+        },
+        {
+          "property_id": "P186",
+          "property_label": "made from material",
+          "value_id": "Q753",
+          "value_label": "copper"
+        },
+        {
+          "property_id": "P527",
+          "property_label": "has part",
+          "value_id": "Q7397",
+          "value_label": "software"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900047",
+      "expected_category": "product"
+    },
+    {
+      "qid": "Q900048",
+      "label": "Battery electric bus",
+      "description": "battery electric bus product or equipment used as a product validation entity",
+      "aliases": [
+        "Battery electric bus",
+        "BEB"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q2424752",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q2424752",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P176",
+          "property_label": "manufacturer",
+          "value_id": "Q2283",
+          "value_label": "Microsoft"
+        },
+        {
+          "property_id": "P186",
+          "property_label": "made from material",
+          "value_id": "Q677",
+          "value_label": "iron"
+        },
+        {
+          "property_id": "P527",
+          "property_label": "has part",
+          "value_id": "Q8366",
+          "value_label": "algorithm"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900048",
+      "expected_category": "product"
+    },
+    {
+      "qid": "Q900049",
+      "label": "Memory card",
+      "description": "memory card product or equipment used as a product validation entity",
+      "aliases": [
+        "Memory card",
+        "MC"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q2424752",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q2424752",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P176",
+          "property_label": "manufacturer",
+          "value_id": "Q478214",
+          "value_label": "Tesla, Inc."
+        },
+        {
+          "property_id": "P186",
+          "property_label": "made from material",
+          "value_id": "Q663",
+          "value_label": "aluminium"
+        },
+        {
+          "property_id": "P527",
+          "property_label": "has part",
+          "value_id": "Q11650",
+          "value_label": "electronics"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900049",
+      "expected_category": "product"
+    },
+    {
+      "qid": "Q900050",
+      "label": "Hard disk drive",
+      "description": "hard disk drive product or equipment used as a product validation entity",
+      "aliases": [
+        "Hard disk drive",
+        "HDD"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q2424752",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q2424752",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P176",
+          "property_label": "manufacturer",
+          "value_id": "Q312",
+          "value_label": "Apple Inc."
+        },
+        {
+          "property_id": "P186",
+          "property_label": "made from material",
+          "value_id": "Q568",
+          "value_label": "lithium"
+        },
+        {
+          "property_id": "P527",
+          "property_label": "has part",
+          "value_id": "Q1778062",
+          "value_label": "electrolyte"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900050",
+      "expected_category": "product"
+    },
+    {
+      "qid": "Q900051",
+      "label": "Tesla, Inc.",
+      "description": "Tesla, Inc. company used as an enterprise validation entity",
+      "aliases": [
+        "Tesla Inc",
+        "TI"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q4830453",
+          "value_label": "business"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q4830453",
+          "value_label": "business"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "Q11456",
+          "value_label": "semiconductor industry"
+        },
+        {
+          "property_id": "P856",
+          "property_label": "official website",
+          "value_label": "https://www.example.com/tesla-inc"
+        },
+        {
+          "property_id": "P571",
+          "property_label": "inception",
+          "value_label": "+1971-01-01T00:00:00Z"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900051",
+      "expected_category": "enterprise"
+    },
+    {
+      "qid": "Q900052",
+      "label": "Apple Inc.",
+      "description": "Apple Inc. company used as an enterprise validation entity",
+      "aliases": [
+        "Apple Inc",
+        "AI"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q4830453",
+          "value_label": "business"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q4830453",
+          "value_label": "business"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "Q507443",
+          "value_label": "pharmaceutical industry"
+        },
+        {
+          "property_id": "P856",
+          "property_label": "official website",
+          "value_label": "https://www.example.com/apple-inc"
+        },
+        {
+          "property_id": "P571",
+          "property_label": "inception",
+          "value_label": "+1972-01-01T00:00:00Z"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900052",
+      "expected_category": "enterprise"
+    },
+    {
+      "qid": "Q900053",
+      "label": "Samsung Electronics",
+      "description": "Samsung Electronics company used as an enterprise validation entity",
+      "aliases": [
+        "Samsung Electronics",
+        "SE"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q4830453",
+          "value_label": "business"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q4830453",
+          "value_label": "business"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "Q11358",
+          "value_label": "chemical industry"
+        },
+        {
+          "property_id": "P856",
+          "property_label": "official website",
+          "value_label": "https://www.example.com/samsung-electronics"
+        },
+        {
+          "property_id": "P571",
+          "property_label": "inception",
+          "value_label": "+1973-01-01T00:00:00Z"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900053",
+      "expected_category": "enterprise"
+    },
+    {
+      "qid": "Q900054",
+      "label": "Taiwan Semiconductor Manufacturing Company",
+      "description": "Taiwan Semiconductor Manufacturing Company company used as an enterprise validation entity",
+      "aliases": [
+        "Taiwan Semiconductor Manufacturing Company",
+        "TSMC"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q4830453",
+          "value_label": "business"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q4830453",
+          "value_label": "business"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "Q187939",
+          "value_label": "aerospace industry"
+        },
+        {
+          "property_id": "P856",
+          "property_label": "official website",
+          "value_label": "https://www.example.com/taiwan-semiconductor-manufacturing-company"
+        },
+        {
+          "property_id": "P571",
+          "property_label": "inception",
+          "value_label": "+1974-01-01T00:00:00Z"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900054",
+      "expected_category": "enterprise"
+    },
+    {
+      "qid": "Q900055",
+      "label": "Intel Corporation",
+      "description": "Intel Corporation company used as an enterprise validation entity",
+      "aliases": [
+        "Intel Corporation",
+        "IC"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q4830453",
+          "value_label": "business"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q4830453",
+          "value_label": "business"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "Q2151621",
+          "value_label": "steel industry"
+        },
+        {
+          "property_id": "P856",
+          "property_label": "official website",
+          "value_label": "https://www.example.com/intel-corporation"
+        },
+        {
+          "property_id": "P571",
+          "property_label": "inception",
+          "value_label": "+1975-01-01T00:00:00Z"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900055",
+      "expected_category": "enterprise"
+    },
+    {
+      "qid": "Q900056",
+      "label": "Toyota Motor Corporation",
+      "description": "Toyota Motor Corporation company used as an enterprise validation entity",
+      "aliases": [
+        "Toyota Motor Corporation",
+        "TMC"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q4830453",
+          "value_label": "business"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q4830453",
+          "value_label": "business"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "Q28823",
+          "value_label": "textile industry"
+        },
+        {
+          "property_id": "P856",
+          "property_label": "official website",
+          "value_label": "https://www.example.com/toyota-motor-corporation"
+        },
+        {
+          "property_id": "P571",
+          "property_label": "inception",
+          "value_label": "+1976-01-01T00:00:00Z"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900056",
+      "expected_category": "enterprise"
+    },
+    {
+      "qid": "Q900057",
+      "label": "Volkswagen Group",
+      "description": "Volkswagen Group company used as an enterprise validation entity",
+      "aliases": [
+        "Volkswagen Group",
+        "VG"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q4830453",
+          "value_label": "business"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q4830453",
+          "value_label": "business"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "Q12705",
+          "value_label": "renewable energy"
+        },
+        {
+          "property_id": "P856",
+          "property_label": "official website",
+          "value_label": "https://www.example.com/volkswagen-group"
+        },
+        {
+          "property_id": "P571",
+          "property_label": "inception",
+          "value_label": "+1977-01-01T00:00:00Z"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900057",
+      "expected_category": "enterprise"
+    },
+    {
+      "qid": "Q900058",
+      "label": "Microsoft",
+      "description": "Microsoft company used as an enterprise validation entity",
+      "aliases": [],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q4830453",
+          "value_label": "business"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q4830453",
+          "value_label": "business"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "Q11650",
+          "value_label": "electronics"
+        },
+        {
+          "property_id": "P856",
+          "property_label": "official website",
+          "value_label": "https://www.example.com/microsoft"
+        },
+        {
+          "property_id": "P571",
+          "property_label": "inception",
+          "value_label": "+1978-01-01T00:00:00Z"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900058",
+      "expected_category": "enterprise"
+    },
+    {
+      "qid": "Q900059",
+      "label": "Amazon",
+      "description": "Amazon company used as an enterprise validation entity",
+      "aliases": [],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q4830453",
+          "value_label": "business"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q4830453",
+          "value_label": "business"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "Q190117",
+          "value_label": "automotive industry"
+        },
+        {
+          "property_id": "P856",
+          "property_label": "official website",
+          "value_label": "https://www.example.com/amazon"
+        },
+        {
+          "property_id": "P571",
+          "property_label": "inception",
+          "value_label": "+1979-01-01T00:00:00Z"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900059",
+      "expected_category": "enterprise"
+    },
+    {
+      "qid": "Q900060",
+      "label": "Alphabet Inc.",
+      "description": "Alphabet Inc. company used as an enterprise validation entity",
+      "aliases": [
+        "Alphabet Inc",
+        "AI"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q4830453",
+          "value_label": "business"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q4830453",
+          "value_label": "business"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "Q11456",
+          "value_label": "semiconductor industry"
+        },
+        {
+          "property_id": "P856",
+          "property_label": "official website",
+          "value_label": "https://www.example.com/alphabet-inc"
+        },
+        {
+          "property_id": "P571",
+          "property_label": "inception",
+          "value_label": "+1980-01-01T00:00:00Z"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900060",
+      "expected_category": "enterprise"
+    },
+    {
+      "qid": "Q900061",
+      "label": "Nvidia",
+      "description": "Nvidia company used as an enterprise validation entity",
+      "aliases": [],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q4830453",
+          "value_label": "business"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q4830453",
+          "value_label": "business"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "Q507443",
+          "value_label": "pharmaceutical industry"
+        },
+        {
+          "property_id": "P856",
+          "property_label": "official website",
+          "value_label": "https://www.example.com/nvidia"
+        },
+        {
+          "property_id": "P571",
+          "property_label": "inception",
+          "value_label": "+1981-01-01T00:00:00Z"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900061",
+      "expected_category": "enterprise"
+    },
+    {
+      "qid": "Q900062",
+      "label": "Sony Group",
+      "description": "Sony Group company used as an enterprise validation entity",
+      "aliases": [
+        "Sony Group",
+        "SG"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q4830453",
+          "value_label": "business"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q4830453",
+          "value_label": "business"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "Q11358",
+          "value_label": "chemical industry"
+        },
+        {
+          "property_id": "P856",
+          "property_label": "official website",
+          "value_label": "https://www.example.com/sony-group"
+        },
+        {
+          "property_id": "P571",
+          "property_label": "inception",
+          "value_label": "+1982-01-01T00:00:00Z"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900062",
+      "expected_category": "enterprise"
+    },
+    {
+      "qid": "Q900063",
+      "label": "Panasonic Holdings",
+      "description": "Panasonic Holdings company used as an enterprise validation entity",
+      "aliases": [
+        "Panasonic Holdings",
+        "PH"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q4830453",
+          "value_label": "business"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q4830453",
+          "value_label": "business"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "Q187939",
+          "value_label": "aerospace industry"
+        },
+        {
+          "property_id": "P856",
+          "property_label": "official website",
+          "value_label": "https://www.example.com/panasonic-holdings"
+        },
+        {
+          "property_id": "P571",
+          "property_label": "inception",
+          "value_label": "+1983-01-01T00:00:00Z"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900063",
+      "expected_category": "enterprise"
+    },
+    {
+      "qid": "Q900064",
+      "label": "BYD Company",
+      "description": "BYD Company company used as an enterprise validation entity",
+      "aliases": [
+        "BYD Company",
+        "BC"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q4830453",
+          "value_label": "business"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q4830453",
+          "value_label": "business"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "Q2151621",
+          "value_label": "steel industry"
+        },
+        {
+          "property_id": "P856",
+          "property_label": "official website",
+          "value_label": "https://www.example.com/byd-company"
+        },
+        {
+          "property_id": "P571",
+          "property_label": "inception",
+          "value_label": "+1984-01-01T00:00:00Z"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900064",
+      "expected_category": "enterprise"
+    },
+    {
+      "qid": "Q900065",
+      "label": "Huawei",
+      "description": "Huawei company used as an enterprise validation entity",
+      "aliases": [],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q4830453",
+          "value_label": "business"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q4830453",
+          "value_label": "business"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "Q28823",
+          "value_label": "textile industry"
+        },
+        {
+          "property_id": "P856",
+          "property_label": "official website",
+          "value_label": "https://www.example.com/huawei"
+        },
+        {
+          "property_id": "P571",
+          "property_label": "inception",
+          "value_label": "+1985-01-01T00:00:00Z"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900065",
+      "expected_category": "enterprise"
+    },
+    {
+      "qid": "Q900066",
+      "label": "Siemens",
+      "description": "Siemens company used as an enterprise validation entity",
+      "aliases": [],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q4830453",
+          "value_label": "business"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q4830453",
+          "value_label": "business"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "Q12705",
+          "value_label": "renewable energy"
+        },
+        {
+          "property_id": "P856",
+          "property_label": "official website",
+          "value_label": "https://www.example.com/siemens"
+        },
+        {
+          "property_id": "P571",
+          "property_label": "inception",
+          "value_label": "+1986-01-01T00:00:00Z"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900066",
+      "expected_category": "enterprise"
+    },
+    {
+      "qid": "Q900067",
+      "label": "General Electric",
+      "description": "General Electric company used as an enterprise validation entity",
+      "aliases": [
+        "General Electric",
+        "GE"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q4830453",
+          "value_label": "business"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q4830453",
+          "value_label": "business"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "Q11650",
+          "value_label": "electronics"
+        },
+        {
+          "property_id": "P856",
+          "property_label": "official website",
+          "value_label": "https://www.example.com/general-electric"
+        },
+        {
+          "property_id": "P571",
+          "property_label": "inception",
+          "value_label": "+1987-01-01T00:00:00Z"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900067",
+      "expected_category": "enterprise"
+    },
+    {
+      "qid": "Q900068",
+      "label": "Boeing",
+      "description": "Boeing company used as an enterprise validation entity",
+      "aliases": [],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q4830453",
+          "value_label": "business"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q4830453",
+          "value_label": "business"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "Q190117",
+          "value_label": "automotive industry"
+        },
+        {
+          "property_id": "P856",
+          "property_label": "official website",
+          "value_label": "https://www.example.com/boeing"
+        },
+        {
+          "property_id": "P571",
+          "property_label": "inception",
+          "value_label": "+1988-01-01T00:00:00Z"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900068",
+      "expected_category": "enterprise"
+    },
+    {
+      "qid": "Q900069",
+      "label": "Airbus",
+      "description": "Airbus company used as an enterprise validation entity",
+      "aliases": [],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q4830453",
+          "value_label": "business"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q4830453",
+          "value_label": "business"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "Q11456",
+          "value_label": "semiconductor industry"
+        },
+        {
+          "property_id": "P856",
+          "property_label": "official website",
+          "value_label": "https://www.example.com/airbus"
+        },
+        {
+          "property_id": "P571",
+          "property_label": "inception",
+          "value_label": "+1989-01-01T00:00:00Z"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900069",
+      "expected_category": "enterprise"
+    },
+    {
+      "qid": "Q900070",
+      "label": "Pfizer",
+      "description": "Pfizer company used as an enterprise validation entity",
+      "aliases": [],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q4830453",
+          "value_label": "business"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q4830453",
+          "value_label": "business"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "Q507443",
+          "value_label": "pharmaceutical industry"
+        },
+        {
+          "property_id": "P856",
+          "property_label": "official website",
+          "value_label": "https://www.example.com/pfizer"
+        },
+        {
+          "property_id": "P571",
+          "property_label": "inception",
+          "value_label": "+1990-01-01T00:00:00Z"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900070",
+      "expected_category": "enterprise"
+    },
+    {
+      "qid": "Q900071",
+      "label": "Roche",
+      "description": "Roche company used as an enterprise validation entity",
+      "aliases": [],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q4830453",
+          "value_label": "business"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q4830453",
+          "value_label": "business"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "Q11358",
+          "value_label": "chemical industry"
+        },
+        {
+          "property_id": "P856",
+          "property_label": "official website",
+          "value_label": "https://www.example.com/roche"
+        },
+        {
+          "property_id": "P571",
+          "property_label": "inception",
+          "value_label": "+1991-01-01T00:00:00Z"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900071",
+      "expected_category": "enterprise"
+    },
+    {
+      "qid": "Q900072",
+      "label": "BASF",
+      "description": "BASF company used as an enterprise validation entity",
+      "aliases": [],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q4830453",
+          "value_label": "business"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q4830453",
+          "value_label": "business"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "Q187939",
+          "value_label": "aerospace industry"
+        },
+        {
+          "property_id": "P856",
+          "property_label": "official website",
+          "value_label": "https://www.example.com/basf"
+        },
+        {
+          "property_id": "P571",
+          "property_label": "inception",
+          "value_label": "+1992-01-01T00:00:00Z"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900072",
+      "expected_category": "enterprise"
+    },
+    {
+      "qid": "Q900073",
+      "label": "Shell plc",
+      "description": "Shell plc company used as an enterprise validation entity",
+      "aliases": [
+        "Shell plc",
+        "SP"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q4830453",
+          "value_label": "business"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q4830453",
+          "value_label": "business"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "Q2151621",
+          "value_label": "steel industry"
+        },
+        {
+          "property_id": "P856",
+          "property_label": "official website",
+          "value_label": "https://www.example.com/shell-plc"
+        },
+        {
+          "property_id": "P571",
+          "property_label": "inception",
+          "value_label": "+1993-01-01T00:00:00Z"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900073",
+      "expected_category": "enterprise"
+    },
+    {
+      "qid": "Q900074",
+      "label": "ExxonMobil",
+      "description": "ExxonMobil company used as an enterprise validation entity",
+      "aliases": [],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q4830453",
+          "value_label": "business"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q4830453",
+          "value_label": "business"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "Q28823",
+          "value_label": "textile industry"
+        },
+        {
+          "property_id": "P856",
+          "property_label": "official website",
+          "value_label": "https://www.example.com/exxonmobil"
+        },
+        {
+          "property_id": "P571",
+          "property_label": "inception",
+          "value_label": "+1994-01-01T00:00:00Z"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900074",
+      "expected_category": "enterprise"
+    },
+    {
+      "qid": "Q900075",
+      "label": "IBM",
+      "description": "IBM company used as an enterprise validation entity",
+      "aliases": [],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q4830453",
+          "value_label": "business"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q4830453",
+          "value_label": "business"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "Q12705",
+          "value_label": "renewable energy"
+        },
+        {
+          "property_id": "P856",
+          "property_label": "official website",
+          "value_label": "https://www.example.com/ibm"
+        },
+        {
+          "property_id": "P571",
+          "property_label": "inception",
+          "value_label": "+1995-01-01T00:00:00Z"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900075",
+      "expected_category": "enterprise"
+    },
+    {
+      "qid": "Q900076",
+      "label": "Photolithography",
+      "description": "photolithography technology used as a technology validation entity",
+      "aliases": [],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q11016",
+          "value_label": "technology"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q11016",
+          "value_label": "technology"
+        },
+        {
+          "property_id": "P178",
+          "property_label": "developer",
+          "value_id": "Q2283",
+          "value_label": "Microsoft"
+        },
+        {
+          "property_id": "P577",
+          "property_label": "publication date",
+          "value_label": "+1991-01-01T00:00:00Z"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900076",
+      "expected_category": "technology"
+    },
+    {
+      "qid": "Q900077",
+      "label": "Extreme ultraviolet lithography",
+      "description": "extreme ultraviolet lithography technology used as a technology validation entity",
+      "aliases": [
+        "Extreme ultraviolet lithography",
+        "EUL"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q11016",
+          "value_label": "technology"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q11016",
+          "value_label": "technology"
+        },
+        {
+          "property_id": "P178",
+          "property_label": "developer",
+          "value_id": "Q312",
+          "value_label": "Apple Inc."
+        },
+        {
+          "property_id": "P577",
+          "property_label": "publication date",
+          "value_label": "+1992-01-01T00:00:00Z"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900077",
+      "expected_category": "technology"
+    },
+    {
+      "qid": "Q900078",
+      "label": "Machine learning",
+      "description": "machine learning technology used as a technology validation entity",
+      "aliases": [
+        "Machine learning",
+        "ML"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q11016",
+          "value_label": "technology"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q11016",
+          "value_label": "technology"
+        },
+        {
+          "property_id": "P178",
+          "property_label": "developer",
+          "value_id": "Q37156",
+          "value_label": "IBM"
+        },
+        {
+          "property_id": "P577",
+          "property_label": "publication date",
+          "value_label": "+1993-01-01T00:00:00Z"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900078",
+      "expected_category": "technology"
+    },
+    {
+      "qid": "Q900079",
+      "label": "Artificial intelligence",
+      "description": "artificial intelligence technology used as a technology validation entity",
+      "aliases": [
+        "Artificial intelligence",
+        "AI"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q11016",
+          "value_label": "technology"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q11016",
+          "value_label": "technology"
+        },
+        {
+          "property_id": "P178",
+          "property_label": "developer",
+          "value_id": "Q208004",
+          "value_label": "Nvidia"
+        },
+        {
+          "property_id": "P577",
+          "property_label": "publication date",
+          "value_label": "+1994-01-01T00:00:00Z"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900079",
+      "expected_category": "technology"
+    },
+    {
+      "qid": "Q900080",
+      "label": "Blockchain",
+      "description": "blockchain technology used as a technology validation entity",
+      "aliases": [],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q11016",
+          "value_label": "technology"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q11016",
+          "value_label": "technology"
+        },
+        {
+          "property_id": "P178",
+          "property_label": "developer",
+          "value_id": "Q3884",
+          "value_label": "Amazon"
+        },
+        {
+          "property_id": "P577",
+          "property_label": "publication date",
+          "value_label": "+1995-01-01T00:00:00Z"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900080",
+      "expected_category": "technology"
+    },
+    {
+      "qid": "Q900081",
+      "label": "5G technology",
+      "description": "5g technology technology used as a technology validation entity",
+      "aliases": [
+        "5G technology",
+        "5T"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q11016",
+          "value_label": "technology"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q11016",
+          "value_label": "technology"
+        },
+        {
+          "property_id": "P178",
+          "property_label": "developer",
+          "value_id": "Q157062",
+          "value_label": "OpenAI"
+        },
+        {
+          "property_id": "P577",
+          "property_label": "publication date",
+          "value_label": "+1996-01-01T00:00:00Z"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900081",
+      "expected_category": "technology"
+    },
+    {
+      "qid": "Q900082",
+      "label": "Cloud computing",
+      "description": "cloud computing technology used as a technology validation entity",
+      "aliases": [
+        "Cloud computing",
+        "CC"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q11016",
+          "value_label": "technology"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q11016",
+          "value_label": "technology"
+        },
+        {
+          "property_id": "P178",
+          "property_label": "developer",
+          "value_id": "Q713477",
+          "value_label": "TSMC"
+        },
+        {
+          "property_id": "P577",
+          "property_label": "publication date",
+          "value_label": "+1997-01-01T00:00:00Z"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900082",
+      "expected_category": "technology"
+    },
+    {
+      "qid": "Q900083",
+      "label": "Quantum computing",
+      "description": "quantum computing technology used as a technology validation entity",
+      "aliases": [
+        "Quantum computing",
+        "QC"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q11016",
+          "value_label": "technology"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q11016",
+          "value_label": "technology"
+        },
+        {
+          "property_id": "P178",
+          "property_label": "developer",
+          "value_id": "Q95",
+          "value_label": "Google"
+        },
+        {
+          "property_id": "P577",
+          "property_label": "publication date",
+          "value_label": "+1998-01-01T00:00:00Z"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900083",
+      "expected_category": "technology"
+    },
+    {
+      "qid": "Q900084",
+      "label": "Additive manufacturing",
+      "description": "additive manufacturing technology used as a technology validation entity",
+      "aliases": [
+        "Additive manufacturing",
+        "AM"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q11016",
+          "value_label": "technology"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q11016",
+          "value_label": "technology"
+        },
+        {
+          "property_id": "P178",
+          "property_label": "developer",
+          "value_id": "Q2283",
+          "value_label": "Microsoft"
+        },
+        {
+          "property_id": "P577",
+          "property_label": "publication date",
+          "value_label": "+1999-01-01T00:00:00Z"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900084",
+      "expected_category": "technology"
+    },
+    {
+      "qid": "Q900085",
+      "label": "CRISPR",
+      "description": "crispr technology used as a technology validation entity",
+      "aliases": [],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q11016",
+          "value_label": "technology"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q11016",
+          "value_label": "technology"
+        },
+        {
+          "property_id": "P178",
+          "property_label": "developer",
+          "value_id": "Q312",
+          "value_label": "Apple Inc."
+        },
+        {
+          "property_id": "P577",
+          "property_label": "publication date",
+          "value_label": "+2000-01-01T00:00:00Z"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900085",
+      "expected_category": "technology"
+    },
+    {
+      "qid": "Q900086",
+      "label": "Gene therapy",
+      "description": "gene therapy technology used as a technology validation entity",
+      "aliases": [
+        "Gene therapy",
+        "GT"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q11016",
+          "value_label": "technology"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q11016",
+          "value_label": "technology"
+        },
+        {
+          "property_id": "P178",
+          "property_label": "developer",
+          "value_id": "Q37156",
+          "value_label": "IBM"
+        },
+        {
+          "property_id": "P577",
+          "property_label": "publication date",
+          "value_label": "+2001-01-01T00:00:00Z"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900086",
+      "expected_category": "technology"
+    },
+    {
+      "qid": "Q900087",
+      "label": "mRNA vaccine technology",
+      "description": "mrna vaccine technology technology used as a technology validation entity",
+      "aliases": [
+        "mRNA vaccine technology",
+        "MVT"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q11016",
+          "value_label": "technology"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q11016",
+          "value_label": "technology"
+        },
+        {
+          "property_id": "P178",
+          "property_label": "developer",
+          "value_id": "Q208004",
+          "value_label": "Nvidia"
+        },
+        {
+          "property_id": "P577",
+          "property_label": "publication date",
+          "value_label": "+2002-01-01T00:00:00Z"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900087",
+      "expected_category": "technology"
+    },
+    {
+      "qid": "Q900088",
+      "label": "Solar cell technology",
+      "description": "solar cell technology technology used as a technology validation entity",
+      "aliases": [
+        "Solar cell technology",
+        "SCT"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q11016",
+          "value_label": "technology"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q11016",
+          "value_label": "technology"
+        },
+        {
+          "property_id": "P178",
+          "property_label": "developer",
+          "value_id": "Q3884",
+          "value_label": "Amazon"
+        },
+        {
+          "property_id": "P577",
+          "property_label": "publication date",
+          "value_label": "+2003-01-01T00:00:00Z"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900088",
+      "expected_category": "technology"
+    },
+    {
+      "qid": "Q900089",
+      "label": "Wind power technology",
+      "description": "wind power technology technology used as a technology validation entity",
+      "aliases": [
+        "Wind power technology",
+        "WPT"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q11016",
+          "value_label": "technology"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q11016",
+          "value_label": "technology"
+        },
+        {
+          "property_id": "P178",
+          "property_label": "developer",
+          "value_id": "Q157062",
+          "value_label": "OpenAI"
+        },
+        {
+          "property_id": "P577",
+          "property_label": "publication date",
+          "value_label": "+2004-01-01T00:00:00Z"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900089",
+      "expected_category": "technology"
+    },
+    {
+      "qid": "Q900090",
+      "label": "Hydrogen fuel cell",
+      "description": "hydrogen fuel cell technology used as a technology validation entity",
+      "aliases": [
+        "Hydrogen fuel cell",
+        "HFC"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q11016",
+          "value_label": "technology"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q11016",
+          "value_label": "technology"
+        },
+        {
+          "property_id": "P178",
+          "property_label": "developer",
+          "value_id": "Q713477",
+          "value_label": "TSMC"
+        },
+        {
+          "property_id": "P577",
+          "property_label": "publication date",
+          "value_label": "+2005-01-01T00:00:00Z"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900090",
+      "expected_category": "technology"
+    },
+    {
+      "qid": "Q900091",
+      "label": "Carbon capture and storage",
+      "description": "carbon capture and storage technology used as a technology validation entity",
+      "aliases": [
+        "Carbon capture and storage",
+        "CCAS"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q11016",
+          "value_label": "technology"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q11016",
+          "value_label": "technology"
+        },
+        {
+          "property_id": "P178",
+          "property_label": "developer",
+          "value_id": "Q95",
+          "value_label": "Google"
+        },
+        {
+          "property_id": "P577",
+          "property_label": "publication date",
+          "value_label": "+2006-01-01T00:00:00Z"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900091",
+      "expected_category": "technology"
+    },
+    {
+      "qid": "Q900092",
+      "label": "Robotics",
+      "description": "robotics technology used as a technology validation entity",
+      "aliases": [],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q11016",
+          "value_label": "technology"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q11016",
+          "value_label": "technology"
+        },
+        {
+          "property_id": "P178",
+          "property_label": "developer",
+          "value_id": "Q2283",
+          "value_label": "Microsoft"
+        },
+        {
+          "property_id": "P577",
+          "property_label": "publication date",
+          "value_label": "+2007-01-01T00:00:00Z"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900092",
+      "expected_category": "technology"
+    },
+    {
+      "qid": "Q900093",
+      "label": "Autonomous vehicle technology",
+      "description": "autonomous vehicle technology technology used as a technology validation entity",
+      "aliases": [
+        "Autonomous vehicle technology",
+        "AVT"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q11016",
+          "value_label": "technology"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q11016",
+          "value_label": "technology"
+        },
+        {
+          "property_id": "P178",
+          "property_label": "developer",
+          "value_id": "Q312",
+          "value_label": "Apple Inc."
+        },
+        {
+          "property_id": "P577",
+          "property_label": "publication date",
+          "value_label": "+2008-01-01T00:00:00Z"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900093",
+      "expected_category": "technology"
+    },
+    {
+      "qid": "Q900094",
+      "label": "Natural language processing",
+      "description": "natural language processing technology used as a technology validation entity",
+      "aliases": [
+        "Natural language processing",
+        "NLP"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q11016",
+          "value_label": "technology"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q11016",
+          "value_label": "technology"
+        },
+        {
+          "property_id": "P178",
+          "property_label": "developer",
+          "value_id": "Q37156",
+          "value_label": "IBM"
+        },
+        {
+          "property_id": "P577",
+          "property_label": "publication date",
+          "value_label": "+2009-01-01T00:00:00Z"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900094",
+      "expected_category": "technology"
+    },
+    {
+      "qid": "Q900095",
+      "label": "Computer vision",
+      "description": "computer vision technology used as a technology validation entity",
+      "aliases": [
+        "Computer vision",
+        "CV"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q11016",
+          "value_label": "technology"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q11016",
+          "value_label": "technology"
+        },
+        {
+          "property_id": "P178",
+          "property_label": "developer",
+          "value_id": "Q208004",
+          "value_label": "Nvidia"
+        },
+        {
+          "property_id": "P577",
+          "property_label": "publication date",
+          "value_label": "+2010-01-01T00:00:00Z"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900095",
+      "expected_category": "technology"
+    },
+    {
+      "qid": "Q900096",
+      "label": "Internet of things",
+      "description": "internet of things technology used as a technology validation entity",
+      "aliases": [
+        "Internet of things",
+        "IOT"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q11016",
+          "value_label": "technology"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q11016",
+          "value_label": "technology"
+        },
+        {
+          "property_id": "P178",
+          "property_label": "developer",
+          "value_id": "Q3884",
+          "value_label": "Amazon"
+        },
+        {
+          "property_id": "P577",
+          "property_label": "publication date",
+          "value_label": "+2011-01-01T00:00:00Z"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900096",
+      "expected_category": "technology"
+    },
+    {
+      "qid": "Q900097",
+      "label": "Virtual reality",
+      "description": "virtual reality technology used as a technology validation entity",
+      "aliases": [
+        "Virtual reality",
+        "VR"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q11016",
+          "value_label": "technology"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q11016",
+          "value_label": "technology"
+        },
+        {
+          "property_id": "P178",
+          "property_label": "developer",
+          "value_id": "Q157062",
+          "value_label": "OpenAI"
+        },
+        {
+          "property_id": "P577",
+          "property_label": "publication date",
+          "value_label": "+2012-01-01T00:00:00Z"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900097",
+      "expected_category": "technology"
+    },
+    {
+      "qid": "Q900098",
+      "label": "Augmented reality",
+      "description": "augmented reality technology used as a technology validation entity",
+      "aliases": [
+        "Augmented reality",
+        "AR"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q11016",
+          "value_label": "technology"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q11016",
+          "value_label": "technology"
+        },
+        {
+          "property_id": "P178",
+          "property_label": "developer",
+          "value_id": "Q713477",
+          "value_label": "TSMC"
+        },
+        {
+          "property_id": "P577",
+          "property_label": "publication date",
+          "value_label": "+2013-01-01T00:00:00Z"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900098",
+      "expected_category": "technology"
+    },
+    {
+      "qid": "Q900099",
+      "label": "Nanotechnology",
+      "description": "nanotechnology technology used as a technology validation entity",
+      "aliases": [],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q11016",
+          "value_label": "technology"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q11016",
+          "value_label": "technology"
+        },
+        {
+          "property_id": "P178",
+          "property_label": "developer",
+          "value_id": "Q95",
+          "value_label": "Google"
+        },
+        {
+          "property_id": "P577",
+          "property_label": "publication date",
+          "value_label": "+2014-01-01T00:00:00Z"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900099",
+      "expected_category": "technology"
+    },
+    {
+      "qid": "Q900100",
+      "label": "Biotechnology",
+      "description": "biotechnology technology used as a technology validation entity",
+      "aliases": [],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q11016",
+          "value_label": "technology"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q11016",
+          "value_label": "technology"
+        },
+        {
+          "property_id": "P178",
+          "property_label": "developer",
+          "value_id": "Q2283",
+          "value_label": "Microsoft"
+        },
+        {
+          "property_id": "P577",
+          "property_label": "publication date",
+          "value_label": "+2015-01-01T00:00:00Z"
+        }
+      ],
+      "url": "https://www.wikidata.org/wiki/Q900100",
+      "expected_category": "technology"
+    }
+  ]
+}

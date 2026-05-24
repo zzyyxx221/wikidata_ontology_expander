@@ -67,11 +67,10 @@ python -m wikidata_ontology_expander.cli expand `
 
 论文中的关键机制在项目中的落点如下：
 
-- category + module 种子 schema：`schema_parser.py` 和 `seed_schema.json`
-- 分类与未分类实体识别：`ExpansionEngine._classify_candidate`
-- gate values / module indicators：`GatePolicy` 和 `ModuleProfile`
-- value properties 扩充：`PropertyMapper`
-- 迭代 refinement 与人工审核：`ChangeSet`、`review_required`、`confidence`
+- domain + module 种子 schema：`schema_parser.py` 和 `seed_schema.json`
+- 候选打分与模块选择：`GatePolicy` 和 `ModuleProfile`
+- value properties 扩充：`property_map`
+- 置信度阈值分流与人工审核：`ChangeSet`、`review_required`、`confidence`
 
 ## 离线测试
 

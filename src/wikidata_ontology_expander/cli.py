@@ -30,9 +30,23 @@ def main() -> None:
         help="Use a local Wikidata fixture JSON instead of calling wikidata.org.",
     )
 
+    corpus = subparsers.add_parser(
+        "expand-corpus",
+        help="Generate ontology expansion changes from a Wikidata-like entity corpus without seed search.",
+    )
+    corpus.add_argument("--schema", required=True, type=Path, help="Path to seed ontology schema.")
+    corpus.add_argument("--config", required=True, type=Path, help="JSON expansion config.")
+    corpus.add_argument("--output", required=True, type=Path, help="Output ChangeSet JSON path.")
+    corpus.add_argument(
+        "--offline-fixture",
+        required=True,
+        type=Path,
+        help="Local Wikidata fixture JSON containing entities to route.",
+    )
+
     args = parser.parse_args()
     if args.command == "expand":
-        config = load_config(args.config)
+        config = load_config(args.config, args.schema)
         seeds = load_seeds(args.seeds)
         if args.offline_fixture:
             client = FixtureWikidataClient(args.offline_fixture)
@@ -46,6 +60,41 @@ def main() -> None:
             encoding="utf-8",
         )
         print(f"Wrote {len(changeset.changes)} changes to {args.output}")
+        if changeset.report is not None:
+            report = changeset.report
+            print(
+                "Refinement report: "
+                f"{report.classified_candidates}/{report.total_candidates} classified, "
+                f"{report.unclassified_candidates} unclassified, "
+                f"{report.module_free_candidates} module-free"
+            )
+            if report.uncovered_categories:
+                print(f"Uncovered categories: {', '.join(report.uncovered_categories)}")
+            if report.uncovered_modules:
+                print(f"Uncovered modules: {', '.join(report.uncovered_modules)}")
+    elif args.command == "expand-corpus":
+        config = load_config(args.config, args.schema)
+        client = FixtureWikidataClient(args.offline_fixture)
+        engine = ExpansionEngine(client=client, config=config)
+        changeset = engine.expand_corpus(args.schema, client.all_entities())
+        args.output.parent.mkdir(parents=True, exist_ok=True)
+        args.output.write_text(
+            json.dumps(changeset.to_dict(), ensure_ascii=False, indent=2),
+            encoding="utf-8",
+        )
+        print(f"Wrote {len(changeset.changes)} changes to {args.output}")
+        if changeset.report is not None:
+            report = changeset.report
+            print(
+                "Refinement report: "
+                f"{report.classified_candidates}/{report.total_candidates} classified, "
+                f"{report.unclassified_candidates} unclassified, "
+                f"{report.module_free_candidates} module-free"
+            )
+            if report.uncovered_categories:
+                print(f"Uncovered categories: {', '.join(report.uncovered_categories)}")
+            if report.uncovered_modules:
+                print(f"Uncovered modules: {', '.join(report.uncovered_modules)}")
 
 
 if __name__ == "__main__":

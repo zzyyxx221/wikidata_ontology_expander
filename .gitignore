@@ -25,6 +25,7 @@ out/
 outputs/
 logs/
 *.log
+.wikidata_ontology_cache/
 
 # Review UI exported files
 reviewed_changeset*.json
