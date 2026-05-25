@@ -146,7 +146,7 @@
     }
   ],
   "model_review": {
-    "enabled": false,
+    "enabled": true,
     "provider": "openai",
     "model": "gpt-5-mini",
     "api_base": "https://api.openai.com/v1",
