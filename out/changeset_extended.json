@@ -1,0 +1,845 @@
+{
+  "changes": [
+    {
+      "action": "enrich_existing",
+      "entity_type": "Industry",
+      "label": "Semiconductor",
+      "wikidata_id": "Q11456",
+      "confidence": 0.7,
+      "module": "industry",
+      "parent": "Electronic components",
+      "field": null,
+      "value": null,
+      "evidence": [
+        {
+          "source": "label",
+          "detail": "exact label match: Semiconductor",
+          "weight": 0.42
+        },
+        {
+          "source": "module",
+          "detail": "seed type belongs to module industry",
+          "weight": 0.12
+        },
+        {
+          "source": "gate",
+          "detail": "gate properties: P279, P31",
+          "weight": 0.16
+        }
+      ],
+      "review_required": true
+    },
+    {
+      "action": "enrich_property",
+      "entity_type": "Industry",
+      "label": "Semiconductor",
+      "wikidata_id": "Q11456",
+      "confidence": 0.7,
+      "module": "industry",
+      "parent": null,
+      "field": "description",
+      "value": "material with electrical conductivity between conductor and insulator",
+      "evidence": [],
+      "review_required": true
+    },
+    {
+      "action": "enrich_property",
+      "entity_type": "Industry",
+      "label": "Semiconductor",
+      "wikidata_id": "Q11456",
+      "confidence": 0.7,
+      "module": "industry",
+      "parent": null,
+      "field": "alias",
+      "value": "semiconductor material",
+      "evidence": [],
+      "review_required": true
+    },
+    {
+      "action": "add_relation",
+      "entity_type": "Industry",
+      "label": "Semiconductor",
+      "wikidata_id": "Q11456",
+      "confidence": 0.63,
+      "module": "industry",
+      "parent": null,
+      "field": "subclassOf",
+      "value": "electronic component (Q79529)",
+      "evidence": [],
+      "review_required": true
+    },
+    {
+      "action": "enrich_existing",
+      "entity_type": "Industry",
+      "label": "Electric vehicle",
+      "wikidata_id": "Q193692",
+      "confidence": 0.96,
+      "module": "industry",
+      "parent": "Automotive industry",
+      "field": null,
+      "value": null,
+      "evidence": [
+        {
+          "source": "label",
+          "detail": "exact label match: Electric vehicle",
+          "weight": 0.42
+        },
+        {
+          "source": "alias",
+          "detail": "alias match: electric car",
+          "weight": 0.18
+        },
+        {
+          "source": "module",
+          "detail": "seed type belongs to module industry",
+          "weight": 0.12
+        },
+        {
+          "source": "gate",
+          "detail": "gate properties: P279, P31, P452",
+          "weight": 0.24
+        }
+      ],
+      "review_required": false
+    },
+    {
+      "action": "enrich_property",
+      "entity_type": "Industry",
+      "label": "Electric vehicle",
+      "wikidata_id": "Q193692",
+      "confidence": 0.95,
+      "module": "industry",
+      "parent": null,
+      "field": "description",
+      "value": "vehicle using one or more electric motors for propulsion",
+      "evidence": [],
+      "review_required": false
+    },
+    {
+      "action": "enrich_property",
+      "entity_type": "Industry",
+      "label": "Electric vehicle",
+      "wikidata_id": "Q193692",
+      "confidence": 0.95,
+      "module": "industry",
+      "parent": null,
+      "field": "alias",
+      "value": "EV; electric car",
+      "evidence": [],
+      "review_required": false
+    },
+    {
+      "action": "add_relation",
+      "entity_type": "Industry",
+      "label": "Electric vehicle",
+      "wikidata_id": "Q193692",
+      "confidence": 0.85,
+      "module": "industry",
+      "parent": null,
+      "field": "subclassOf",
+      "value": "motor car (Q1420)",
+      "evidence": [],
+      "review_required": false
+    },
+    {
+      "action": "add_relation",
+      "entity_type": "Industry",
+      "label": "Electric vehicle",
+      "wikidata_id": "Q193692",
+      "confidence": 0.85,
+      "module": "industry",
+      "parent": null,
+      "field": "industry",
+      "value": "automotive industry (Q190117)",
+      "evidence": [],
+      "review_required": false
+    },
+    {
+      "action": "enrich_existing",
+      "entity_type": "Product",
+      "label": "Lithium-ion battery",
+      "wikidata_id": "Q2294",
+      "confidence": 0.96,
+      "module": "product",
+      "parent": "Battery",
+      "field": null,
+      "value": null,
+      "evidence": [
+        {
+          "source": "label",
+          "detail": "exact label match: Lithium-ion battery",
+          "weight": 0.42
+        },
+        {
+          "source": "alias",
+          "detail": "alias match: li-ion battery",
+          "weight": 0.18
+        },
+        {
+          "source": "module",
+          "detail": "seed type belongs to module product",
+          "weight": 0.12
+        },
+        {
+          "source": "gate",
+          "detail": "gate properties: P186, P279, P31, P527",
+          "weight": 0.24
+        }
+      ],
+      "review_required": false
+    },
+    {
+      "action": "enrich_property",
+      "entity_type": "Product",
+      "label": "Lithium-ion battery",
+      "wikidata_id": "Q2294",
+      "confidence": 0.95,
+      "module": "product",
+      "parent": null,
+      "field": "description",
+      "value": "type of rechargeable battery",
+      "evidence": [],
+      "review_required": false
+    },
+    {
+      "action": "enrich_property",
+      "entity_type": "Product",
+      "label": "Lithium-ion battery",
+      "wikidata_id": "Q2294",
+      "confidence": 0.95,
+      "module": "product",
+      "parent": null,
+      "field": "alias",
+      "value": "Li-ion battery; LIB",
+      "evidence": [],
+      "review_required": false
+    },
+    {
+      "action": "add_relation",
+      "entity_type": "Product",
+      "label": "Lithium-ion battery",
+      "wikidata_id": "Q2294",
+      "confidence": 0.85,
+      "module": "product",
+      "parent": null,
+      "field": "subclassOf",
+      "value": "battery (Q28877)",
+      "evidence": [],
+      "review_required": false
+    },
+    {
+      "action": "add_relation",
+      "entity_type": "Product",
+      "label": "Lithium-ion battery",
+      "wikidata_id": "Q2294",
+      "confidence": 0.85,
+      "module": "product",
+      "parent": null,
+      "field": "rawMaterial",
+      "value": "lithium (Q568)",
+      "evidence": [],
+      "review_required": false
+    },
+    {
+      "action": "add_relation",
+      "entity_type": "Product",
+      "label": "Lithium-ion battery",
+      "wikidata_id": "Q2294",
+      "confidence": 0.85,
+      "module": "product",
+      "parent": null,
+      "field": "component",
+      "value": "electrolyte (Q1778062)",
+      "evidence": [],
+      "review_required": false
+    },
+    {
+      "action": "add_entity",
+      "entity_type": "Product",
+      "label": "Wafer",
+      "wikidata_id": "Q667205",
+      "confidence": 0.85,
+      "module": "product",
+      "parent": "Semiconductor material",
+      "field": null,
+      "value": null,
+      "evidence": [
+        {
+          "source": "label",
+          "detail": "partial label match: Wafer",
+          "weight": 0.25
+        },
+        {
+          "source": "alias",
+          "detail": "alias match: semiconductor wafer, silicon wafer",
+          "weight": 0.18
+        },
+        {
+          "source": "module",
+          "detail": "seed type belongs to module product",
+          "weight": 0.12
+        },
+        {
+          "source": "gate",
+          "detail": "gate properties: P186, P279, P31",
+          "weight": 0.24
+        },
+        {
+          "source": "indicator",
+          "detail": "module terms: material",
+          "weight": 0.06
+        }
+      ],
+      "review_required": false
+    },
+    {
+      "action": "enrich_property",
+      "entity_type": "Product",
+      "label": "Wafer",
+      "wikidata_id": "Q667205",
+      "confidence": 0.85,
+      "module": "product",
+      "parent": null,
+      "field": "description",
+      "value": "thin slice of semiconductor material used in electronics",
+      "evidence": [],
+      "review_required": false
+    },
+    {
+      "action": "enrich_property",
+      "entity_type": "Product",
+      "label": "Wafer",
+      "wikidata_id": "Q667205",
+      "confidence": 0.85,
+      "module": "product",
+      "parent": null,
+      "field": "alias",
+      "value": "silicon wafer; semiconductor wafer",
+      "evidence": [],
+      "review_required": false
+    },
+    {
+      "action": "add_relation",
+      "entity_type": "Product",
+      "label": "Wafer",
+      "wikidata_id": "Q667205",
+      "confidence": 0.765,
+      "module": "product",
+      "parent": null,
+      "field": "subclassOf",
+      "value": "semiconductor (Q11456)",
+      "evidence": [],
+      "review_required": false
+    },
+    {
+      "action": "add_relation",
+      "entity_type": "Product",
+      "label": "Wafer",
+      "wikidata_id": "Q667205",
+      "confidence": 0.765,
+      "module": "product",
+      "parent": null,
+      "field": "rawMaterial",
+      "value": "silicon (Q670)",
+      "evidence": [],
+      "review_required": false
+    },
+    {
+      "action": "enrich_existing",
+      "entity_type": "Enterprise",
+      "label": "Tesla, Inc.",
+      "wikidata_id": "Q478214",
+      "confidence": 1.0,
+      "module": "enterprise",
+      "parent": null,
+      "field": null,
+      "value": null,
+      "evidence": [
+        {
+          "source": "label",
+          "detail": "exact label match: Tesla, Inc.",
+          "weight": 0.42
+        },
+        {
+          "source": "alias",
+          "detail": "alias match: tesla",
+          "weight": 0.18
+        },
+        {
+          "source": "module",
+          "detail": "seed type belongs to module enterprise",
+          "weight": 0.12
+        },
+        {
+          "source": "gate",
+          "detail": "gate properties: P31, P452, P571, P856",
+          "weight": 0.24
+        },
+        {
+          "source": "indicator",
+          "detail": "module terms: company",
+          "weight": 0.06
+        }
+      ],
+      "review_required": false
+    },
+    {
+      "action": "enrich_property",
+      "entity_type": "Enterprise",
+      "label": "Tesla, Inc.",
+      "wikidata_id": "Q478214",
+      "confidence": 0.95,
+      "module": "enterprise",
+      "parent": null,
+      "field": "description",
+      "value": "American automotive, energy storage and solar power company",
+      "evidence": [],
+      "review_required": false
+    },
+    {
+      "action": "enrich_property",
+      "entity_type": "Enterprise",
+      "label": "Tesla, Inc.",
+      "wikidata_id": "Q478214",
+      "confidence": 0.95,
+      "module": "enterprise",
+      "parent": null,
+      "field": "alias",
+      "value": "Tesla Motors; Tesla",
+      "evidence": [],
+      "review_required": false
+    },
+    {
+      "action": "enrich_property",
+      "entity_type": "Enterprise",
+      "label": "Tesla, Inc.",
+      "wikidata_id": "Q478214",
+      "confidence": 0.9,
+      "module": "enterprise",
+      "parent": null,
+      "field": "officialWebsite",
+      "value": "https://www.tesla.com/",
+      "evidence": [],
+      "review_required": false
+    },
+    {
+      "action": "enrich_property",
+      "entity_type": "Enterprise",
+      "label": "Tesla, Inc.",
+      "wikidata_id": "Q478214",
+      "confidence": 0.9,
+      "module": "enterprise",
+      "parent": null,
+      "field": "inception",
+      "value": "+2003-07-01T00:00:00Z",
+      "evidence": [],
+      "review_required": false
+    },
+    {
+      "action": "add_relation",
+      "entity_type": "Enterprise",
+      "label": "Tesla, Inc.",
+      "wikidata_id": "Q478214",
+      "confidence": 0.85,
+      "module": "enterprise",
+      "parent": null,
+      "field": "belongsToIndustry",
+      "value": "automotive industry (Q190117)",
+      "evidence": [],
+      "review_required": false
+    },
+    {
+      "action": "enrich_existing",
+      "entity_type": "Enterprise",
+      "label": "Taiwan Semiconductor Manufacturing Company",
+      "wikidata_id": "Q713477",
+      "confidence": 1.0,
+      "module": "enterprise",
+      "parent": null,
+      "field": null,
+      "value": null,
+      "evidence": [
+        {
+          "source": "label",
+          "detail": "exact label match: Taiwan Semiconductor Manufacturing Company",
+          "weight": 0.42
+        },
+        {
+          "source": "alias",
+          "detail": "alias match: tsmc",
+          "weight": 0.18
+        },
+        {
+          "source": "module",
+          "detail": "seed type belongs to module enterprise",
+          "weight": 0.12
+        },
+        {
+          "source": "gate",
+          "detail": "gate properties: P31, P452, P571, P856",
+          "weight": 0.24
+        },
+        {
+          "source": "indicator",
+          "detail": "module terms: company",
+          "weight": 0.06
+        }
+      ],
+      "review_required": false
+    },
+    {
+      "action": "enrich_property",
+      "entity_type": "Enterprise",
+      "label": "Taiwan Semiconductor Manufacturing Company",
+      "wikidata_id": "Q713477",
+      "confidence": 0.95,
+      "module": "enterprise",
+      "parent": null,
+      "field": "description",
+      "value": "Taiwanese multinational semiconductor contract manufacturing and design company",
+      "evidence": [],
+      "review_required": false
+    },
+    {
+      "action": "enrich_property",
+      "entity_type": "Enterprise",
+      "label": "Taiwan Semiconductor Manufacturing Company",
+      "wikidata_id": "Q713477",
+      "confidence": 0.95,
+      "module": "enterprise",
+      "parent": null,
+      "field": "alias",
+      "value": "TSMC; Taiwan Semiconductor",
+      "evidence": [],
+      "review_required": false
+    },
+    {
+      "action": "enrich_property",
+      "entity_type": "Enterprise",
+      "label": "Taiwan Semiconductor Manufacturing Company",
+      "wikidata_id": "Q713477",
+      "confidence": 0.9,
+      "module": "enterprise",
+      "parent": null,
+      "field": "officialWebsite",
+      "value": "https://www.tsmc.com/",
+      "evidence": [],
+      "review_required": false
+    },
+    {
+      "action": "enrich_property",
+      "entity_type": "Enterprise",
+      "label": "Taiwan Semiconductor Manufacturing Company",
+      "wikidata_id": "Q713477",
+      "confidence": 0.9,
+      "module": "enterprise",
+      "parent": null,
+      "field": "inception",
+      "value": "+1987-02-21T00:00:00Z",
+      "evidence": [],
+      "review_required": false
+    },
+    {
+      "action": "add_relation",
+      "entity_type": "Enterprise",
+      "label": "Taiwan Semiconductor Manufacturing Company",
+      "wikidata_id": "Q713477",
+      "confidence": 0.85,
+      "module": "enterprise",
+      "parent": null,
+      "field": "belongsToIndustry",
+      "value": "semiconductor industry (Q11456)",
+      "evidence": [],
+      "review_required": false
+    },
+    {
+      "action": "enrich_existing",
+      "entity_type": "Technology",
+      "label": "Photolithography",
+      "wikidata_id": "Q183907",
+      "confidence": 0.94,
+      "module": "technology",
+      "parent": null,
+      "field": null,
+      "value": null,
+      "evidence": [
+        {
+          "source": "label",
+          "detail": "exact label match: Photolithography",
+          "weight": 0.42
+        },
+        {
+          "source": "alias",
+          "detail": "alias match: optical lithography",
+          "weight": 0.18
+        },
+        {
+          "source": "module",
+          "detail": "seed type belongs to module technology",
+          "weight": 0.12
+        },
+        {
+          "source": "gate",
+          "detail": "gate properties: P279, P31",
+          "weight": 0.16
+        },
+        {
+          "source": "indicator",
+          "detail": "module terms: process",
+          "weight": 0.06
+        }
+      ],
+      "review_required": false
+    },
+    {
+      "action": "enrich_property",
+      "entity_type": "Technology",
+      "label": "Photolithography",
+      "wikidata_id": "Q183907",
+      "confidence": 0.94,
+      "module": "technology",
+      "parent": null,
+      "field": "description",
+      "value": "process used in microfabrication to pattern parts of a thin film",
+      "evidence": [],
+      "review_required": false
+    },
+    {
+      "action": "enrich_property",
+      "entity_type": "Technology",
+      "label": "Photolithography",
+      "wikidata_id": "Q183907",
+      "confidence": 0.94,
+      "module": "technology",
+      "parent": null,
+      "field": "alias",
+      "value": "optical lithography; UV lithography",
+      "evidence": [],
+      "review_required": false
+    },
+    {
+      "action": "add_relation",
+      "entity_type": "Technology",
+      "label": "Photolithography",
+      "wikidata_id": "Q183907",
+      "confidence": 0.846,
+      "module": "technology",
+      "parent": null,
+      "field": "subclassOf",
+      "value": "engineering (Q11023)",
+      "evidence": [],
+      "review_required": false
+    },
+    {
+      "action": "enrich_existing",
+      "entity_type": "Technology",
+      "label": "Extreme ultraviolet lithography",
+      "wikidata_id": "Q1365042",
+      "confidence": 0.94,
+      "module": "technology",
+      "parent": null,
+      "field": null,
+      "value": null,
+      "evidence": [
+        {
+          "source": "label",
+          "detail": "exact label match: Extreme ultraviolet lithography",
+          "weight": 0.42
+        },
+        {
+          "source": "alias",
+          "detail": "alias match: euv lithography",
+          "weight": 0.18
+        },
+        {
+          "source": "module",
+          "detail": "seed type belongs to module technology",
+          "weight": 0.12
+        },
+        {
+          "source": "gate",
+          "detail": "gate properties: P279, P31",
+          "weight": 0.16
+        },
+        {
+          "source": "indicator",
+          "detail": "module terms: technology",
+          "weight": 0.06
+        }
+      ],
+      "review_required": false
+    },
+    {
+      "action": "enrich_property",
+      "entity_type": "Technology",
+      "label": "Extreme ultraviolet lithography",
+      "wikidata_id": "Q1365042",
+      "confidence": 0.94,
+      "module": "technology",
+      "parent": null,
+      "field": "description",
+      "value": "photolithography technology using extreme ultraviolet wavelengths",
+      "evidence": [],
+      "review_required": false
+    },
+    {
+      "action": "enrich_property",
+      "entity_type": "Technology",
+      "label": "Extreme ultraviolet lithography",
+      "wikidata_id": "Q1365042",
+      "confidence": 0.94,
+      "module": "technology",
+      "parent": null,
+      "field": "alias",
+      "value": "EUV lithography; EUVL",
+      "evidence": [],
+      "review_required": false
+    },
+    {
+      "action": "add_relation",
+      "entity_type": "Technology",
+      "label": "Extreme ultraviolet lithography",
+      "wikidata_id": "Q1365042",
+      "confidence": 0.846,
+      "module": "technology",
+      "parent": null,
+      "field": "subclassOf",
+      "value": "photolithography (Q183907)",
+      "evidence": [],
+      "review_required": false
+    },
+    {
+      "action": "enrich_existing",
+      "entity_type": "Patent",
+      "label": "Patent",
+      "wikidata_id": "Q253623",
+      "confidence": 0.94,
+      "module": "technology",
+      "parent": null,
+      "field": null,
+      "value": null,
+      "evidence": [
+        {
+          "source": "label",
+          "detail": "exact label match: Patent",
+          "weight": 0.42
+        },
+        {
+          "source": "alias",
+          "detail": "alias match: patent document",
+          "weight": 0.18
+        },
+        {
+          "source": "module",
+          "detail": "seed type belongs to module technology",
+          "weight": 0.12
+        },
+        {
+          "source": "gate",
+          "detail": "gate properties: P279, P31",
+          "weight": 0.16
+        },
+        {
+          "source": "indicator",
+          "detail": "module terms: patent",
+          "weight": 0.06
+        }
+      ],
+      "review_required": false
+    },
+    {
+      "action": "enrich_property",
+      "entity_type": "Patent",
+      "label": "Patent",
+      "wikidata_id": "Q253623",
+      "confidence": 0.94,
+      "module": "technology",
+      "parent": null,
+      "field": "description",
+      "value": "set of exclusive rights granted by a sovereign state to an inventor or assignee",
+      "evidence": [],
+      "review_required": false
+    },
+    {
+      "action": "enrich_property",
+      "entity_type": "Patent",
+      "label": "Patent",
+      "wikidata_id": "Q253623",
+      "confidence": 0.94,
+      "module": "technology",
+      "parent": null,
+      "field": "alias",
+      "value": "patent document; patent right",
+      "evidence": [],
+      "review_required": false
+    },
+    {
+      "action": "add_relation",
+      "entity_type": "Patent",
+      "label": "Patent",
+      "wikidata_id": "Q253623",
+      "confidence": 0.846,
+      "module": "technology",
+      "parent": null,
+      "field": "subclassOf",
+      "value": "document (Q49848)",
+      "evidence": [],
+      "review_required": false
+    },
+    {
+      "action": "enrich_existing",
+      "entity_type": "Region",
+      "label": "Shanghai",
+      "wikidata_id": "Q8686",
+      "confidence": 0.68,
+      "module": "industry",
+      "parent": null,
+      "field": null,
+      "value": null,
+      "evidence": [
+        {
+          "source": "label",
+          "detail": "exact label match: Shanghai",
+          "weight": 0.42
+        },
+        {
+          "source": "alias",
+          "detail": "alias match: shanghai municipality",
+          "weight": 0.18
+        },
+        {
+          "source": "gate",
+          "detail": "gate properties: P31",
+          "weight": 0.08
+        }
+      ],
+      "review_required": true
+    },
+    {
+      "action": "enrich_property",
+      "entity_type": "Region",
+      "label": "Shanghai",
+      "wikidata_id": "Q8686",
+      "confidence": 0.68,
+      "module": "region",
+      "parent": null,
+      "field": "description",
+      "value": "provincial-level municipality in China",
+      "evidence": [],
+      "review_required": true
+    },
+    {
+      "action": "enrich_property",
+      "entity_type": "Region",
+      "label": "Shanghai",
+      "wikidata_id": "Q8686",
+      "confidence": 0.68,
+      "module": "region",
+      "parent": null,
+      "field": "alias",
+      "value": "Shanghai Municipality",
+      "evidence": [],
+      "review_required": true
+    }
+  ]
+}

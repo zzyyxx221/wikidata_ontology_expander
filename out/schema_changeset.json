@@ -1,0 +1,212 @@
+{
+  "changes": [
+    {
+      "action": "add_concept",
+      "entity_type": "ProductTerm",
+      "label": "Semiconductor",
+      "confidence": 0.56,
+      "domain": "product",
+      "module": "hierarchy_relations",
+      "parent": "electronic component",
+      "field": null,
+      "value": null,
+      "target_type": null,
+      "support": 1,
+      "examples": [
+        "Semiconductor (Q11456)"
+      ],
+      "rationale": "model review disabled",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P279, P31",
+          "weight": 0.4
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: material",
+          "weight": 0.08
+        },
+        {
+          "source": "relation",
+          "detail": "relation fields: P279",
+          "weight": 0.08
+        }
+      ],
+      "source_entity_ids": [
+        "Q11456"
+      ],
+      "review_required": true
+    },
+    {
+      "action": "add_concept",
+      "entity_type": "ProductTerm",
+      "label": "Lithium-ion battery",
+      "confidence": 0.64,
+      "domain": "product",
+      "module": "hierarchy_relations",
+      "parent": "battery",
+      "field": null,
+      "value": null,
+      "target_type": null,
+      "support": 1,
+      "examples": [
+        "Lithium-ion battery (Q2294)"
+      ],
+      "rationale": "model review disabled",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P186, P279, P31",
+          "weight": 0.56
+        },
+        {
+          "source": "relation",
+          "detail": "relation fields: P279",
+          "weight": 0.08
+        }
+      ],
+      "source_entity_ids": [
+        "Q2294"
+      ],
+      "review_required": true
+    },
+    {
+      "action": "add_concept",
+      "entity_type": "Technology",
+      "label": "Photolithography",
+      "confidence": 0.48,
+      "domain": "technology",
+      "module": null,
+      "parent": "engineering",
+      "field": null,
+      "value": null,
+      "target_type": null,
+      "support": 1,
+      "examples": [
+        "Photolithography (Q183907)"
+      ],
+      "rationale": "model review disabled",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P279, P31",
+          "weight": 0.4
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: process",
+          "weight": 0.08
+        }
+      ],
+      "source_entity_ids": [
+        "Q183907"
+      ],
+      "review_required": true
+    },
+    {
+      "action": "add_relation_type",
+      "entity_type": "Enterprise",
+      "label": "Enterprise",
+      "confidence": 0.74,
+      "domain": "enterprise",
+      "module": "enterprise",
+      "parent": null,
+      "field": "industry",
+      "value": "industry",
+      "target_type": "Industry",
+      "support": 1,
+      "examples": [
+        "Tesla, Inc. -> industry -> automotive industry"
+      ],
+      "rationale": "model review disabled",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P31, P452, P571, P856",
+          "weight": 0.56
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: company",
+          "weight": 0.08
+        },
+        {
+          "source": "property",
+          "detail": "property fields: P571, P856",
+          "weight": 0.1
+        },
+        {
+          "source": "statement",
+          "detail": "P452 / industry",
+          "weight": 0.18
+        }
+      ],
+      "source_entity_ids": [
+        "Q478214"
+      ],
+      "review_required": false
+    }
+  ],
+  "refinement_report": {
+    "total_candidates": 4,
+    "classified_candidates": 4,
+    "unclassified_candidates": 0,
+    "module_free_candidates": 1,
+    "category_counts": {
+      "product": 2,
+      "enterprise": 1,
+      "technology": 1
+    },
+    "module_counts": {
+      "hierarchy_relations": 2,
+      "business_registration_properties": 1
+    },
+    "uncovered_categories": [
+      "document",
+      "event",
+      "index",
+      "industry",
+      "organization",
+      "person",
+      "policy",
+      "region"
+    ],
+    "uncovered_modules": [
+      "chunk_properties",
+      "common_properties",
+      "document_properties",
+      "source_properties",
+      "source_relations",
+      "classification_relations",
+      "innovation_relations",
+      "investment_relations",
+      "organization_relations",
+      "region_relations",
+      "supply_chain_relations",
+      "association_relations",
+      "event_properties",
+      "time_properties",
+      "index_properties",
+      "gics_mapping_properties",
+      "organization_properties",
+      "employment_relations",
+      "person_properties",
+      "applicability_relations",
+      "issuance_relations",
+      "policy_properties",
+      "classification_properties",
+      "extension_properties",
+      "lifecycle_properties",
+      "product_description_properties",
+      "production_relations",
+      "specification_properties",
+      "technology_relations",
+      "term_relations",
+      "upstream_downstream_relations",
+      "region_properties",
+      "patent_properties",
+      "technology_properties"
+    ]
+  }
+}
