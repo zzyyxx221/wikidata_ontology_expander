@@ -1,35 +1,72 @@
 {
   "search": {
-    "semiconductor": ["Q11456"],
-    "semiconductor industry": ["Q11456"],
-    "lithium-ion battery": ["Q2294"],
-    "li-ion battery": ["Q2294"],
-    "lithium ion battery": ["Q2294"],
+    "semiconductor": ["Q999001"],
+    "semiconductor industry": ["Q999001"],
+    "lithium-ion battery": ["Q999002"],
+    "li-ion battery": ["Q999002"],
+    "lithium ion battery": ["Q999002"],
     "tesla, inc.": ["Q478214"],
     "tesla": ["Q478214"],
-    "photolithography": ["Q183907"],
-    "optical lithography": ["Q183907"]
+    "photolithography": ["Q999003"],
+    "optical lithography": ["Q999003"]
   },
   "entities": [
     {
-      "qid": "Q11456",
-      "label": "Semiconductor",
-      "description": "material with electrical conductivity between conductor and insulator",
-      "aliases": ["semiconductor material"],
+      "qid": "Q999001",
+      "label": "semiconductor manufacturing industry",
+      "description": "industry segment focused on manufacturing semiconductor devices and electronic components",
+      "aliases": ["chip manufacturing industry", "semiconductor manufacturing"],
       "statements": [
-        {"property_id": "P31", "property_label": "instance of", "value_id": "Q214609", "value_label": "material"},
-        {"property_id": "P279", "property_label": "subclass of", "value_id": "Q79529", "value_label": "electronic component"}
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q8148",
+          "value_label": "industry"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q268592",
+          "value_label": "manufacturing industry"
+        }
       ]
     },
     {
-      "qid": "Q2294",
-      "label": "Lithium-ion battery",
-      "description": "type of rechargeable battery",
-      "aliases": ["Li-ion battery", "LIB"],
+      "qid": "Q999002",
+      "label": "solid-state battery",
+      "description": "battery product using a solid electrolyte instead of a liquid electrolyte",
+      "aliases": ["solid state battery", "all-solid-state battery"],
       "statements": [
-        {"property_id": "P31", "property_label": "instance of", "value_id": "Q28877", "value_label": "battery"},
-        {"property_id": "P279", "property_label": "subclass of", "value_id": "Q28877", "value_label": "battery"},
-        {"property_id": "P186", "property_label": "made from material", "value_id": "Q568", "value_label": "lithium"}
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q28877",
+          "value_label": "battery"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q28877",
+          "value_label": "battery"
+        },
+        {
+          "property_id": "P176",
+          "property_label": "manufacturer",
+          "value_id": "Q53268",
+          "value_label": "Toyota"
+        },
+        {
+          "property_id": "P186",
+          "property_label": "made from material",
+          "value_id": "Q837602",
+          "value_label": "ceramic"
+        },
+        {
+          "property_id": "P527",
+          "property_label": "has part",
+          "value_id": "Q999004",
+          "value_label": "solid electrolyte"
+        }
       ]
     },
     {
@@ -38,20 +75,66 @@
       "description": "American automotive, energy storage and solar power company",
       "aliases": ["Tesla Motors", "Tesla"],
       "statements": [
-        {"property_id": "P31", "property_label": "instance of", "value_id": "Q4830453", "value_label": "business"},
-        {"property_id": "P452", "property_label": "industry", "value_id": "Q190117", "value_label": "automotive industry"},
-        {"property_id": "P856", "property_label": "official website", "value_label": "https://www.tesla.com/"},
-        {"property_id": "P571", "property_label": "inception", "value_label": "+2003-07-01T00:00:00Z"}
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q4830453",
+          "value_label": "business"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "Q190117",
+          "value_label": "automotive industry"
+        },
+        {
+          "property_id": "P856",
+          "property_label": "official website",
+          "value_label": "https://www.tesla.com/"
+        },
+        {
+          "property_id": "P571",
+          "property_label": "inception",
+          "value_label": "+2003-07-01T00:00:00Z"
+        },
+        {
+          "property_id": "P355",
+          "property_label": "subsidiary",
+          "value_id": "Q7609625",
+          "value_label": "Tesla Energy"
+        }
       ]
     },
     {
-      "qid": "Q183907",
-      "label": "Photolithography",
-      "description": "process used in microfabrication to pattern parts of a thin film",
-      "aliases": ["optical lithography", "UV lithography"],
+      "qid": "Q999003",
+      "label": "extreme ultraviolet lithography",
+      "description": "photolithography process used for semiconductor device fabrication",
+      "aliases": ["EUV lithography", "EUVL"],
       "statements": [
-        {"property_id": "P31", "property_label": "instance of", "value_id": "Q2995644", "value_label": "manufacturing process"},
-        {"property_id": "P279", "property_label": "subclass of", "value_id": "Q11023", "value_label": "engineering"}
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q2995644",
+          "value_label": "manufacturing process"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "Q183907",
+          "value_label": "photolithography"
+        },
+        {
+          "property_id": "P178",
+          "property_label": "developer",
+          "value_id": "Q1055322",
+          "value_label": "ASML Holding"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "Q190117",
+          "value_label": "semiconductor industry"
+        }
       ]
     }
   ]

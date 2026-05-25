@@ -40,7 +40,7 @@ PROPERTY_PID_LABELS = {
     "P577": ("publishDate", "date"),
     "P31": ("instanceOf", "entity"),
     "P279": ("subclassOf", "entity"),
-    "P452": ("industry", "entity"),
+    "P452": ("belongsToIndustry", "entity"),
     "P176": ("manufacturer", "entity"),
     "P186": ("rawMaterial", "entity"),
     "P527": ("component", "entity"),
@@ -180,8 +180,8 @@ class ExpansionEngine:
         schema_entity_labels = {entity.label.lower() for entity in schema_doc.entities.values() if entity.label}
         schema_entity_names = {name.lower() for name in schema_doc.entities}
         schema_known_terms = schema_entity_labels | schema_entity_names
-        schema_fields_by_domain = _schema_fields_by_domain(schema_doc)
-        schema_relation_fields_by_domain = _schema_relation_fields_by_domain(schema_doc)
+        schema_fields_by_entity = _schema_fields_by_entity(schema_doc)
+        schema_relation_fields_by_entity = _schema_relation_fields_by_entity(schema_doc)
         relation_modules_by_domain = _relation_modules_by_domain(schema_doc)
         relation_lookup = _build_relation_lookup(self.config.modules)
 
@@ -234,8 +234,8 @@ class ExpansionEngine:
                     domain=domain,
                     entity_type=entity_type,
                     scored=scored,
-                    schema_fields_by_domain=schema_fields_by_domain,
-                    schema_relation_fields_by_domain=schema_relation_fields_by_domain,
+                    schema_fields_by_entity=schema_fields_by_entity,
+                    schema_relation_fields_by_entity=schema_relation_fields_by_entity,
                     module_buckets=module_buckets,
                 )
             concept_key = ("add_concept", domain, entity_type, candidate.label.lower())
@@ -261,15 +261,15 @@ class ExpansionEngine:
             for statement in candidate.statements:
                 if statement.property_id in {"P31", "P279"}:
                     continue
-                suggested_field, target_type = _infer_schema_slot(statement)
+                suggested_field, target_type = _infer_schema_slot(statement, domain, self.config)
                 if not suggested_field:
                     continue
                 if suggested_field in INSTANCE_LEVEL_FIELDS:
                     continue
 
                 if (
-                    suggested_field not in schema_fields_by_domain.get(domain, set())
-                    and suggested_field not in schema_relation_fields_by_domain.get(domain, set())
+                    suggested_field not in schema_fields_by_entity.get(entity_type, set())
+                    and suggested_field not in schema_relation_fields_by_entity.get(entity_type, set())
                 ):
                     action = "add_relation_type" if target_type == "entity" else "add_property_type"
                     bucket_map = relation_buckets if action == "add_relation_type" else property_buckets
@@ -393,19 +393,19 @@ class ExpansionEngine:
         domain: str,
         entity_type: str,
         scored,
-        schema_fields_by_domain: dict[str, set[str]],
-        schema_relation_fields_by_domain: dict[str, set[str]],
+        schema_fields_by_entity: dict[str, set[str]],
+        schema_relation_fields_by_entity: dict[str, set[str]],
         module_buckets: dict[tuple, ProposalBucket],
     ) -> None:
         for statement in candidate.statements:
             if statement.property_id in {"P31", "P279"}:
                 continue
-            suggested_field, target_type = _infer_schema_slot(statement)
+            suggested_field, target_type = _infer_schema_slot(statement, domain, self.config)
             if not suggested_field or suggested_field in INSTANCE_LEVEL_FIELDS:
                 continue
             if (
-                suggested_field in schema_fields_by_domain.get(domain, set())
-                or suggested_field in schema_relation_fields_by_domain.get(domain, set())
+                suggested_field in schema_fields_by_entity.get(entity_type, set())
+                or suggested_field in schema_relation_fields_by_entity.get(entity_type, set())
             ):
                 continue
             kind = "relational" if target_type == "entity" else "intrinsic"
@@ -556,17 +556,17 @@ def _entity_type_for_category(category: str | None, schema_doc: SchemaDocument, 
     return "Thing"
 
 
-def _schema_fields_by_domain(schema_doc: SchemaDocument) -> dict[str, set[str]]:
+def _schema_fields_by_entity(schema_doc: SchemaDocument) -> dict[str, set[str]]:
     mapping: dict[str, set[str]] = defaultdict(set)
-    for module in schema_doc.modules:
-        mapping[module.domain].update(module.property_fields)
+    for entity in schema_doc.entities.values():
+        mapping[entity.name].update(field.name for field in entity.fields if field.section == "property")
     return mapping
 
 
-def _schema_relation_fields_by_domain(schema_doc: SchemaDocument) -> dict[str, set[str]]:
+def _schema_relation_fields_by_entity(schema_doc: SchemaDocument) -> dict[str, set[str]]:
     mapping: dict[str, set[str]] = defaultdict(set)
-    for module in schema_doc.modules:
-        mapping[module.domain].update(module.relation_fields)
+    for entity in schema_doc.entities.values():
+        mapping[entity.name].update(field.name for field in entity.fields if field.section == "relation")
     return mapping
 
 
@@ -580,7 +580,10 @@ def _relation_modules_by_domain(schema_doc: SchemaDocument) -> dict[str, dict[st
     return mapping
 
 
-def _infer_schema_slot(statement) -> tuple[str | None, str | None]:
+def _infer_schema_slot(statement, domain: str | None = None, config: ExpansionConfig | None = None) -> tuple[str | None, str | None]:
+    configured_field = _configured_field_for_property(statement.property_id, domain, config)
+    if configured_field:
+        return configured_field, "entity" if statement.value_id else _guess_literal_target(statement.value_label)
     if statement.property_id in PROPERTY_PID_LABELS:
         return PROPERTY_PID_LABELS[statement.property_id]
     if not statement.property_label:
@@ -590,6 +593,23 @@ def _infer_schema_slot(statement) -> tuple[str | None, str | None]:
         return None, None
     target_type = "entity" if statement.value_id else _guess_literal_target(statement.value_label)
     return normalized, target_type
+
+
+def _configured_field_for_property(
+    property_id: str,
+    domain: str | None,
+    config: ExpansionConfig | None,
+) -> str | None:
+    if not config:
+        return None
+    for module in (module for module in config.modules if module.name == domain):
+        for field_name, mapped_property_id in module.relation_properties.items():
+            if mapped_property_id == property_id:
+                return field_name
+    for field_name, mapped_property_id in config.property_map.items():
+        if mapped_property_id == property_id:
+            return field_name
+    return None
 
 
 def _resolve_schema_module_name(
@@ -609,6 +629,8 @@ def _normalize_target_type(target_type: str | None, value_label: str) -> str | N
         return target_type
     text = value_label.lower()
     if any(token in text for token in ("panasonic", "tesla", "tsmc")):
+        return "Enterprise"
+    if any(token in text for token in ("asml", "toyota")):
         return "Enterprise"
     if any(token in text for token in ("industry", "sector")):
         return "Industry"
@@ -750,6 +772,8 @@ def _should_propose_concept(
 
     if seed.parent:
         parent_terms = {seed.parent.lower(), seed.name.lower(), *(alias.lower() for alias in seed.aliases)}
+        if parent in parent_terms:
+            return False
         if parent and parent not in parent_terms and all(term not in parent for term in parent_terms):
             if candidate.label.lower() not in parent_terms:
                 return False

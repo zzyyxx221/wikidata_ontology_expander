@@ -217,6 +217,82 @@ Enterprise(Enterprise): EntityType
             self.assertFalse([change for change in changes.changes if change.action == "add_concept"])
             self.assertTrue([change for change in changes.changes if change.action == "add_relation_type"])
 
+    def test_expand_does_not_add_seed_child_as_schema_concept(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            schema_path = Path(tmp) / "seed.schema"
+            schema_path.write_text(
+                """
+# 产品域
+
+Product(Product): EntityType
+  properties:
+    #modules: common_properties
+    name(Name): Text
+  relations:
+    #modules: hierarchy_relations
+    subclassOf(Parent): Product
+""",
+                encoding="utf-8",
+            )
+            config = ExpansionConfig(
+                min_accept_score=0.5,
+                min_review_score=0.2,
+                modules=(
+                    ModuleProfile(
+                        name="product",
+                        entity_types=("Product",),
+                        gate_properties=("P31", "P279"),
+                        indicator_terms=("battery", "product"),
+                        relation_properties={"subclassOf": "P279"},
+                    ),
+                ),
+            )
+            engine = ExpansionEngine(FakeClientSolidStateBattery(), config)
+            changes = engine.expand(
+                schema_path,
+                [SeedEntity(name="lithium-ion battery", entity_type="Product", parent="Battery")],
+            )
+
+            self.assertFalse([change for change in changes.changes if change.action == "add_concept"])
+
+    def test_configured_domain_relation_field_prevents_global_pid_misnaming(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            schema_path = Path(tmp) / "seed.schema"
+            schema_path.write_text(
+                """
+# 企业域
+
+Enterprise(Enterprise): EntityType
+  properties:
+    #modules: common_properties
+    name(Name): Text
+  relations:
+    #modules: classification_relations
+    belongsToIndustry(Industry): Industry
+""",
+                encoding="utf-8",
+            )
+            config = ExpansionConfig(
+                min_accept_score=0.5,
+                min_review_score=0.2,
+                modules=(
+                    ModuleProfile(
+                        name="enterprise",
+                        entity_types=("Enterprise",),
+                        gate_properties=("P31", "P452"),
+                        indicator_terms=("company",),
+                        relation_properties={"belongsToIndustry": "P452"},
+                    ),
+                ),
+            )
+            engine = ExpansionEngine(FakeClientEnterprise(), config)
+            changes = engine.expand(
+                schema_path,
+                [SeedEntity(name="Tesla, Inc.", entity_type="Enterprise", aliases=("Tesla",))],
+            )
+
+            self.assertFalse([change for change in changes.changes if change.field == "industry"])
+
     def test_region_relations_route_to_schema_relation_module(self):
         with tempfile.TemporaryDirectory() as tmp:
             schema_path = Path(tmp) / "seed.schema"
@@ -444,6 +520,22 @@ class FakeClientEnterprise:
                 WikidataStatement("P31", "instance of", "Q4830453", "business"),
                 WikidataStatement("P452", "industry", "Q190117", "automotive industry"),
                 WikidataStatement("P856", "official website", None, "https://www.tesla.com/"),
+            ),
+        )
+
+
+class FakeClientSolidStateBattery:
+    def search(self, term, limit=5):
+        return [WikidataEntity(source_id="Q999002", label="solid-state battery")]
+
+    def get_entity(self, source_id, properties=None):
+        return WikidataEntity(
+            source_id=source_id,
+            label="solid-state battery",
+            description="battery product using a solid electrolyte",
+            statements=(
+                WikidataStatement("P31", "instance of", "Q28877", "battery"),
+                WikidataStatement("P279", "subclass of", "Q28877", "battery"),
             ),
         )
 
