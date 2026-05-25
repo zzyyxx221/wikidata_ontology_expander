@@ -1,0 +1,3190 @@
+{
+  "metadata": {
+    "source_path": "/data/zju-130/zhangyaxin/wikidata_ontology_expander/data/IncCoreV2.schema",
+    "source_mtime_ns": 1779026711946308901,
+    "source_size": 19339
+  },
+  "schema": {
+    "concept_types": [
+      {
+        "name": "PersonCategory",
+        "label": "人物分类",
+        "kind": "ConceptType"
+      },
+      {
+        "name": "OrganizationCategory",
+        "label": "机构分类",
+        "kind": "ConceptType"
+      },
+      {
+        "name": "RegionCategory",
+        "label": "区域分类",
+        "kind": "ConceptType"
+      },
+      {
+        "name": "TermCategory",
+        "label": "术语分类",
+        "kind": "ConceptType"
+      },
+      {
+        "name": "EventCategory",
+        "label": "事件分类",
+        "kind": "ConceptType"
+      },
+      {
+        "name": "PolicyCategory",
+        "label": "政策分类",
+        "kind": "ConceptType"
+      },
+      {
+        "name": "IndexCategory",
+        "label": "指标分类",
+        "kind": "ConceptType"
+      },
+      {
+        "name": "DocumentCategory",
+        "label": "文档分类",
+        "kind": "ConceptType"
+      }
+    ],
+    "domains": [
+      {
+        "name": "产业域",
+        "key": "industry",
+        "entity_types": [
+          "EconomicSector",
+          "IndustryGroup",
+          "Industry"
+        ]
+      },
+      {
+        "name": "产品域",
+        "key": "product",
+        "entity_types": [
+          "ProductTerm",
+          "Product",
+          "ProductModel"
+        ]
+      },
+      {
+        "name": "企业域",
+        "key": "enterprise",
+        "entity_types": [
+          "Enterprise"
+        ]
+      },
+      {
+        "name": "技术域",
+        "key": "technology",
+        "entity_types": [
+          "Technology",
+          "Patent"
+        ]
+      },
+      {
+        "name": "机构域",
+        "key": "organization",
+        "entity_types": [
+          "Organization",
+          "ResearchInstitute",
+          "University"
+        ]
+      },
+      {
+        "name": "人物域",
+        "key": "person",
+        "entity_types": [
+          "Person"
+        ]
+      },
+      {
+        "name": "区域域",
+        "key": "region",
+        "entity_types": [
+          "Region"
+        ]
+      },
+      {
+        "name": "政策域",
+        "key": "policy",
+        "entity_types": [
+          "Policy"
+        ]
+      },
+      {
+        "name": "事件域",
+        "key": "event",
+        "entity_types": [
+          "EnterpriseEvent",
+          "ResearchInstituteEvent"
+        ]
+      },
+      {
+        "name": "指标域",
+        "key": "index",
+        "entity_types": [
+          "Index"
+        ]
+      },
+      {
+        "name": "文档域",
+        "key": "document",
+        "entity_types": [
+          "DataSource",
+          "Document",
+          "Chunk"
+        ]
+      }
+    ],
+    "modules": [
+      {
+        "name": "chunk_properties",
+        "domain": "document",
+        "kind": "intrinsic",
+        "entity_types": [
+          "Chunk"
+        ],
+        "property_fields": [
+          "content",
+          "description",
+          "name",
+          "sort"
+        ],
+        "relation_fields": []
+      },
+      {
+        "name": "common_properties",
+        "domain": "document",
+        "kind": "intrinsic",
+        "entity_types": [
+          "Document"
+        ],
+        "property_fields": [
+          "author",
+          "description",
+          "fileId",
+          "name",
+          "officialName",
+          "publishOrganization",
+          "shortName"
+        ],
+        "relation_fields": []
+      },
+      {
+        "name": "document_properties",
+        "domain": "document",
+        "kind": "intrinsic",
+        "entity_types": [
+          "Document"
+        ],
+        "property_fields": [
+          "category",
+          "publishTime"
+        ],
+        "relation_fields": []
+      },
+      {
+        "name": "source_properties",
+        "domain": "document",
+        "kind": "intrinsic",
+        "entity_types": [
+          "DataSource"
+        ],
+        "property_fields": [
+          "confidence",
+          "description",
+          "name"
+        ],
+        "relation_fields": []
+      },
+      {
+        "name": "source_relations",
+        "domain": "document",
+        "kind": "relational",
+        "entity_types": [
+          "Chunk",
+          "Document"
+        ],
+        "property_fields": [],
+        "relation_fields": [
+          "source",
+          "sourceDocument"
+        ]
+      },
+      {
+        "name": "business_registration_properties",
+        "domain": "enterprise",
+        "kind": "intrinsic",
+        "entity_types": [
+          "Enterprise"
+        ],
+        "property_fields": [
+          "businessScope",
+          "companyScale",
+          "inception",
+          "mainBusiness",
+          "nameEn",
+          "officialWebsite",
+          "status",
+          "unifiedSocialCreditCode"
+        ],
+        "relation_fields": []
+      },
+      {
+        "name": "classification_relations",
+        "domain": "enterprise",
+        "kind": "relational",
+        "entity_types": [
+          "Enterprise"
+        ],
+        "property_fields": [],
+        "relation_fields": [
+          "belongsToEconomicSector",
+          "belongsToIndustry",
+          "belongsToIndustryGroup"
+        ]
+      },
+      {
+        "name": "common_properties",
+        "domain": "enterprise",
+        "kind": "intrinsic",
+        "entity_types": [
+          "Enterprise"
+        ],
+        "property_fields": [
+          "alias",
+          "description",
+          "name",
+          "officialName",
+          "shortName"
+        ],
+        "relation_fields": []
+      },
+      {
+        "name": "innovation_relations",
+        "domain": "enterprise",
+        "kind": "relational",
+        "entity_types": [
+          "Enterprise"
+        ],
+        "property_fields": [],
+        "relation_fields": [
+          "coreTechnology"
+        ]
+      },
+      {
+        "name": "investment_relations",
+        "domain": "enterprise",
+        "kind": "relational",
+        "entity_types": [
+          "Enterprise"
+        ],
+        "property_fields": [],
+        "relation_fields": [
+          "invest",
+          "shareholder"
+        ]
+      },
+      {
+        "name": "organization_relations",
+        "domain": "enterprise",
+        "kind": "relational",
+        "entity_types": [
+          "Enterprise"
+        ],
+        "property_fields": [],
+        "relation_fields": [
+          "childOrganization"
+        ]
+      },
+      {
+        "name": "region_relations",
+        "domain": "enterprise",
+        "kind": "relational",
+        "entity_types": [
+          "Enterprise"
+        ],
+        "property_fields": [],
+        "relation_fields": [
+          "region"
+        ]
+      },
+      {
+        "name": "supply_chain_relations",
+        "domain": "enterprise",
+        "kind": "relational",
+        "entity_types": [
+          "Enterprise"
+        ],
+        "property_fields": [],
+        "relation_fields": [
+          "customer",
+          "supplier"
+        ]
+      },
+      {
+        "name": "association_relations",
+        "domain": "event",
+        "kind": "relational",
+        "entity_types": [
+          "EnterpriseEvent",
+          "ResearchInstituteEvent"
+        ],
+        "property_fields": [],
+        "relation_fields": [
+          "region"
+        ]
+      },
+      {
+        "name": "common_properties",
+        "domain": "event",
+        "kind": "intrinsic",
+        "entity_types": [
+          "EnterpriseEvent",
+          "ResearchInstituteEvent"
+        ],
+        "property_fields": [
+          "description",
+          "name"
+        ],
+        "relation_fields": []
+      },
+      {
+        "name": "event_properties",
+        "domain": "event",
+        "kind": "intrinsic",
+        "entity_types": [
+          "EnterpriseEvent",
+          "ResearchInstituteEvent"
+        ],
+        "property_fields": [
+          "category",
+          "subject"
+        ],
+        "relation_fields": []
+      },
+      {
+        "name": "source_relations",
+        "domain": "event",
+        "kind": "relational",
+        "entity_types": [
+          "EnterpriseEvent",
+          "ResearchInstituteEvent"
+        ],
+        "property_fields": [],
+        "relation_fields": [
+          "source"
+        ]
+      },
+      {
+        "name": "time_properties",
+        "domain": "event",
+        "kind": "intrinsic",
+        "entity_types": [
+          "EnterpriseEvent",
+          "ResearchInstituteEvent"
+        ],
+        "property_fields": [
+          "publishTime"
+        ],
+        "relation_fields": []
+      },
+      {
+        "name": "common_properties",
+        "domain": "index",
+        "kind": "intrinsic",
+        "entity_types": [
+          "Index"
+        ],
+        "property_fields": [
+          "alias",
+          "description",
+          "name",
+          "officialName",
+          "shortName"
+        ],
+        "relation_fields": []
+      },
+      {
+        "name": "index_properties",
+        "domain": "index",
+        "kind": "intrinsic",
+        "entity_types": [
+          "Index"
+        ],
+        "property_fields": [
+          "category"
+        ],
+        "relation_fields": []
+      },
+      {
+        "name": "classification_relations",
+        "domain": "industry",
+        "kind": "relational",
+        "entity_types": [
+          "Industry",
+          "IndustryGroup"
+        ],
+        "property_fields": [],
+        "relation_fields": [
+          "belongsToEconomicSector",
+          "belongsToIndustryGroup"
+        ]
+      },
+      {
+        "name": "common_properties",
+        "domain": "industry",
+        "kind": "intrinsic",
+        "entity_types": [
+          "EconomicSector",
+          "Industry",
+          "IndustryGroup"
+        ],
+        "property_fields": [
+          "alias",
+          "description",
+          "name",
+          "officialName",
+          "shortName"
+        ],
+        "relation_fields": []
+      },
+      {
+        "name": "gics_mapping_properties",
+        "domain": "industry",
+        "kind": "intrinsic",
+        "entity_types": [
+          "EconomicSector",
+          "Industry",
+          "IndustryGroup"
+        ],
+        "property_fields": [
+          "gicsGroupCode",
+          "gicsGroupName",
+          "gicsIndustryCode",
+          "gicsIndustryName",
+          "gicsMappingRelation",
+          "gicsSectorCode",
+          "gicsSectorName"
+        ],
+        "relation_fields": []
+      },
+      {
+        "name": "association_relations",
+        "domain": "organization",
+        "kind": "relational",
+        "entity_types": [
+          "Organization",
+          "ResearchInstitute",
+          "University"
+        ],
+        "property_fields": [],
+        "relation_fields": [
+          "region"
+        ]
+      },
+      {
+        "name": "common_properties",
+        "domain": "organization",
+        "kind": "intrinsic",
+        "entity_types": [
+          "Organization",
+          "ResearchInstitute",
+          "University"
+        ],
+        "property_fields": [
+          "alias",
+          "description",
+          "name",
+          "nameEn",
+          "officialName",
+          "shortName"
+        ],
+        "relation_fields": []
+      },
+      {
+        "name": "organization_properties",
+        "domain": "organization",
+        "kind": "intrinsic",
+        "entity_types": [
+          "Organization",
+          "ResearchInstitute",
+          "University"
+        ],
+        "property_fields": [
+          "category",
+          "officialWebsite",
+          "researchField"
+        ],
+        "relation_fields": []
+      },
+      {
+        "name": "common_properties",
+        "domain": "person",
+        "kind": "intrinsic",
+        "entity_types": [
+          "Person"
+        ],
+        "property_fields": [
+          "alias",
+          "description",
+          "name",
+          "nameEn",
+          "officialName",
+          "shortName"
+        ],
+        "relation_fields": []
+      },
+      {
+        "name": "employment_relations",
+        "domain": "person",
+        "kind": "relational",
+        "entity_types": [
+          "Person"
+        ],
+        "property_fields": [],
+        "relation_fields": [
+          "legalPerson",
+          "nationality",
+          "shareholder",
+          "worksForEnterprise",
+          "worksForResearchInstitute",
+          "worksForUniversity"
+        ]
+      },
+      {
+        "name": "person_properties",
+        "domain": "person",
+        "kind": "intrinsic",
+        "entity_types": [
+          "Person"
+        ],
+        "property_fields": [
+          "birthYear",
+          "category",
+          "eduDegree",
+          "gender",
+          "honors",
+          "jobTitle"
+        ],
+        "relation_fields": []
+      },
+      {
+        "name": "applicability_relations",
+        "domain": "policy",
+        "kind": "relational",
+        "entity_types": [
+          "Policy"
+        ],
+        "property_fields": [],
+        "relation_fields": [
+          "appliesToIndustry",
+          "appliesToRegion"
+        ]
+      },
+      {
+        "name": "common_properties",
+        "domain": "policy",
+        "kind": "intrinsic",
+        "entity_types": [
+          "Policy"
+        ],
+        "property_fields": [
+          "alias",
+          "description",
+          "name",
+          "officialName",
+          "shortName"
+        ],
+        "relation_fields": []
+      },
+      {
+        "name": "issuance_relations",
+        "domain": "policy",
+        "kind": "relational",
+        "entity_types": [
+          "Policy"
+        ],
+        "property_fields": [],
+        "relation_fields": [
+          "issuedBy"
+        ]
+      },
+      {
+        "name": "policy_properties",
+        "domain": "policy",
+        "kind": "intrinsic",
+        "entity_types": [
+          "Policy"
+        ],
+        "property_fields": [
+          "category",
+          "policyLevel",
+          "policyNo"
+        ],
+        "relation_fields": []
+      },
+      {
+        "name": "time_properties",
+        "domain": "policy",
+        "kind": "intrinsic",
+        "entity_types": [
+          "Policy"
+        ],
+        "property_fields": [
+          "effectiveTime",
+          "expiryTime",
+          "publishTime"
+        ],
+        "relation_fields": []
+      },
+      {
+        "name": "classification_properties",
+        "domain": "product",
+        "kind": "intrinsic",
+        "entity_types": [
+          "Product"
+        ],
+        "property_fields": [
+          "classificationLevel",
+          "isLeaf"
+        ],
+        "relation_fields": []
+      },
+      {
+        "name": "classification_relations",
+        "domain": "product",
+        "kind": "relational",
+        "entity_types": [
+          "Product",
+          "ProductModel",
+          "ProductTerm"
+        ],
+        "property_fields": [],
+        "relation_fields": [
+          "belongsToEconomicSector",
+          "belongsToIndustry",
+          "belongsToProduct"
+        ]
+      },
+      {
+        "name": "common_properties",
+        "domain": "product",
+        "kind": "intrinsic",
+        "entity_types": [
+          "Product",
+          "ProductModel",
+          "ProductTerm"
+        ],
+        "property_fields": [
+          "alias",
+          "description",
+          "name",
+          "officialName",
+          "shortName"
+        ],
+        "relation_fields": []
+      },
+      {
+        "name": "extension_properties",
+        "domain": "product",
+        "kind": "intrinsic",
+        "entity_types": [
+          "Product"
+        ],
+        "property_fields": [
+          "extensionBasis"
+        ],
+        "relation_fields": []
+      },
+      {
+        "name": "hierarchy_relations",
+        "domain": "product",
+        "kind": "relational",
+        "entity_types": [
+          "Product"
+        ],
+        "property_fields": [],
+        "relation_fields": [
+          "subclassOf"
+        ]
+      },
+      {
+        "name": "lifecycle_properties",
+        "domain": "product",
+        "kind": "intrinsic",
+        "entity_types": [
+          "ProductModel"
+        ],
+        "property_fields": [
+          "productLifecycleStatus",
+          "publishDate"
+        ],
+        "relation_fields": []
+      },
+      {
+        "name": "product_description_properties",
+        "domain": "product",
+        "kind": "intrinsic",
+        "entity_types": [
+          "ProductModel"
+        ],
+        "property_fields": [
+          "brand",
+          "model",
+          "series"
+        ],
+        "relation_fields": []
+      },
+      {
+        "name": "production_relations",
+        "domain": "product",
+        "kind": "relational",
+        "entity_types": [
+          "ProductModel"
+        ],
+        "property_fields": [],
+        "relation_fields": [
+          "coreTechnology",
+          "manufacturer"
+        ]
+      },
+      {
+        "name": "source_relations",
+        "domain": "product",
+        "kind": "relational",
+        "entity_types": [
+          "ProductTerm"
+        ],
+        "property_fields": [],
+        "relation_fields": [
+          "source"
+        ]
+      },
+      {
+        "name": "specification_properties",
+        "domain": "product",
+        "kind": "intrinsic",
+        "entity_types": [
+          "ProductModel"
+        ],
+        "property_fields": [
+          "specification"
+        ],
+        "relation_fields": []
+      },
+      {
+        "name": "technology_relations",
+        "domain": "product",
+        "kind": "relational",
+        "entity_types": [
+          "Product"
+        ],
+        "property_fields": [],
+        "relation_fields": [
+          "coreTechnology"
+        ]
+      },
+      {
+        "name": "term_relations",
+        "domain": "product",
+        "kind": "relational",
+        "entity_types": [
+          "Product"
+        ],
+        "property_fields": [],
+        "relation_fields": [
+          "hasTerm"
+        ]
+      },
+      {
+        "name": "upstream_downstream_relations",
+        "domain": "product",
+        "kind": "relational",
+        "entity_types": [
+          "Product"
+        ],
+        "property_fields": [],
+        "relation_fields": [
+          "applicationTerminal",
+          "auxiliaryMaterial",
+          "component",
+          "equipment",
+          "rawMaterial"
+        ]
+      },
+      {
+        "name": "common_properties",
+        "domain": "region",
+        "kind": "intrinsic",
+        "entity_types": [
+          "Region"
+        ],
+        "property_fields": [
+          "alias",
+          "description",
+          "name",
+          "officialName",
+          "shortName"
+        ],
+        "relation_fields": []
+      },
+      {
+        "name": "hierarchy_relations",
+        "domain": "region",
+        "kind": "relational",
+        "entity_types": [
+          "Region"
+        ],
+        "property_fields": [],
+        "relation_fields": [
+          "belongToRegion"
+        ]
+      },
+      {
+        "name": "region_properties",
+        "domain": "region",
+        "kind": "intrinsic",
+        "entity_types": [
+          "Region"
+        ],
+        "property_fields": [
+          "category",
+          "regionCode"
+        ],
+        "relation_fields": []
+      },
+      {
+        "name": "association_relations",
+        "domain": "technology",
+        "kind": "relational",
+        "entity_types": [
+          "Patent"
+        ],
+        "property_fields": [],
+        "relation_fields": [
+          "belongsToEnterprise",
+          "belongsToOrganization",
+          "belongsToProduct",
+          "belongsToTechnology"
+        ]
+      },
+      {
+        "name": "classification_relations",
+        "domain": "technology",
+        "kind": "relational",
+        "entity_types": [
+          "Technology"
+        ],
+        "property_fields": [],
+        "relation_fields": [
+          "belongsToIndustry"
+        ]
+      },
+      {
+        "name": "common_properties",
+        "domain": "technology",
+        "kind": "intrinsic",
+        "entity_types": [
+          "Patent",
+          "Technology"
+        ],
+        "property_fields": [
+          "alias",
+          "description",
+          "name",
+          "nameEn",
+          "officialName",
+          "shortName"
+        ],
+        "relation_fields": []
+      },
+      {
+        "name": "patent_properties",
+        "domain": "technology",
+        "kind": "intrinsic",
+        "entity_types": [
+          "Patent"
+        ],
+        "property_fields": [
+          "patentPublicNo",
+          "patentType",
+          "status"
+        ],
+        "relation_fields": []
+      },
+      {
+        "name": "technology_properties",
+        "domain": "technology",
+        "kind": "intrinsic",
+        "entity_types": [
+          "Technology"
+        ],
+        "property_fields": [
+          "applicationScenario",
+          "maturityLevel"
+        ],
+        "relation_fields": []
+      },
+      {
+        "name": "time_properties",
+        "domain": "technology",
+        "kind": "intrinsic",
+        "entity_types": [
+          "Patent"
+        ],
+        "property_fields": [
+          "applicationDate",
+          "grantDate",
+          "publicationDate"
+        ],
+        "relation_fields": []
+      }
+    ],
+    "entities": {
+      "PersonCategory": {
+        "name": "PersonCategory",
+        "label": "人物分类",
+        "kind": "ConceptType",
+        "domain": null,
+        "fields": []
+      },
+      "OrganizationCategory": {
+        "name": "OrganizationCategory",
+        "label": "机构分类",
+        "kind": "ConceptType",
+        "domain": null,
+        "fields": []
+      },
+      "RegionCategory": {
+        "name": "RegionCategory",
+        "label": "区域分类",
+        "kind": "ConceptType",
+        "domain": null,
+        "fields": []
+      },
+      "TermCategory": {
+        "name": "TermCategory",
+        "label": "术语分类",
+        "kind": "ConceptType",
+        "domain": null,
+        "fields": []
+      },
+      "EventCategory": {
+        "name": "EventCategory",
+        "label": "事件分类",
+        "kind": "ConceptType",
+        "domain": null,
+        "fields": []
+      },
+      "PolicyCategory": {
+        "name": "PolicyCategory",
+        "label": "政策分类",
+        "kind": "ConceptType",
+        "domain": null,
+        "fields": []
+      },
+      "IndexCategory": {
+        "name": "IndexCategory",
+        "label": "指标分类",
+        "kind": "ConceptType",
+        "domain": null,
+        "fields": []
+      },
+      "DocumentCategory": {
+        "name": "DocumentCategory",
+        "label": "文档分类",
+        "kind": "ConceptType",
+        "domain": null,
+        "fields": []
+      },
+      "EconomicSector": {
+        "name": "EconomicSector",
+        "label": "经济板块",
+        "kind": "EntityType",
+        "domain": "industry",
+        "fields": [
+          {
+            "owner": "EconomicSector",
+            "section": "property",
+            "name": "name",
+            "label": "名称",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "EconomicSector",
+            "section": "property",
+            "name": "officialName",
+            "label": "标准名称",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "EconomicSector",
+            "section": "property",
+            "name": "shortName",
+            "label": "简称",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "EconomicSector",
+            "section": "property",
+            "name": "alias",
+            "label": "别名",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": [
+              "MultiValue"
+            ]
+          },
+          {
+            "owner": "EconomicSector",
+            "section": "property",
+            "name": "description",
+            "label": "描述",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "EconomicSector",
+            "section": "property",
+            "name": "gicsSectorCode",
+            "label": "GICS一级行业编码",
+            "type_name": "Text",
+            "module": "gics_mapping_properties",
+            "constraints": [
+              "MultiValue"
+            ]
+          },
+          {
+            "owner": "EconomicSector",
+            "section": "property",
+            "name": "gicsSectorName",
+            "label": "GICS一级行业名称",
+            "type_name": "Text",
+            "module": "gics_mapping_properties",
+            "constraints": [
+              "MultiValue"
+            ]
+          },
+          {
+            "owner": "EconomicSector",
+            "section": "property",
+            "name": "gicsMappingRelation",
+            "label": "与GICS映射的关系",
+            "type_name": "Text",
+            "module": "gics_mapping_properties",
+            "constraints": [
+              "Enum=\"exact_match,aggregation_of_gics,subset_of_gics,composite_subset_of_gics,partial_overlap,other\""
+            ]
+          }
+        ]
+      },
+      "IndustryGroup": {
+        "name": "IndustryGroup",
+        "label": "行业组",
+        "kind": "EntityType",
+        "domain": "industry",
+        "fields": [
+          {
+            "owner": "IndustryGroup",
+            "section": "property",
+            "name": "name",
+            "label": "名称",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "IndustryGroup",
+            "section": "property",
+            "name": "officialName",
+            "label": "标准名称",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "IndustryGroup",
+            "section": "property",
+            "name": "shortName",
+            "label": "简称",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "IndustryGroup",
+            "section": "property",
+            "name": "alias",
+            "label": "别名",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": [
+              "MultiValue"
+            ]
+          },
+          {
+            "owner": "IndustryGroup",
+            "section": "property",
+            "name": "description",
+            "label": "描述",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "IndustryGroup",
+            "section": "property",
+            "name": "gicsGroupCode",
+            "label": "GICS二级行业编码",
+            "type_name": "Text",
+            "module": "gics_mapping_properties",
+            "constraints": [
+              "MultiValue"
+            ]
+          },
+          {
+            "owner": "IndustryGroup",
+            "section": "property",
+            "name": "gicsGroupName",
+            "label": "GICS二级行业名称",
+            "type_name": "Text",
+            "module": "gics_mapping_properties",
+            "constraints": [
+              "MultiValue"
+            ]
+          },
+          {
+            "owner": "IndustryGroup",
+            "section": "property",
+            "name": "gicsMappingRelation",
+            "label": "与GICS映射的关系",
+            "type_name": "Text",
+            "module": "gics_mapping_properties",
+            "constraints": [
+              "Enum=\"exact_match,aggregation_of_gics,subset_of_gics,composite_subset_of_gics,partial_overlap,other\""
+            ]
+          },
+          {
+            "owner": "IndustryGroup",
+            "section": "relation",
+            "name": "belongsToEconomicSector",
+            "label": "所属经济板块",
+            "type_name": "EconomicSector",
+            "module": "classification_relations",
+            "constraints": []
+          },
+          {
+            "owner": "IndustryGroup",
+            "section": "relation",
+            "name": "belongsToIndustryGroup",
+            "label": "所属行业组",
+            "type_name": "IndustryGroup",
+            "module": "classification_relations",
+            "constraints": []
+          }
+        ]
+      },
+      "Industry": {
+        "name": "Industry",
+        "label": "行业",
+        "kind": "EntityType",
+        "domain": "industry",
+        "fields": [
+          {
+            "owner": "Industry",
+            "section": "property",
+            "name": "name",
+            "label": "名称",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Industry",
+            "section": "property",
+            "name": "officialName",
+            "label": "标准名称",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Industry",
+            "section": "property",
+            "name": "shortName",
+            "label": "简称",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Industry",
+            "section": "property",
+            "name": "alias",
+            "label": "别名",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": [
+              "MultiValue"
+            ]
+          },
+          {
+            "owner": "Industry",
+            "section": "property",
+            "name": "description",
+            "label": "描述",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Industry",
+            "section": "property",
+            "name": "gicsIndustryCode",
+            "label": "GICS三级行业编码",
+            "type_name": "Text",
+            "module": "gics_mapping_properties",
+            "constraints": [
+              "MultiValue"
+            ]
+          },
+          {
+            "owner": "Industry",
+            "section": "property",
+            "name": "gicsIndustryName",
+            "label": "GICS三级行业名称",
+            "type_name": "Text",
+            "module": "gics_mapping_properties",
+            "constraints": [
+              "MultiValue"
+            ]
+          },
+          {
+            "owner": "Industry",
+            "section": "property",
+            "name": "gicsMappingRelation",
+            "label": "与GICS映射的关系",
+            "type_name": "Text",
+            "module": "gics_mapping_properties",
+            "constraints": [
+              "Enum=\"exact_match,aggregation_of_gics,subset_of_gics,composite_subset_of_gics,partial_overlap,other\""
+            ]
+          },
+          {
+            "owner": "Industry",
+            "section": "relation",
+            "name": "belongsToIndustryGroup",
+            "label": "所属行业组",
+            "type_name": "IndustryGroup",
+            "module": "classification_relations",
+            "constraints": []
+          }
+        ]
+      },
+      "ProductTerm": {
+        "name": "ProductTerm",
+        "label": "产品术语",
+        "kind": "EntityType",
+        "domain": "product",
+        "fields": [
+          {
+            "owner": "ProductTerm",
+            "section": "property",
+            "name": "name",
+            "label": "名称",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "ProductTerm",
+            "section": "property",
+            "name": "officialName",
+            "label": "标准名称",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "ProductTerm",
+            "section": "property",
+            "name": "description",
+            "label": "描述",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "ProductTerm",
+            "section": "relation",
+            "name": "belongsToEconomicSector",
+            "label": "所属经济板块",
+            "type_name": "EconomicSector",
+            "module": "classification_relations",
+            "constraints": []
+          },
+          {
+            "owner": "ProductTerm",
+            "section": "relation",
+            "name": "source",
+            "label": "来源",
+            "type_name": "DataSource",
+            "module": "source_relations",
+            "constraints": []
+          }
+        ]
+      },
+      "Product": {
+        "name": "Product",
+        "label": "标准产品",
+        "kind": "EntityType",
+        "domain": "product",
+        "fields": [
+          {
+            "owner": "Product",
+            "section": "property",
+            "name": "name",
+            "label": "名称",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Product",
+            "section": "property",
+            "name": "officialName",
+            "label": "标准名称",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Product",
+            "section": "property",
+            "name": "shortName",
+            "label": "简称",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Product",
+            "section": "property",
+            "name": "alias",
+            "label": "别名",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": [
+              "MultiValue"
+            ]
+          },
+          {
+            "owner": "Product",
+            "section": "property",
+            "name": "description",
+            "label": "描述",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Product",
+            "section": "property",
+            "name": "classificationLevel",
+            "label": "分类层级",
+            "type_name": "Integer",
+            "module": "classification_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Product",
+            "section": "property",
+            "name": "isLeaf",
+            "label": "是否分类体系中叶子节点",
+            "type_name": "Integer",
+            "module": "classification_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Product",
+            "section": "property",
+            "name": "extensionBasis",
+            "label": "扩充依据",
+            "type_name": "Text",
+            "module": "extension_properties",
+            "constraints": [
+              "MultiValue"
+            ]
+          },
+          {
+            "owner": "Product",
+            "section": "relation",
+            "name": "belongsToIndustry",
+            "label": "所属行业",
+            "type_name": "Industry",
+            "module": "classification_relations",
+            "constraints": []
+          },
+          {
+            "owner": "Product",
+            "section": "relation",
+            "name": "subclassOf",
+            "label": "上位产品",
+            "type_name": "Product",
+            "module": "hierarchy_relations",
+            "constraints": []
+          },
+          {
+            "owner": "Product",
+            "section": "relation",
+            "name": "rawMaterial",
+            "label": "生产原料",
+            "type_name": "Product",
+            "module": "upstream_downstream_relations",
+            "constraints": []
+          },
+          {
+            "owner": "Product",
+            "section": "relation",
+            "name": "component",
+            "label": "生产配件",
+            "type_name": "Product",
+            "module": "upstream_downstream_relations",
+            "constraints": []
+          },
+          {
+            "owner": "Product",
+            "section": "relation",
+            "name": "equipment",
+            "label": "生产设备",
+            "type_name": "Product",
+            "module": "upstream_downstream_relations",
+            "constraints": []
+          },
+          {
+            "owner": "Product",
+            "section": "relation",
+            "name": "auxiliaryMaterial",
+            "label": "辅助材料",
+            "type_name": "Product",
+            "module": "upstream_downstream_relations",
+            "constraints": []
+          },
+          {
+            "owner": "Product",
+            "section": "relation",
+            "name": "applicationTerminal",
+            "label": "应用场景或应用终端",
+            "type_name": "Product",
+            "module": "upstream_downstream_relations",
+            "constraints": []
+          },
+          {
+            "owner": "Product",
+            "section": "relation",
+            "name": "hasTerm",
+            "label": "关联术语",
+            "type_name": "ProductTerm",
+            "module": "term_relations",
+            "constraints": []
+          },
+          {
+            "owner": "Product",
+            "section": "relation",
+            "name": "coreTechnology",
+            "label": "核心技术",
+            "type_name": "Technology",
+            "module": "technology_relations",
+            "constraints": []
+          }
+        ]
+      },
+      "ProductModel": {
+        "name": "ProductModel",
+        "label": "产品型号",
+        "kind": "EntityType",
+        "domain": "product",
+        "fields": [
+          {
+            "owner": "ProductModel",
+            "section": "property",
+            "name": "name",
+            "label": "名称",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "ProductModel",
+            "section": "property",
+            "name": "officialName",
+            "label": "标准名称",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "ProductModel",
+            "section": "property",
+            "name": "shortName",
+            "label": "简称",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "ProductModel",
+            "section": "property",
+            "name": "alias",
+            "label": "别名",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": [
+              "MultiValue"
+            ]
+          },
+          {
+            "owner": "ProductModel",
+            "section": "property",
+            "name": "description",
+            "label": "描述",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "ProductModel",
+            "section": "property",
+            "name": "brand",
+            "label": "品牌",
+            "type_name": "Text",
+            "module": "product_description_properties",
+            "constraints": []
+          },
+          {
+            "owner": "ProductModel",
+            "section": "property",
+            "name": "series",
+            "label": "系列",
+            "type_name": "Text",
+            "module": "product_description_properties",
+            "constraints": []
+          },
+          {
+            "owner": "ProductModel",
+            "section": "property",
+            "name": "model",
+            "label": "型号",
+            "type_name": "Text",
+            "module": "product_description_properties",
+            "constraints": []
+          },
+          {
+            "owner": "ProductModel",
+            "section": "property",
+            "name": "specification",
+            "label": "规格",
+            "type_name": "Text",
+            "module": "specification_properties",
+            "constraints": [
+              "MultiValue"
+            ]
+          },
+          {
+            "owner": "ProductModel",
+            "section": "property",
+            "name": "publishDate",
+            "label": "发布时间",
+            "type_name": "STD.Date",
+            "module": "lifecycle_properties",
+            "constraints": []
+          },
+          {
+            "owner": "ProductModel",
+            "section": "property",
+            "name": "productLifecycleStatus",
+            "label": "产品生命周期状态",
+            "type_name": "Text",
+            "module": "lifecycle_properties",
+            "constraints": [
+              "Enum=\"concept_stage,in_development,pilot_or_trial,launched,on_market\""
+            ]
+          },
+          {
+            "owner": "ProductModel",
+            "section": "relation",
+            "name": "belongsToProduct",
+            "label": "所属标准产品",
+            "type_name": "Product",
+            "module": "classification_relations",
+            "constraints": []
+          },
+          {
+            "owner": "ProductModel",
+            "section": "relation",
+            "name": "manufacturer",
+            "label": "生产企业",
+            "type_name": "Enterprise",
+            "module": "production_relations",
+            "constraints": []
+          },
+          {
+            "owner": "ProductModel",
+            "section": "relation",
+            "name": "coreTechnology",
+            "label": "核心技术",
+            "type_name": "Technology",
+            "module": "production_relations",
+            "constraints": []
+          }
+        ]
+      },
+      "Enterprise": {
+        "name": "Enterprise",
+        "label": "企业",
+        "kind": "EntityType",
+        "domain": "enterprise",
+        "fields": [
+          {
+            "owner": "Enterprise",
+            "section": "property",
+            "name": "name",
+            "label": "名称",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Enterprise",
+            "section": "property",
+            "name": "officialName",
+            "label": "标准名称",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Enterprise",
+            "section": "property",
+            "name": "shortName",
+            "label": "简称",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Enterprise",
+            "section": "property",
+            "name": "alias",
+            "label": "别名",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": [
+              "MultiValue"
+            ]
+          },
+          {
+            "owner": "Enterprise",
+            "section": "property",
+            "name": "description",
+            "label": "描述",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Enterprise",
+            "section": "property",
+            "name": "unifiedSocialCreditCode",
+            "label": "统一社会信用代码",
+            "type_name": "Text",
+            "module": "business_registration_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Enterprise",
+            "section": "property",
+            "name": "nameEn",
+            "label": "英文名称",
+            "type_name": "Text",
+            "module": "business_registration_properties",
+            "constraints": [
+              "MultiValue"
+            ]
+          },
+          {
+            "owner": "Enterprise",
+            "section": "property",
+            "name": "officialWebsite",
+            "label": "官网",
+            "type_name": "Text",
+            "module": "business_registration_properties",
+            "constraints": [
+              "MultiValue"
+            ]
+          },
+          {
+            "owner": "Enterprise",
+            "section": "property",
+            "name": "status",
+            "label": "经营状态",
+            "type_name": "Text",
+            "module": "business_registration_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Enterprise",
+            "section": "property",
+            "name": "inception",
+            "label": "成立日期",
+            "type_name": "STD.Date",
+            "module": "business_registration_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Enterprise",
+            "section": "property",
+            "name": "companyScale",
+            "label": "企业规模",
+            "type_name": "Text",
+            "module": "business_registration_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Enterprise",
+            "section": "property",
+            "name": "mainBusiness",
+            "label": "主营业务",
+            "type_name": "Text",
+            "module": "business_registration_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Enterprise",
+            "section": "property",
+            "name": "businessScope",
+            "label": "经营范围",
+            "type_name": "Text",
+            "module": "business_registration_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Enterprise",
+            "section": "relation",
+            "name": "region",
+            "label": "所属区域",
+            "type_name": "Region",
+            "module": "region_relations",
+            "constraints": []
+          },
+          {
+            "owner": "Enterprise",
+            "section": "relation",
+            "name": "belongsToEconomicSector",
+            "label": "所属经济板块",
+            "type_name": "EconomicSector",
+            "module": "classification_relations",
+            "constraints": []
+          },
+          {
+            "owner": "Enterprise",
+            "section": "relation",
+            "name": "belongsToIndustryGroup",
+            "label": "所属行业组",
+            "type_name": "IndustryGroup",
+            "module": "classification_relations",
+            "constraints": []
+          },
+          {
+            "owner": "Enterprise",
+            "section": "relation",
+            "name": "belongsToIndustry",
+            "label": "所属行业",
+            "type_name": "Industry",
+            "module": "classification_relations",
+            "constraints": []
+          },
+          {
+            "owner": "Enterprise",
+            "section": "relation",
+            "name": "shareholder",
+            "label": "股东",
+            "type_name": "Enterprise",
+            "module": "investment_relations",
+            "constraints": []
+          },
+          {
+            "owner": "Enterprise",
+            "section": "relation",
+            "name": "invest",
+            "label": "对外投资",
+            "type_name": "Enterprise",
+            "module": "investment_relations",
+            "constraints": []
+          },
+          {
+            "owner": "Enterprise",
+            "section": "relation",
+            "name": "childOrganization",
+            "label": "分支机构",
+            "type_name": "Enterprise",
+            "module": "organization_relations",
+            "constraints": []
+          },
+          {
+            "owner": "Enterprise",
+            "section": "relation",
+            "name": "supplier",
+            "label": "供应商",
+            "type_name": "Enterprise",
+            "module": "supply_chain_relations",
+            "constraints": []
+          },
+          {
+            "owner": "Enterprise",
+            "section": "relation",
+            "name": "customer",
+            "label": "客户",
+            "type_name": "Enterprise",
+            "module": "supply_chain_relations",
+            "constraints": []
+          },
+          {
+            "owner": "Enterprise",
+            "section": "relation",
+            "name": "coreTechnology",
+            "label": "核心技术",
+            "type_name": "Technology",
+            "module": "innovation_relations",
+            "constraints": []
+          }
+        ]
+      },
+      "Technology": {
+        "name": "Technology",
+        "label": "技术",
+        "kind": "EntityType",
+        "domain": "technology",
+        "fields": [
+          {
+            "owner": "Technology",
+            "section": "property",
+            "name": "name",
+            "label": "名称",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Technology",
+            "section": "property",
+            "name": "officialName",
+            "label": "标准名称",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Technology",
+            "section": "property",
+            "name": "shortName",
+            "label": "简称",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Technology",
+            "section": "property",
+            "name": "alias",
+            "label": "别名",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": [
+              "MultiValue"
+            ]
+          },
+          {
+            "owner": "Technology",
+            "section": "property",
+            "name": "nameEn",
+            "label": "英文名称",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Technology",
+            "section": "property",
+            "name": "description",
+            "label": "描述",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Technology",
+            "section": "property",
+            "name": "maturityLevel",
+            "label": "成熟度",
+            "type_name": "Text",
+            "module": "technology_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Technology",
+            "section": "property",
+            "name": "applicationScenario",
+            "label": "应用场景",
+            "type_name": "Text",
+            "module": "technology_properties",
+            "constraints": [
+              "MultiValue"
+            ]
+          },
+          {
+            "owner": "Technology",
+            "section": "relation",
+            "name": "belongsToIndustry",
+            "label": "所属行业",
+            "type_name": "Industry",
+            "module": "classification_relations",
+            "constraints": []
+          }
+        ]
+      },
+      "Patent": {
+        "name": "Patent",
+        "label": "专利",
+        "kind": "EntityType",
+        "domain": "technology",
+        "fields": [
+          {
+            "owner": "Patent",
+            "section": "property",
+            "name": "name",
+            "label": "名称",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Patent",
+            "section": "property",
+            "name": "officialName",
+            "label": "标准名称",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Patent",
+            "section": "property",
+            "name": "alias",
+            "label": "别名",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": [
+              "MultiValue"
+            ]
+          },
+          {
+            "owner": "Patent",
+            "section": "property",
+            "name": "description",
+            "label": "描述",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Patent",
+            "section": "property",
+            "name": "patentPublicNo",
+            "label": "专利公开号",
+            "type_name": "Text",
+            "module": "patent_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Patent",
+            "section": "property",
+            "name": "patentType",
+            "label": "专利类型",
+            "type_name": "Text",
+            "module": "patent_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Patent",
+            "section": "property",
+            "name": "status",
+            "label": "专利状态",
+            "type_name": "Text",
+            "module": "patent_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Patent",
+            "section": "property",
+            "name": "applicationDate",
+            "label": "申请日期",
+            "type_name": "STD.Date",
+            "module": "time_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Patent",
+            "section": "property",
+            "name": "publicationDate",
+            "label": "公开日期",
+            "type_name": "STD.Date",
+            "module": "time_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Patent",
+            "section": "property",
+            "name": "grantDate",
+            "label": "授权日期",
+            "type_name": "STD.Date",
+            "module": "time_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Patent",
+            "section": "relation",
+            "name": "belongsToTechnology",
+            "label": "关联技术",
+            "type_name": "Technology",
+            "module": "association_relations",
+            "constraints": []
+          },
+          {
+            "owner": "Patent",
+            "section": "relation",
+            "name": "belongsToProduct",
+            "label": "关联标准产品",
+            "type_name": "Product",
+            "module": "association_relations",
+            "constraints": []
+          },
+          {
+            "owner": "Patent",
+            "section": "relation",
+            "name": "belongsToEnterprise",
+            "label": "所属企业",
+            "type_name": "Enterprise",
+            "module": "association_relations",
+            "constraints": []
+          },
+          {
+            "owner": "Patent",
+            "section": "relation",
+            "name": "belongsToOrganization",
+            "label": "所属机构",
+            "type_name": "Organization",
+            "module": "association_relations",
+            "constraints": []
+          }
+        ]
+      },
+      "Organization": {
+        "name": "Organization",
+        "label": "机构",
+        "kind": "EntityType",
+        "domain": "organization",
+        "fields": [
+          {
+            "owner": "Organization",
+            "section": "property",
+            "name": "name",
+            "label": "名称",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Organization",
+            "section": "property",
+            "name": "officialName",
+            "label": "标准名称",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Organization",
+            "section": "property",
+            "name": "shortName",
+            "label": "简称",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Organization",
+            "section": "property",
+            "name": "alias",
+            "label": "别名",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": [
+              "MultiValue"
+            ]
+          },
+          {
+            "owner": "Organization",
+            "section": "property",
+            "name": "nameEn",
+            "label": "英文名称",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Organization",
+            "section": "property",
+            "name": "description",
+            "label": "描述",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Organization",
+            "section": "property",
+            "name": "officialWebsite",
+            "label": "官网",
+            "type_name": "Text",
+            "module": "organization_properties",
+            "constraints": [
+              "MultiValue"
+            ]
+          },
+          {
+            "owner": "Organization",
+            "section": "property",
+            "name": "category",
+            "label": "分类",
+            "type_name": "OrganizationCategory",
+            "module": "organization_properties",
+            "constraints": [
+              "MultiValue"
+            ]
+          },
+          {
+            "owner": "Organization",
+            "section": "relation",
+            "name": "region",
+            "label": "所属区域",
+            "type_name": "Region",
+            "module": "association_relations",
+            "constraints": []
+          }
+        ]
+      },
+      "ResearchInstitute": {
+        "name": "ResearchInstitute",
+        "label": "研究机构",
+        "kind": "EntityType",
+        "domain": "organization",
+        "fields": [
+          {
+            "owner": "ResearchInstitute",
+            "section": "property",
+            "name": "name",
+            "label": "名称",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "ResearchInstitute",
+            "section": "property",
+            "name": "officialName",
+            "label": "标准名称",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "ResearchInstitute",
+            "section": "property",
+            "name": "shortName",
+            "label": "简称",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "ResearchInstitute",
+            "section": "property",
+            "name": "alias",
+            "label": "别名",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": [
+              "MultiValue"
+            ]
+          },
+          {
+            "owner": "ResearchInstitute",
+            "section": "property",
+            "name": "nameEn",
+            "label": "英文名称",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "ResearchInstitute",
+            "section": "property",
+            "name": "description",
+            "label": "描述",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "ResearchInstitute",
+            "section": "property",
+            "name": "officialWebsite",
+            "label": "官网",
+            "type_name": "Text",
+            "module": "organization_properties",
+            "constraints": [
+              "MultiValue"
+            ]
+          },
+          {
+            "owner": "ResearchInstitute",
+            "section": "property",
+            "name": "category",
+            "label": "分类",
+            "type_name": "OrganizationCategory",
+            "module": "organization_properties",
+            "constraints": [
+              "MultiValue"
+            ]
+          },
+          {
+            "owner": "ResearchInstitute",
+            "section": "property",
+            "name": "researchField",
+            "label": "研究领域",
+            "type_name": "Text",
+            "module": "organization_properties",
+            "constraints": []
+          },
+          {
+            "owner": "ResearchInstitute",
+            "section": "relation",
+            "name": "region",
+            "label": "所属区域",
+            "type_name": "Region",
+            "module": "association_relations",
+            "constraints": []
+          }
+        ]
+      },
+      "University": {
+        "name": "University",
+        "label": "大学",
+        "kind": "EntityType",
+        "domain": "organization",
+        "fields": [
+          {
+            "owner": "University",
+            "section": "property",
+            "name": "name",
+            "label": "名称",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "University",
+            "section": "property",
+            "name": "officialName",
+            "label": "标准名称",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "University",
+            "section": "property",
+            "name": "shortName",
+            "label": "简称",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "University",
+            "section": "property",
+            "name": "alias",
+            "label": "别名",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": [
+              "MultiValue"
+            ]
+          },
+          {
+            "owner": "University",
+            "section": "property",
+            "name": "nameEn",
+            "label": "英文名称",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "University",
+            "section": "property",
+            "name": "description",
+            "label": "描述",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "University",
+            "section": "property",
+            "name": "officialWebsite",
+            "label": "官网",
+            "type_name": "Text",
+            "module": "organization_properties",
+            "constraints": [
+              "MultiValue"
+            ]
+          },
+          {
+            "owner": "University",
+            "section": "property",
+            "name": "category",
+            "label": "分类",
+            "type_name": "OrganizationCategory",
+            "module": "organization_properties",
+            "constraints": [
+              "MultiValue"
+            ]
+          },
+          {
+            "owner": "University",
+            "section": "relation",
+            "name": "region",
+            "label": "所属区域",
+            "type_name": "Region",
+            "module": "association_relations",
+            "constraints": []
+          }
+        ]
+      },
+      "Person": {
+        "name": "Person",
+        "label": "人物",
+        "kind": "EntityType",
+        "domain": "person",
+        "fields": [
+          {
+            "owner": "Person",
+            "section": "property",
+            "name": "name",
+            "label": "名称",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Person",
+            "section": "property",
+            "name": "officialName",
+            "label": "标准名称",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Person",
+            "section": "property",
+            "name": "shortName",
+            "label": "简称",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Person",
+            "section": "property",
+            "name": "alias",
+            "label": "别名",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": [
+              "MultiValue"
+            ]
+          },
+          {
+            "owner": "Person",
+            "section": "property",
+            "name": "nameEn",
+            "label": "英文名称",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Person",
+            "section": "property",
+            "name": "description",
+            "label": "描述",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Person",
+            "section": "property",
+            "name": "gender",
+            "label": "性别",
+            "type_name": "Text",
+            "module": "person_properties",
+            "constraints": [
+              "Enum=\"male,female\"        #语法检查"
+            ]
+          },
+          {
+            "owner": "Person",
+            "section": "property",
+            "name": "jobTitle",
+            "label": "职称",
+            "type_name": "Text",
+            "module": "person_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Person",
+            "section": "property",
+            "name": "eduDegree",
+            "label": "学历",
+            "type_name": "Text",
+            "module": "person_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Person",
+            "section": "property",
+            "name": "birthYear",
+            "label": "出生年份",
+            "type_name": "Integer",
+            "module": "person_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Person",
+            "section": "property",
+            "name": "honors",
+            "label": "荣誉",
+            "type_name": "Text",
+            "module": "person_properties",
+            "constraints": [
+              "MultiValue"
+            ]
+          },
+          {
+            "owner": "Person",
+            "section": "property",
+            "name": "category",
+            "label": "分类",
+            "type_name": "PersonCategory",
+            "module": "person_properties",
+            "constraints": [
+              "MultiValue"
+            ]
+          },
+          {
+            "owner": "Person",
+            "section": "relation",
+            "name": "nationality",
+            "label": "国籍",
+            "type_name": "Region",
+            "module": "employment_relations",
+            "constraints": []
+          },
+          {
+            "owner": "Person",
+            "section": "relation",
+            "name": "worksForEnterprise",
+            "label": "任职企业",
+            "type_name": "Enterprise",
+            "module": "employment_relations",
+            "constraints": []
+          },
+          {
+            "owner": "Person",
+            "section": "relation",
+            "name": "legalPerson",
+            "label": "法人",
+            "type_name": "Enterprise",
+            "module": "employment_relations",
+            "constraints": []
+          },
+          {
+            "owner": "Person",
+            "section": "relation",
+            "name": "shareholder",
+            "label": "股东",
+            "type_name": "Enterprise",
+            "module": "employment_relations",
+            "constraints": []
+          },
+          {
+            "owner": "Person",
+            "section": "relation",
+            "name": "worksForResearchInstitute",
+            "label": "任职研究机构",
+            "type_name": "ResearchInstitute",
+            "module": "employment_relations",
+            "constraints": []
+          },
+          {
+            "owner": "Person",
+            "section": "relation",
+            "name": "worksForUniversity",
+            "label": "任职大学",
+            "type_name": "University",
+            "module": "employment_relations",
+            "constraints": []
+          }
+        ]
+      },
+      "Region": {
+        "name": "Region",
+        "label": "区域",
+        "kind": "EntityType",
+        "domain": "region",
+        "fields": [
+          {
+            "owner": "Region",
+            "section": "property",
+            "name": "name",
+            "label": "名称",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Region",
+            "section": "property",
+            "name": "officialName",
+            "label": "标准名称",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Region",
+            "section": "property",
+            "name": "shortName",
+            "label": "简称",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Region",
+            "section": "property",
+            "name": "alias",
+            "label": "别名",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": [
+              "MultiValue"
+            ]
+          },
+          {
+            "owner": "Region",
+            "section": "property",
+            "name": "description",
+            "label": "描述",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Region",
+            "section": "property",
+            "name": "regionCode",
+            "label": "区域编码",
+            "type_name": "Text",
+            "module": "region_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Region",
+            "section": "property",
+            "name": "category",
+            "label": "分类",
+            "type_name": "RegionCategory",
+            "module": "region_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Region",
+            "section": "relation",
+            "name": "belongToRegion",
+            "label": "所属上级区域",
+            "type_name": "Region",
+            "module": "hierarchy_relations",
+            "constraints": []
+          }
+        ]
+      },
+      "Policy": {
+        "name": "Policy",
+        "label": "政策",
+        "kind": "EntityType",
+        "domain": "policy",
+        "fields": [
+          {
+            "owner": "Policy",
+            "section": "property",
+            "name": "name",
+            "label": "名称",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Policy",
+            "section": "property",
+            "name": "officialName",
+            "label": "标准名称",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Policy",
+            "section": "property",
+            "name": "shortName",
+            "label": "简称",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Policy",
+            "section": "property",
+            "name": "alias",
+            "label": "别名",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": [
+              "MultiValue"
+            ]
+          },
+          {
+            "owner": "Policy",
+            "section": "property",
+            "name": "description",
+            "label": "描述",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Policy",
+            "section": "property",
+            "name": "policyNo",
+            "label": "文号",
+            "type_name": "Text",
+            "module": "policy_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Policy",
+            "section": "property",
+            "name": "policyLevel",
+            "label": "政策级别",
+            "type_name": "Text",
+            "module": "policy_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Policy",
+            "section": "property",
+            "name": "category",
+            "label": "分类",
+            "type_name": "PolicyCategory",
+            "module": "policy_properties",
+            "constraints": [
+              "MultiValue"
+            ]
+          },
+          {
+            "owner": "Policy",
+            "section": "property",
+            "name": "publishTime",
+            "label": "发布时间",
+            "type_name": "STD.Timestamp",
+            "module": "time_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Policy",
+            "section": "property",
+            "name": "effectiveTime",
+            "label": "生效时间",
+            "type_name": "STD.Timestamp",
+            "module": "time_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Policy",
+            "section": "property",
+            "name": "expiryTime",
+            "label": "失效时间",
+            "type_name": "STD.Timestamp",
+            "module": "time_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Policy",
+            "section": "relation",
+            "name": "issuedBy",
+            "label": "发布机构",
+            "type_name": "Organization",
+            "module": "issuance_relations",
+            "constraints": []
+          },
+          {
+            "owner": "Policy",
+            "section": "relation",
+            "name": "appliesToRegion",
+            "label": "适用区域",
+            "type_name": "Region",
+            "module": "applicability_relations",
+            "constraints": []
+          },
+          {
+            "owner": "Policy",
+            "section": "relation",
+            "name": "appliesToIndustry",
+            "label": "适用行业",
+            "type_name": "Industry",
+            "module": "applicability_relations",
+            "constraints": []
+          }
+        ]
+      },
+      "EnterpriseEvent": {
+        "name": "EnterpriseEvent",
+        "label": "企业事件",
+        "kind": "EventType",
+        "domain": "event",
+        "fields": [
+          {
+            "owner": "EnterpriseEvent",
+            "section": "property",
+            "name": "name",
+            "label": "名称",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "EnterpriseEvent",
+            "section": "property",
+            "name": "description",
+            "label": "描述",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "EnterpriseEvent",
+            "section": "property",
+            "name": "subject",
+            "label": "主体",
+            "type_name": "Enterprise",
+            "module": "event_properties",
+            "constraints": []
+          },
+          {
+            "owner": "EnterpriseEvent",
+            "section": "property",
+            "name": "category",
+            "label": "事件分类",
+            "type_name": "EventCategory",
+            "module": "event_properties",
+            "constraints": []
+          },
+          {
+            "owner": "EnterpriseEvent",
+            "section": "property",
+            "name": "publishTime",
+            "label": "发布时间",
+            "type_name": "STD.Timestamp",
+            "module": "time_properties",
+            "constraints": []
+          },
+          {
+            "owner": "EnterpriseEvent",
+            "section": "relation",
+            "name": "region",
+            "label": "地点",
+            "type_name": "Region",
+            "module": "association_relations",
+            "constraints": []
+          },
+          {
+            "owner": "EnterpriseEvent",
+            "section": "relation",
+            "name": "source",
+            "label": "来源",
+            "type_name": "DataSource",
+            "module": "source_relations",
+            "constraints": []
+          }
+        ]
+      },
+      "ResearchInstituteEvent": {
+        "name": "ResearchInstituteEvent",
+        "label": "研究机构事件",
+        "kind": "EventType",
+        "domain": "event",
+        "fields": [
+          {
+            "owner": "ResearchInstituteEvent",
+            "section": "property",
+            "name": "name",
+            "label": "名称",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "ResearchInstituteEvent",
+            "section": "property",
+            "name": "description",
+            "label": "描述",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "ResearchInstituteEvent",
+            "section": "property",
+            "name": "subject",
+            "label": "主体",
+            "type_name": "ResearchInstitute",
+            "module": "event_properties",
+            "constraints": []
+          },
+          {
+            "owner": "ResearchInstituteEvent",
+            "section": "property",
+            "name": "category",
+            "label": "事件分类",
+            "type_name": "EventCategory",
+            "module": "event_properties",
+            "constraints": []
+          },
+          {
+            "owner": "ResearchInstituteEvent",
+            "section": "property",
+            "name": "publishTime",
+            "label": "发布时间",
+            "type_name": "STD.Timestamp",
+            "module": "time_properties",
+            "constraints": []
+          },
+          {
+            "owner": "ResearchInstituteEvent",
+            "section": "relation",
+            "name": "region",
+            "label": "区域",
+            "type_name": "Region",
+            "module": "association_relations",
+            "constraints": []
+          },
+          {
+            "owner": "ResearchInstituteEvent",
+            "section": "relation",
+            "name": "source",
+            "label": "来源",
+            "type_name": "DataSource",
+            "module": "source_relations",
+            "constraints": []
+          }
+        ]
+      },
+      "Index": {
+        "name": "Index",
+        "label": "指标",
+        "kind": "EntityType",
+        "domain": "index",
+        "fields": [
+          {
+            "owner": "Index",
+            "section": "property",
+            "name": "name",
+            "label": "名称",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Index",
+            "section": "property",
+            "name": "officialName",
+            "label": "标准名称",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Index",
+            "section": "property",
+            "name": "shortName",
+            "label": "简称",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Index",
+            "section": "property",
+            "name": "alias",
+            "label": "别名",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": [
+              "MultiValue"
+            ]
+          },
+          {
+            "owner": "Index",
+            "section": "property",
+            "name": "description",
+            "label": "描述",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Index",
+            "section": "property",
+            "name": "category",
+            "label": "分类",
+            "type_name": "IndexCategory",
+            "module": "index_properties",
+            "constraints": [
+              "MultiValue"
+            ]
+          }
+        ]
+      },
+      "DataSource": {
+        "name": "DataSource",
+        "label": "数据来源",
+        "kind": "EntityType",
+        "domain": "document",
+        "fields": [
+          {
+            "owner": "DataSource",
+            "section": "property",
+            "name": "name",
+            "label": "名称",
+            "type_name": "Text",
+            "module": "source_properties",
+            "constraints": []
+          },
+          {
+            "owner": "DataSource",
+            "section": "property",
+            "name": "description",
+            "label": "描述",
+            "type_name": "Text",
+            "module": "source_properties",
+            "constraints": []
+          },
+          {
+            "owner": "DataSource",
+            "section": "property",
+            "name": "confidence",
+            "label": "置信度",
+            "type_name": "Float",
+            "module": "source_properties",
+            "constraints": []
+          }
+        ]
+      },
+      "Document": {
+        "name": "Document",
+        "label": "文档",
+        "kind": "EntityType",
+        "domain": "document",
+        "fields": [
+          {
+            "owner": "Document",
+            "section": "property",
+            "name": "name",
+            "label": "名称",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Document",
+            "section": "property",
+            "name": "officialName",
+            "label": "标准名称",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Document",
+            "section": "property",
+            "name": "shortName",
+            "label": "简称",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Document",
+            "section": "property",
+            "name": "description",
+            "label": "描述",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Document",
+            "section": "property",
+            "name": "author",
+            "label": "作者",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Document",
+            "section": "property",
+            "name": "publishOrganization",
+            "label": "发布机构",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Document",
+            "section": "property",
+            "name": "fileId",
+            "label": "文件ID",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Document",
+            "section": "property",
+            "name": "category",
+            "label": "分类",
+            "type_name": "DocumentCategory",
+            "module": "document_properties",
+            "constraints": [
+              "MultiValue"
+            ]
+          },
+          {
+            "owner": "Document",
+            "section": "property",
+            "name": "publishTime",
+            "label": "发布时间",
+            "type_name": "STD.Timestamp",
+            "module": "document_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Document",
+            "section": "relation",
+            "name": "source",
+            "label": "来源",
+            "type_name": "DataSource",
+            "module": "source_relations",
+            "constraints": []
+          }
+        ]
+      },
+      "Chunk": {
+        "name": "Chunk",
+        "label": "文本块",
+        "kind": "IndexType",
+        "domain": "document",
+        "fields": [
+          {
+            "owner": "Chunk",
+            "section": "property",
+            "name": "name",
+            "label": "名称",
+            "type_name": "Text",
+            "module": "chunk_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Chunk",
+            "section": "property",
+            "name": "sort",
+            "label": "排序",
+            "type_name": "Integer",
+            "module": "chunk_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Chunk",
+            "section": "property",
+            "name": "description",
+            "label": "描述",
+            "type_name": "Text",
+            "module": "chunk_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Chunk",
+            "section": "property",
+            "name": "content",
+            "label": "内容",
+            "type_name": "Text",
+            "module": "chunk_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Chunk",
+            "section": "relation",
+            "name": "sourceDocument",
+            "label": "来源文档",
+            "type_name": "Document",
+            "module": "source_relations",
+            "constraints": []
+          }
+        ]
+      }
+    }
+  }
+}
