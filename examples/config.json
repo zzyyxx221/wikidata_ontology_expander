@@ -68,9 +68,9 @@
   "model_review": {
     "enabled": false,
     "provider": "openai",
-    "model": "gpt-5-mini",
-    "api_base": "https://api.openai.com/v1",
-    "api_key_env": "OPENAI_API_KEY",
+    "model": "glm-4",
+    "api_base": "https://open.bigmodel.cn/api/paas/v4",
+    "api_key_env": "d901f28e3d344c5abbd187778c55487e.MXWoKdMsNIRaOBTd",
     "temperature": 0.0,
     "max_output_tokens": 600
   }
