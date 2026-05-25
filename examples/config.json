@@ -9,24 +9,29 @@
     "shortName": "P1813",
     "officialWebsite": "P856",
     "inception": "P571",
-    "publishDate": "P577"
+    "publishDate": "P577",
+    "publicationDate": "P577",
+    "publishTime": "P577"
   },
   "modules": [
     {
       "name": "industry",
       "entity_types": ["EconomicSector", "IndustryGroup", "Industry"],
       "gate_properties": ["P31", "P279", "P452"],
+      "category_gate_labels": ["industry", "industry sector", "economic sector", "manufacturing industry"],
       "indicator_terms": ["industry", "sector", "manufacturing", "market"],
       "relation_properties": {
         "subclassOf": "P279",
-        "industry": "P452"
+        "belongsToIndustryGroup": "P279",
+        "belongsToIndustry": "P452"
       }
     },
     {
       "name": "product",
-      "entity_types": ["Product", "ProductModel", "ProductTerm"],
+      "entity_types": ["ProductTerm", "Product", "ProductModel"],
       "gate_properties": ["P31", "P279", "P176", "P186", "P527"],
-      "indicator_terms": ["product", "material", "component", "equipment"],
+      "category_gate_labels": ["product", "battery", "electronic component", "semiconductor device"],
+      "indicator_terms": ["product", "material", "component", "equipment", "model"],
       "relation_properties": {
         "subclassOf": "P279",
         "manufacturer": "P176",
@@ -38,39 +43,114 @@
       "name": "enterprise",
       "entity_types": ["Enterprise"],
       "gate_properties": ["P31", "P452", "P856", "P571", "P127", "P355"],
-      "indicator_terms": ["company", "enterprise", "manufacturer", "corporation"],
+      "category_gate_labels": ["business", "company", "enterprise", "corporation"],
+      "indicator_terms": ["company", "enterprise", "manufacturer", "corporation", "business"],
       "relation_properties": {
         "belongsToIndustry": "P452",
         "shareholder": "P127",
-        "childOrganization": "P355"
+        "childOrganization": "P355",
+        "region": "P131"
       }
     },
     {
       "name": "technology",
       "entity_types": ["Technology", "Patent"],
-      "gate_properties": ["P31", "P279", "P178", "P577"],
-      "indicator_terms": ["technology", "method", "process", "patent"],
+      "gate_properties": ["P31", "P279", "P178", "P577", "P61"],
+      "category_gate_labels": ["technology", "manufacturing process", "process", "patent"],
+      "indicator_terms": ["technology", "method", "process", "patent", "lithography"],
       "relation_properties": {
         "subclassOf": "P279",
-        "developer": "P178"
+        "developer": "P178",
+        "belongsToIndustry": "P452",
+        "belongsToEnterprise": "P61"
+      }
+    },
+    {
+      "name": "organization",
+      "entity_types": ["Organization", "ResearchInstitute", "University"],
+      "gate_properties": ["P31", "P131", "P856", "P452"],
+      "category_gate_labels": ["organization", "research institute", "university", "educational institution"],
+      "indicator_terms": ["organization", "institute", "university", "laboratory", "research"],
+      "relation_properties": {
+        "region": "P131",
+        "belongsToIndustry": "P452"
+      }
+    },
+    {
+      "name": "person",
+      "entity_types": ["Person"],
+      "gate_properties": ["P31", "P106", "P27", "P108", "P69"],
+      "category_gate_labels": ["human", "person", "researcher", "engineer"],
+      "indicator_terms": ["person", "researcher", "engineer", "executive", "scientist"],
+      "relation_properties": {
+        "nationality": "P27",
+        "worksForEnterprise": "P108",
+        "worksForResearchInstitute": "P108",
+        "worksForUniversity": "P69"
       }
     },
     {
       "name": "region",
-      "entity_types": ["Region", "Place"],
+      "entity_types": ["Region"],
       "gate_properties": ["P31", "P131"],
-      "indicator_terms": ["municipality", "city", "province", "region", "territorial"],
+      "category_gate_labels": ["region", "city", "province", "country", "municipality"],
+      "indicator_terms": ["region", "city", "province", "country", "municipality", "territorial"],
       "relation_properties": {
+        "belongToRegion": "P131",
         "locatedInAdministrativeEntity": "P131"
+      }
+    },
+    {
+      "name": "policy",
+      "entity_types": ["Policy"],
+      "gate_properties": ["P31", "P1001", "P123", "P577", "P452"],
+      "category_gate_labels": ["policy", "regulation", "law", "public policy"],
+      "indicator_terms": ["policy", "regulation", "law", "plan", "guideline"],
+      "relation_properties": {
+        "issuedBy": "P123",
+        "appliesToRegion": "P1001",
+        "appliesToIndustry": "P452"
+      }
+    },
+    {
+      "name": "event",
+      "entity_types": ["EnterpriseEvent", "ResearchInstituteEvent"],
+      "gate_properties": ["P31", "P585", "P276", "P710"],
+      "category_gate_labels": ["event", "business event", "research event", "conference"],
+      "indicator_terms": ["event", "conference", "acquisition", "investment", "announcement"],
+      "relation_properties": {
+        "region": "P276",
+        "source": "P248"
+      }
+    },
+    {
+      "name": "index",
+      "entity_types": ["Index"],
+      "gate_properties": ["P31", "P279"],
+      "category_gate_labels": ["index", "indicator", "metric", "economic indicator"],
+      "indicator_terms": ["index", "indicator", "metric", "measure", "production"],
+      "relation_properties": {
+        "subclassOf": "P279"
+      }
+    },
+    {
+      "name": "document",
+      "entity_types": ["DataSource", "Document", "Chunk"],
+      "gate_properties": ["P31", "P50", "P123", "P577", "P921", "P248"],
+      "category_gate_labels": ["document", "report", "publication", "dataset", "web page"],
+      "indicator_terms": ["document", "report", "publication", "dataset", "source", "chunk"],
+      "relation_properties": {
+        "source": "P248",
+        "sourceDocument": "P248"
       }
     }
   ],
   "model_review": {
     "enabled": false,
     "provider": "openai",
-    "model": "glm-4",
-    "api_base": "https://open.bigmodel.cn/api/paas/v4",
-    "api_key_env": "d901f28e3d344c5abbd187778c55487e.MXWoKdMsNIRaOBTd",
+    "model": "gpt-5-mini",
+    "api_base": "https://api.openai.com/v1",
+    "api_key_env": "OPENAI_API_KEY",
     "temperature": 0.0,
     "max_output_tokens": 600
   }

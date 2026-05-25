@@ -227,7 +227,7 @@ class ExpansionEngine:
                 continue
 
             domain = scored.category
-            entity_type = seed.entity_type or _entity_type_for_category(scored.category, schema_doc, self.config)
+            entity_type = seed.entity_type or _entity_type_for_candidate(scored.category, candidate, schema_doc, self.config)
             if not scored.module:
                 self._collect_module_proposals(
                     candidate=candidate,
@@ -554,6 +554,74 @@ def _entity_type_for_category(category: str | None, schema_doc: SchemaDocument, 
             if module.name == category and module.entity_types:
                 return module.entity_types[0]
     return "Thing"
+
+
+def _entity_type_for_candidate(
+    category: str | None,
+    candidate: WikidataEntity,
+    schema_doc: SchemaDocument,
+    config: ExpansionConfig,
+) -> str:
+    inferred = _infer_entity_type_from_candidate(category, candidate)
+    if inferred and inferred in schema_doc.entities:
+        return inferred
+    return _entity_type_for_category(category, schema_doc, config)
+
+
+def _infer_entity_type_from_candidate(category: str | None, candidate: WikidataEntity) -> str | None:
+    haystack = " ".join(
+        (
+            candidate.label,
+            candidate.description,
+            " ".join(candidate.aliases),
+            " ".join(statement.value_label for statement in candidate.statements),
+        )
+    ).lower()
+    if category == "industry":
+        if "economic sector" in haystack or "sector" in haystack:
+            return "EconomicSector"
+        if "industry group" in haystack or "group" in haystack:
+            return "IndustryGroup"
+        return "Industry"
+    if category == "product":
+        if "model" in haystack or any(token in candidate.label for token in ("H100", "A100")):
+            return "ProductModel"
+        if "term" in haystack:
+            return "ProductTerm"
+        return "Product"
+    if category == "technology":
+        if "patent" in haystack:
+            return "Patent"
+        return "Technology"
+    if category == "organization":
+        if "research institute" in haystack or "laboratory" in haystack:
+            return "ResearchInstitute"
+        if "university" in haystack:
+            return "University"
+        return "Organization"
+    if category == "event":
+        if "research institute" in haystack or "research event" in haystack:
+            return "ResearchInstituteEvent"
+        return "EnterpriseEvent"
+    if category == "document":
+        if "chunk" in haystack or "fragment" in haystack:
+            return "Chunk"
+        if "report" in haystack or "publication" in haystack or "document" in haystack:
+            return "Document"
+        if "source" in haystack or "dataset" in haystack:
+            return "DataSource"
+        return "Document"
+    if category == "enterprise":
+        return "Enterprise"
+    if category == "person":
+        return "Person"
+    if category == "region":
+        return "Region"
+    if category == "policy":
+        return "Policy"
+    if category == "index":
+        return "Index"
+    return None
 
 
 def _schema_fields_by_entity(schema_doc: SchemaDocument) -> dict[str, set[str]]:

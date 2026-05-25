@@ -1,140 +1,204 @@
 {
-  "search": {
-    "semiconductor": ["Q999001"],
-    "semiconductor industry": ["Q999001"],
-    "lithium-ion battery": ["Q999002"],
-    "li-ion battery": ["Q999002"],
-    "lithium ion battery": ["Q999002"],
-    "tesla, inc.": ["Q478214"],
-    "tesla": ["Q478214"],
-    "photolithography": ["Q999003"],
-    "optical lithography": ["Q999003"]
-  },
+  "search": {},
   "entities": [
     {
-      "qid": "Q999001",
+      "qid": "Q900001",
       "label": "semiconductor manufacturing industry",
-      "description": "industry segment focused on manufacturing semiconductor devices and electronic components",
-      "aliases": ["chip manufacturing industry", "semiconductor manufacturing"],
+      "description": "industry segment for semiconductor device manufacturing and related electronic component production",
+      "aliases": ["chip manufacturing industry"],
       "statements": [
-        {
-          "property_id": "P31",
-          "property_label": "instance of",
-          "value_id": "Q8148",
-          "value_label": "industry"
-        },
-        {
-          "property_id": "P279",
-          "property_label": "subclass of",
-          "value_id": "Q268592",
-          "value_label": "manufacturing industry"
-        }
+        {"property_id": "P31", "property_label": "instance of", "value_id": "Q8148", "value_label": "industry"},
+        {"property_id": "P279", "property_label": "subclass of", "value_id": "Q268592", "value_label": "manufacturing industry"}
       ]
     },
     {
-      "qid": "Q999002",
+      "qid": "Q900002",
+      "label": "integrated circuit industry",
+      "description": "industry group focused on integrated circuit design, manufacturing, packaging and testing",
+      "aliases": ["IC industry"],
+      "statements": [
+        {"property_id": "P31", "property_label": "instance of", "value_id": "Q8148", "value_label": "industry"},
+        {"property_id": "P279", "property_label": "subclass of", "value_id": "Q900001", "value_label": "semiconductor manufacturing industry"}
+      ]
+    },
+    {
+      "qid": "Q900003",
       "label": "solid-state battery",
       "description": "battery product using a solid electrolyte instead of a liquid electrolyte",
-      "aliases": ["solid state battery", "all-solid-state battery"],
+      "aliases": ["all-solid-state battery"],
       "statements": [
-        {
-          "property_id": "P31",
-          "property_label": "instance of",
-          "value_id": "Q28877",
-          "value_label": "battery"
-        },
-        {
-          "property_id": "P279",
-          "property_label": "subclass of",
-          "value_id": "Q28877",
-          "value_label": "battery"
-        },
-        {
-          "property_id": "P176",
-          "property_label": "manufacturer",
-          "value_id": "Q53268",
-          "value_label": "Toyota"
-        },
-        {
-          "property_id": "P186",
-          "property_label": "made from material",
-          "value_id": "Q837602",
-          "value_label": "ceramic"
-        },
-        {
-          "property_id": "P527",
-          "property_label": "has part",
-          "value_id": "Q999004",
-          "value_label": "solid electrolyte"
-        }
+        {"property_id": "P31", "property_label": "instance of", "value_id": "Q28877", "value_label": "battery"},
+        {"property_id": "P279", "property_label": "subclass of", "value_id": "Q28877", "value_label": "battery"},
+        {"property_id": "P176", "property_label": "manufacturer", "value_id": "Q53268", "value_label": "Toyota"},
+        {"property_id": "P186", "property_label": "made from material", "value_id": "Q837602", "value_label": "ceramic"},
+        {"property_id": "P527", "property_label": "has part", "value_id": "Q900004", "value_label": "solid electrolyte"}
       ]
     },
     {
-      "qid": "Q478214",
-      "label": "Tesla, Inc.",
-      "description": "American automotive, energy storage and solar power company",
-      "aliases": ["Tesla Motors", "Tesla"],
+      "qid": "Q900005",
+      "label": "NVIDIA H100",
+      "description": "graphics processing unit product model for data center artificial intelligence computing",
+      "aliases": ["H100 GPU"],
       "statements": [
-        {
-          "property_id": "P31",
-          "property_label": "instance of",
-          "value_id": "Q4830453",
-          "value_label": "business"
-        },
-        {
-          "property_id": "P452",
-          "property_label": "industry",
-          "value_id": "Q190117",
-          "value_label": "automotive industry"
-        },
-        {
-          "property_id": "P856",
-          "property_label": "official website",
-          "value_label": "https://www.tesla.com/"
-        },
-        {
-          "property_id": "P571",
-          "property_label": "inception",
-          "value_label": "+2003-07-01T00:00:00Z"
-        },
-        {
-          "property_id": "P355",
-          "property_label": "subsidiary",
-          "value_id": "Q7609625",
-          "value_label": "Tesla Energy"
-        }
+        {"property_id": "P31", "property_label": "instance of", "value_id": "Q7397", "value_label": "computer hardware product"},
+        {"property_id": "P279", "property_label": "subclass of", "value_id": "Q170978", "value_label": "graphics processing unit"},
+        {"property_id": "P176", "property_label": "manufacturer", "value_id": "Q182477", "value_label": "Nvidia"},
+        {"property_id": "P577", "property_label": "publication date", "value_label": "+2022-03-22T00:00:00Z"}
       ]
     },
     {
-      "qid": "Q999003",
+      "qid": "Q900006",
+      "label": "ASML Holding",
+      "description": "enterprise company that manufactures photolithography systems for the semiconductor industry",
+      "aliases": ["ASML"],
+      "statements": [
+        {"property_id": "P31", "property_label": "instance of", "value_id": "Q4830453", "value_label": "business"},
+        {"property_id": "P452", "property_label": "industry", "value_id": "Q190117", "value_label": "semiconductor industry"},
+        {"property_id": "P856", "property_label": "official website", "value_label": "https://www.asml.com/"},
+        {"property_id": "P571", "property_label": "inception", "value_label": "+1984-01-01T00:00:00Z"},
+        {"property_id": "P131", "property_label": "located in administrative territorial entity", "value_id": "Q55", "value_label": "Netherlands"}
+      ]
+    },
+    {
+      "qid": "Q900007",
+      "label": "Toyota Motor Corporation",
+      "description": "enterprise corporation that manufactures vehicles and researches battery products",
+      "aliases": ["Toyota"],
+      "statements": [
+        {"property_id": "P31", "property_label": "instance of", "value_id": "Q4830453", "value_label": "business"},
+        {"property_id": "P452", "property_label": "industry", "value_id": "Q190117", "value_label": "automotive industry"},
+        {"property_id": "P856", "property_label": "official website", "value_label": "https://global.toyota/"},
+        {"property_id": "P127", "property_label": "owned by", "value_id": "Q900008", "value_label": "Toyota Group"},
+        {"property_id": "P355", "property_label": "subsidiary", "value_id": "Q53268", "value_label": "Toyota Research Institute"}
+      ]
+    },
+    {
+      "qid": "Q900009",
       "label": "extreme ultraviolet lithography",
-      "description": "photolithography process used for semiconductor device fabrication",
+      "description": "technology process used for semiconductor device fabrication",
       "aliases": ["EUV lithography", "EUVL"],
       "statements": [
-        {
-          "property_id": "P31",
-          "property_label": "instance of",
-          "value_id": "Q2995644",
-          "value_label": "manufacturing process"
-        },
-        {
-          "property_id": "P279",
-          "property_label": "subclass of",
-          "value_id": "Q183907",
-          "value_label": "photolithography"
-        },
-        {
-          "property_id": "P178",
-          "property_label": "developer",
-          "value_id": "Q1055322",
-          "value_label": "ASML Holding"
-        },
-        {
-          "property_id": "P452",
-          "property_label": "industry",
-          "value_id": "Q190117",
-          "value_label": "semiconductor industry"
-        }
+        {"property_id": "P31", "property_label": "instance of", "value_id": "Q2995644", "value_label": "manufacturing process"},
+        {"property_id": "P279", "property_label": "subclass of", "value_id": "Q183907", "value_label": "photolithography"},
+        {"property_id": "P178", "property_label": "developer", "value_id": "Q900006", "value_label": "ASML Holding"},
+        {"property_id": "P452", "property_label": "industry", "value_id": "Q900001", "value_label": "semiconductor manufacturing industry"}
+      ]
+    },
+    {
+      "qid": "Q900010",
+      "label": "solid-state battery separator patent",
+      "description": "patent document for a separator technology used in solid-state battery products",
+      "aliases": ["battery separator patent"],
+      "statements": [
+        {"property_id": "P31", "property_label": "instance of", "value_id": "Q253623", "value_label": "patent"},
+        {"property_id": "P577", "property_label": "publication date", "value_label": "+2021-05-18T00:00:00Z"},
+        {"property_id": "P61", "property_label": "discoverer or inventor", "value_id": "Q900020", "value_label": "battery materials research group"},
+        {"property_id": "P921", "property_label": "main subject", "value_id": "Q900003", "value_label": "solid-state battery"}
+      ]
+    },
+    {
+      "qid": "Q900011",
+      "label": "IMEC",
+      "description": "research institute organization for nanoelectronics and semiconductor technology",
+      "aliases": ["Interuniversity Microelectronics Centre"],
+      "statements": [
+        {"property_id": "P31", "property_label": "instance of", "value_id": "Q31855", "value_label": "research institute"},
+        {"property_id": "P131", "property_label": "located in administrative territorial entity", "value_id": "Q900012", "value_label": "Leuven"},
+        {"property_id": "P856", "property_label": "official website", "value_label": "https://www.imec-int.com/"},
+        {"property_id": "P452", "property_label": "industry", "value_id": "Q900001", "value_label": "semiconductor manufacturing industry"}
+      ]
+    },
+    {
+      "qid": "Q900013",
+      "label": "Massachusetts Institute of Technology",
+      "description": "university organization with semiconductor and electronics research laboratories",
+      "aliases": ["MIT"],
+      "statements": [
+        {"property_id": "P31", "property_label": "instance of", "value_id": "Q3918", "value_label": "university"},
+        {"property_id": "P131", "property_label": "located in administrative territorial entity", "value_id": "Q49111", "value_label": "Cambridge"},
+        {"property_id": "P856", "property_label": "official website", "value_label": "https://www.mit.edu/"}
+      ]
+    },
+    {
+      "qid": "Q900014",
+      "label": "Morris Chang",
+      "description": "person semiconductor industry executive and engineer",
+      "aliases": ["Zhang Zhongmou"],
+      "statements": [
+        {"property_id": "P31", "property_label": "instance of", "value_id": "Q5", "value_label": "human"},
+        {"property_id": "P106", "property_label": "occupation", "value_id": "Q81096", "value_label": "engineer"},
+        {"property_id": "P27", "property_label": "country of citizenship", "value_id": "Q148", "value_label": "China"},
+        {"property_id": "P108", "property_label": "employer", "value_id": "Q900015", "value_label": "TSMC"},
+        {"property_id": "P69", "property_label": "educated at", "value_id": "Q900013", "value_label": "Massachusetts Institute of Technology"}
+      ]
+    },
+    {
+      "qid": "Q900016",
+      "label": "Shanghai",
+      "description": "municipality city region in China with integrated circuit industry clusters",
+      "aliases": ["Shanghai Municipality"],
+      "statements": [
+        {"property_id": "P31", "property_label": "instance of", "value_id": "Q13218391", "value_label": "municipality"},
+        {"property_id": "P131", "property_label": "located in administrative territorial entity", "value_id": "Q148", "value_label": "China"}
+      ]
+    },
+    {
+      "qid": "Q900017",
+      "label": "European Chips Act",
+      "description": "policy regulation for semiconductor industry investment and supply chain resilience in Europe",
+      "aliases": ["EU Chips Act"],
+      "statements": [
+        {"property_id": "P31", "property_label": "instance of", "value_id": "Q546113", "value_label": "public policy"},
+        {"property_id": "P123", "property_label": "publisher", "value_id": "Q8880", "value_label": "European Commission"},
+        {"property_id": "P1001", "property_label": "applies to jurisdiction", "value_id": "Q458", "value_label": "European Union"},
+        {"property_id": "P452", "property_label": "industry", "value_id": "Q900001", "value_label": "semiconductor manufacturing industry"},
+        {"property_id": "P577", "property_label": "publication date", "value_label": "+2023-09-21T00:00:00Z"}
+      ]
+    },
+    {
+      "qid": "Q900018",
+      "label": "TSMC Arizona fab announcement",
+      "description": "enterprise event announcement about semiconductor manufacturing investment",
+      "aliases": ["Arizona fab announcement"],
+      "statements": [
+        {"property_id": "P31", "property_label": "instance of", "value_id": "Q1190554", "value_label": "event"},
+        {"property_id": "P585", "property_label": "point in time", "value_label": "+2020-05-15T00:00:00Z"},
+        {"property_id": "P276", "property_label": "location", "value_id": "Q816", "value_label": "Arizona"},
+        {"property_id": "P710", "property_label": "participant", "value_id": "Q900015", "value_label": "TSMC"},
+        {"property_id": "P248", "property_label": "stated in", "value_id": "Q900022", "value_label": "company press release"}
+      ]
+    },
+    {
+      "qid": "Q900019",
+      "label": "semiconductor equipment spending index",
+      "description": "index indicator measuring spending on semiconductor manufacturing equipment",
+      "aliases": ["equipment spending indicator"],
+      "statements": [
+        {"property_id": "P31", "property_label": "instance of", "value_id": "Q186588", "value_label": "economic indicator"},
+        {"property_id": "P279", "property_label": "subclass of", "value_id": "Q21004260", "value_label": "index"}
+      ]
+    },
+    {
+      "qid": "Q900022",
+      "label": "Semiconductor Industry Outlook 2024",
+      "description": "document report publication about semiconductor market, technology trends and supply chain",
+      "aliases": ["industry outlook report"],
+      "statements": [
+        {"property_id": "P31", "property_label": "instance of", "value_id": "Q10870555", "value_label": "report"},
+        {"property_id": "P50", "property_label": "author", "value_id": "Q900023", "value_label": "industry analyst team"},
+        {"property_id": "P123", "property_label": "publisher", "value_id": "Q900024", "value_label": "market research organization"},
+        {"property_id": "P577", "property_label": "publication date", "value_label": "+2024-01-10T00:00:00Z"},
+        {"property_id": "P921", "property_label": "main subject", "value_id": "Q900001", "value_label": "semiconductor manufacturing industry"}
+      ]
+    },
+    {
+      "qid": "Q900025",
+      "label": "outlook report chunk 1",
+      "description": "chunk document fragment about advanced packaging and lithography technology",
+      "aliases": ["report chunk"],
+      "statements": [
+        {"property_id": "P31", "property_label": "instance of", "value_id": "Q1172284", "value_label": "document fragment"},
+        {"property_id": "P248", "property_label": "stated in", "value_id": "Q900022", "value_label": "Semiconductor Industry Outlook 2024"}
       ]
     }
   ]
