@@ -1,0 +1,713 @@
+namespace IncCoreV2
+
+# ======================================================
+# Schema Naming Conventions
+# 1. Property and relation names use lowerCamelCase.
+# 2. Boolean-like fields use is/has prefixes.
+# 3. Date/time fields use Date / Time / Timestamp suffixes.
+# 4. Code and number identifiers use Code / No suffixes.
+# 5. Enum values must be English only, preferably snake_case.
+# 6. Chinese is kept only in display labels inside parentheses.
+# 7. Reuse common fields first: name / officialName / shortName / alias / description.
+# ======================================================
+
+
+PersonCategory(人物分类): ConceptType
+  hypernymPredicate: isA
+
+OrganizationCategory(机构分类): ConceptType
+  hypernymPredicate: isA
+
+RegionCategory(区域分类): ConceptType
+  hypernymPredicate: isA
+
+TermCategory(术语分类): ConceptType
+  hypernymPredicate: isA
+
+EventCategory(事件分类): ConceptType
+  hypernymPredicate: isA
+
+PolicyCategory(政策分类): ConceptType
+  hypernymPredicate: isA
+
+IndexCategory(指标分类): ConceptType
+  hypernymPredicate: isA
+
+DocumentCategory(文档分类): ConceptType
+  hypernymPredicate: isA
+
+# ======================================================
+# 通用属性
+# ======================================================
+
+#common_properties:
+#  name(名称): Text
+#    index: Text
+#  officialName(标准名称): Text
+#  shortName(简称): Text
+#    index: Text
+#  alias(别名): Text
+#    constraint: MultiValue
+#    index: Text
+
+# ======================================================
+# 产业域
+# ======================================================
+
+EconomicSector(经济板块): EntityType
+  properties:
+    #modules: common_properties
+    name(名称): Text
+      index: Text
+    officialName(标准名称): Text
+    shortName(简称): Text
+      index: Text
+    alias(别名): Text
+      constraint: MultiValue
+      index: Text
+    description(描述): Text
+      index: Text
+
+    #modules: classification_properties
+    #classificationCode(分类编码): Text
+    #  index: Text
+    #classificationName(分类名称): Text
+    #  index: Text
+
+    #modules: gics_mapping_properties
+    gicsSectorCode(GICS一级行业编码): Text
+      constraint: MultiValue
+    gicsSectorName(GICS一级行业名称): Text
+      constraint: MultiValue
+    gicsMappingRelation(与GICS映射的关系): Text
+      constraint: Enum="exact_match,aggregation_of_gics,subset_of_gics,composite_subset_of_gics,partial_overlap,other"
+      index: Text
+
+IndustryGroup(行业组): EntityType
+  properties:
+    #modules: common_properties
+    name(名称): Text
+      index: Text
+    officialName(标准名称): Text
+    shortName(简称): Text
+      index: Text
+    alias(别名): Text
+      constraint: MultiValue
+      index: Text
+    description(描述): Text
+      index: Text
+
+    #modules: classification_properties
+    #classificationCode(分类编码): Text
+    #  index: Text
+    #classificationName(分类名称): Text
+    #  index: Text
+
+    #modules: gics_mapping_properties
+    gicsGroupCode(GICS二级行业编码): Text
+      constraint: MultiValue
+    gicsGroupName(GICS二级行业名称): Text
+      constraint: MultiValue
+    gicsMappingRelation(与GICS映射的关系): Text
+      constraint: Enum="exact_match,aggregation_of_gics,subset_of_gics,composite_subset_of_gics,partial_overlap,other"
+      index: Text
+
+  relations:
+    #modules: classification_relations
+    belongsToEconomicSector(所属经济板块): EconomicSector
+    belongsToIndustryGroup(所属行业组): IndustryGroup
+
+Industry(行业): EntityType
+  properties:
+    #modules: common_properties
+    name(名称): Text
+      index: Text
+    officialName(标准名称): Text
+    shortName(简称): Text
+      index: Text
+    alias(别名): Text
+      constraint: MultiValue
+      index: Text
+    description(描述): Text
+      index: Text
+
+    #modules: classification_properties
+    #classificationCode(分类编码): Text
+    #  index: Text
+    #classificationName(分类名称): Text
+    #  index: Text
+
+    #modules: gics_mapping_properties
+    gicsIndustryCode(GICS三级行业编码): Text
+      constraint: MultiValue
+    gicsIndustryName(GICS三级行业名称): Text
+      constraint: MultiValue
+    gicsMappingRelation(与GICS映射的关系): Text
+      constraint: Enum="exact_match,aggregation_of_gics,subset_of_gics,composite_subset_of_gics,partial_overlap,other"
+      index: Text
+
+  relations:
+    #modules: classification_relations
+    #belongsToEconomicSector(所属经济板块): EconomicSector
+    belongsToIndustryGroup(所属行业组): IndustryGroup
+
+
+# ======================================================
+# 产品域
+# ======================================================
+
+ProductTerm(产品术语): EntityType
+  properties:
+    #modules: common_properties
+    name(名称): Text
+      index: Text
+    officialName(标准名称): Text
+    #shortName(简称): Text
+    #  index: Text
+    #alias(别名): Text
+    #  constraint: MultiValue
+    #  index: Text
+    description(描述): Text
+      index: Text
+
+  relations:
+    #modules: classification_relations
+    belongsToEconomicSector(所属经济板块): EconomicSector
+    #modules: source_relations
+    source(来源): DataSource
+
+
+Product(标准产品): EntityType
+  properties:
+    #modules: common_properties
+    name(名称): Text
+      index: Text
+    officialName(标准名称): Text
+    shortName(简称): Text
+      index: Text
+    alias(别名): Text
+      constraint: MultiValue
+      index: Text
+    description(描述): Text
+      index: Text
+
+    #modules: classification_properties
+    #classificationCode(分类编码): Text
+    #  index: Text
+    #classificationName(分类名称): Text
+    #  index: Text
+    classificationLevel(分类层级): Integer
+    isLeaf(是否分类体系中叶子节点): Integer
+
+    #modules: extension_properties
+    extensionBasis(扩充依据): Text
+      constraint: MultiValue
+      index: Text
+
+  relations:
+    #modules: classification_relations
+    #belongsToEconomicSector(所属经济板块): EconomicSector
+    #belongsToIndustryGroup(所属行业组): IndustryGroup
+    belongsToIndustry(所属行业): Industry
+
+    #modules: hierarchy_relations
+    subclassOf(上位产品): Product
+
+    #modules: upstream_downstream_relations
+    rawMaterial(生产原料): Product
+    component(生产配件): Product
+    equipment(生产设备): Product
+    auxiliaryMaterial(辅助材料): Product
+    applicationTerminal(应用场景或应用终端): Product
+
+    #modules: term_relations
+    hasTerm(关联术语): ProductTerm
+
+    #modules: technology_relations
+    coreTechnology(核心技术): Technology
+ 
+
+ProductModel(产品型号): EntityType
+  properties:
+    #modules: common_properties
+    name(名称): Text
+      index: Text
+    officialName(标准名称): Text
+    shortName(简称): Text
+      index: Text
+    alias(别名): Text
+      constraint: MultiValue
+      index: Text
+    description(描述): Text
+      index: Text
+
+    #modules: product_description_properties
+    brand(品牌): Text
+      index: Text
+    series(系列): Text
+    model(型号): Text
+      index: Text
+
+    #modules: specification_properties
+    specification(规格): Text
+      constraint: MultiValue
+    #technicalParameter(技术参数): Text
+    #  constraint: MultiValue
+
+    #modules: lifecycle_properties
+    publishDate(发布时间): STD.Date
+    productLifecycleStatus(产品生命周期状态): Text
+      constraint: Enum="concept_stage,in_development,pilot_or_trial,launched,on_market"
+      index: Text
+
+  relations:
+    #modules: classification_relations
+    belongsToProduct(所属标准产品): Product
+
+    #modules: production_relations
+    manufacturer(生产企业): Enterprise
+    coreTechnology(核心技术): Technology
+
+
+# ======================================================
+# 企业域
+# ======================================================
+
+Enterprise(企业): EntityType
+  properties:
+    #modules: common_properties
+    name(名称): Text
+      index: Text
+    officialName(标准名称): Text
+    shortName(简称): Text
+      index: Text
+    alias(别名): Text
+      constraint: MultiValue
+      index: Text
+    description(描述): Text
+      index: Text
+
+    #modules: business_registration_properties
+    unifiedSocialCreditCode(统一社会信用代码): Text
+      index: Text
+    nameEn(英文名称): Text
+      constraint: MultiValue
+    officialWebsite(官网): Text
+      constraint: MultiValue
+    status(经营状态): Text
+      index: Text
+    inception(成立日期): STD.Date
+    companyScale(企业规模): Text
+    mainBusiness(主营业务): Text
+      index: Text
+    businessScope(经营范围): Text
+      index: Text
+
+  relations:
+    #modules: region_relations
+    region(所属区域): Region
+
+    #modules: classification_relations
+    belongsToEconomicSector(所属经济板块): EconomicSector
+    belongsToIndustryGroup(所属行业组): IndustryGroup
+    belongsToIndustry(所属行业): Industry
+
+    #modules: person_relations
+    #legalPerson(法人): Person
+    #personShareholder(个人股东): Person
+    #keyPerson(主要人员): Person
+
+    #modules: investment_relations
+    shareholder(股东): Enterprise
+    invest(对外投资): Enterprise
+    #modules: organization_relations
+    #belongsToGroup(所属集团): Enterprise
+    childOrganization(分支机构): Enterprise
+
+    #modules: supply_chain_relations
+    supplier(供应商): Enterprise
+    customer(客户): Enterprise
+
+    #modules: innovation_relations
+    coreTechnology(核心技术): Technology
+    # corePatent(核心专利): Patent
+
+
+# ======================================================
+# 技术域
+# ======================================================
+
+Technology(技术): EntityType
+  properties:
+    #modules: common_properties
+    name(名称): Text
+      index: Text
+    officialName(标准名称): Text
+    shortName(简称): Text
+      index: Text
+    alias(别名): Text
+      constraint: MultiValue
+      index: Text
+    nameEn(英文名称): Text
+    description(描述): Text
+      index: Text
+
+    #modules: technology_properties
+    maturityLevel(成熟度): Text 
+      #未来设计concept type    
+      index: Text
+    applicationScenario(应用场景): Text
+      constraint: MultiValue
+      index: Text
+
+  relations:
+    #modules: classification_relations
+    belongsToIndustry(所属行业): Industry
+    # belongsToProduct(上位标准产品): Product
+
+Patent(专利): EntityType
+  properties:
+    #modules: common_properties
+    name(名称): Text
+      index: Text
+    officialName(标准名称): Text
+      index: Text
+    alias(别名): Text
+      constraint: MultiValue
+      index: Text
+    description(描述): Text
+      index: Text
+
+    #modules: patent_properties
+    patentPublicNo(专利公开号): Text
+      index: Text
+    patentType(专利类型): Text
+      index: Text
+    status(专利状态): Text
+      index: Text
+
+    #modules: time_properties
+    applicationDate(申请日期): STD.Date
+    publicationDate(公开日期): STD.Date
+    grantDate(授权日期): STD.Date
+
+  relations:
+    #modules: association_relations
+    belongsToTechnology(关联技术): Technology
+    belongsToProduct(关联标准产品): Product
+    belongsToEnterprise(所属企业): Enterprise
+    belongsToOrganization(所属机构): Organization
+
+
+# ======================================================
+# 机构域
+# ======================================================
+
+Organization(机构): EntityType
+  properties:
+    #modules: common_properties
+    name(名称): Text
+      index: Text
+    officialName(标准名称): Text
+    shortName(简称): Text
+      index: Text
+    alias(别名): Text
+      constraint: MultiValue
+      index: Text
+    nameEn(英文名称): Text
+    description(描述): Text
+      index: Text
+
+    #modules: organization_properties
+    officialWebsite(官网): Text
+      constraint: MultiValue
+    category(分类): OrganizationCategory
+      constraint: MultiValue
+
+  relations:
+    #modules: association_relations
+    region(所属区域): Region
+      #constraint: MultiValue
+
+ResearchInstitute(研究机构): EntityType
+  properties:
+    #modules: common_properties
+    name(名称): Text
+      index: Text
+    officialName(标准名称): Text
+    shortName(简称): Text
+      index: Text
+    alias(别名): Text
+      constraint: MultiValue
+      index: Text
+    nameEn(英文名称): Text
+    description(描述): Text
+      index: Text
+    #modules: organization_properties
+    officialWebsite(官网): Text
+      constraint: MultiValue
+    category(分类): OrganizationCategory
+      constraint: MultiValue
+    researchField(研究领域): Text
+      index: Text
+  relations:
+    #modules: association_relations
+    region(所属区域): Region
+      #constraint: MultiValue
+	
+University(大学): EntityType
+  properties:
+    #modules: common_properties
+    name(名称): Text
+      index: Text
+    officialName(标准名称): Text
+    shortName(简称): Text
+      index: Text
+    alias(别名): Text
+      constraint: MultiValue
+      index: Text
+    nameEn(英文名称): Text
+    description(描述): Text
+      index: Text
+    #modules: organization_properties
+    officialWebsite(官网): Text
+      constraint: MultiValue
+    category(分类): OrganizationCategory
+      constraint: MultiValue
+  relations:
+    #modules: association_relations
+    region(所属区域): Region
+      #constraint: MultiValue
+
+# ======================================================
+# 人物域
+# ======================================================
+
+Person(人物): EntityType
+  properties:
+    #modules: common_properties
+    name(名称): Text
+      index: Text
+    officialName(标准名称): Text
+    shortName(简称): Text
+      index: Text
+    alias(别名): Text
+      constraint: MultiValue
+      index: Text
+    nameEn(英文名称): Text
+    description(描述): Text
+      index: Text
+
+    #modules: person_properties
+    gender(性别): Text
+      constraint: Enum="male,female"        #语法检查
+    jobTitle(职称): Text
+      index: Text
+    eduDegree(学历): Text
+    birthYear(出生年份): Integer
+    honors(荣誉): Text
+      constraint: MultiValue
+      index: Text
+    category(分类): PersonCategory
+      constraint: MultiValue
+
+  relations:
+    #modules: employment_relations
+    nationality(国籍): Region
+    worksForEnterprise(任职企业): Enterprise
+    legalPerson(法人): Enterprise
+    shareholder(股东): Enterprise
+    worksForResearchInstitute(任职研究机构): ResearchInstitute
+    worksForUniversity(任职大学): University
+
+
+# ======================================================
+# 区域域
+# ======================================================
+
+Region(区域): EntityType
+  properties:
+    #modules: common_properties
+    name(名称): Text
+      index: Text
+    officialName(标准名称): Text
+    shortName(简称): Text
+      index: Text
+    alias(别名): Text
+      constraint: MultiValue
+      index: Text
+    description(描述): Text
+      index: Text
+
+    #modules: region_properties
+    regionCode(区域编码): Text
+      index: Text
+    category(分类): RegionCategory
+
+  relations:
+    #modules: hierarchy_relations
+    belongToRegion(所属上级区域): Region
+
+
+# ======================================================
+# 政策域
+# ======================================================
+
+Policy(政策): EntityType
+  properties:
+    #modules: common_properties
+    name(名称): Text
+      index: Text
+    officialName(标准名称): Text
+      index: Text
+    shortName(简称): Text
+      index: Text
+    alias(别名): Text
+      constraint: MultiValue
+      index: Text
+    description(描述): Text
+      index: Text
+
+    #modules: policy_properties
+    policyNo(文号): Text
+      index: Text
+    policyLevel(政策级别): Text
+      index: Text
+    category(分类): PolicyCategory
+      constraint: MultiValue
+
+    #modules: time_properties
+    publishTime(发布时间): STD.Timestamp
+    effectiveTime(生效时间): STD.Timestamp
+    expiryTime(失效时间): STD.Timestamp
+
+  relations:
+    #modules: issuance_relations
+    issuedBy(发布机构): Organization
+    #modules: applicability_relations
+    appliesToRegion(适用区域): Region
+    appliesToIndustry(适用行业): Industry
+    
+    
+
+# ======================================================
+# 事件域
+# ======================================================
+
+
+EnterpriseEvent(企业事件): EventType
+  properties:
+    #modules: common_properties
+    name(名称): Text
+      index: Text
+    description(描述): Text
+      index: Text
+    #modules: event_properties
+    subject(主体): Enterprise
+    category(事件分类): EventCategory
+      index: Text
+    #modules: time_properties
+    publishTime(发布时间): STD.Timestamp
+  relations:
+    #modules: association_relations
+    region(地点): Region
+    #modules: source_relations
+    source(来源): DataSource
+
+ResearchInstituteEvent(研究机构事件): EventType
+  properties:
+    #modules: common_properties
+    name(名称): Text
+      index: Text
+    description(描述): Text
+      index: Text
+    #modules: event_properties
+    subject(主体): ResearchInstitute
+    category(事件分类): EventCategory
+      index: Text
+    #modules: time_properties
+    publishTime(发布时间): STD.Timestamp
+  relations:
+    #modules: association_relations
+    region(区域): Region
+    #modules: source_relations
+    source(来源): DataSource
+    
+       
+
+
+# ======================================================
+# 指标域
+# ======================================================
+
+Index(指标): EntityType
+  properties:
+    #modules: common_properties
+    name(名称): Text
+      index: Text
+    officialName(标准名称): Text
+    shortName(简称): Text
+      index: Text
+    alias(别名): Text
+      constraint: MultiValue
+      index: Text
+    description(描述): Text
+      index: Text
+
+    #modules: index_properties
+    category(分类): IndexCategory
+      constraint: MultiValue
+
+
+ 
+
+
+# ======================================================
+# 文档域
+# ======================================================
+
+DataSource(数据来源): EntityType
+  properties:
+    #modules: source_properties
+    name(名称): Text
+      index: Text
+    description(描述): Text
+      index: Text
+    confidence(置信度): Float
+
+Document(文档): EntityType
+  properties:
+    #modules: common_properties
+    name(名称): Text
+      index: Text
+    officialName(标准名称): Text
+    shortName(简称): Text
+      index: Text
+    description(描述): Text
+      index: Text
+    author(作者): Text
+      index: Text
+    publishOrganization(发布机构): Text
+      index: Text
+    fileId(文件ID): Text
+      index: Text
+    #modules: document_properties
+    category(分类): DocumentCategory
+      constraint: MultiValue
+    publishTime(发布时间): STD.Timestamp
+
+  relations:
+    #modules: source_relations
+    source(来源): DataSource
+
+Chunk(文本块): IndexType
+  properties:
+    #modules: chunk_properties
+    name(名称): Text
+    sort(排序): Integer
+    description(描述): Text
+    content(内容): Text
+      index: TextAndVector
+  relations:
+    #modules: source_relations
+    sourceDocument(来源文档): Document
