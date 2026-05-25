@@ -48,25 +48,34 @@ def schema_cache_path(path: Path, cache_dir: Path | None = None) -> Path:
 def load_schema_document(path: Path, cache_dir: Path | None = None, use_cache: bool = True) -> SchemaDocument:
     cache_path = schema_cache_path(path, cache_dir)
     stat = path.stat()
+    source_path = str(path.expanduser().resolve())
+    source_hash: str | None = None
     if use_cache and cache_path.exists():
-        try:
-            cached = json.loads(cache_path.read_text(encoding="utf-8"))
-            metadata = cached.get("metadata", {})
-            if (
-                metadata.get("source_path") == str(path.expanduser().resolve())
-                and metadata.get("source_mtime_ns") == stat.st_mtime_ns
-                and metadata.get("source_size") == stat.st_size
-            ):
-                return schema_document_from_dict(cached["schema"])
-        except (OSError, KeyError, TypeError, ValueError, json.JSONDecodeError):
-            pass
+        cached_doc = _load_cached_schema_document(cache_path, path, stat, source_path, source_hash)
+        if cached_doc is not None:
+            return cached_doc
 
-    doc = parse_schema_document(read_text(path))
+    text = read_text(path)
+    source_hash = hashlib.sha256(text.encode("utf-8")).hexdigest()
+    if use_cache:
+        cached_doc = _load_compatible_cached_schema_document(
+            cache_path.parent,
+            path,
+            stat,
+            source_path,
+            source_hash,
+        )
+        if cached_doc is not None:
+            return cached_doc
+
+    doc = parse_schema_document(text)
     if use_cache:
         cache_path.parent.mkdir(parents=True, exist_ok=True)
         payload = {
             "metadata": {
-                "source_path": str(path.expanduser().resolve()),
+                "source_path": source_path,
+                "source_name": path.name,
+                "source_sha256": source_hash,
                 "source_mtime_ns": stat.st_mtime_ns,
                 "source_size": stat.st_size,
             },
@@ -74,6 +83,58 @@ def load_schema_document(path: Path, cache_dir: Path | None = None, use_cache: b
         }
         cache_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     return doc
+
+
+def _load_compatible_cached_schema_document(
+    cache_dir: Path,
+    path: Path,
+    stat,
+    source_path: str,
+    source_hash: str,
+) -> SchemaDocument | None:
+    if not cache_dir.exists():
+        return None
+    for candidate in sorted(cache_dir.glob(f"{path.stem}.*.schema.json")):
+        cached_doc = _load_cached_schema_document(candidate, path, stat, source_path, source_hash)
+        if cached_doc is not None:
+            return cached_doc
+    return None
+
+
+def _load_cached_schema_document(
+    cache_path: Path,
+    path: Path,
+    stat,
+    source_path: str,
+    source_hash: str | None,
+) -> SchemaDocument | None:
+    try:
+        cached = json.loads(cache_path.read_text(encoding="utf-8"))
+        metadata = cached.get("metadata", {})
+        if _cache_metadata_matches(metadata, path, stat, source_path, source_hash):
+            return schema_document_from_dict(cached["schema"])
+    except (OSError, KeyError, TypeError, ValueError, json.JSONDecodeError):
+        return None
+    return None
+
+
+def _cache_metadata_matches(
+    metadata: dict,
+    path: Path,
+    stat,
+    source_path: str,
+    source_hash: str | None,
+) -> bool:
+    if metadata.get("source_size") != stat.st_size:
+        return False
+    if metadata.get("source_path") == source_path and metadata.get("source_mtime_ns") == stat.st_mtime_ns:
+        return True
+    cached_hash = metadata.get("source_sha256")
+    if cached_hash and source_hash:
+        return cached_hash == source_hash
+    if metadata.get("source_path") == source_path:
+        return False
+    return metadata.get("source_name") == path.name or Path(str(metadata.get("source_path", ""))).name == path.name
 
 
 def schema_document_to_dict(doc: SchemaDocument) -> dict:

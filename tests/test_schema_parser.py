@@ -1,3 +1,4 @@
+import json
 import tempfile
 import unittest
 from pathlib import Path
@@ -77,6 +78,61 @@ Product(标准产品): EntityType
             self.assertEqual(first.domains, second.domains)
             self.assertEqual(first.modules, second.modules)
             self.assertEqual(second.domains[0].key, "product")
+
+    def test_load_schema_document_reuses_relocated_cache_for_same_schema_file(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            schema_path = root / "IncCoreV2.schema"
+            cache_dir = root / "cache"
+            schema_text = """
+# 产品域
+
+Product(标准产品): EntityType
+  properties:
+    #modules: common_properties
+    name(名称): Text
+"""
+            schema_path.write_text(schema_text, encoding="utf-8")
+            original = load_schema_document(schema_path, cache_dir=cache_dir)
+            cache_path = schema_cache_path(schema_path, cache_dir)
+            payload = json.loads(cache_path.read_text(encoding="utf-8"))
+            payload["metadata"]["source_path"] = "/old/machine/project/data/IncCoreV2.schema"
+            payload["metadata"]["source_mtime_ns"] = 1
+            payload["schema"]["domains"][0]["key"] = "cached_product"
+            cache_path.write_text(json.dumps(payload, ensure_ascii=False), encoding="utf-8")
+
+            relocated = load_schema_document(schema_path, cache_dir=cache_dir)
+
+            self.assertEqual(original.domains[0].key, "product")
+            self.assertEqual(relocated.domains[0].key, "cached_product")
+
+    def test_load_schema_document_ignores_stale_same_path_cache_without_hash(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            schema_path = root / "seed.schema"
+            cache_dir = root / "cache"
+            schema_path.write_text(
+                """
+# 产品域
+
+Product(标准产品): EntityType
+  properties:
+    #modules: common_properties
+    name(名称): Text
+""",
+                encoding="utf-8",
+            )
+            load_schema_document(schema_path, cache_dir=cache_dir)
+            cache_path = schema_cache_path(schema_path, cache_dir)
+            payload = json.loads(cache_path.read_text(encoding="utf-8"))
+            payload["metadata"].pop("source_sha256")
+            payload["metadata"]["source_mtime_ns"] = 1
+            payload["schema"]["domains"][0]["key"] = "stale_product"
+            cache_path.write_text(json.dumps(payload, ensure_ascii=False), encoding="utf-8")
+
+            loaded = load_schema_document(schema_path, cache_dir=cache_dir)
+
+            self.assertEqual(loaded.domains[0].key, "product")
 
 
 if __name__ == "__main__":

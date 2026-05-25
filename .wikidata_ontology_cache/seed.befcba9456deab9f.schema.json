@@ -1,0 +1,73 @@
+{
+  "metadata": {
+    "source_path": "/private/var/folders/l_/2sp38xdj5vs2ys_b177h3_bc0000gn/T/tmp9s37wscx/seed.schema",
+    "source_mtime_ns": 1779701148985102575,
+    "source_size": 193
+  },
+  "schema": {
+    "concept_types": [],
+    "domains": [
+      {
+        "name": "产品域",
+        "key": "product",
+        "entity_types": [
+          "Product"
+        ]
+      }
+    ],
+    "modules": [
+      {
+        "name": "common_properties",
+        "domain": "product",
+        "kind": "intrinsic",
+        "entity_types": [
+          "Product"
+        ],
+        "property_fields": [
+          "name"
+        ],
+        "relation_fields": []
+      },
+      {
+        "name": "supply_relations",
+        "domain": "product",
+        "kind": "relational",
+        "entity_types": [
+          "Product"
+        ],
+        "property_fields": [],
+        "relation_fields": [
+          "rawMaterial"
+        ]
+      }
+    ],
+    "entities": {
+      "Product": {
+        "name": "Product",
+        "label": "Product",
+        "kind": "EntityType",
+        "domain": "product",
+        "fields": [
+          {
+            "owner": "Product",
+            "section": "property",
+            "name": "name",
+            "label": "Name",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Product",
+            "section": "relation",
+            "name": "rawMaterial",
+            "label": "Raw material",
+            "type_name": "Product",
+            "module": "supply_relations",
+            "constraints": []
+          }
+        ]
+      }
+    }
+  }
+}

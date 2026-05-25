@@ -1,0 +1,342 @@
+{
+  "metadata": {
+    "source_path": "/Users/zyx/projects/wikidata_ontology_expander/examples/seed_schema.schema",
+    "source_mtime_ns": 1779695910475083750,
+    "source_size": 1136
+  },
+  "schema": {
+    "concept_types": [],
+    "domains": [
+      {
+        "name": "产业域",
+        "key": "industry",
+        "entity_types": [
+          "Industry"
+        ]
+      },
+      {
+        "name": "产品域",
+        "key": "product",
+        "entity_types": [
+          "Product"
+        ]
+      },
+      {
+        "name": "企业域",
+        "key": "enterprise",
+        "entity_types": [
+          "Enterprise"
+        ]
+      },
+      {
+        "name": "技术域",
+        "key": "technology",
+        "entity_types": [
+          "Technology"
+        ]
+      },
+      {
+        "name": "区域域",
+        "key": "region",
+        "entity_types": [
+          "Region"
+        ]
+      }
+    ],
+    "modules": [
+      {
+        "name": "common_properties",
+        "domain": "enterprise",
+        "kind": "intrinsic",
+        "entity_types": [
+          "Enterprise"
+        ],
+        "property_fields": [
+          "name"
+        ],
+        "relation_fields": []
+      },
+      {
+        "name": "industry_relations",
+        "domain": "enterprise",
+        "kind": "relational",
+        "entity_types": [
+          "Enterprise"
+        ],
+        "property_fields": [],
+        "relation_fields": [
+          "industry"
+        ]
+      },
+      {
+        "name": "common_properties",
+        "domain": "industry",
+        "kind": "intrinsic",
+        "entity_types": [
+          "Industry"
+        ],
+        "property_fields": [
+          "name"
+        ],
+        "relation_fields": []
+      },
+      {
+        "name": "industry_relations",
+        "domain": "industry",
+        "kind": "relational",
+        "entity_types": [
+          "Industry"
+        ],
+        "property_fields": [],
+        "relation_fields": [
+          "industry"
+        ]
+      },
+      {
+        "name": "common_properties",
+        "domain": "product",
+        "kind": "intrinsic",
+        "entity_types": [
+          "Product"
+        ],
+        "property_fields": [
+          "name"
+        ],
+        "relation_fields": []
+      },
+      {
+        "name": "hierarchy_relations",
+        "domain": "product",
+        "kind": "relational",
+        "entity_types": [
+          "Product"
+        ],
+        "property_fields": [],
+        "relation_fields": [
+          "subclassOf"
+        ]
+      },
+      {
+        "name": "supply_relations",
+        "domain": "product",
+        "kind": "relational",
+        "entity_types": [
+          "Product"
+        ],
+        "property_fields": [],
+        "relation_fields": [
+          "component",
+          "manufacturer",
+          "rawMaterial"
+        ]
+      },
+      {
+        "name": "administrative_relations",
+        "domain": "region",
+        "kind": "relational",
+        "entity_types": [
+          "Region"
+        ],
+        "property_fields": [],
+        "relation_fields": [
+          "locatedInAdministrativeEntity"
+        ]
+      },
+      {
+        "name": "common_properties",
+        "domain": "region",
+        "kind": "intrinsic",
+        "entity_types": [
+          "Region"
+        ],
+        "property_fields": [
+          "name"
+        ],
+        "relation_fields": []
+      },
+      {
+        "name": "common_properties",
+        "domain": "technology",
+        "kind": "intrinsic",
+        "entity_types": [
+          "Technology"
+        ],
+        "property_fields": [
+          "name"
+        ],
+        "relation_fields": []
+      },
+      {
+        "name": "technology_relations",
+        "domain": "technology",
+        "kind": "relational",
+        "entity_types": [
+          "Technology"
+        ],
+        "property_fields": [],
+        "relation_fields": [
+          "developer"
+        ]
+      }
+    ],
+    "entities": {
+      "Industry": {
+        "name": "Industry",
+        "label": "Industry",
+        "kind": "EntityType",
+        "domain": "industry",
+        "fields": [
+          {
+            "owner": "Industry",
+            "section": "property",
+            "name": "name",
+            "label": "Name",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Industry",
+            "section": "relation",
+            "name": "industry",
+            "label": "Industry",
+            "type_name": "Industry",
+            "module": "industry_relations",
+            "constraints": []
+          }
+        ]
+      },
+      "Product": {
+        "name": "Product",
+        "label": "Product",
+        "kind": "EntityType",
+        "domain": "product",
+        "fields": [
+          {
+            "owner": "Product",
+            "section": "property",
+            "name": "name",
+            "label": "Name",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Product",
+            "section": "relation",
+            "name": "manufacturer",
+            "label": "Manufacturer",
+            "type_name": "Enterprise",
+            "module": "supply_relations",
+            "constraints": []
+          },
+          {
+            "owner": "Product",
+            "section": "relation",
+            "name": "rawMaterial",
+            "label": "Raw material",
+            "type_name": "Product",
+            "module": "supply_relations",
+            "constraints": []
+          },
+          {
+            "owner": "Product",
+            "section": "relation",
+            "name": "component",
+            "label": "Component",
+            "type_name": "Product",
+            "module": "supply_relations",
+            "constraints": []
+          },
+          {
+            "owner": "Product",
+            "section": "relation",
+            "name": "subclassOf",
+            "label": "Parent",
+            "type_name": "Product",
+            "module": "hierarchy_relations",
+            "constraints": []
+          }
+        ]
+      },
+      "Enterprise": {
+        "name": "Enterprise",
+        "label": "Enterprise",
+        "kind": "EntityType",
+        "domain": "enterprise",
+        "fields": [
+          {
+            "owner": "Enterprise",
+            "section": "property",
+            "name": "name",
+            "label": "Name",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Enterprise",
+            "section": "relation",
+            "name": "industry",
+            "label": "Industry",
+            "type_name": "Industry",
+            "module": "industry_relations",
+            "constraints": []
+          }
+        ]
+      },
+      "Technology": {
+        "name": "Technology",
+        "label": "Technology",
+        "kind": "EntityType",
+        "domain": "technology",
+        "fields": [
+          {
+            "owner": "Technology",
+            "section": "property",
+            "name": "name",
+            "label": "Name",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Technology",
+            "section": "relation",
+            "name": "developer",
+            "label": "Developer",
+            "type_name": "Enterprise",
+            "module": "technology_relations",
+            "constraints": []
+          }
+        ]
+      },
+      "Region": {
+        "name": "Region",
+        "label": "Region",
+        "kind": "EntityType",
+        "domain": "region",
+        "fields": [
+          {
+            "owner": "Region",
+            "section": "property",
+            "name": "name",
+            "label": "Name",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          },
+          {
+            "owner": "Region",
+            "section": "relation",
+            "name": "locatedInAdministrativeEntity",
+            "label": "Located in",
+            "type_name": "Region",
+            "module": "administrative_relations",
+            "constraints": []
+          }
+        ]
+      }
+    }
+  }
+}

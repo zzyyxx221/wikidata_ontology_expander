@@ -1,0 +1,52 @@
+{
+  "metadata": {
+    "source_path": "/private/var/folders/l_/2sp38xdj5vs2ys_b177h3_bc0000gn/T/tmpymc26uo7/seed.schema",
+    "source_mtime_ns": 1779701092820498419,
+    "source_size": 110
+  },
+  "schema": {
+    "concept_types": [],
+    "domains": [
+      {
+        "name": "产品域",
+        "key": "product",
+        "entity_types": [
+          "Product"
+        ]
+      }
+    ],
+    "modules": [
+      {
+        "name": "common_properties",
+        "domain": "product",
+        "kind": "intrinsic",
+        "entity_types": [
+          "Product"
+        ],
+        "property_fields": [
+          "name"
+        ],
+        "relation_fields": []
+      }
+    ],
+    "entities": {
+      "Product": {
+        "name": "Product",
+        "label": "Product",
+        "kind": "EntityType",
+        "domain": "product",
+        "fields": [
+          {
+            "owner": "Product",
+            "section": "property",
+            "name": "name",
+            "label": "Name",
+            "type_name": "Text",
+            "module": "common_properties",
+            "constraints": []
+          }
+        ]
+      }
+    }
+  }
+}

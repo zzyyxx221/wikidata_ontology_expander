@@ -1,0 +1,13 @@
+{
+  "metadata": {
+    "source_path": "/Users/zyx/projects/wikidata_ontology_expander/examples/seed_schema.json",
+    "source_mtime_ns": 1779072791656446695,
+    "source_size": 693
+  },
+  "schema": {
+    "concept_types": [],
+    "domains": [],
+    "modules": [],
+    "entities": {}
+  }
+}
