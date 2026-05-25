@@ -47,3 +47,6 @@ desktop.ini
 *.tmp
 *.temp
 ~$*
+
+.wikidata_ontology_cache/
+out/
