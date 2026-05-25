@@ -1,0 +1,53 @@
+# 产业域
+
+Industry(Industry): EntityType
+  properties:
+    #modules: common_properties
+    name(Name): Text
+  relations:
+    #modules: industry_relations
+    industry(Industry): Industry
+
+# 产品域
+
+Product(Product): EntityType
+  properties:
+    #modules: common_properties
+    name(Name): Text
+  relations:
+    #modules: supply_relations
+    manufacturer(Manufacturer): Enterprise
+    rawMaterial(Raw material): Product
+    component(Component): Product
+    #modules: hierarchy_relations
+    subclassOf(Parent): Product
+
+# 企业域
+
+Enterprise(Enterprise): EntityType
+  properties:
+    #modules: common_properties
+    name(Name): Text
+  relations:
+    #modules: industry_relations
+    industry(Industry): Industry
+
+# 技术域
+
+Technology(Technology): EntityType
+  properties:
+    #modules: common_properties
+    name(Name): Text
+  relations:
+    #modules: technology_relations
+    developer(Developer): Enterprise
+
+# 区域域
+
+Region(Region): EntityType
+  properties:
+    #modules: common_properties
+    name(Name): Text
+  relations:
+    #modules: administrative_relations
+    locatedInAdministrativeEntity(Located in): Region

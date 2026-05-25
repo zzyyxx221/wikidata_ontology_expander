@@ -15,7 +15,7 @@ class FixtureWikidataClient:
             key.lower(): value for key, value in data.get("search", {}).items()
         }
         self.entities = {
-            item["qid"]: _entity_from_dict(item)
+            _entity_source_id(item): _entity_from_dict(item)
             for item in data.get("entities", [])
         }
 
@@ -23,13 +23,13 @@ class FixtureWikidataClient:
         qids = self.search_index.get(term.lower(), [])
         return [self.entities[qid] for qid in qids[:limit] if qid in self.entities]
 
-    def get_entity(self, qid: str, properties=None) -> WikidataEntity:
-        entity = self.entities[qid]
+    def get_entity(self, source_id: str, properties=None) -> WikidataEntity:
+        entity = self.entities[source_id]
         if not properties:
             return entity
         allowed = set(properties)
         return WikidataEntity(
-            qid=entity.qid,
+            source_id=entity.source_id,
             label=entity.label,
             description=entity.description,
             aliases=entity.aliases,
@@ -38,12 +38,13 @@ class FixtureWikidataClient:
         )
 
     def all_entities(self, properties=None) -> list[WikidataEntity]:
-        return [self.get_entity(qid, properties=properties) for qid in self.entities]
+        return [self.get_entity(source_id, properties=properties) for source_id in self.entities]
 
 
 def _entity_from_dict(item: dict) -> WikidataEntity:
+    source_id = _entity_source_id(item)
     return WikidataEntity(
-        qid=item["qid"],
+        source_id=source_id,
         label=item["label"],
         description=item.get("description", ""),
         aliases=tuple(item.get("aliases", [])),
@@ -57,5 +58,9 @@ def _entity_from_dict(item: dict) -> WikidataEntity:
             )
             for statement in item.get("statements", [])
         ),
-        url=item.get("url") or f"https://www.wikidata.org/wiki/{item['qid']}",
+        url=item.get("url") or (f"https://www.wikidata.org/wiki/{source_id}" if source_id else None),
     )
+
+
+def _entity_source_id(item: dict) -> str:
+    return item.get("source_id") or item.get("qid") or item["label"]

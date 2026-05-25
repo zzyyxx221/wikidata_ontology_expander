@@ -44,7 +44,7 @@ class WikidataClient:
             qid = item["id"]
             entities.append(
                 WikidataEntity(
-                    qid=qid,
+                    source_id=qid,
                     label=item.get("label", qid),
                     description=item.get("description", ""),
                     aliases=tuple(item.get("aliases", [])),
@@ -72,7 +72,7 @@ class WikidataClient:
                     statements.append(statement)
 
         return WikidataEntity(
-            qid=qid,
+            source_id=qid,
             label=_localized_value(labels, self.language, qid),
             description=_localized_value(descriptions, self.language, ""),
             aliases=tuple(a["value"] for a in aliases.get(self.language, [])),
@@ -103,7 +103,7 @@ def _claim_to_statement(pid: str, claim: dict[str, Any], language: str) -> Wikid
     if isinstance(raw_value, dict):
         if raw_value.get("entity-type") == "item":
             value_id = f"Q{raw_value.get('numeric-id')}"
-            value_label = value_id
+            value_label = _entity_value_label(claim, language, value_id)
         elif "time" in raw_value:
             value_label = raw_value["time"]
         elif "text" in raw_value:
@@ -121,3 +121,14 @@ def _claim_to_statement(pid: str, claim: dict[str, Any], language: str) -> Wikid
         value_label=value_label,
         raw_value=raw_value,
     )
+
+
+def _entity_value_label(claim: dict[str, Any], language: str, default: str) -> str:
+    mainsnak = claim.get("mainsnak", {})
+    datavalue = mainsnak.get("datavalue", {})
+    value = datavalue.get("value", {})
+    if isinstance(value, dict):
+        labels = value.get("labels")
+        if isinstance(labels, dict):
+            return _localized_value(labels, language, default)
+    return default

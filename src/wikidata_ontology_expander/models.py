@@ -60,7 +60,7 @@ class SchemaDocument:
 class SeedEntity:
     name: str
     entity_type: str
-    qid: str | None = None
+    external_id: str | None = None
     aliases: tuple[str, ...] = ()
     module: str | None = None
     parent: str | None = None
@@ -68,6 +68,10 @@ class SeedEntity:
     @property
     def search_terms(self) -> tuple[str, ...]:
         return tuple(dict.fromkeys((self.name, *self.aliases)))
+
+    @property
+    def qid(self) -> str | None:
+        return self.external_id
 
 
 @dataclass(frozen=True)
@@ -81,8 +85,8 @@ class WikidataStatement:
 
 @dataclass(frozen=True)
 class WikidataEntity:
-    qid: str
     label: str
+    source_id: str | None = None
     description: str = ""
     aliases: tuple[str, ...] = ()
     statements: tuple[WikidataStatement, ...] = ()
@@ -91,12 +95,25 @@ class WikidataEntity:
     def values_for(self, property_id: str) -> tuple[WikidataStatement, ...]:
         return tuple(s for s in self.statements if s.property_id == property_id)
 
+    @property
+    def qid(self) -> str | None:
+        return self.source_id
+
+    @property
+    def identity_key(self) -> str:
+        if self.source_id:
+            return f"id:{self.source_id}"
+        aliases = ",".join(alias.strip().lower() for alias in self.aliases if alias.strip())
+        description = self.description.strip().lower()
+        return f"label:{self.label.strip().lower()}|aliases:{aliases}|description:{description}"
+
 
 @dataclass(frozen=True)
 class ModuleProfile:
     name: str
     entity_types: tuple[str, ...]
     gate_properties: tuple[str, ...] = ()
+    category_gate_labels: tuple[str, ...] = ()
     indicator_terms: tuple[str, ...] = ()
     relation_properties: dict[str, str] = field(default_factory=dict)
     kind: str = "intrinsic"
@@ -106,13 +123,26 @@ class ModuleProfile:
 
 
 @dataclass(frozen=True)
+class ModelReviewConfig:
+    enabled: bool = False
+    provider: str = "openai"
+    model: str = "gpt-5-mini"
+    api_base: str = "https://api.openai.com/v1"
+    api_key_env: str = "OPENAI_API_KEY"
+    temperature: float = 0.0
+    max_output_tokens: int = 600
+
+
+@dataclass(frozen=True)
 class ExpansionConfig:
     language: str = "en"
     max_candidates_per_seed: int = 5
     min_accept_score: float = 0.72
     min_review_score: float = 0.45
+    proposal_min_support: int = 1
     modules: tuple[ModuleProfile, ...] = ()
     property_map: dict[str, str] = field(default_factory=dict)
+    model_review: ModelReviewConfig | None = None
 
 
 @dataclass(frozen=True)
@@ -127,13 +157,18 @@ class Change:
     action: str
     entity_type: str
     label: str
-    wikidata_id: str
     confidence: float
+    domain: str | None = None
     module: str | None = None
     parent: str | None = None
     field: str | None = None
     value: str | None = None
+    target_type: str | None = None
+    support: int = 0
+    examples: tuple[str, ...] = ()
+    rationale: str | None = None
     evidence: tuple[Evidence, ...] = ()
+    source_entity_ids: tuple[str, ...] = ()
     review_required: bool = False
 
 
@@ -159,12 +194,23 @@ class ChangeSet:
             change.action,
             change.entity_type,
             change.label.lower(),
-            change.wikidata_id,
+            change.domain,
+            change.module,
             change.field,
             change.value,
+            change.target_type,
         )
         existing = {
-            (c.action, c.entity_type, c.label.lower(), c.wikidata_id, c.field, c.value)
+            (
+                c.action,
+                c.entity_type,
+                c.label.lower(),
+                c.domain,
+                c.module,
+                c.field,
+                c.value,
+                c.target_type,
+            )
             for c in self.changes
         }
         if key not in existing:

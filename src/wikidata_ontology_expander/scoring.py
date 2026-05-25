@@ -122,6 +122,25 @@ class GatePolicy:
                 score += weight
                 evidence.append(Evidence("category_indicator", f"module terms: {', '.join(indicator_hits)}", weight))
 
+            gate_label_hits = []
+            configured_gate_labels = {label.lower() for label in category.category_gate_labels}
+            if configured_gate_labels:
+                for statement in candidate.statements:
+                    if statement.property_id not in {"P31", "P279"}:
+                        continue
+                    if statement.value_label.lower() in configured_gate_labels:
+                        gate_label_hits.append(statement.value_label)
+                if gate_label_hits:
+                    weight = min(0.4, 0.16 * len(set(gate_label_hits)))
+                    score += weight
+                    evidence.append(
+                        Evidence(
+                            "category_gate_label",
+                            f"gate labels: {', '.join(sorted(set(gate_label_hits)))}",
+                            weight,
+                        )
+                    )
+
             if seed.entity_type and category.entity_types and seed.entity_type in category.entity_types:
                 weight = 0.08
                 score += weight

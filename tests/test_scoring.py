@@ -19,7 +19,7 @@ class GatePolicyTest(unittest.TestCase):
         )
         seed = SeedEntity(name="battery", entity_type="Product")
         candidate = WikidataEntity(
-            qid="Q1",
+            source_id="Q1",
             label="Battery",
             description="rechargeable battery",
             statements=(WikidataStatement("P31", "instance of", "Q1", "battery"),),

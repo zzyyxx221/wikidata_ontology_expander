@@ -3,6 +3,7 @@
   "max_candidates_per_seed": 2,
   "min_accept_score": 0.72,
   "min_review_score": 0.45,
+  "proposal_min_support": 1,
   "property_map": {
     "officialName": "P1448",
     "shortName": "P1813",
@@ -53,6 +54,24 @@
         "subclassOf": "P279",
         "developer": "P178"
       }
+    },
+    {
+      "name": "region",
+      "entity_types": ["Region", "Place"],
+      "gate_properties": ["P31", "P131"],
+      "indicator_terms": ["municipality", "city", "province", "region", "territorial"],
+      "relation_properties": {
+        "locatedInAdministrativeEntity": "P131"
+      }
     }
-  ]
+  ],
+  "model_review": {
+    "enabled": false,
+    "provider": "openai",
+    "model": "gpt-5-mini",
+    "api_base": "https://api.openai.com/v1",
+    "api_key_env": "OPENAI_API_KEY",
+    "temperature": 0.0,
+    "max_output_tokens": 600
+  }
 }
