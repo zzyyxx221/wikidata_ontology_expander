@@ -201,8 +201,9 @@ seed schema + config + seeds/corpus
 
 回写位置：
 
-- 在 `schema` 中增加模块对应字段分组
-- 在 `config` 中为对应 profile 保留模块相关路由信息
+- 作为人工审核信号保留
+- 当前 `.schema` 文本格式没有空模块的独立语法，因此自动回写不会把 `add_module` 当作字段写入
+- 真正新增属性或关系槽位时，使用 `add_property_type` / `add_relation_type`
 
 ### 7.3 `add_concept`
 

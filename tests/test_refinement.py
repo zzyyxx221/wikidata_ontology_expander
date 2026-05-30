@@ -81,6 +81,66 @@ Product(Product): EntityType
             self.assertIn("battery", updated_config["modules"][0]["category_gate_labels"])
             self.assertEqual(updated_config["modules"][0]["relation_properties"]["manufacturer"], "P176")
 
+    def test_apply_module_change_does_not_write_field_or_pid_mapping(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            schema_path = root / "seed.schema"
+            config_path = root / "config.json"
+            next_schema = root / "next.schema"
+            next_config = root / "next.json"
+            schema_path.write_text(
+                """
+# 产品域
+
+Product(Product): EntityType
+  properties:
+    #modules: common_properties
+    name(Name): Text
+""",
+                encoding="utf-8",
+            )
+            config_path.write_text(
+                json.dumps(
+                    {
+                        "modules": [
+                            {
+                                "name": "product",
+                                "entity_types": ["Product"],
+                                "gate_properties": ["P31"],
+                                "indicator_terms": ["battery"],
+                                "relation_properties": {},
+                            }
+                        ],
+                        "property_map": {},
+                    }
+                ),
+                encoding="utf-8",
+            )
+            changeset = ChangeSet(
+                changes=[
+                    Change(
+                        action="add_module",
+                        entity_type="Product",
+                        label="manufacturer_relations",
+                        confidence=0.8,
+                        domain="product",
+                        module="manufacturer_relations",
+                        field="manufacturer",
+                        value="manufacturer",
+                        target_type="relational",
+                        support=1,
+                        evidence=(Evidence("statement", "P176 / manufacturer", 0.2),),
+                    )
+                ]
+            )
+
+            apply_changeset_to_outputs(schema_path, config_path, changeset, next_schema, next_config)
+
+            rendered_schema = next_schema.read_text(encoding="utf-8")
+            updated_config = json.loads(next_config.read_text(encoding="utf-8"))
+            self.assertNotIn("manufacturer(Manufacturer)", rendered_schema)
+            self.assertNotIn("manufacturer", updated_config["modules"][0]["relation_properties"])
+
     def test_iterative_refinement_runs_multiple_rounds(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
@@ -158,7 +218,7 @@ Product(Product): EntityType
             self.assertGreater(first_round["accepted"], 0)
             self.assertEqual(second_round["accepted"], 0)
             final_schema = Path(summary["final_schema"]).read_text(encoding="utf-8")
-            self.assertIn("manufacturer(Manufacturer): Product", final_schema)
+            self.assertIn("manufacturer(Manufacturer): Enterprise", final_schema)
 
 
 if __name__ == "__main__":

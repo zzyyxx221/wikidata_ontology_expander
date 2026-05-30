@@ -1,47 +1,129 @@
 {
   "changes": [
     {
-      "action": "enrich_existing",
+      "action": "add_category_gate",
       "entity_type": "Product",
-      "label": "Lithium-ion battery",
-      "wikidata_id": "Q2294",
-      "confidence": 0.86,
-      "module": "product",
-      "parent": "Battery",
-      "field": null,
-      "value": null,
+      "label": "battery",
+      "confidence": 0.78,
+      "domain": "product",
+      "module": null,
+      "parent": null,
+      "field": "instanceOf",
+      "value": "instance of",
+      "target_type": "gate_type",
+      "support": 3,
+      "examples": ["Lithium-ion battery -> instance of -> battery"],
       "evidence": [
         {
-          "source": "label",
-          "detail": "exact label match: Lithium-ion battery",
-          "weight": 0.42
+          "source": "unclassified",
+          "detail": "candidate could not be routed into any existing category",
+          "weight": 0.2
         },
         {
-          "source": "gate",
-          "detail": "gate properties: P31, P279",
-          "weight": 0.16
+          "source": "gate_statement",
+          "detail": "P31 / instance of",
+          "weight": 0.35
         }
       ],
+      "source_entity_ids": ["Q123", "Q999", "Q1000"],
       "review_required": false
     },
     {
-      "action": "add_relation",
+      "action": "add_module",
       "entity_type": "Product",
-      "label": "Lithium-ion battery",
-      "wikidata_id": "Q2294",
-      "confidence": 0.74,
-      "module": "product",
-      "parent": "Battery",
+      "label": "manufacturer_relations",
+      "confidence": 0.72,
+      "domain": "product",
+      "module": "manufacturer_relations",
+      "parent": null,
       "field": "manufacturer",
-      "value": "Panasonic (Q53247)",
+      "value": "manufacturer",
+      "target_type": "relational",
+      "support": 2,
+      "examples": ["Lithium-ion battery -> manufacturer_relations -> manufacturer"],
       "evidence": [
         {
-          "source": "relation",
-          "detail": "manufacturer from Wikidata P176",
-          "weight": 0.2
+          "source": "module_gap",
+          "detail": "candidate matched a category but no existing module",
+          "weight": 0.18
+        },
+        {
+          "source": "statement",
+          "detail": "P176 / manufacturer",
+          "weight": 0.18
         }
       ],
+      "source_entity_ids": ["Q123", "Q1000"],
       "review_required": true
+    },
+    {
+      "action": "add_concept",
+      "entity_type": "Technology",
+      "label": "photolithography",
+      "confidence": 0.81,
+      "domain": "technology",
+      "module": "technology_relations",
+      "parent": "manufacturing process",
+      "field": null,
+      "value": null,
+      "target_type": null,
+      "support": 1,
+      "examples": ["photolithography (Q183907)"],
+      "evidence": [
+        {
+          "source": "category_gate_label",
+          "detail": "gate labels: manufacturing process",
+          "weight": 0.16
+        }
+      ],
+      "source_entity_ids": ["Q183907"],
+      "review_required": false
+    },
+    {
+      "action": "add_property_type",
+      "entity_type": "Enterprise",
+      "label": "Enterprise",
+      "confidence": 0.88,
+      "domain": "enterprise",
+      "module": "common_properties",
+      "parent": null,
+      "field": "officialWebsite",
+      "value": "official website",
+      "target_type": "url",
+      "support": 2,
+      "examples": ["ASML Holding -> officialWebsite -> https://www.asml.com/"],
+      "evidence": [
+        {
+          "source": "statement",
+          "detail": "P856 / official website",
+          "weight": 0.18
+        }
+      ],
+      "source_entity_ids": ["Q900006", "Q900007"],
+      "review_required": false
+    },
+    {
+      "action": "add_relation_type",
+      "entity_type": "Product",
+      "label": "Product",
+      "confidence": 0.9,
+      "domain": "product",
+      "module": "supply_relations",
+      "parent": null,
+      "field": "manufacturer",
+      "value": "manufacturer",
+      "target_type": "Enterprise",
+      "support": 4,
+      "examples": ["Lithium-ion battery -> manufacturer -> Panasonic"],
+      "evidence": [
+        {
+          "source": "statement",
+          "detail": "P176 / manufacturer",
+          "weight": 0.18
+        }
+      ],
+      "source_entity_ids": ["Q123", "Q999", "Q1000", "Q2000"],
+      "review_required": false
     }
   ]
 }

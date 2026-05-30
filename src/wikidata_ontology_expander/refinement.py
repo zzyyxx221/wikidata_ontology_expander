@@ -69,7 +69,17 @@ def apply_changeset_to_schema_document(schema_doc: SchemaDocument, changeset: Ch
             continue
         if change.action == "add_category_gate":
             continue
-        if change.action not in {"add_property_type", "add_relation_type", "add_module"}:
+        if change.action == "add_module":
+            modules = _upsert_module(
+                modules,
+                domain=change.domain or "",
+                module_name=change.module or change.label,
+                entity_type=change.entity_type,
+                field_name=None,
+                section=None,
+            )
+            continue
+        if change.action not in {"add_property_type", "add_relation_type"}:
             continue
         owner_name = change.entity_type or "Thing"
         owner = entities.get(owner_name)
@@ -129,6 +139,8 @@ def apply_changeset_to_config_data(config_data: dict[str, Any], changeset: Chang
             if change.label not in labels:
                 labels.append(change.label)
             profile["category_gate_labels"] = labels
+            continue
+        if change.action == "add_module":
             continue
         pid = _change_pid(change)
         if not pid or not change.field:
@@ -287,8 +299,8 @@ def _upsert_module(
     domain: str,
     module_name: str,
     entity_type: str,
-    field_name: str,
-    section: str,
+    field_name: str | None,
+    section: str | None,
 ) -> list[SchemaModule]:
     for index, module in enumerate(modules):
         if module.domain != domain or module.name != module_name:
@@ -298,9 +310,9 @@ def _upsert_module(
             entity_types.append(entity_type)
         property_fields = list(module.property_fields)
         relation_fields = list(module.relation_fields)
-        if section == "property" and field_name not in property_fields:
+        if section == "property" and field_name and field_name not in property_fields:
             property_fields.append(field_name)
-        if section == "relation" and field_name not in relation_fields:
+        if section == "relation" and field_name and field_name not in relation_fields:
             relation_fields.append(field_name)
         kind = _module_kind_from_fields(property_fields, relation_fields)
         modules[index] = replace(
@@ -311,8 +323,8 @@ def _upsert_module(
             relation_fields=tuple(relation_fields),
         )
         return modules
-    property_fields = (field_name,) if section == "property" else ()
-    relation_fields = (field_name,) if section == "relation" else ()
+    property_fields = (field_name,) if section == "property" and field_name else ()
+    relation_fields = (field_name,) if section == "relation" and field_name else ()
     modules.append(
         SchemaModule(
             name=module_name,

@@ -1,49 +1,99 @@
 const sampleData = {
   changes: [
     {
-      action: "enrich_existing",
+      action: "add_category_gate",
       entity_type: "Product",
-      label: "Lithium-ion battery",
-      wikidata_id: "Q2294",
-      confidence: 0.86,
-      module: "product",
-      parent: "Battery",
-      field: null,
-      value: null,
+      label: "battery",
+      confidence: 0.78,
+      domain: "product",
+      module: null,
+      parent: null,
+      field: "instanceOf",
+      value: "instance of",
+      target_type: "gate_type",
+      support: 3,
+      source_entity_ids: ["Q123", "Q999", "Q1000"],
+      examples: ["Lithium-ion battery -> instance of -> battery"],
       evidence: [
-        { source: "label", detail: "exact label match: Lithium-ion battery", weight: 0.42 },
-        { source: "gate", detail: "gate properties: P31, P279", weight: 0.16 },
-        { source: "indicator", detail: "module terms: battery, product", weight: 0.12 }
+        { source: "unclassified", detail: "candidate could not be routed into any existing category", weight: 0.2 },
+        { source: "gate_statement", detail: "P31 / instance of", weight: 0.35 }
       ],
       review_required: false
     },
     {
-      action: "add_relation",
+      action: "add_module",
       entity_type: "Product",
-      label: "Lithium-ion battery",
-      wikidata_id: "Q2294",
-      confidence: 0.74,
-      module: "product",
-      parent: "Battery",
+      label: "manufacturer_relations",
+      confidence: 0.72,
+      domain: "product",
+      module: "manufacturer_relations",
+      parent: null,
       field: "manufacturer",
-      value: "Panasonic (Q53247)",
+      value: "manufacturer",
+      target_type: "relational",
+      support: 2,
+      source_entity_ids: ["Q123", "Q1000"],
+      examples: ["Lithium-ion battery -> manufacturer_relations -> manufacturer"],
       evidence: [
-        { source: "relation", detail: "manufacturer from Wikidata P176", weight: 0.2 }
+        { source: "module_gap", detail: "candidate matched a category but no existing module", weight: 0.18 },
+        { source: "statement", detail: "P176 / manufacturer", weight: 0.18 }
       ],
       review_required: true
     },
     {
-      action: "enrich_property",
+      action: "add_concept",
+      entity_type: "Technology",
+      label: "photolithography",
+      confidence: 0.81,
+      domain: "technology",
+      module: "technology_relations",
+      parent: "manufacturing process",
+      field: null,
+      value: null,
+      target_type: null,
+      support: 1,
+      source_entity_ids: ["Q183907"],
+      examples: ["photolithography (Q183907)"],
+      evidence: [
+        { source: "category_gate_label", detail: "gate labels: manufacturing process", weight: 0.16 }
+      ],
+      review_required: false
+    },
+    {
+      action: "add_property_type",
       entity_type: "Enterprise",
-      label: "Tesla, Inc.",
-      wikidata_id: "Q478214",
-      confidence: 0.79,
-      module: "enterprise",
+      label: "Enterprise",
+      confidence: 0.88,
+      domain: "enterprise",
+      module: "common_properties",
       parent: null,
       field: "officialWebsite",
-      value: "https://www.tesla.com/",
+      value: "official website",
+      target_type: "url",
+      support: 2,
+      source_entity_ids: ["Q900006", "Q900007"],
+      examples: ["ASML Holding -> officialWebsite -> https://www.asml.com/"],
       evidence: [
-        { source: "property", detail: "official website (P856)", weight: 0.18 }
+        { source: "statement", detail: "P856 / official website", weight: 0.18 }
+      ],
+      review_required: false
+    },
+    {
+      action: "add_relation_type",
+      entity_type: "Product",
+      label: "Product",
+      confidence: 0.9,
+      domain: "product",
+      module: "supply_relations",
+      parent: null,
+      field: "manufacturer",
+      value: "manufacturer",
+      target_type: "Enterprise",
+      support: 4,
+      source_entity_ids: ["Q123", "Q999", "Q1000", "Q2000"],
+      examples: ["Lithium-ion battery -> manufacturer -> Panasonic"],
+      evidence: [
+        { source: "statement", detail: "P176 / manufacturer", weight: 0.18 }
       ],
       review_required: false
     }
@@ -83,11 +133,16 @@ const els = {
   detailLabel: document.querySelector("#detailLabel"),
   detailSubhead: document.querySelector("#detailSubhead"),
   confidenceBadge: document.querySelector("#confidenceBadge"),
+  domainInput: document.querySelector("#domainInput"),
   entityTypeInput: document.querySelector("#entityTypeInput"),
   moduleInput: document.querySelector("#moduleInput"),
   fieldInput: document.querySelector("#fieldInput"),
   parentInput: document.querySelector("#parentInput"),
+  targetTypeInput: document.querySelector("#targetTypeInput"),
+  supportInput: document.querySelector("#supportInput"),
   valueInput: document.querySelector("#valueInput"),
+  sourceIdsInput: document.querySelector("#sourceIdsInput"),
+  exampleList: document.querySelector("#exampleList"),
   evidenceList: document.querySelector("#evidenceList"),
   notesInput: document.querySelector("#notesInput"),
   acceptBtn: document.querySelector("#acceptBtn"),
@@ -159,11 +214,14 @@ function getFilteredChanges() {
     const searchable = [
       change.label,
       change.entity_type,
-      change.wikidata_id,
+      change.domain,
       change.action,
       change.module,
       change.field,
-      change.value
+      change.value,
+      change.target_type,
+      ...(change.source_entity_ids || []),
+      ...(change.examples || [])
     ]
       .filter(Boolean)
       .join(" ")
@@ -197,8 +255,8 @@ function renderList() {
         <span class="change-title">${escapeHtml(change.label || "-")}</span>
         <span class="status ${change.decision}">${statusLabel(change.decision)}</span>
       </div>
-      <div class="change-meta">${escapeHtml(change.action || "-")} · ${escapeHtml(change.entity_type || "-")} · ${formatConfidence(change.confidence)}</div>
-      <div class="change-field">${escapeHtml(change.field || change.wikidata_id || "-")}</div>
+      <div class="change-meta">${escapeHtml(change.action || "-")} · ${escapeHtml(change.domain || "-")} · ${escapeHtml(change.entity_type || "-")} · ${formatConfidence(change.confidence)}</div>
+      <div class="change-field">${escapeHtml(change.field || change.target_type || sourceSummary(change) || "-")}</div>
     `;
     item.addEventListener("click", () => {
       saveDetailEdits();
@@ -221,17 +279,47 @@ function renderDetail() {
   els.detailView.classList.remove("hidden");
   els.detailAction.textContent = change.action || "-";
   els.detailLabel.textContent = change.label || "-";
-  els.detailSubhead.textContent = `${change.wikidata_id || "-"} · ${statusLabel(change.decision)}`;
+  els.detailSubhead.textContent = `${change.domain || "-"} · ${sourceSummary(change) || "no sources"} · ${statusLabel(change.decision)}`;
   els.confidenceBadge.textContent = formatConfidence(change.confidence);
+  els.domainInput.value = change.domain || "";
   els.entityTypeInput.value = change.entity_type || "";
   els.moduleInput.value = change.module || "";
   els.fieldInput.value = change.field || "";
   els.parentInput.value = change.parent || "";
+  els.targetTypeInput.value = change.target_type || "";
+  els.supportInput.value = Number(change.support || 0);
   els.valueInput.value = change.value || "";
+  els.sourceIdsInput.value = (change.source_entity_ids || []).join("\n");
   els.notesInput.value = change.reviewer_notes || "";
 
+  renderExamples(change.examples || []);
+  renderEvidence(change.evidence || []);
+}
+
+function renderExamples(examples) {
+  els.exampleList.innerHTML = "";
+  if (!examples.length) {
+    const row = document.createElement("div");
+    row.className = "evidence-item";
+    row.innerHTML = '<span class="evidence-source">无</span><span class="evidence-detail">该提案没有附带示例。</span><span class="evidence-weight">-</span>';
+    els.exampleList.append(row);
+    return;
+  }
+
+  for (const example of examples) {
+    const row = document.createElement("div");
+    row.className = "evidence-item";
+    row.innerHTML = `
+      <span class="evidence-source">example</span>
+      <span class="evidence-detail">${escapeHtml(example)}</span>
+      <span class="evidence-weight">-</span>
+    `;
+    els.exampleList.append(row);
+  }
+}
+
+function renderEvidence(evidence) {
   els.evidenceList.innerHTML = "";
-  const evidence = change.evidence || [];
   if (!evidence.length) {
     const row = document.createElement("div");
     row.className = "evidence-item";
@@ -261,11 +349,18 @@ function saveDetailEdits() {
   if (!change || els.detailView.classList.contains("hidden")) {
     return;
   }
+  change.domain = els.domainInput.value.trim() || null;
   change.entity_type = els.entityTypeInput.value.trim();
   change.module = els.moduleInput.value.trim() || null;
   change.field = els.fieldInput.value.trim() || null;
   change.parent = els.parentInput.value.trim() || null;
+  change.target_type = els.targetTypeInput.value.trim() || null;
+  change.support = Number(els.supportInput.value || 0);
   change.value = els.valueInput.value.trim() || null;
+  change.source_entity_ids = els.sourceIdsInput.value
+    .split(/\n|,/)
+    .map((item) => item.trim())
+    .filter(Boolean);
   change.reviewer_notes = els.notesInput.value.trim();
 }
 
@@ -324,6 +419,17 @@ function statusLabel(status) {
 
 function formatConfidence(value) {
   return Number(value || 0).toFixed(2);
+}
+
+function sourceSummary(change) {
+  const ids = change.source_entity_ids || [];
+  if (!ids.length) {
+    return "";
+  }
+  if (ids.length === 1) {
+    return ids[0];
+  }
+  return `${ids.length} sources`;
 }
 
 function escapeHtml(value) {

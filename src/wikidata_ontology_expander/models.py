@@ -109,6 +109,12 @@ class WikidataEntity:
 
 
 @dataclass(frozen=True)
+class EntityTypeRule:
+    entity_type: str
+    keywords: tuple[str, ...] = ()
+
+
+@dataclass(frozen=True)
 class ModuleProfile:
     name: str
     entity_types: tuple[str, ...]
@@ -116,6 +122,7 @@ class ModuleProfile:
     category_gate_labels: tuple[str, ...] = ()
     indicator_terms: tuple[str, ...] = ()
     relation_properties: dict[str, str] = field(default_factory=dict)
+    entity_type_rules: tuple[EntityTypeRule, ...] = ()
     kind: str = "intrinsic"
     property_fields: tuple[str, ...] = ()
     relation_fields: tuple[str, ...] = ()
@@ -136,6 +143,9 @@ class ModelReviewConfig:
 @dataclass(frozen=True)
 class ExpansionConfig:
     language: str = "en"
+    freeze_top_level_schema: bool = False
+    allowed_schema_actions: tuple[str, ...] = ()
+    restricted_schema_actions: tuple[str, ...] = ()
     max_candidates_per_seed: int = 5
     min_accept_score: float = 0.72
     min_review_score: float = 0.45

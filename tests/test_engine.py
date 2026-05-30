@@ -4,12 +4,14 @@ from pathlib import Path
 
 from wikidata_ontology_expander.engine import ExpansionEngine
 from wikidata_ontology_expander.models import (
+    EntityTypeRule,
     ExpansionConfig,
     ModuleProfile,
     SeedEntity,
     WikidataEntity,
     WikidataStatement,
 )
+from wikidata_ontology_expander.taxonomy import TaxonomyNode, TaxonomyReference
 
 
 class FakeClient:
@@ -504,6 +506,133 @@ Product(Product): EntityType
             self.assertEqual(module_changes[0].domain, "product")
             self.assertIn("manufacturer_relations", {change.module for change in module_changes})
             self.assertTrue(any(change.target_type == "relational" for change in module_changes))
+
+    def test_taxonomy_reference_freezes_top_level_but_allows_slot_proposals(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            schema_path = Path(tmp) / "seed.schema"
+            schema_path.write_text(
+                """
+# 产品域
+
+Product(标准产品): EntityType
+  properties:
+    #modules: common_properties
+    name(名称): Text
+  relations:
+    #modules: hierarchy_relations
+    subclassOf(上位产品): Product
+""",
+                encoding="utf-8",
+            )
+            taxonomy = TaxonomyReference(
+                (
+                    TaxonomyNode(
+                        code="EC001001020101020502",
+                        label="镍钴锰酸锂",
+                        entity_type="Product",
+                        domain="product",
+                        level=9,
+                        parent_code="EC0010010201010205",
+                    ),
+                )
+            )
+            config = ExpansionConfig(
+                freeze_top_level_schema=True,
+                allowed_schema_actions=("add_module", "add_property_type", "add_relation_type"),
+                min_accept_score=0.5,
+                min_review_score=0.2,
+                proposal_min_support=1,
+                modules=(
+                    ModuleProfile(
+                        name="product",
+                        entity_types=("Product",),
+                        gate_properties=("P31", "P279"),
+                        indicator_terms=("product", "battery", "正极材料"),
+                        relation_properties={"subclassOf": "P279", "manufacturer": "P176"},
+                    ),
+                ),
+            )
+            engine = ExpansionEngine(FakeClient(), config, taxonomy_reference=taxonomy)
+            changes = engine.expand_corpus(
+                schema_path,
+                [
+                    WikidataEntity(
+                        source_id="QCN001",
+                        label="镍钴锰酸锂",
+                        description="锂离子电池正极材料 product",
+                        aliases=("NCM cathode material",),
+                        statements=(
+                            WikidataStatement("P31", "instance of", "Q1", "product"),
+                            WikidataStatement("P176", "manufacturer", "Q2", "CATL"),
+                            WikidataStatement("P9001", "nominal voltage", None, "3.7 V"),
+                        ),
+                    )
+                ],
+            )
+
+            actions = {change.action for change in changes.changes}
+            self.assertNotIn("add_concept", actions)
+            self.assertNotIn("add_category_gate", actions)
+            self.assertIn("add_relation_type", actions)
+            self.assertIn("add_property_type", actions)
+            self.assertTrue([change for change in changes.changes if change.action == "add_module"])
+            self.assertTrue(
+                any(
+                    evidence.source == "taxonomy_reference"
+                    for change in changes.changes
+                    for evidence in change.evidence
+                )
+            )
+
+    def test_entity_type_rules_from_config_override_domain_fallback(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            schema_path = Path(tmp) / "seed.schema"
+            schema_path.write_text(
+                """
+# 产品域
+
+Product(Product): EntityType
+  properties:
+    #modules: common_properties
+    name(Name): Text
+
+ProductModel(Product model): EntityType
+  properties:
+    #modules: common_properties
+    name(Name): Text
+""",
+                encoding="utf-8",
+            )
+            config = ExpansionConfig(
+                min_accept_score=0.5,
+                min_review_score=0.2,
+                modules=(
+                    ModuleProfile(
+                        name="product",
+                        entity_types=("Product", "ProductModel"),
+                        gate_properties=("P31",),
+                        indicator_terms=("accelerator",),
+                        entity_type_rules=(
+                            EntityTypeRule("ProductModel", ("accelerator model", "H100")),
+                        ),
+                    ),
+                ),
+            )
+            engine = ExpansionEngine(FakeClient(), config)
+            changes = engine.expand_corpus(
+                schema_path,
+                [
+                    WikidataEntity(
+                        source_id="QH100",
+                        label="NVIDIA H100",
+                        description="GPU accelerator model",
+                        statements=(WikidataStatement("P31", "instance of", "Q1", "product"),),
+                    )
+                ],
+            )
+
+            self.assertTrue(changes.changes)
+            self.assertTrue(all(change.entity_type == "ProductModel" for change in changes.changes))
 
 
 class FakeClientEnterprise:
