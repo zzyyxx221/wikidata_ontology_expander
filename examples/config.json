@@ -179,8 +179,8 @@
   "model_review": {
     "enabled": true,
     "provider": "openai",
-    "model": "gpt-5-mini",
-    "api_base": "https://api.openai.com/v1",
+    "model": "DeepSeek-V4-Flash",
+    "api_base": "http://10.130.138.46:8010",
     "api_key_env": "OPENAI_API_KEY",
     "temperature": 0.0,
     "max_output_tokens": 600
