@@ -8,8 +8,11 @@
   </head>
   <body>
     <main class="app-shell">
+      <div class="ambient ambient-one" aria-hidden="true"></div>
+      <div class="ambient ambient-two" aria-hidden="true"></div>
       <header class="topbar">
-        <div>
+        <div class="brand-block">
+          <span class="eyebrow">Ontology Governance Console</span>
           <h1>本体扩充人工审查</h1>
           <p id="datasetMeta">导入 ChangeSet 后开始审查</p>
         </div>
@@ -48,6 +51,12 @@
 
       <section class="workspace">
         <aside class="queue-panel" aria-label="变更队列">
+          <div class="panel-heading">
+            <div>
+              <span class="eyebrow">Review Queue</span>
+              <h2>变更队列</h2>
+            </div>
+          </div>
           <div class="filters">
             <label>
               搜索
@@ -80,6 +89,7 @@
 
         <section class="detail-panel" aria-label="变更详情">
           <div id="emptyState" class="empty-state">
+            <span class="empty-icon" aria-hidden="true">◇</span>
             <h2>等待选择变更</h2>
             <p>导入扩充结果后，可以在这里核对证据、修改值并记录审查意见。</p>
           </div>
