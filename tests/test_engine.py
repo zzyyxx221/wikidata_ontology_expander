@@ -2,14 +2,16 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from wikidata_ontology_expander.engine import ExpansionEngine
+from wikidata_ontology_expander.engine import ExpansionEngine, load_config
 from wikidata_ontology_expander.models import (
+    EntityTypeRule,
     ExpansionConfig,
     ModuleProfile,
     SeedEntity,
     WikidataEntity,
     WikidataStatement,
 )
+from wikidata_ontology_expander.taxonomy import TaxonomyNode, TaxonomyReference
 
 
 class FakeClient:
@@ -452,6 +454,54 @@ Enterprise(Enterprise): EntityType
             self.assertEqual(gate_changes[0].field, "instanceOf")
             self.assertEqual(gate_changes[0].label, "manufacturing process")
 
+    def test_freeze_top_level_schema_still_allows_category_gate(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            schema_path = Path(tmp) / "seed.schema"
+            schema_path.write_text(
+                """
+# 技术域
+
+Technology(Technology): EntityType
+  properties:
+    #modules: common_properties
+    name(Name): Text
+""",
+                encoding="utf-8",
+            )
+            config = ExpansionConfig(
+                freeze_top_level_schema=True,
+                allowed_schema_actions=("add_category_gate", "add_module", "add_property_type", "add_relation_type"),
+                min_accept_score=0.5,
+                min_review_score=0.2,
+                proposal_min_support=1,
+                modules=(
+                    ModuleProfile(
+                        name="technology",
+                        entity_types=("Technology",),
+                        gate_properties=(),
+                        indicator_terms=(),
+                        relation_properties={"subclassOf": "P279"},
+                    ),
+                ),
+            )
+            engine = ExpansionEngine(FakeClient(), config)
+            changes = engine.expand_corpus(
+                schema_path,
+                [
+                    WikidataEntity(
+                        source_id="Q183907",
+                        label="Photolithography",
+                        description="semiconductor fabrication",
+                        statements=(
+                            WikidataStatement("P31", "instance of", "Q2995644", "manufacturing process"),
+                        ),
+                    )
+                ],
+            )
+
+            self.assertTrue([change for change in changes.changes if change.action == "add_category_gate"])
+            self.assertFalse([change for change in changes.changes if change.action == "add_concept"])
+
     def test_expand_corpus_proposes_module_for_category_matches_without_module_hits(self):
         with tempfile.TemporaryDirectory() as tmp:
             schema_path = Path(tmp) / "seed.schema"
@@ -504,6 +554,305 @@ Product(Product): EntityType
             self.assertEqual(module_changes[0].domain, "product")
             self.assertIn("manufacturer_relations", {change.module for change in module_changes})
             self.assertTrue(any(change.target_type == "relational" for change in module_changes))
+
+    def test_taxonomy_reference_freezes_top_level_but_allows_slot_proposals(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            schema_path = Path(tmp) / "seed.schema"
+            schema_path.write_text(
+                """
+# 产品域
+
+Product(标准产品): EntityType
+  properties:
+    #modules: common_properties
+    name(名称): Text
+  relations:
+    #modules: hierarchy_relations
+    subclassOf(上位产品): Product
+""",
+                encoding="utf-8",
+            )
+            taxonomy = TaxonomyReference(
+                (
+                    TaxonomyNode(
+                        code="EC001001020101020502",
+                        label="镍钴锰酸锂",
+                        entity_type="Product",
+                        domain="product",
+                        level=9,
+                        parent_code="EC0010010201010205",
+                    ),
+                )
+            )
+            config = ExpansionConfig(
+                freeze_top_level_schema=True,
+                allowed_schema_actions=("add_module", "add_property_type", "add_relation_type"),
+                min_accept_score=0.5,
+                min_review_score=0.2,
+                proposal_min_support=1,
+                modules=(
+                    ModuleProfile(
+                        name="product",
+                        entity_types=("Product",),
+                        gate_properties=("P31", "P279"),
+                        indicator_terms=("product", "battery", "正极材料"),
+                        relation_properties={"subclassOf": "P279", "manufacturer": "P176"},
+                    ),
+                ),
+            )
+            engine = ExpansionEngine(FakeClient(), config, taxonomy_reference=taxonomy)
+            changes = engine.expand_corpus(
+                schema_path,
+                [
+                    WikidataEntity(
+                        source_id="QCN001",
+                        label="镍钴锰酸锂",
+                        description="锂离子电池正极材料 product",
+                        aliases=("NCM cathode material",),
+                        statements=(
+                            WikidataStatement("P31", "instance of", "Q1", "product"),
+                            WikidataStatement("P176", "manufacturer", "Q2", "CATL"),
+                            WikidataStatement("P9001", "nominal voltage", None, "3.7 V"),
+                        ),
+                    )
+                ],
+            )
+
+            actions = {change.action for change in changes.changes}
+            self.assertNotIn("add_concept", actions)
+            self.assertNotIn("add_category_gate", actions)
+            self.assertIn("add_relation_type", actions)
+            self.assertIn("add_property_type", actions)
+            self.assertTrue([change for change in changes.changes if change.action == "add_module"])
+            self.assertTrue(
+                any(
+                    evidence.source == "taxonomy_reference"
+                    for change in changes.changes
+                    for evidence in change.evidence
+                )
+            )
+
+    def test_taxonomy_policy_requires_leaf_reference_for_industry_product_slots(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            schema_path = Path(tmp) / "seed.schema"
+            schema_path.write_text(
+                """
+# 产品域
+
+Product(标准产品): EntityType
+  properties:
+    #modules: common_properties
+    name(名称): Text
+""",
+                encoding="utf-8",
+            )
+            taxonomy = TaxonomyReference(
+                (
+                    TaxonomyNode(
+                        code="EC00100102010102",
+                        label="锂离子电池正极材料",
+                        entity_type="Product",
+                        domain="product",
+                        level=7,
+                        is_leaf=False,
+                    ),
+                    TaxonomyNode(
+                        code="EC001001020101020502",
+                        label="镍钴锰酸锂",
+                        entity_type="Product",
+                        domain="product",
+                        level=9,
+                        parent_code="EC0010010201010205",
+                        is_leaf=True,
+                    ),
+                )
+            )
+            config = ExpansionConfig(
+                freeze_top_level_schema=True,
+                allowed_schema_actions=("add_module", "add_property_type", "add_relation_type"),
+                require_taxonomy_context=True,
+                prefer_leaf_taxonomy_evidence=True,
+                min_accept_score=0.5,
+                min_review_score=0.2,
+                proposal_min_support=1,
+                modules=(
+                    ModuleProfile(
+                        name="product",
+                        entity_types=("Product",),
+                        gate_properties=("P31",),
+                        indicator_terms=("product", "正极材料"),
+                    ),
+                ),
+            )
+            engine = ExpansionEngine(FakeClient(), config, taxonomy_reference=taxonomy)
+            changes = engine.expand_corpus(
+                schema_path,
+                [
+                    WikidataEntity(
+                        source_id="QNONLEAF",
+                        label="锂离子电池正极材料",
+                        description="product",
+                        statements=(
+                            WikidataStatement("P31", "instance of", "Q1", "product"),
+                            WikidataStatement("P9001", "nominal voltage", None, "3.7 V"),
+                        ),
+                    ),
+                    WikidataEntity(
+                        source_id="QLEAF",
+                        label="镍钴锰酸锂",
+                        description="product",
+                        statements=(
+                            WikidataStatement("P31", "instance of", "Q1", "product"),
+                            WikidataStatement("P9001", "nominal voltage", None, "3.7 V"),
+                        ),
+                    ),
+                    WikidataEntity(
+                        source_id="QNOREF",
+                        label="unreferenced battery material",
+                        description="battery product",
+                        statements=(
+                            WikidataStatement("P31", "instance of", "Q1", "product"),
+                            WikidataStatement("P9001", "nominal voltage", None, "3.7 V"),
+                        ),
+                    ),
+                ],
+            )
+
+            property_changes = [change for change in changes.changes if change.action == "add_property_type"]
+            self.assertEqual(len(property_changes), 1)
+            self.assertEqual(property_changes[0].field, "nominalVoltage")
+            self.assertEqual(property_changes[0].source_entity_ids, ("QLEAF",))
+
+    def test_load_config_reads_nested_proposal_policy(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            config_path = Path(tmp) / "config.json"
+            config_path.write_text(
+                """
+{
+  "proposal_policy": {
+    "freeze_top_level_schema": true,
+    "allowed_schema_actions": ["add_category_gate", "add_module", "add_property_type", "add_relation_type"],
+    "require_taxonomy_context": true,
+    "taxonomy_context_domains": ["industry", "product"],
+    "prefer_leaf_taxonomy_evidence": true
+  },
+  "modules": []
+}
+""",
+                encoding="utf-8",
+            )
+
+            config = load_config(config_path)
+
+            self.assertTrue(config.freeze_top_level_schema)
+            self.assertEqual(
+                config.allowed_schema_actions,
+                ("add_category_gate", "add_module", "add_property_type", "add_relation_type"),
+            )
+            self.assertTrue(config.require_taxonomy_context)
+            self.assertEqual(config.taxonomy_context_domains, ("industry", "product"))
+            self.assertTrue(config.prefer_leaf_taxonomy_evidence)
+
+    def test_entity_type_rules_from_config_override_domain_fallback(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            schema_path = Path(tmp) / "seed.schema"
+            schema_path.write_text(
+                """
+# 产品域
+
+Product(Product): EntityType
+  properties:
+    #modules: common_properties
+    name(Name): Text
+
+ProductModel(Product model): EntityType
+  properties:
+    #modules: common_properties
+    name(Name): Text
+""",
+                encoding="utf-8",
+            )
+            config = ExpansionConfig(
+                min_accept_score=0.5,
+                min_review_score=0.2,
+                modules=(
+                    ModuleProfile(
+                        name="product",
+                        entity_types=("Product", "ProductModel"),
+                        gate_properties=("P31",),
+                        indicator_terms=("accelerator",),
+                        entity_type_rules=(
+                            EntityTypeRule("ProductModel", ("accelerator model", "H100")),
+                        ),
+                    ),
+                ),
+            )
+            engine = ExpansionEngine(FakeClient(), config)
+            changes = engine.expand_corpus(
+                schema_path,
+                [
+                    WikidataEntity(
+                        source_id="QH100",
+                        label="NVIDIA H100",
+                        description="GPU accelerator model",
+                        statements=(WikidataStatement("P31", "instance of", "Q1", "product"),),
+                    )
+                ],
+            )
+
+            self.assertTrue(changes.changes)
+            self.assertTrue(all(change.entity_type == "ProductModel" for change in changes.changes))
+
+    def test_product_terminal_text_does_not_infer_product_term_type(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            schema_path = Path(tmp) / "seed.schema"
+            schema_path.write_text(
+                """
+# 产品域
+
+Product(Product): EntityType
+  properties:
+    #modules: common_properties
+    name(Name): Text
+
+ProductTerm(Product term): EntityType
+  properties:
+    #modules: common_properties
+    name(Name): Text
+""",
+                encoding="utf-8",
+            )
+            config = ExpansionConfig(
+                min_accept_score=0.5,
+                min_review_score=0.2,
+                proposal_min_support=1,
+                modules=(
+                    ModuleProfile(
+                        name="product",
+                        entity_types=("Product", "ProductTerm"),
+                        gate_properties=("P31",),
+                        indicator_terms=("product",),
+                    ),
+                ),
+            )
+            engine = ExpansionEngine(FakeClient(), config)
+            changes = engine.expand_corpus(
+                schema_path,
+                [
+                    WikidataEntity(
+                        source_id="QTERMINAL",
+                        label="power amplifier chip",
+                        description="product used in mobile communication terminals",
+                        statements=(
+                            WikidataStatement("P31", "instance of", "Q1", "product"),
+                            WikidataStatement("P9004", "package type", None, "LGA"),
+                        ),
+                    )
+                ],
+            )
+
+            self.assertTrue(changes.changes)
+            self.assertTrue(all(change.entity_type == "Product" for change in changes.changes))
 
 
 class FakeClientEnterprise:

@@ -1,0 +1,87 @@
+{
+  "search": {
+    "镍钴锰酸锂": ["QTX001"],
+    "ncm cathode material": ["QTX001"],
+    "功率放大器芯片": ["QTX002"],
+    "power amplifier chip": ["QTX002"],
+    "晶圆检测设备": ["QTX003"],
+    "wafer inspection equipment": ["QTX003"],
+    "生物医药研发服务": ["QTX004"],
+    "cxo service": ["QTX004"],
+    "新能源汽车零部件": ["QTX005"],
+    "automotive electronics component": ["QTX005"]
+  },
+  "entities": [
+    {
+      "qid": "QTX001",
+      "label": "镍钴锰酸锂",
+      "description": "EC001001020101020502 leaf product; lithium-ion battery cathode material used in ternary positive electrode materials",
+      "aliases": ["NCM cathode material", "nickel cobalt manganese lithium oxide", "三元正极材料"],
+      "statements": [
+        {"property_id": "P31", "property_label": "instance of", "value_id": "Q1", "value_label": "product"},
+        {"property_id": "P279", "property_label": "subclass of", "value_id": "QTX101", "value_label": "三元正极材料"},
+        {"property_id": "P176", "property_label": "manufacturer", "value_id": "QTX901", "value_label": "CATL"},
+        {"property_id": "P186", "property_label": "made from material", "value_id": "QTX102", "value_label": "nickel cobalt manganese precursor"},
+        {"property_id": "P527", "property_label": "has part", "value_id": "QTX103", "value_label": "cathode active material"},
+        {"property_id": "P9001", "property_label": "nominal voltage", "value_label": "3.7 V"},
+        {"property_id": "P9002", "property_label": "specific capacity", "value_label": "180 mAh/g"}
+      ]
+    },
+    {
+      "qid": "QTX002",
+      "label": "功率放大器芯片",
+      "description": "SE00203001010103 leaf product; radio-frequency integrated circuit product used in mobile communication terminals",
+      "aliases": ["power amplifier chip", "PA chip", "射频功率放大器芯片"],
+      "statements": [
+        {"property_id": "P31", "property_label": "instance of", "value_id": "Q7397", "value_label": "product"},
+        {"property_id": "P279", "property_label": "subclass of", "value_id": "QTX201", "value_label": "射频芯片"},
+        {"property_id": "P176", "property_label": "manufacturer", "value_id": "QTX902", "value_label": "Qorvo"},
+        {"property_id": "P178", "property_label": "developer", "value_id": "QTX902", "value_label": "Qorvo"},
+        {"property_id": "P9003", "property_label": "process node", "value_label": "GaAs pHEMT"},
+        {"property_id": "P9004", "property_label": "package type", "value_label": "LGA"},
+        {"property_id": "P9005", "property_label": "frequency band", "value_label": "sub-6 GHz"}
+      ]
+    },
+    {
+      "qid": "QTX003",
+      "label": "晶圆检测设备",
+      "description": "semiconductor manufacturing equipment product used for wafer defect inspection and metrology",
+      "aliases": ["wafer inspection equipment", "semiconductor wafer inspection system", "晶圆检测系统"],
+      "statements": [
+        {"property_id": "P31", "property_label": "instance of", "value_id": "Q1", "value_label": "product"},
+        {"property_id": "P279", "property_label": "subclass of", "value_id": "QTX301", "value_label": "半导体设备"},
+        {"property_id": "P176", "property_label": "manufacturer", "value_id": "QTX903", "value_label": "KLA Corporation"},
+        {"property_id": "P452", "property_label": "industry", "value_id": "QTX801", "value_label": "半导体设备"},
+        {"property_id": "P9006", "property_label": "inspection resolution", "value_label": "nanometer scale"},
+        {"property_id": "P9007", "property_label": "wafer size", "value_label": "300 mm"}
+      ]
+    },
+    {
+      "qid": "QTX004",
+      "label": "生物医药研发服务",
+      "description": "contract research and development service in pharmaceutical and biotechnology industry",
+      "aliases": ["CXO service", "pharmaceutical R&D outsourcing", "医药研发外包服务"],
+      "statements": [
+        {"property_id": "P31", "property_label": "instance of", "value_id": "Q7406919", "value_label": "service"},
+        {"property_id": "P452", "property_label": "industry", "value_id": "QTX802", "value_label": "制药"},
+        {"property_id": "P9008", "property_label": "service phase", "value_label": "preclinical research"},
+        {"property_id": "P9009", "property_label": "regulatory stage", "value_label": "IND enabling"},
+        {"property_id": "P123", "property_label": "publisher", "value_id": "QTX904", "value_label": "National Medical Products Administration"}
+      ]
+    },
+    {
+      "qid": "QTX005",
+      "label": "新能源汽车零部件",
+      "description": "automotive component product group covering electric-drive and battery thermal management parts",
+      "aliases": ["automotive electronics component", "new energy vehicle component", "电动车零部件"],
+      "statements": [
+        {"property_id": "P31", "property_label": "instance of", "value_id": "Q1", "value_label": "product"},
+        {"property_id": "P279", "property_label": "subclass of", "value_id": "QTX501", "value_label": "汽车零部件与设备"},
+        {"property_id": "P527", "property_label": "has part", "value_id": "QTX502", "value_label": "battery thermal management system"},
+        {"property_id": "P186", "property_label": "made from material", "value_id": "QTX503", "value_label": "aluminum alloy"},
+        {"property_id": "P9010", "property_label": "application vehicle type", "value_label": "battery electric vehicle"},
+        {"property_id": "P9011", "property_label": "safety certification", "value_label": "IATF 16949"}
+      ]
+    }
+  ]
+}

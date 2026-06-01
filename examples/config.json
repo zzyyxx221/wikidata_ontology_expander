@@ -20,6 +20,10 @@
       "gate_properties": ["P31", "P279", "P452"],
       "category_gate_labels": ["industry", "industry sector", "economic sector", "manufacturing industry"],
       "indicator_terms": ["industry", "sector", "manufacturing", "market"],
+      "entity_type_rules": [
+        {"entity_type": "EconomicSector", "keywords": ["economic sector", "sector"]},
+        {"entity_type": "IndustryGroup", "keywords": ["industry group"]}
+      ],
       "relation_properties": {
         "subclassOf": "P279",
         "belongsToIndustryGroup": "P279",
@@ -32,6 +36,10 @@
       "gate_properties": ["P31", "P279", "P176", "P186", "P527"],
       "category_gate_labels": ["product", "battery", "electronic component", "semiconductor device"],
       "indicator_terms": ["product", "material", "component", "equipment", "model"],
+      "entity_type_rules": [
+        {"entity_type": "ProductModel", "keywords": ["model", "H100", "A100"]},
+        {"entity_type": "ProductTerm", "keywords": ["term"]}
+      ],
       "relation_properties": {
         "subclassOf": "P279",
         "manufacturer": "P176",
@@ -58,6 +66,9 @@
       "gate_properties": ["P31", "P279", "P178", "P577", "P61"],
       "category_gate_labels": ["technology", "manufacturing process", "process", "patent"],
       "indicator_terms": ["technology", "method", "process", "patent", "lithography"],
+      "entity_type_rules": [
+        {"entity_type": "Patent", "keywords": ["patent"]}
+      ],
       "relation_properties": {
         "subclassOf": "P279",
         "developer": "P178",
@@ -71,6 +82,10 @@
       "gate_properties": ["P31", "P131", "P856", "P452"],
       "category_gate_labels": ["organization", "research institute", "university", "educational institution"],
       "indicator_terms": ["organization", "institute", "university", "laboratory", "research"],
+      "entity_type_rules": [
+        {"entity_type": "ResearchInstitute", "keywords": ["research institute", "laboratory"]},
+        {"entity_type": "University", "keywords": ["university"]}
+      ],
       "relation_properties": {
         "region": "P131",
         "belongsToIndustry": "P452"
@@ -118,6 +133,9 @@
       "gate_properties": ["P31", "P585", "P276", "P710"],
       "category_gate_labels": ["event", "business event", "research event", "conference"],
       "indicator_terms": ["event", "conference", "acquisition", "investment", "announcement"],
+      "entity_type_rules": [
+        {"entity_type": "ResearchInstituteEvent", "keywords": ["research institute", "research event"]}
+      ],
       "relation_properties": {
         "region": "P276",
         "source": "P248"
@@ -139,12 +157,25 @@
       "gate_properties": ["P31", "P50", "P123", "P577", "P921", "P248"],
       "category_gate_labels": ["document", "report", "publication", "dataset", "web page"],
       "indicator_terms": ["document", "report", "publication", "dataset", "source", "chunk"],
+      "entity_type_rules": [
+        {"entity_type": "Chunk", "keywords": ["chunk", "fragment"]},
+        {"entity_type": "Document", "keywords": ["report", "publication", "document"]},
+        {"entity_type": "DataSource", "keywords": ["source", "dataset"]}
+      ],
       "relation_properties": {
         "source": "P248",
         "sourceDocument": "P248"
       }
     }
   ],
+  "proposal_policy": {
+    "freeze_top_level_schema": true,
+    "allowed_schema_actions": ["add_category_gate", "add_module", "add_property_type", "add_relation_type"],
+    "restricted_schema_actions": ["add_concept"],
+    "require_taxonomy_context": false,
+    "taxonomy_context_domains": ["industry", "product"],
+    "prefer_leaf_taxonomy_evidence": false
+  },
   "model_review": {
     "enabled": true,
     "provider": "openai",

@@ -7,6 +7,7 @@ from pathlib import Path
 from .engine import ExpansionEngine, load_config, load_seeds
 from .fixture_client import FixtureWikidataClient
 from .refinement import apply_changeset_to_outputs, load_changeset, run_iterative_refinement
+from .taxonomy import TaxonomyReference
 from .wikidata import WikidataClient
 
 
@@ -30,6 +31,11 @@ def main() -> None:
         type=Path,
         help="Use a local Wikidata fixture JSON instead of calling wikidata.org.",
     )
+    expand.add_argument(
+        "--taxonomy-excel",
+        type=Path,
+        help="Excel taxonomy reference used to constrain proposals to existing industry/product context.",
+    )
 
     corpus = subparsers.add_parser(
         "expand-corpus",
@@ -43,6 +49,11 @@ def main() -> None:
         required=True,
         type=Path,
         help="Local Wikidata fixture JSON containing entities to route.",
+    )
+    corpus.add_argument(
+        "--taxonomy-excel",
+        type=Path,
+        help="Excel taxonomy reference used to constrain proposals to existing industry/product context.",
     )
 
     apply_changes = subparsers.add_parser(
@@ -106,7 +117,13 @@ def main() -> None:
             client = FixtureWikidataClient(args.offline_fixture)
         else:
             client = WikidataClient(language=config.language, timeout=args.timeout)
-        engine = ExpansionEngine(client=client, config=config, continue_on_error=args.continue_on_error)
+        taxonomy_reference = TaxonomyReference.load(args.taxonomy_excel) if args.taxonomy_excel else None
+        engine = ExpansionEngine(
+            client=client,
+            config=config,
+            continue_on_error=args.continue_on_error,
+            taxonomy_reference=taxonomy_reference,
+        )
         changeset = engine.expand(args.schema, seeds)
         args.output.parent.mkdir(parents=True, exist_ok=True)
         args.output.write_text(
@@ -129,7 +146,8 @@ def main() -> None:
     elif args.command == "expand-corpus":
         config = load_config(args.config, args.schema)
         client = FixtureWikidataClient(args.offline_fixture)
-        engine = ExpansionEngine(client=client, config=config)
+        taxonomy_reference = TaxonomyReference.load(args.taxonomy_excel) if args.taxonomy_excel else None
+        engine = ExpansionEngine(client=client, config=config, taxonomy_reference=taxonomy_reference)
         changeset = engine.expand_corpus(args.schema, client.all_entities())
         args.output.parent.mkdir(parents=True, exist_ok=True)
         args.output.write_text(

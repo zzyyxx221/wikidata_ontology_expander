@@ -76,7 +76,7 @@ python -m wikidata_ontology_expander.cli expand \
 输出的 `changeset.json` 现在以 schema 提案为主：
 
 - `add_category_gate`: 建议把新的 gate type 纳入某个 category/domain
-- `add_module`: 建议在某个 domain 下增加新的模块容器
+- `add_module`: 建议在某个 domain 下增加新的模块容器；不直接回写字段
 - `add_concept`: 建议新增概念或类型节点
 - `add_property_type`: 建议新增属性槽位
 - `add_relation_type`: 建议新增关系类型

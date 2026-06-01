@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import re
 from collections import Counter, defaultdict
 from dataclasses import dataclass, field as dataclass_field
 from pathlib import Path
@@ -19,6 +20,7 @@ from .models import (
     Change,
     ChangeSet,
     Evidence,
+    EntityTypeRule,
     ExpansionConfig,
     ModelReviewConfig,
     ModuleProfile,
@@ -28,7 +30,8 @@ from .models import (
     WikidataEntity,
 )
 from .schema_parser import load_schema_document
-from .scoring import GatePolicy
+from .scoring import GatePolicy, ScoreResult
+from .taxonomy import TaxonomyMatch, TaxonomyReference
 from .wikidata import WikidataClient
 
 
@@ -118,12 +121,14 @@ class ExpansionEngine:
         client: WikidataClient,
         config: ExpansionConfig,
         continue_on_error: bool = False,
+        taxonomy_reference: TaxonomyReference | None = None,
     ):
         self.client = client
         self.config = config
         self.gate = GatePolicy(config.modules)
         self.continue_on_error = continue_on_error
         self.reviewer = build_reviewer(config.model_review)
+        self.taxonomy_reference = taxonomy_reference
 
     def expand(self, schema_path: Path, seeds: list[SeedEntity]) -> ChangeSet:
         schema_doc = load_schema_document(schema_path)
@@ -208,6 +213,8 @@ class ExpansionEngine:
                 property_map=self.config.property_map,
                 include_retrieval=include_retrieval,
             )
+            taxonomy_match = self._taxonomy_match(candidate)
+            scored = self._apply_taxonomy_context(scored, taxonomy_match)
             if scored.category:
                 category_counts[scored.category] += 1
             else:
@@ -217,18 +224,21 @@ class ExpansionEngine:
             else:
                 module_free_candidates += 1
             if not scored.category:
-                self._collect_category_gate_proposals(
-                    candidate=candidate,
-                    schema_doc=schema_doc,
-                    gate_buckets=gate_buckets,
-                )
+                if self._action_allowed("add_category_gate"):
+                    self._collect_category_gate_proposals(
+                        candidate=candidate,
+                        schema_doc=schema_doc,
+                        gate_buckets=gate_buckets,
+                    )
                 continue
             if scored.score < self.config.min_review_score:
                 continue
+            if not self._taxonomy_context_allows_schema_proposals(scored.category, taxonomy_match):
+                continue
 
             domain = scored.category
-            entity_type = seed.entity_type or _entity_type_for_candidate(scored.category, candidate, schema_doc, self.config)
-            if not scored.module:
+            entity_type = seed.entity_type or self._taxonomy_entity_type(taxonomy_match) or _entity_type_for_candidate(scored.category, candidate, schema_doc, self.config)
+            if not scored.module and self._action_allowed("add_module"):
                 self._collect_module_proposals(
                     candidate=candidate,
                     domain=domain,
@@ -239,7 +249,8 @@ class ExpansionEngine:
                     module_buckets=module_buckets,
                 )
             concept_key = ("add_concept", domain, entity_type, candidate.label.lower())
-            if _should_propose_concept(candidate, seed, schema_known_terms, allow_without_seed=seeds is None):
+            allow_concept = self._action_allowed("add_concept") and taxonomy_match is None
+            if allow_concept and _should_propose_concept(candidate, seed, schema_known_terms, allow_without_seed=seeds is None):
                 bucket = concept_buckets.setdefault(
                     concept_key,
                     ProposalBucket(
@@ -272,6 +283,8 @@ class ExpansionEngine:
                     and suggested_field not in schema_relation_fields_by_entity.get(entity_type, set())
                 ):
                     action = "add_relation_type" if target_type == "entity" else "add_property_type"
+                    if not self._action_allowed(action):
+                        continue
                     bucket_map = relation_buckets if action == "add_relation_type" else property_buckets
                     key = (action, domain, entity_type, suggested_field)
                     bucket = bucket_map.setdefault(
@@ -349,6 +362,63 @@ class ExpansionEngine:
             module_free_candidates,
         )
         return changeset
+
+
+    def _action_allowed(self, action: str) -> bool:
+        if action in self.config.restricted_schema_actions:
+            return False
+        if self.config.allowed_schema_actions and action not in self.config.allowed_schema_actions:
+            return False
+        if self.config.freeze_top_level_schema and action == "add_concept":
+            return False
+        return True
+
+    def _has_taxonomy_match(self, candidate: WikidataEntity) -> bool:
+        return self.taxonomy_reference is not None and self.taxonomy_reference.best_match(candidate) is not None
+
+    def _taxonomy_match(self, candidate: WikidataEntity) -> TaxonomyMatch | None:
+        if self.taxonomy_reference is None:
+            return None
+        return self.taxonomy_reference.best_match(candidate)
+
+    def _taxonomy_entity_type(self, match: TaxonomyMatch | None) -> str | None:
+        return match.node.entity_type if match else None
+
+    def _apply_taxonomy_context(self, scored: ScoreResult, match: TaxonomyMatch | None) -> ScoreResult:
+        if match is None:
+            return scored
+        category = scored.category or match.node.domain
+        category_score = scored.category_score
+        module_score = scored.module_score
+        total_score = scored.score
+        evidence = scored.evidence
+        if scored.category is None or scored.category == match.node.domain:
+            category_score = min(category_score + match.score, 1.0)
+            total_score = min(total_score + match.score, 1.0)
+            evidence = (*evidence, match.evidence)
+        return ScoreResult(
+            category=category,
+            score=total_score,
+            module=scored.module,
+            category_score=category_score,
+            module_score=module_score,
+            evidence=evidence,
+        )
+
+    def _taxonomy_context_allows_schema_proposals(
+        self,
+        category: str | None,
+        match: TaxonomyMatch | None,
+    ) -> bool:
+        if not self.config.require_taxonomy_context and not self.config.prefer_leaf_taxonomy_evidence:
+            return True
+        if category not in self.config.taxonomy_context_domains:
+            return True
+        if match is None:
+            return not self.config.require_taxonomy_context
+        if self.config.prefer_leaf_taxonomy_evidence and not match.node.is_leaf:
+            return False
+        return True
 
     def _collect_category_gate_proposals(
         self,
@@ -486,6 +556,7 @@ def load_seeds(path: Path) -> list[SeedEntity]:
 
 def load_config(path: Path, schema_path: Path | None = None) -> ExpansionConfig:
     data = json.loads(path.read_text(encoding="utf-8"))
+    proposal_policy = data.get("proposal_policy", {})
     schema_modules: dict[str, tuple[str, ...]] = {}
     if schema_path is not None:
         schema_doc = load_schema_document(schema_path)
@@ -501,6 +572,13 @@ def load_config(path: Path, schema_path: Path | None = None) -> ExpansionConfig:
             category_gate_labels=tuple(item.get("category_gate_labels", [])),
             indicator_terms=tuple(item.get("indicator_terms", [])),
             relation_properties=dict(item.get("relation_properties", {})),
+            entity_type_rules=tuple(
+                EntityTypeRule(
+                    entity_type=rule["entity_type"],
+                    keywords=tuple(rule.get("keywords", ())),
+                )
+                for rule in item.get("entity_type_rules", ())
+            ),
         )
         for item in data.get("modules", [])
     )
@@ -522,6 +600,24 @@ def load_config(path: Path, schema_path: Path | None = None) -> ExpansionConfig:
         min_accept_score=float(data.get("min_accept_score", 0.72)),
         min_review_score=float(data.get("min_review_score", 0.45)),
         proposal_min_support=int(data.get("proposal_min_support", 1)),
+        freeze_top_level_schema=bool(
+            data.get("freeze_top_level_schema", proposal_policy.get("freeze_top_level_schema", False))
+        ),
+        allowed_schema_actions=tuple(
+            data.get("allowed_schema_actions", proposal_policy.get("allowed_schema_actions", ()))
+        ),
+        restricted_schema_actions=tuple(
+            data.get("restricted_schema_actions", proposal_policy.get("restricted_schema_actions", ()))
+        ),
+        require_taxonomy_context=bool(
+            data.get("require_taxonomy_context", proposal_policy.get("require_taxonomy_context", False))
+        ),
+        taxonomy_context_domains=tuple(
+            data.get("taxonomy_context_domains", proposal_policy.get("taxonomy_context_domains", ("industry", "product")))
+        ),
+        prefer_leaf_taxonomy_evidence=bool(
+            data.get("prefer_leaf_taxonomy_evidence", proposal_policy.get("prefer_leaf_taxonomy_evidence", False))
+        ),
         modules=modules,
         property_map=dict(data.get("property_map", {})),
         model_review=model_review,
@@ -562,13 +658,17 @@ def _entity_type_for_candidate(
     schema_doc: SchemaDocument,
     config: ExpansionConfig,
 ) -> str:
-    inferred = _infer_entity_type_from_candidate(category, candidate)
+    inferred = _infer_entity_type_from_candidate(category, candidate, config)
     if inferred and inferred in schema_doc.entities:
         return inferred
     return _entity_type_for_category(category, schema_doc, config)
 
 
-def _infer_entity_type_from_candidate(category: str | None, candidate: WikidataEntity) -> str | None:
+def _infer_entity_type_from_candidate(
+    category: str | None,
+    candidate: WikidataEntity,
+    config: ExpansionConfig,
+) -> str | None:
     haystack = " ".join(
         (
             candidate.label,
@@ -577,6 +677,12 @@ def _infer_entity_type_from_candidate(category: str | None, candidate: WikidataE
             " ".join(statement.value_label for statement in candidate.statements),
         )
     ).lower()
+    for module in config.modules:
+        if module.name != category:
+            continue
+        for rule in module.entity_type_rules:
+            if any(_keyword_matches(haystack, keyword) for keyword in rule.keywords):
+                return rule.entity_type
     if category == "industry":
         if "economic sector" in haystack or "sector" in haystack:
             return "EconomicSector"
@@ -586,7 +692,7 @@ def _infer_entity_type_from_candidate(category: str | None, candidate: WikidataE
     if category == "product":
         if "model" in haystack or any(token in candidate.label for token in ("H100", "A100")):
             return "ProductModel"
-        if "term" in haystack:
+        if _contains_word(haystack, "term"):
             return "ProductTerm"
         return "Product"
     if category == "technology":
@@ -629,6 +735,19 @@ def _schema_fields_by_entity(schema_doc: SchemaDocument) -> dict[str, set[str]]:
     for entity in schema_doc.entities.values():
         mapping[entity.name].update(field.name for field in entity.fields if field.section == "property")
     return mapping
+
+
+def _contains_word(text: str, word: str) -> bool:
+    return re.search(rf"(?<![a-z0-9]){re.escape(word.lower())}(?![a-z0-9])", text) is not None
+
+
+def _keyword_matches(text: str, keyword: str) -> bool:
+    normalized = keyword.strip().lower()
+    if not normalized:
+        return False
+    if re.fullmatch(r"[a-z0-9]+", normalized):
+        return _contains_word(text, normalized)
+    return normalized in text
 
 
 def _schema_relation_fields_by_entity(schema_doc: SchemaDocument) -> dict[str, set[str]]:

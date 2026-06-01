@@ -51,7 +51,7 @@
           <div class="filters">
             <label>
               搜索
-              <input id="searchInput" type="search" placeholder="实体、字段、QID" />
+              <input id="searchInput" type="search" placeholder="领域、实体、字段、来源ID" />
             </label>
             <label>
               动作
@@ -96,6 +96,10 @@
 
             <div class="detail-grid">
               <label>
+                领域
+                <input id="domainInput" type="text" />
+              </label>
+              <label>
                 实体类型
                 <input id="entityTypeInput" type="text" />
               </label>
@@ -111,12 +115,30 @@
                 父节点
                 <input id="parentInput" type="text" />
               </label>
+              <label>
+                目标类型
+                <input id="targetTypeInput" type="text" />
+              </label>
+              <label>
+                支持数
+                <input id="supportInput" type="number" min="0" />
+              </label>
             </div>
 
             <label class="value-editor">
               建议值
               <textarea id="valueInput" rows="5"></textarea>
             </label>
+
+            <label class="value-editor">
+              来源实体
+              <textarea id="sourceIdsInput" rows="3"></textarea>
+            </label>
+
+            <section class="evidence-section">
+              <h3>示例</h3>
+              <div id="exampleList" class="evidence-list"></div>
+            </section>
 
             <section class="evidence-section">
               <h3>证据</h3>
