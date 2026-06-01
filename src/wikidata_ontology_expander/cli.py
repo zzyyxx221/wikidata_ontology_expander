@@ -123,6 +123,7 @@ def main() -> None:
             config=config,
             continue_on_error=args.continue_on_error,
             taxonomy_reference=taxonomy_reference,
+            incremental_output_path=args.output,
         )
         changeset = engine.expand(args.schema, seeds)
         args.output.parent.mkdir(parents=True, exist_ok=True)
@@ -147,7 +148,12 @@ def main() -> None:
         config = load_config(args.config, args.schema)
         client = FixtureWikidataClient(args.offline_fixture)
         taxonomy_reference = TaxonomyReference.load(args.taxonomy_excel) if args.taxonomy_excel else None
-        engine = ExpansionEngine(client=client, config=config, taxonomy_reference=taxonomy_reference)
+        engine = ExpansionEngine(
+            client=client,
+            config=config,
+            taxonomy_reference=taxonomy_reference,
+            incremental_output_path=args.output,
+        )
         changeset = engine.expand_corpus(args.schema, client.all_entities())
         args.output.parent.mkdir(parents=True, exist_ok=True)
         args.output.write_text(

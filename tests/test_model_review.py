@@ -204,6 +204,27 @@ Here is the review:
         self.assertFalse(decision.accepted)
         self.assertEqual(decision.confidence, 0.4)
 
+    def test_review_metadata_omits_transport_details(self):
+        decision = _parse_review_decision(
+            json.dumps(
+                {
+                    "accepted": True,
+                    "confidence": 0.8,
+                    "rationale": "schema-level field",
+                    "normalized_label": "Product",
+                    "normalized_target_type": "text",
+                    "normalized_value": "energy density",
+                }
+            ),
+            provider="litellm",
+            model="DeepSeek-V4-Flash",
+            endpoint="http://10.130.138.46:8010/chat/completions",
+        )
+        metadata = decision.to_metadata()
+        self.assertNotIn("provider", metadata)
+        self.assertNotIn("endpoint", metadata)
+        self.assertEqual(metadata["model"], "DeepSeek-V4-Flash")
+
     def test_review_prompt_strictly_requires_json_only_output(self):
         prompt = _build_review_prompt(self._proposal())
         self.assertIn("OUTPUT CONTRACT - FOLLOW EXACTLY", prompt)

@@ -105,9 +105,9 @@ Service(Service): EntityType
 
         fields = {change.field for change in changeset.changes}
         self.assertGreaterEqual(len(changeset.changes), 40)
-        self.assertEqual(changeset.report.category_counts["product"], 9)
+        self.assertEqual(changeset.report.category_counts["product"], 15)
         self.assertEqual(changeset.report.category_counts["industry"], 1)
-        self.assertEqual(changeset.report.category_counts["service"], 2)
+        self.assertEqual(changeset.report.category_counts["service"], 4)
         self.assertTrue(
             {
                 "energyDensity",

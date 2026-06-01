@@ -81,6 +81,7 @@ class ProposalBucket:
     examples: list[str] = dataclass_field(default_factory=list)
     evidence: list[Evidence] = dataclass_field(default_factory=list)
     source_entity_ids: list[str] = dataclass_field(default_factory=list)
+    classifications: list[dict] = dataclass_field(default_factory=list)
 
     def add_candidate(
         self,
@@ -88,6 +89,7 @@ class ProposalBucket:
         confidence: float,
         examples: list[str],
         evidence: tuple[Evidence, ...],
+        classification: dict | None = None,
     ) -> None:
         self.support_keys.add(_candidate_key(candidate))
         self.confidence_sum += confidence
@@ -99,6 +101,8 @@ class ProposalBucket:
         for item in evidence:
             if item not in self.evidence:
                 self.evidence.append(item)
+        if classification and classification not in self.classifications:
+            self.classifications.append(classification)
 
     @property
     def support(self) -> int:
@@ -122,6 +126,7 @@ class ExpansionEngine:
         config: ExpansionConfig,
         continue_on_error: bool = False,
         taxonomy_reference: TaxonomyReference | None = None,
+        incremental_output_path: Path | None = None,
     ):
         self.client = client
         self.config = config
@@ -129,6 +134,7 @@ class ExpansionEngine:
         self.continue_on_error = continue_on_error
         self.reviewer = build_reviewer(config.model_review)
         self.taxonomy_reference = taxonomy_reference
+        self.incremental_output_path = incremental_output_path
 
     def expand(self, schema_path: Path, seeds: list[SeedEntity]) -> ChangeSet:
         schema_doc = load_schema_document(schema_path)
@@ -187,6 +193,7 @@ class ExpansionEngine:
         schema_known_terms = schema_entity_labels | schema_entity_names
         schema_fields_by_entity = _schema_fields_by_entity(schema_doc)
         schema_relation_fields_by_entity = _schema_relation_fields_by_entity(schema_doc)
+        existing_schema_slots = _all_schema_slot_names(schema_doc)
         relation_modules_by_domain = _relation_modules_by_domain(schema_doc)
         relation_lookup = _build_relation_lookup(self.config.modules)
 
@@ -246,6 +253,7 @@ class ExpansionEngine:
                     scored=scored,
                     schema_fields_by_entity=schema_fields_by_entity,
                     schema_relation_fields_by_entity=schema_relation_fields_by_entity,
+                    existing_schema_slots=existing_schema_slots,
                     module_buckets=module_buckets,
                 )
             concept_key = ("add_concept", domain, entity_type, candidate.label.lower())
@@ -267,6 +275,7 @@ class ExpansionEngine:
                     scored.score,
                     examples=[_candidate_example(candidate)],
                     evidence=scored.evidence,
+                    classification=_classification_metadata(candidate, scored),
                 )
 
             for statement in candidate.statements:
@@ -276,6 +285,8 @@ class ExpansionEngine:
                 if not suggested_field:
                     continue
                 if suggested_field in INSTANCE_LEVEL_FIELDS:
+                    continue
+                if suggested_field in existing_schema_slots:
                     continue
 
                 if (
@@ -314,7 +325,13 @@ class ExpansionEngine:
                             weight=0.18,
                         ),
                     )
-                    bucket.add_candidate(candidate, scored.score, [example], evidence)
+                    bucket.add_candidate(
+                        candidate,
+                        scored.score,
+                        [example],
+                        evidence,
+                        classification=_classification_metadata(candidate, scored),
+                    )
 
         all_buckets = (
             list(gate_buckets.values())
@@ -332,7 +349,7 @@ class ExpansionEngine:
                 continue
             confidence = round(max(proposal.confidence, reviewed.confidence), 4)
             review_required = confidence < self.config.min_accept_score
-            changeset.add(
+            added = changeset.add(
                 Change(
                     action=proposal.action,
                     entity_type=proposal.entity_type,
@@ -350,8 +367,12 @@ class ExpansionEngine:
                     evidence=proposal.evidence,
                     source_entity_ids=proposal.source_entity_ids,
                     review_required=review_required,
+                    model_review=reviewed.to_metadata(),
+                    classification=proposal.classification,
                 )
             )
+            if added:
+                self._write_incremental_changeset(changeset)
 
         changeset.report = _build_refinement_report(
             schema_doc.modules,
@@ -361,6 +382,7 @@ class ExpansionEngine:
             unclassified_candidates,
             module_free_candidates,
         )
+        self._write_incremental_changeset(changeset)
         return changeset
 
 
@@ -455,6 +477,14 @@ class ExpansionEngine:
                     Evidence("unclassified", f"candidate could not be routed into any existing category", 0.2),
                     Evidence("gate_statement", f"{statement.property_id} / {statement.property_label}", 0.35),
                 ),
+                classification={
+                    "source_id": candidate.source_id,
+                    "label": candidate.label,
+                    "category": None,
+                    "module": None,
+                    "score": 0.55,
+                    "reason": "unclassified category gate proposal",
+                },
             )
 
     def _collect_module_proposals(
@@ -465,6 +495,7 @@ class ExpansionEngine:
         scored,
         schema_fields_by_entity: dict[str, set[str]],
         schema_relation_fields_by_entity: dict[str, set[str]],
+        existing_schema_slots: set[str],
         module_buckets: dict[tuple, ProposalBucket],
     ) -> None:
         for statement in candidate.statements:
@@ -472,6 +503,8 @@ class ExpansionEngine:
                 continue
             suggested_field, target_type = _infer_schema_slot(statement, domain, self.config)
             if not suggested_field or suggested_field in INSTANCE_LEVEL_FIELDS:
+                continue
+            if suggested_field in existing_schema_slots:
                 continue
             if (
                 suggested_field in schema_fields_by_entity.get(entity_type, set())
@@ -503,6 +536,7 @@ class ExpansionEngine:
                     Evidence("module_gap", "candidate matched a category but no existing module", 0.18),
                     Evidence("statement", f"{statement.property_id} / {statement.property_label}", 0.18),
                 ),
+                classification=_classification_metadata(candidate, scored),
             )
 
     def _proposal_from_bucket(self, bucket: ProposalBucket) -> Change:
@@ -522,12 +556,24 @@ class ExpansionEngine:
             evidence=tuple(bucket.evidence),
             source_entity_ids=bucket.unique_source_entity_ids,
             review_required=bucket.confidence < self.config.min_accept_score,
+            classification={
+                "candidates": bucket.classifications,
+            },
         )
 
     def _handle_request_error(self, context: str, exc: requests.RequestException) -> None:
         if not self.continue_on_error:
             raise exc
         print(f"[warn] skipped Wikidata {context}: {exc}")
+
+    def _write_incremental_changeset(self, changeset: ChangeSet) -> None:
+        if self.incremental_output_path is None:
+            return
+        self.incremental_output_path.parent.mkdir(parents=True, exist_ok=True)
+        self.incremental_output_path.write_text(
+            json.dumps(changeset.to_dict(), ensure_ascii=False, indent=2),
+            encoding="utf-8",
+        )
 
     def _properties_to_fetch(self) -> tuple[str, ...]:
         pids = set(self.config.property_map.values())
@@ -755,6 +801,29 @@ def _schema_relation_fields_by_entity(schema_doc: SchemaDocument) -> dict[str, s
     for entity in schema_doc.entities.values():
         mapping[entity.name].update(field.name for field in entity.fields if field.section == "relation")
     return mapping
+
+
+def _all_schema_slot_names(schema_doc: SchemaDocument) -> set[str]:
+    names: set[str] = set()
+    for entity in schema_doc.entities.values():
+        names.update(field.name for field in entity.fields)
+    for module in schema_doc.modules:
+        names.update(module.property_fields)
+        names.update(module.relation_fields)
+    return names
+
+
+def _classification_metadata(candidate: WikidataEntity, scored: ScoreResult) -> dict:
+    return {
+        "source_id": candidate.source_id,
+        "label": candidate.label,
+        "category": scored.category,
+        "module": scored.module,
+        "score": round(scored.score, 4),
+        "category_score": round(scored.category_score, 4),
+        "module_score": round(scored.module_score, 4),
+        "evidence": [e.__dict__ for e in scored.evidence],
+    }
 
 
 def _relation_modules_by_domain(schema_doc: SchemaDocument) -> dict[str, dict[str, str]]:

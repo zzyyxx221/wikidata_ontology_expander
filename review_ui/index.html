@@ -145,6 +145,51 @@
               <textarea id="sourceIdsInput" rows="3"></textarea>
             </label>
 
+            <section class="model-review-section">
+              <div class="section-title-row">
+                <div>
+                  <span class="eyebrow">Model Review</span>
+                  <h3>模型审查结果</h3>
+                </div>
+                <span id="modelReviewStatus" class="status pending">未启用</span>
+              </div>
+              <div class="review-score-grid">
+                <div>
+                  <small>模型</small>
+                  <strong id="modelReviewModel">-</strong>
+                </div>
+                <div>
+                  <small>置信度</small>
+                  <strong id="modelReviewConfidence">-</strong>
+                </div>
+                <div>
+                  <small>规范标签</small>
+                  <strong id="modelReviewLabel">-</strong>
+                </div>
+                <div>
+                  <small>规范目标类型</small>
+                  <strong id="modelReviewTargetType">-</strong>
+                </div>
+              </div>
+              <div class="review-rationale">
+                <small>审查理由</small>
+                <p id="modelReviewRationale">暂无模型审查信息。</p>
+              </div>
+              <details id="modelReviewDetails" class="review-raw">
+                <summary>查看原始模型输出与解析结果</summary>
+                <div class="raw-grid">
+                  <label>
+                    原始输出
+                    <textarea id="modelReviewRaw" rows="5" readonly></textarea>
+                  </label>
+                  <label>
+                    解析结果
+                    <textarea id="modelReviewParsed" rows="5" readonly></textarea>
+                  </label>
+                </div>
+              </details>
+            </section>
+
             <section class="evidence-section">
               <h3>示例</h3>
               <div id="exampleList" class="evidence-list"></div>

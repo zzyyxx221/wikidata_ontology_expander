@@ -1,5 +1,6 @@
 import tempfile
 import unittest
+import json
 from pathlib import Path
 
 from wikidata_ontology_expander.engine import ExpansionEngine, load_config
@@ -141,6 +142,55 @@ Product(Product): EntityType
             self.assertTrue(slot_changes)
             self.assertEqual(slot_changes[0].field, "rawMaterial")
             self.assertEqual(changes.report.category_counts["product"], 1)
+
+    def test_expand_corpus_writes_incremental_json_output(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            schema_path = root / "seed.schema"
+            output_path = root / "changeset.json"
+            schema_path.write_text(
+                """
+# 产品域
+
+Product(Product): EntityType
+  properties:
+    #modules: common_properties
+    name(Name): Text
+""",
+                encoding="utf-8",
+            )
+            config = ExpansionConfig(
+                min_accept_score=0.5,
+                min_review_score=0.2,
+                modules=(
+                    ModuleProfile(
+                        name="product",
+                        entity_types=("Product",),
+                        gate_properties=("P31",),
+                        indicator_terms=("battery", "product"),
+                    ),
+                ),
+            )
+            engine = ExpansionEngine(FakeClient(), config, incremental_output_path=output_path)
+            changes = engine.expand_corpus(
+                schema_path,
+                [
+                    WikidataEntity(
+                        source_id="Q999",
+                        label="Solid-state battery",
+                        description="battery product",
+                        statements=(
+                            WikidataStatement("P31", "instance of", "Q28877", "battery"),
+                            WikidataStatement("P9001", "nominal voltage", None, "3.7 V"),
+                        ),
+                    )
+                ],
+            )
+
+            self.assertTrue(output_path.exists())
+            payload = json.loads(output_path.read_text(encoding="utf-8"))
+            self.assertEqual(len(payload["changes"]), len(changes.changes))
+            self.assertIn("refinement_report", payload)
 
     def test_new_relation_type_binds_to_scored_module_when_schema_has_no_specific_field_module(self):
         with tempfile.TemporaryDirectory() as tmp:

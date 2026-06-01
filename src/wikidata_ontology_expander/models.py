@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass, field
+from dataclasses import field as dataclass_field
 from typing import Any
 
 
@@ -183,6 +184,8 @@ class Change:
     evidence: tuple[Evidence, ...] = ()
     source_entity_ids: tuple[str, ...] = ()
     review_required: bool = False
+    model_review: dict[str, Any] = dataclass_field(default_factory=dict)
+    classification: dict[str, Any] = dataclass_field(default_factory=dict)
 
 
 @dataclass(frozen=True)
@@ -202,7 +205,7 @@ class ChangeSet:
     changes: list[Change] = field(default_factory=list)
     report: RefinementReport | None = None
 
-    def add(self, change: Change) -> None:
+    def add(self, change: Change) -> bool:
         key = (
             change.action,
             change.entity_type,
@@ -228,6 +231,8 @@ class ChangeSet:
         }
         if key not in existing:
             self.changes.append(change)
+            return True
+        return False
 
     def to_dict(self) -> dict[str, Any]:
         data: dict[str, Any] = {"changes": [asdict(change) for change in self.changes]}

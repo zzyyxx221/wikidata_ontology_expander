@@ -23,6 +23,26 @@ class ReviewDecision:
     normalized_label: str | None = None
     normalized_target_type: str | None = None
     normalized_value: str | None = None
+    provider: str = "none"
+    model: str | None = None
+    endpoint: str | None = None
+    raw_text: str | None = None
+    parsed: dict[str, Any] | None = None
+    error: str | None = None
+
+    def to_metadata(self) -> dict[str, Any]:
+        return {
+            "model": self.model,
+            "accepted": self.accepted,
+            "confidence": self.confidence,
+            "rationale": self.rationale,
+            "normalized_label": self.normalized_label,
+            "normalized_target_type": self.normalized_target_type,
+            "normalized_value": self.normalized_value,
+            "raw_text": self.raw_text,
+            "parsed": self.parsed,
+            "error": self.error,
+        }
 
 
 class SchemaProposalReviewer:
@@ -39,6 +59,7 @@ class NullSchemaProposalReviewer(SchemaProposalReviewer):
             normalized_label=proposal.label,
             normalized_target_type=proposal.target_type,
             normalized_value=proposal.value,
+            provider="disabled",
         )
 
 
@@ -95,7 +116,12 @@ class OpenAIResponsesReviewer(SchemaProposalReviewer):
             raise
         data = response.json()
         text = _extract_output_text(data)
-        return _parse_review_decision(text)
+        return _parse_review_decision(
+            text,
+            provider=self.config.provider,
+            model=self.config.model,
+            endpoint=url,
+        )
 
 
 class OpenAIChatCompletionsReviewer(SchemaProposalReviewer):
@@ -149,7 +175,12 @@ def _review_with_chat_completions(
     response = _post_json(url, api_key, payload)
     data = response.json()
     text = _extract_chat_message_text(data)
-    return _parse_review_decision(text)
+    return _parse_review_decision(
+        text,
+        provider=config.provider,
+        model=config.model,
+        endpoint=url,
+    )
 
 
 def _post_json(url: str, api_key: str, payload: dict[str, Any]):
@@ -207,14 +238,25 @@ def _extract_chat_message_text(payload: dict[str, Any]) -> str:
     raise ValueError("Chat Completions payload did not contain message content")
 
 
-def _parse_review_decision(text: str) -> ReviewDecision:
+def _parse_review_decision(
+    text: str,
+    provider: str = "unknown",
+    model: str | None = None,
+    endpoint: str | None = None,
+) -> ReviewDecision:
     try:
-        parsed = _find_review_decision_object(_loads_json_object(text))
+        root = _loads_json_object(text)
+        parsed = _find_review_decision_object(root)
     except ValueError as exc:
         return ReviewDecision(
             accepted=False,
             confidence=0.0,
             rationale=str(exc)[:500],
+            provider=provider,
+            model=model,
+            endpoint=endpoint,
+            raw_text=text[:2000],
+            error=str(exc),
         )
     missing = [key for key in ("accepted", "confidence", "rationale") if key not in parsed]
     if missing:
@@ -222,6 +264,12 @@ def _parse_review_decision(text: str) -> ReviewDecision:
             accepted=False,
             confidence=0.0,
             rationale=f"model review returned JSON missing required fields: {', '.join(missing)}",
+            provider=provider,
+            model=model,
+            endpoint=endpoint,
+            raw_text=text[:2000],
+            parsed=parsed,
+            error=f"missing required fields: {', '.join(missing)}",
         )
     return ReviewDecision(
         accepted=_parse_bool(parsed["accepted"]),
@@ -230,6 +278,11 @@ def _parse_review_decision(text: str) -> ReviewDecision:
         normalized_label=parsed.get("normalized_label"),
         normalized_target_type=parsed.get("normalized_target_type"),
         normalized_value=parsed.get("normalized_value"),
+        provider=provider,
+        model=model,
+        endpoint=endpoint,
+        raw_text=text[:2000],
+        parsed=parsed,
     )
 
 

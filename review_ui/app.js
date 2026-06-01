@@ -142,6 +142,15 @@ const els = {
   supportInput: document.querySelector("#supportInput"),
   valueInput: document.querySelector("#valueInput"),
   sourceIdsInput: document.querySelector("#sourceIdsInput"),
+  modelReviewStatus: document.querySelector("#modelReviewStatus"),
+  modelReviewModel: document.querySelector("#modelReviewModel"),
+  modelReviewConfidence: document.querySelector("#modelReviewConfidence"),
+  modelReviewLabel: document.querySelector("#modelReviewLabel"),
+  modelReviewTargetType: document.querySelector("#modelReviewTargetType"),
+  modelReviewRationale: document.querySelector("#modelReviewRationale"),
+  modelReviewDetails: document.querySelector("#modelReviewDetails"),
+  modelReviewRaw: document.querySelector("#modelReviewRaw"),
+  modelReviewParsed: document.querySelector("#modelReviewParsed"),
   exampleList: document.querySelector("#exampleList"),
   evidenceList: document.querySelector("#evidenceList"),
   notesInput: document.querySelector("#notesInput"),
@@ -292,8 +301,41 @@ function renderDetail() {
   els.sourceIdsInput.value = (change.source_entity_ids || []).join("\n");
   els.notesInput.value = change.reviewer_notes || "";
 
+  renderModelReview(change.model_review || null);
   renderExamples(change.examples || []);
   renderEvidence(change.evidence || []);
+}
+
+function renderModelReview(review) {
+  const hasReview = review && Object.keys(review).length;
+  if (!hasReview) {
+    els.modelReviewStatus.className = "status pending";
+    els.modelReviewStatus.textContent = "未启用";
+    els.modelReviewModel.textContent = "-";
+    els.modelReviewConfidence.textContent = "-";
+    els.modelReviewLabel.textContent = "-";
+    els.modelReviewTargetType.textContent = "-";
+    els.modelReviewRationale.textContent = "暂无模型审查信息。";
+    els.modelReviewRaw.value = "";
+    els.modelReviewParsed.value = "";
+    els.modelReviewDetails.open = false;
+    return;
+  }
+
+  const accepted = Boolean(review.accepted);
+  const hasError = Boolean(review.error);
+  els.modelReviewStatus.className = `status ${hasError ? "needs_review" : accepted ? "accepted" : "rejected"}`;
+  els.modelReviewStatus.textContent = hasError ? "解析异常" : accepted ? "模型接受" : "模型拒绝";
+  els.modelReviewModel.textContent = review.model || "-";
+  els.modelReviewConfidence.textContent = review.confidence === null || review.confidence === undefined
+    ? "-"
+    : formatConfidence(review.confidence);
+  els.modelReviewLabel.textContent = review.normalized_label || "-";
+  els.modelReviewTargetType.textContent = review.normalized_target_type || "-";
+  els.modelReviewRationale.textContent = review.rationale || review.error || "模型没有返回审查理由。";
+  els.modelReviewRaw.value = review.raw_text || "";
+  els.modelReviewParsed.value = review.parsed ? JSON.stringify(review.parsed, null, 2) : "";
+  els.modelReviewDetails.open = false;
 }
 
 function renderExamples(examples) {

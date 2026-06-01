@@ -586,7 +586,8 @@ textarea {
 .detail-grid label,
 .value-editor,
 .notes-editor,
-.evidence-section {
+.evidence-section,
+.model-review-section {
   background: rgba(255, 253, 247, 0.82);
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
@@ -594,10 +595,101 @@ textarea {
   box-shadow: 0 10px 28px rgba(32, 42, 35, 0.055);
 }
 
-.evidence-section h3 {
+.evidence-section h3,
+.model-review-section h3 {
   margin: 0 0 12px;
   font-size: 17px;
   letter-spacing: -0.02em;
+}
+
+.model-review-section {
+  display: grid;
+  gap: 14px;
+  background:
+    linear-gradient(135deg, rgba(217, 235, 228, 0.72), rgba(255, 253, 247, 0.88) 48%),
+    rgba(255, 253, 247, 0.82);
+}
+
+.section-title-row {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.section-title-row h3 {
+  margin-top: 6px;
+  margin-bottom: 0;
+}
+
+.review-score-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.review-score-grid div {
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid rgba(42, 51, 45, 0.09);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.58);
+}
+
+.review-score-grid small,
+.review-rationale small {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--subtle);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.review-score-grid strong {
+  display: block;
+  color: var(--accent-strong);
+  font-size: 15px;
+  overflow-wrap: anywhere;
+}
+
+.review-rationale {
+  padding: 14px;
+  border: 1px solid rgba(20, 90, 74, 0.16);
+  border-radius: 16px;
+  background: rgba(255, 253, 247, 0.72);
+}
+
+.review-rationale p {
+  margin: 0;
+  color: var(--text);
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+
+.review-raw {
+  border-top: 1px solid var(--line);
+  padding-top: 4px;
+}
+
+.review-raw summary {
+  cursor: pointer;
+  color: var(--accent-strong);
+  font-weight: 900;
+}
+
+.raw-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.raw-grid textarea {
+  font-family: "SFMono-Regular", "Cascadia Code", "Menlo", monospace;
+  font-size: 12px;
+  background: rgba(29, 41, 35, 0.045);
 }
 
 .evidence-list {
@@ -754,6 +846,8 @@ textarea {
     grid-template-columns: 1fr;
   }
 
+  .review-score-grid,
+  .raw-grid,
   .evidence-item {
     grid-template-columns: 1fr;
   }
