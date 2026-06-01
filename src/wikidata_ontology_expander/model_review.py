@@ -86,18 +86,51 @@ class OpenAIResponsesReviewer(SchemaProposalReviewer):
             "max_output_tokens": self.config.max_output_tokens,
             "temperature": self.config.temperature,
         }
-        response = requests.post(
-            url,
-            headers={
-                "Authorization": f"Bearer {self.api_key}",
-                "Content-Type": "application/json",
-            },
-            data=json.dumps(payload),
-            timeout=60,
-        )
-        response.raise_for_status()
+        response = _post_json(url, self.api_key, payload)
         data = response.json()
         text = _extract_output_text(data)
+        parsed: dict[str, Any] = json.loads(text)
+        return ReviewDecision(
+            accepted=bool(parsed["accepted"]),
+            confidence=float(parsed["confidence"]),
+            rationale=str(parsed["rationale"]),
+            normalized_label=parsed.get("normalized_label"),
+            normalized_target_type=parsed.get("normalized_target_type"),
+            normalized_value=parsed.get("normalized_value"),
+        )
+
+
+class OpenAIChatCompletionsReviewer(SchemaProposalReviewer):
+    """Reviewer for OpenAI-compatible local servers that expose chat/completions."""
+
+    def __init__(self, config: ModelReviewConfig):
+        if requests is None:
+            raise RuntimeError("requests is required to use model review")
+        api_key = os.environ.get(config.api_key_env)
+        if not api_key:
+            raise RuntimeError(f"missing API key environment variable: {config.api_key_env}")
+        self.config = config
+        self.api_key = api_key
+
+    def review(self, proposal: Change) -> ReviewDecision:
+        url = urljoin(self.config.api_base.rstrip("/") + "/", "chat/completions")
+        prompt = _build_review_prompt(proposal)
+        payload = {
+            "model": self.config.model,
+            "messages": [
+                {
+                    "role": "system",
+                    "content": "Return only one strict JSON object matching the requested schema.",
+                },
+                {"role": "user", "content": prompt},
+            ],
+            "response_format": {"type": "json_object"},
+            "max_tokens": self.config.max_output_tokens,
+            "temperature": self.config.temperature,
+        }
+        response = _post_json(url, self.api_key, payload)
+        data = response.json()
+        text = _extract_chat_message_text(data)
         parsed: dict[str, Any] = json.loads(text)
         return ReviewDecision(
             accepted=bool(parsed["accepted"]),
@@ -112,9 +145,29 @@ class OpenAIResponsesReviewer(SchemaProposalReviewer):
 def build_reviewer(config: ModelReviewConfig | None) -> SchemaProposalReviewer:
     if config is None or not config.enabled:
         return NullSchemaProposalReviewer()
-    if config.provider != "openai":
-        raise ValueError(f"unsupported model review provider: {config.provider}")
-    return OpenAIResponsesReviewer(config)
+    if config.provider in {"openai", "openai_responses"}:
+        return OpenAIResponsesReviewer(config)
+    if config.provider in {"openai_chat", "openai-compatible", "openai_compatible"}:
+        return OpenAIChatCompletionsReviewer(config)
+    raise ValueError(f"unsupported model review provider: {config.provider}")
+
+
+def _post_json(url: str, api_key: str, payload: dict[str, Any]):
+    response = requests.post(
+        url,
+        headers={
+            "Authorization": f"Bearer {api_key}",
+            "Content-Type": "application/json",
+        },
+        data=json.dumps(payload),
+        timeout=60,
+    )
+    try:
+        response.raise_for_status()
+    except requests.HTTPError as exc:
+        body = response.text[:1000] if response.text else "<empty response body>"
+        raise requests.HTTPError(f"{exc}; response body: {body}", response=response) from exc
+    return response
 
 
 def _extract_output_text(payload: dict[str, Any]) -> str:
@@ -126,6 +179,16 @@ def _extract_output_text(payload: dict[str, Any]) -> str:
             if text:
                 return str(text)
     raise ValueError("Responses API payload did not contain output text")
+
+
+def _extract_chat_message_text(payload: dict[str, Any]) -> str:
+    choices = payload.get("choices") or []
+    if choices:
+        message = choices[0].get("message") or {}
+        content = message.get("content")
+        if content:
+            return str(content)
+    raise ValueError("Chat Completions payload did not contain message content")
 
 
 def _build_review_prompt(proposal: Change) -> str:

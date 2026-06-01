@@ -1,0 +1,1227 @@
+{
+  "changes": [
+    {
+      "action": "add_concept",
+      "entity_type": "Industry",
+      "label": "semiconductor manufacturing industry",
+      "confidence": 0.96,
+      "domain": "industry",
+      "module": "classification_relations",
+      "parent": "manufacturing industry",
+      "field": null,
+      "value": null,
+      "target_type": null,
+      "support": 1,
+      "examples": [
+        "semiconductor manufacturing industry (Q900001)"
+      ],
+      "rationale": "model review disabled",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P279, P31",
+          "weight": 0.4
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: industry, manufacturing",
+          "weight": 0.16
+        },
+        {
+          "source": "category_gate_label",
+          "detail": "gate labels: industry, manufacturing industry",
+          "weight": 0.32
+        },
+        {
+          "source": "relation",
+          "detail": "relation fields: P279",
+          "weight": 0.08
+        }
+      ],
+      "source_entity_ids": [
+        "Q900001"
+      ],
+      "review_required": false
+    },
+    {
+      "action": "add_concept",
+      "entity_type": "IndustryGroup",
+      "label": "integrated circuit industry",
+      "confidence": 0.8,
+      "domain": "industry",
+      "module": "classification_relations",
+      "parent": "semiconductor manufacturing industry",
+      "field": null,
+      "value": null,
+      "target_type": null,
+      "support": 1,
+      "examples": [
+        "integrated circuit industry (Q900002)"
+      ],
+      "rationale": "model review disabled",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P279, P31",
+          "weight": 0.4
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: industry, manufacturing",
+          "weight": 0.16
+        },
+        {
+          "source": "category_gate_label",
+          "detail": "gate labels: industry",
+          "weight": 0.16
+        },
+        {
+          "source": "relation",
+          "detail": "relation fields: P279",
+          "weight": 0.08
+        }
+      ],
+      "source_entity_ids": [
+        "Q900002"
+      ],
+      "review_required": false
+    },
+    {
+      "action": "add_concept",
+      "entity_type": "Product",
+      "label": "solid-state battery",
+      "confidence": 0.96,
+      "domain": "product",
+      "module": "upstream_downstream_relations",
+      "parent": "battery",
+      "field": null,
+      "value": null,
+      "target_type": null,
+      "support": 1,
+      "examples": [
+        "solid-state battery (Q900003)"
+      ],
+      "rationale": "model review disabled",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P176, P186, P279, P31, P527",
+          "weight": 0.56
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: product",
+          "weight": 0.08
+        },
+        {
+          "source": "category_gate_label",
+          "detail": "gate labels: battery",
+          "weight": 0.16
+        },
+        {
+          "source": "relation",
+          "detail": "relation fields: P186, P527",
+          "weight": 0.16
+        }
+      ],
+      "source_entity_ids": [
+        "Q900003"
+      ],
+      "review_required": false
+    },
+    {
+      "action": "add_concept",
+      "entity_type": "ProductModel",
+      "label": "NVIDIA H100",
+      "confidence": 0.8,
+      "domain": "product",
+      "module": "hierarchy_relations",
+      "parent": "graphics processing unit",
+      "field": null,
+      "value": null,
+      "target_type": null,
+      "support": 1,
+      "examples": [
+        "NVIDIA H100 (Q900005)"
+      ],
+      "rationale": "model review disabled",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P176, P279, P31",
+          "weight": 0.56
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: product, model",
+          "weight": 0.16
+        },
+        {
+          "source": "relation",
+          "detail": "relation fields: P279",
+          "weight": 0.08
+        }
+      ],
+      "source_entity_ids": [
+        "Q900005"
+      ],
+      "review_required": false
+    },
+    {
+      "action": "add_concept",
+      "entity_type": "Technology",
+      "label": "extreme ultraviolet lithography",
+      "confidence": 0.99,
+      "domain": "technology",
+      "module": "classification_relations",
+      "parent": "photolithography",
+      "field": null,
+      "value": null,
+      "target_type": null,
+      "support": 1,
+      "examples": [
+        "extreme ultraviolet lithography (Q900009)"
+      ],
+      "rationale": "model review disabled",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P178, P279, P31",
+          "weight": 0.56
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: technology, process, lithography",
+          "weight": 0.24
+        },
+        {
+          "source": "category_gate_label",
+          "detail": "gate labels: manufacturing process",
+          "weight": 0.16
+        },
+        {
+          "source": "relation",
+          "detail": "relation fields: P452",
+          "weight": 0.08
+        }
+      ],
+      "source_entity_ids": [
+        "Q900009"
+      ],
+      "review_required": false
+    },
+    {
+      "action": "add_concept",
+      "entity_type": "Patent",
+      "label": "solid-state battery separator patent",
+      "confidence": 0.96,
+      "domain": "technology",
+      "module": "association_relations",
+      "parent": "patent",
+      "field": null,
+      "value": null,
+      "target_type": null,
+      "support": 1,
+      "examples": [
+        "solid-state battery separator patent (Q900010)"
+      ],
+      "rationale": "model review disabled",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P31, P577, P61",
+          "weight": 0.56
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: technology, patent",
+          "weight": 0.16
+        },
+        {
+          "source": "category_gate_label",
+          "detail": "gate labels: patent",
+          "weight": 0.16
+        },
+        {
+          "source": "relation",
+          "detail": "relation fields: P61",
+          "weight": 0.08
+        }
+      ],
+      "source_entity_ids": [
+        "Q900010"
+      ],
+      "review_required": false
+    },
+    {
+      "action": "add_concept",
+      "entity_type": "ResearchInstitute",
+      "label": "IMEC",
+      "confidence": 0.99,
+      "domain": "organization",
+      "module": "organization_properties",
+      "parent": "research institute",
+      "field": null,
+      "value": null,
+      "target_type": null,
+      "support": 1,
+      "examples": [
+        "IMEC (Q900011)"
+      ],
+      "rationale": "model review disabled",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P131, P31, P452, P856",
+          "weight": 0.56
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: organization, institute, research",
+          "weight": 0.24
+        },
+        {
+          "source": "category_gate_label",
+          "detail": "gate labels: research institute",
+          "weight": 0.16
+        },
+        {
+          "source": "property",
+          "detail": "property fields: P856",
+          "weight": 0.05
+        }
+      ],
+      "source_entity_ids": [
+        "Q900011"
+      ],
+      "review_required": false
+    },
+    {
+      "action": "add_concept",
+      "entity_type": "University",
+      "label": "Massachusetts Institute of Technology",
+      "confidence": 0.99,
+      "domain": "organization",
+      "module": "organization_properties",
+      "parent": "university",
+      "field": null,
+      "value": null,
+      "target_type": null,
+      "support": 1,
+      "examples": [
+        "Massachusetts Institute of Technology (Q900013)"
+      ],
+      "rationale": "model review disabled",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P131, P31, P856",
+          "weight": 0.56
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: organization, institute, university, research",
+          "weight": 0.25
+        },
+        {
+          "source": "category_gate_label",
+          "detail": "gate labels: university",
+          "weight": 0.16
+        },
+        {
+          "source": "property",
+          "detail": "property fields: P856",
+          "weight": 0.05
+        }
+      ],
+      "source_entity_ids": [
+        "Q900013"
+      ],
+      "review_required": false
+    },
+    {
+      "action": "add_concept",
+      "entity_type": "Policy",
+      "label": "European Chips Act",
+      "confidence": 0.99,
+      "domain": "policy",
+      "module": "applicability_relations",
+      "parent": "public policy",
+      "field": null,
+      "value": null,
+      "target_type": null,
+      "support": 1,
+      "examples": [
+        "European Chips Act (Q900017)"
+      ],
+      "rationale": "model review disabled",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P1001, P123, P31, P452, P577",
+          "weight": 0.56
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: policy, regulation",
+          "weight": 0.16
+        },
+        {
+          "source": "category_gate_label",
+          "detail": "gate labels: public policy",
+          "weight": 0.16
+        },
+        {
+          "source": "relation",
+          "detail": "relation fields: P1001, P452",
+          "weight": 0.16
+        }
+      ],
+      "source_entity_ids": [
+        "Q900017"
+      ],
+      "review_required": false
+    },
+    {
+      "action": "add_concept",
+      "entity_type": "EnterpriseEvent",
+      "label": "TSMC Arizona fab announcement",
+      "confidence": 0.99,
+      "domain": "event",
+      "module": "association_relations",
+      "parent": "event",
+      "field": null,
+      "value": null,
+      "target_type": null,
+      "support": 1,
+      "examples": [
+        "TSMC Arizona fab announcement (Q900018)"
+      ],
+      "rationale": "model review disabled",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P276, P31, P585, P710",
+          "weight": 0.56
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: event, investment, announcement",
+          "weight": 0.24
+        },
+        {
+          "source": "category_gate_label",
+          "detail": "gate labels: event",
+          "weight": 0.16
+        },
+        {
+          "source": "relation",
+          "detail": "relation fields: P276",
+          "weight": 0.08
+        }
+      ],
+      "source_entity_ids": [
+        "Q900018"
+      ],
+      "review_required": false
+    },
+    {
+      "action": "add_concept",
+      "entity_type": "Index",
+      "label": "semiconductor equipment spending index",
+      "confidence": 0.88,
+      "domain": "index",
+      "module": null,
+      "parent": "index",
+      "field": null,
+      "value": null,
+      "target_type": null,
+      "support": 1,
+      "examples": [
+        "semiconductor equipment spending index (Q900019)"
+      ],
+      "rationale": "model review disabled",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P279, P31",
+          "weight": 0.4
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: index, indicator",
+          "weight": 0.16
+        },
+        {
+          "source": "category_gate_label",
+          "detail": "gate labels: economic indicator, index",
+          "weight": 0.32
+        }
+      ],
+      "source_entity_ids": [
+        "Q900019"
+      ],
+      "review_required": false
+    },
+    {
+      "action": "add_concept",
+      "entity_type": "Document",
+      "label": "Semiconductor Industry Outlook 2024",
+      "confidence": 0.99,
+      "domain": "document",
+      "module": "document_properties",
+      "parent": "report",
+      "field": null,
+      "value": null,
+      "target_type": null,
+      "support": 1,
+      "examples": [
+        "Semiconductor Industry Outlook 2024 (Q900022)"
+      ],
+      "rationale": "model review disabled",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P123, P31, P50, P577, P921",
+          "weight": 0.56
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: document, report, publication",
+          "weight": 0.24
+        },
+        {
+          "source": "category_gate_label",
+          "detail": "gate labels: report",
+          "weight": 0.16
+        },
+        {
+          "source": "property",
+          "detail": "property fields: P577",
+          "weight": 0.05
+        }
+      ],
+      "source_entity_ids": [
+        "Q900022"
+      ],
+      "review_required": false
+    },
+    {
+      "action": "add_concept",
+      "entity_type": "Chunk",
+      "label": "outlook report chunk 1",
+      "confidence": 0.8,
+      "domain": "document",
+      "module": "source_relations",
+      "parent": "document fragment",
+      "field": null,
+      "value": null,
+      "target_type": null,
+      "support": 1,
+      "examples": [
+        "outlook report chunk 1 (Q900025)"
+      ],
+      "rationale": "model review disabled",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P248, P31",
+          "weight": 0.4
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: document, report, chunk",
+          "weight": 0.24
+        },
+        {
+          "source": "relation",
+          "detail": "relation fields: P248, P248",
+          "weight": 0.16
+        }
+      ],
+      "source_entity_ids": [
+        "Q900025"
+      ],
+      "review_required": false
+    },
+    {
+      "action": "add_property_type",
+      "entity_type": "Patent",
+      "label": "Patent",
+      "confidence": 0.96,
+      "domain": "technology",
+      "module": "association_relations",
+      "parent": null,
+      "field": "publishDate",
+      "value": "publication date",
+      "target_type": "date",
+      "support": 1,
+      "examples": [
+        "solid-state battery separator patent -> publishDate -> +2021-05-18T00:00:00Z"
+      ],
+      "rationale": "model review disabled",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P31, P577, P61",
+          "weight": 0.56
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: technology, patent",
+          "weight": 0.16
+        },
+        {
+          "source": "category_gate_label",
+          "detail": "gate labels: patent",
+          "weight": 0.16
+        },
+        {
+          "source": "relation",
+          "detail": "relation fields: P61",
+          "weight": 0.08
+        },
+        {
+          "source": "statement",
+          "detail": "P577 / publication date",
+          "weight": 0.18
+        }
+      ],
+      "source_entity_ids": [
+        "Q900010"
+      ],
+      "review_required": false
+    },
+    {
+      "action": "add_property_type",
+      "entity_type": "Policy",
+      "label": "Policy",
+      "confidence": 0.99,
+      "domain": "policy",
+      "module": "applicability_relations",
+      "parent": null,
+      "field": "publishDate",
+      "value": "publication date",
+      "target_type": "date",
+      "support": 1,
+      "examples": [
+        "European Chips Act -> publishDate -> +2023-09-21T00:00:00Z"
+      ],
+      "rationale": "model review disabled",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P1001, P123, P31, P452, P577",
+          "weight": 0.56
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: policy, regulation",
+          "weight": 0.16
+        },
+        {
+          "source": "category_gate_label",
+          "detail": "gate labels: public policy",
+          "weight": 0.16
+        },
+        {
+          "source": "relation",
+          "detail": "relation fields: P1001, P452",
+          "weight": 0.16
+        },
+        {
+          "source": "statement",
+          "detail": "P577 / publication date",
+          "weight": 0.18
+        }
+      ],
+      "source_entity_ids": [
+        "Q900017"
+      ],
+      "review_required": false
+    },
+    {
+      "action": "add_property_type",
+      "entity_type": "EnterpriseEvent",
+      "label": "EnterpriseEvent",
+      "confidence": 0.99,
+      "domain": "event",
+      "module": "association_relations",
+      "parent": null,
+      "field": "pointInTime",
+      "value": "point in time",
+      "target_type": "date",
+      "support": 1,
+      "examples": [
+        "TSMC Arizona fab announcement -> pointInTime -> +2020-05-15T00:00:00Z"
+      ],
+      "rationale": "model review disabled",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P276, P31, P585, P710",
+          "weight": 0.56
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: event, investment, announcement",
+          "weight": 0.24
+        },
+        {
+          "source": "category_gate_label",
+          "detail": "gate labels: event",
+          "weight": 0.16
+        },
+        {
+          "source": "relation",
+          "detail": "relation fields: P276",
+          "weight": 0.08
+        },
+        {
+          "source": "statement",
+          "detail": "P585 / point in time",
+          "weight": 0.18
+        }
+      ],
+      "source_entity_ids": [
+        "Q900018"
+      ],
+      "review_required": false
+    },
+    {
+      "action": "add_property_type",
+      "entity_type": "Document",
+      "label": "Document",
+      "confidence": 0.99,
+      "domain": "document",
+      "module": "document_properties",
+      "parent": null,
+      "field": "publishDate",
+      "value": "publication date",
+      "target_type": "date",
+      "support": 1,
+      "examples": [
+        "Semiconductor Industry Outlook 2024 -> publishDate -> +2024-01-10T00:00:00Z"
+      ],
+      "rationale": "model review disabled",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P123, P31, P50, P577, P921",
+          "weight": 0.56
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: document, report, publication",
+          "weight": 0.24
+        },
+        {
+          "source": "category_gate_label",
+          "detail": "gate labels: report",
+          "weight": 0.16
+        },
+        {
+          "source": "property",
+          "detail": "property fields: P577",
+          "weight": 0.05
+        },
+        {
+          "source": "statement",
+          "detail": "P577 / publication date",
+          "weight": 0.18
+        }
+      ],
+      "source_entity_ids": [
+        "Q900022"
+      ],
+      "review_required": false
+    },
+    {
+      "action": "add_relation_type",
+      "entity_type": "Product",
+      "label": "Product",
+      "confidence": 0.96,
+      "domain": "product",
+      "module": "production_relations",
+      "parent": null,
+      "field": "manufacturer",
+      "value": "manufacturer",
+      "target_type": "Enterprise",
+      "support": 1,
+      "examples": [
+        "solid-state battery -> manufacturer -> Toyota"
+      ],
+      "rationale": "model review disabled",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P176, P186, P279, P31, P527",
+          "weight": 0.56
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: product",
+          "weight": 0.08
+        },
+        {
+          "source": "category_gate_label",
+          "detail": "gate labels: battery",
+          "weight": 0.16
+        },
+        {
+          "source": "relation",
+          "detail": "relation fields: P186, P527",
+          "weight": 0.16
+        },
+        {
+          "source": "statement",
+          "detail": "P176 / manufacturer",
+          "weight": 0.18
+        }
+      ],
+      "source_entity_ids": [
+        "Q900003"
+      ],
+      "review_required": false
+    },
+    {
+      "action": "add_relation_type",
+      "entity_type": "Technology",
+      "label": "Technology",
+      "confidence": 0.99,
+      "domain": "technology",
+      "module": "technology",
+      "parent": null,
+      "field": "developer",
+      "value": "developer",
+      "target_type": "Enterprise",
+      "support": 1,
+      "examples": [
+        "extreme ultraviolet lithography -> developer -> ASML Holding"
+      ],
+      "rationale": "model review disabled",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P178, P279, P31",
+          "weight": 0.56
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: technology, process, lithography",
+          "weight": 0.24
+        },
+        {
+          "source": "category_gate_label",
+          "detail": "gate labels: manufacturing process",
+          "weight": 0.16
+        },
+        {
+          "source": "relation",
+          "detail": "relation fields: P452",
+          "weight": 0.08
+        },
+        {
+          "source": "statement",
+          "detail": "P178 / developer",
+          "weight": 0.18
+        }
+      ],
+      "source_entity_ids": [
+        "Q900009"
+      ],
+      "review_required": false
+    },
+    {
+      "action": "add_relation_type",
+      "entity_type": "Patent",
+      "label": "Patent",
+      "confidence": 0.96,
+      "domain": "technology",
+      "module": "technology",
+      "parent": null,
+      "field": "mainSubject",
+      "value": "main subject",
+      "target_type": "Product",
+      "support": 1,
+      "examples": [
+        "solid-state battery separator patent -> mainSubject -> solid-state battery"
+      ],
+      "rationale": "model review disabled",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P31, P577, P61",
+          "weight": 0.56
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: technology, patent",
+          "weight": 0.16
+        },
+        {
+          "source": "category_gate_label",
+          "detail": "gate labels: patent",
+          "weight": 0.16
+        },
+        {
+          "source": "relation",
+          "detail": "relation fields: P61",
+          "weight": 0.08
+        },
+        {
+          "source": "statement",
+          "detail": "P921 / main subject",
+          "weight": 0.18
+        }
+      ],
+      "source_entity_ids": [
+        "Q900010"
+      ],
+      "review_required": false
+    },
+    {
+      "action": "add_relation_type",
+      "entity_type": "ResearchInstitute",
+      "label": "ResearchInstitute",
+      "confidence": 0.99,
+      "domain": "organization",
+      "module": "organization",
+      "parent": null,
+      "field": "belongsToIndustry",
+      "value": "industry",
+      "target_type": "Industry",
+      "support": 1,
+      "examples": [
+        "IMEC -> belongsToIndustry -> semiconductor manufacturing industry"
+      ],
+      "rationale": "model review disabled",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P131, P31, P452, P856",
+          "weight": 0.56
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: organization, institute, research",
+          "weight": 0.24
+        },
+        {
+          "source": "category_gate_label",
+          "detail": "gate labels: research institute",
+          "weight": 0.16
+        },
+        {
+          "source": "property",
+          "detail": "property fields: P856",
+          "weight": 0.05
+        },
+        {
+          "source": "statement",
+          "detail": "P452 / industry",
+          "weight": 0.18
+        }
+      ],
+      "source_entity_ids": [
+        "Q900011"
+      ],
+      "review_required": false
+    },
+    {
+      "action": "add_relation_type",
+      "entity_type": "Person",
+      "label": "Person",
+      "confidence": 0.99,
+      "domain": "person",
+      "module": "person",
+      "parent": null,
+      "field": "occupation",
+      "value": "occupation",
+      "target_type": "Thing",
+      "support": 1,
+      "examples": [
+        "Morris Chang -> occupation -> engineer"
+      ],
+      "rationale": "model review disabled",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P106, P108, P27, P31, P69",
+          "weight": 0.56
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: person, engineer, executive",
+          "weight": 0.24
+        },
+        {
+          "source": "category_gate_label",
+          "detail": "gate labels: human",
+          "weight": 0.16
+        },
+        {
+          "source": "relation",
+          "detail": "relation fields: P108, P108, P27, P69",
+          "weight": 0.3
+        },
+        {
+          "source": "statement",
+          "detail": "P106 / occupation",
+          "weight": 0.18
+        }
+      ],
+      "source_entity_ids": [
+        "Q900014"
+      ],
+      "review_required": false
+    },
+    {
+      "action": "add_relation_type",
+      "entity_type": "EnterpriseEvent",
+      "label": "EnterpriseEvent",
+      "confidence": 0.99,
+      "domain": "event",
+      "module": "event",
+      "parent": null,
+      "field": "participant",
+      "value": "participant",
+      "target_type": "Enterprise",
+      "support": 1,
+      "examples": [
+        "TSMC Arizona fab announcement -> participant -> TSMC"
+      ],
+      "rationale": "model review disabled",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P276, P31, P585, P710",
+          "weight": 0.56
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: event, investment, announcement",
+          "weight": 0.24
+        },
+        {
+          "source": "category_gate_label",
+          "detail": "gate labels: event",
+          "weight": 0.16
+        },
+        {
+          "source": "relation",
+          "detail": "relation fields: P276",
+          "weight": 0.08
+        },
+        {
+          "source": "statement",
+          "detail": "P710 / participant",
+          "weight": 0.18
+        }
+      ],
+      "source_entity_ids": [
+        "Q900018"
+      ],
+      "review_required": false
+    },
+    {
+      "action": "add_relation_type",
+      "entity_type": "Document",
+      "label": "Document",
+      "confidence": 0.99,
+      "domain": "document",
+      "module": "document",
+      "parent": null,
+      "field": "publisher",
+      "value": "publisher",
+      "target_type": "Thing",
+      "support": 1,
+      "examples": [
+        "Semiconductor Industry Outlook 2024 -> publisher -> market research organization"
+      ],
+      "rationale": "model review disabled",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P123, P31, P50, P577, P921",
+          "weight": 0.56
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: document, report, publication",
+          "weight": 0.24
+        },
+        {
+          "source": "category_gate_label",
+          "detail": "gate labels: report",
+          "weight": 0.16
+        },
+        {
+          "source": "property",
+          "detail": "property fields: P577",
+          "weight": 0.05
+        },
+        {
+          "source": "statement",
+          "detail": "P123 / publisher",
+          "weight": 0.18
+        }
+      ],
+      "source_entity_ids": [
+        "Q900022"
+      ],
+      "review_required": false
+    },
+    {
+      "action": "add_relation_type",
+      "entity_type": "Document",
+      "label": "Document",
+      "confidence": 0.99,
+      "domain": "document",
+      "module": "document",
+      "parent": null,
+      "field": "mainSubject",
+      "value": "main subject",
+      "target_type": "Industry",
+      "support": 1,
+      "examples": [
+        "Semiconductor Industry Outlook 2024 -> mainSubject -> semiconductor manufacturing industry"
+      ],
+      "rationale": "model review disabled",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P123, P31, P50, P577, P921",
+          "weight": 0.56
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: document, report, publication",
+          "weight": 0.24
+        },
+        {
+          "source": "category_gate_label",
+          "detail": "gate labels: report",
+          "weight": 0.16
+        },
+        {
+          "source": "property",
+          "detail": "property fields: P577",
+          "weight": 0.05
+        },
+        {
+          "source": "statement",
+          "detail": "P921 / main subject",
+          "weight": 0.18
+        }
+      ],
+      "source_entity_ids": [
+        "Q900022"
+      ],
+      "review_required": false
+    },
+    {
+      "action": "add_relation_type",
+      "entity_type": "Chunk",
+      "label": "Chunk",
+      "confidence": 0.8,
+      "domain": "document",
+      "module": "source_relations",
+      "parent": null,
+      "field": "source",
+      "value": "stated in",
+      "target_type": "Industry",
+      "support": 1,
+      "examples": [
+        "outlook report chunk 1 -> source -> Semiconductor Industry Outlook 2024"
+      ],
+      "rationale": "model review disabled",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P248, P31",
+          "weight": 0.4
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: document, report, chunk",
+          "weight": 0.24
+        },
+        {
+          "source": "relation",
+          "detail": "relation fields: P248, P248",
+          "weight": 0.16
+        },
+        {
+          "source": "statement",
+          "detail": "P248 / stated in",
+          "weight": 0.18
+        }
+      ],
+      "source_entity_ids": [
+        "Q900025"
+      ],
+      "review_required": false
+    }
+  ],
+  "refinement_report": {
+    "total_candidates": 17,
+    "classified_candidates": 17,
+    "unclassified_candidates": 0,
+    "module_free_candidates": 1,
+    "category_counts": {
+      "industry": 2,
+      "product": 2,
+      "enterprise": 2,
+      "technology": 2,
+      "organization": 2,
+      "person": 1,
+      "region": 1,
+      "policy": 1,
+      "event": 1,
+      "index": 1,
+      "document": 2
+    },
+    "module_counts": {
+      "classification_relations": 4,
+      "upstream_downstream_relations": 1,
+      "hierarchy_relations": 2,
+      "business_registration_properties": 1,
+      "association_relations": 2,
+      "organization_properties": 2,
+      "employment_relations": 1,
+      "applicability_relations": 1,
+      "document_properties": 1,
+      "source_relations": 1
+    },
+    "uncovered_categories": [],
+    "uncovered_modules": [
+      "chunk_properties",
+      "common_properties",
+      "source_properties",
+      "innovation_relations",
+      "investment_relations",
+      "organization_relations",
+      "region_relations",
+      "supply_chain_relations",
+      "event_properties",
+      "time_properties",
+      "index_properties",
+      "gics_mapping_properties",
+      "person_properties",
+      "issuance_relations",
+      "policy_properties",
+      "classification_properties",
+      "extension_properties",
+      "lifecycle_properties",
+      "product_description_properties",
+      "production_relations",
+      "specification_properties",
+      "technology_relations",
+      "term_relations",
+      "region_properties",
+      "patent_properties",
+      "technology_properties"
+    ]
+  }
+}

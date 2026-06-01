@@ -2,16 +2,35 @@ import json
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 from wikidata_ontology_expander.engine import load_config
-from wikidata_ontology_expander.model_review import NullSchemaProposalReviewer
-from wikidata_ontology_expander.models import Change
+from wikidata_ontology_expander.model_review import (
+    NullSchemaProposalReviewer,
+    OpenAIChatCompletionsReviewer,
+    _post_json,
+    build_reviewer,
+)
+from wikidata_ontology_expander.models import Change, ModelReviewConfig
+
+
+class FakeResponse:
+    def __init__(self, payload=None, text="", status_error=None):
+        self.payload = payload or {}
+        self.text = text
+        self.status_error = status_error
+
+    def json(self):
+        return self.payload
+
+    def raise_for_status(self):
+        if self.status_error is not None:
+            raise self.status_error
 
 
 class ModelReviewTest(unittest.TestCase):
-    def test_null_reviewer_accepts_without_changes(self):
-        reviewer = NullSchemaProposalReviewer()
-        proposal = Change(
+    def _proposal(self):
+        return Change(
             action="add_relation_type",
             entity_type="Product",
             label="Product",
@@ -22,9 +41,63 @@ class ModelReviewTest(unittest.TestCase):
             examples=("Battery -> manufacturer -> Panasonic",),
             source_entity_ids=("Q1",),
         )
+
+    def test_null_reviewer_accepts_without_changes(self):
+        reviewer = NullSchemaProposalReviewer()
+        proposal = self._proposal()
         decision = reviewer.review(proposal)
         self.assertTrue(decision.accepted)
         self.assertEqual(decision.normalized_label, "Product")
+
+    def test_openai_chat_provider_uses_chat_completions_endpoint(self):
+        config = ModelReviewConfig(
+            enabled=True,
+            provider="openai_chat",
+            model="local-model",
+            api_base="http://10.130.138.46:8010",
+        )
+        payload = {
+            "choices": [
+                {
+                    "message": {
+                        "content": json.dumps(
+                            {
+                                "accepted": True,
+                                "confidence": 0.82,
+                                "rationale": "schema-level relation",
+                                "normalized_label": "Product",
+                                "normalized_target_type": "Enterprise",
+                                "normalized_value": None,
+                            }
+                        )
+                    }
+                }
+            ]
+        }
+        with patch.dict("os.environ", {"OPENAI_API_KEY": "test-key"}), patch(
+            "wikidata_ontology_expander.model_review.requests.post",
+            return_value=FakeResponse(payload),
+        ) as post:
+            reviewer = build_reviewer(config)
+            self.assertIsInstance(reviewer, OpenAIChatCompletionsReviewer)
+            decision = reviewer.review(self._proposal())
+
+        self.assertTrue(decision.accepted)
+        self.assertEqual(decision.normalized_target_type, "Enterprise")
+        args, kwargs = post.call_args
+        self.assertEqual(args[0], "http://10.130.138.46:8010/chat/completions")
+        body = json.loads(kwargs["data"])
+        self.assertEqual(body["model"], "local-model")
+        self.assertEqual(body["response_format"], {"type": "json_object"})
+
+    def test_http_error_includes_response_body(self):
+        import requests
+
+        response = FakeResponse(text='{"error":"unsupported parameter: text.format"}')
+        response.status_error = requests.HTTPError("400 Client Error: Bad Request")
+        with patch("wikidata_ontology_expander.model_review.requests.post", return_value=response):
+            with self.assertRaisesRegex(requests.HTTPError, "unsupported parameter"):
+                _post_json("http://10.130.138.46:8010/responses", "test-key", {"model": "x"})
 
     def test_load_config_reads_model_review_block(self):
         with tempfile.TemporaryDirectory() as tmp:

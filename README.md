@@ -4,6 +4,8 @@
 
 完整中文项目文档见 [docs/PROJECT_OVERVIEW.md](/Users/zyx/projects/wikidata_ontology_expander/docs/PROJECT_OVERVIEW.md)。
 
+技术架构与 `data/taxonomy.xlsx` 接入说明见 [docs/TECHNICAL_ARCHITECTURE_AND_TAXONOMY.md](/Users/zyx/projects/wikidata_ontology_expander/docs/TECHNICAL_ARCHITECTURE_AND_TAXONOMY.md)。
+
 项目目的可以明确为：
 
 - 从外部知识源实例中归纳 **值得进入 ontology/schema 的结构化提案**
