@@ -1,0 +1,1552 @@
+{
+  "changes": [
+    {
+      "action": "add_module",
+      "entity_type": "Organization",
+      "label": "belongsToIndustry",
+      "confidence": 0.7,
+      "domain": "organization",
+      "module": "belongs_to_industry_relations",
+      "parent": null,
+      "field": "belongsToIndustry",
+      "value": "industry",
+      "target_type": "relational",
+      "support": 2,
+      "examples": [
+        "药物发现CRO服务 -> belongs_to_industry_relations -> belongsToIndustry",
+        "ADC药物研发服务 -> belongs_to_industry_relations -> belongsToIndustry"
+      ],
+      "rationale": "Schema-level relation between organization and industry.",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P31, P452",
+          "weight": 0.4
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: organization, research",
+          "weight": 0.16
+        },
+        {
+          "source": "module_gap",
+          "detail": "candidate matched a category but no existing module",
+          "weight": 0.18
+        },
+        {
+          "source": "statement",
+          "detail": "P452 / industry",
+          "weight": 0.18
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: research",
+          "weight": 0.08
+        }
+      ],
+      "source_entity_ids": [
+        "QTX012",
+        "QTX017"
+      ],
+      "review_required": true
+    },
+    {
+      "action": "add_module",
+      "entity_type": "Organization",
+      "label": "payloadClass",
+      "confidence": 0.6,
+      "domain": "organization",
+      "module": "payload_class_properties",
+      "parent": null,
+      "field": "payloadClass",
+      "value": "payload class",
+      "target_type": "property",
+      "support": 1,
+      "examples": [
+        "ADC药物研发服务 -> payload_class_properties -> payloadClass"
+      ],
+      "rationale": "Adds schema-level module for payload class properties, supported by property statement and category gates.",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P31, P452",
+          "weight": 0.4
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: research",
+          "weight": 0.08
+        },
+        {
+          "source": "module_gap",
+          "detail": "candidate matched a category but no existing module",
+          "weight": 0.18
+        },
+        {
+          "source": "statement",
+          "detail": "P9043 / payload class",
+          "weight": 0.18
+        }
+      ],
+      "source_entity_ids": [
+        "QTX017"
+      ],
+      "review_required": true
+    },
+    {
+      "action": "add_module",
+      "entity_type": "Industry",
+      "label": "belongsToIndustry",
+      "confidence": 0.66,
+      "domain": "industry",
+      "module": "belongs_to_industry_relations",
+      "parent": null,
+      "field": "belongsToIndustry",
+      "value": "industry",
+      "target_type": "relational",
+      "support": 1,
+      "examples": [
+        "先进封装服务 -> belongs_to_industry_relations -> belongsToIndustry"
+      ],
+      "rationale": "Schema-level relation for industry belonging to another industry, supported by taxonomy and statement evidence.",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P31, P452",
+          "weight": 0.4
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: manufacturing",
+          "weight": 0.08
+        },
+        {
+          "source": "taxonomy_reference",
+          "detail": "matched industry/Industry taxonomy node 04020102: 半导体, level=4, parent=040201, non-leaf",
+          "weight": 0.18
+        },
+        {
+          "source": "module_gap",
+          "detail": "candidate matched a category but no existing module",
+          "weight": 0.18
+        },
+        {
+          "source": "statement",
+          "detail": "P452 / industry",
+          "weight": 0.18
+        }
+      ],
+      "source_entity_ids": [
+        "QTX019"
+      ],
+      "review_required": true
+    },
+    {
+      "action": "add_module",
+      "entity_type": "Industry",
+      "label": "bump pitch",
+      "confidence": 0.66,
+      "domain": "industry",
+      "module": "bump_pitch_properties",
+      "parent": null,
+      "field": "bumpPitch",
+      "value": "bumpPitch",
+      "target_type": "intrinsic",
+      "support": 1,
+      "examples": [
+        "先进封装服务 -> bump_pitch_properties -> bumpPitch"
+      ],
+      "rationale": "Bump pitch is a notable intrinsic property in semiconductor manufacturing ontology.",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P31, P452",
+          "weight": 0.4
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: manufacturing",
+          "weight": 0.08
+        },
+        {
+          "source": "taxonomy_reference",
+          "detail": "matched industry/Industry taxonomy node 04020102: 半导体, level=4, parent=040201, non-leaf",
+          "weight": 0.18
+        },
+        {
+          "source": "module_gap",
+          "detail": "candidate matched a category but no existing module",
+          "weight": 0.18
+        },
+        {
+          "source": "statement",
+          "detail": "P9049 / bump pitch",
+          "weight": 0.18
+        }
+      ],
+      "source_entity_ids": [
+        "QTX019"
+      ],
+      "review_required": true
+    },
+    {
+      "action": "add_property_type",
+      "entity_type": "Product",
+      "label": "specific capacity",
+      "confidence": 0.99,
+      "domain": "product",
+      "module": "upstream_downstream_relations",
+      "parent": null,
+      "field": "specificCapacity",
+      "value": "specific capacity",
+      "target_type": "text",
+      "support": 1,
+      "examples": [
+        "镍钴锰酸锂 -> specificCapacity -> 180 mAh/g"
+      ],
+      "rationale": "Specific capacity is a schema-level property for products, supported by P186 and P527.",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P176, P186, P279, P31, P527",
+          "weight": 0.56
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: product, material",
+          "weight": 0.16
+        },
+        {
+          "source": "category_gate_label",
+          "detail": "gate labels: product",
+          "weight": 0.16
+        },
+        {
+          "source": "relation",
+          "detail": "relation fields: P186, P527",
+          "weight": 0.16
+        },
+        {
+          "source": "taxonomy_reference",
+          "detail": "matched product/Product taxonomy node EC001001020101020502: 镍钴锰酸锂, level=9, parent=EC0010010201010205, leaf",
+          "weight": 0.18
+        },
+        {
+          "source": "statement",
+          "detail": "P9002 / specific capacity",
+          "weight": 0.18
+        }
+      ],
+      "source_entity_ids": [
+        "QTX001"
+      ],
+      "review_required": false
+    },
+    {
+      "action": "add_property_type",
+      "entity_type": "Product",
+      "label": "processNode",
+      "confidence": 0.99,
+      "domain": "product",
+      "module": "hierarchy_relations",
+      "parent": null,
+      "field": "processNode",
+      "value": "process node",
+      "target_type": "text",
+      "support": 1,
+      "examples": [
+        "功率放大器芯片 -> processNode -> GaAs pHEMT"
+      ],
+      "rationale": "Schema-level property for process node, supported by P9003 and taxonomy.",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P176, P279, P31",
+          "weight": 0.56
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: product",
+          "weight": 0.08
+        },
+        {
+          "source": "category_gate_label",
+          "detail": "gate labels: product",
+          "weight": 0.16
+        },
+        {
+          "source": "relation",
+          "detail": "relation fields: P279",
+          "weight": 0.08
+        },
+        {
+          "source": "taxonomy_reference",
+          "detail": "matched product/Product taxonomy node SE00203001010103: 功率放大器芯片, level=9, parent=SE002030010101, leaf",
+          "weight": 0.18
+        },
+        {
+          "source": "statement",
+          "detail": "P9003 / process node",
+          "weight": 0.18
+        }
+      ],
+      "source_entity_ids": [
+        "QTX002"
+      ],
+      "review_required": false
+    },
+    {
+      "action": "add_property_type",
+      "entity_type": "Product",
+      "label": "frequencyBand",
+      "confidence": 0.99,
+      "domain": "product",
+      "module": "hierarchy_relations",
+      "parent": null,
+      "field": "frequencyBand",
+      "value": "frequency band",
+      "target_type": "text",
+      "support": 1,
+      "examples": [
+        "功率放大器芯片 -> frequencyBand -> sub-6 GHz"
+      ],
+      "rationale": "Adds schema-level property for product frequency band.",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P176, P279, P31",
+          "weight": 0.56
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: product",
+          "weight": 0.08
+        },
+        {
+          "source": "category_gate_label",
+          "detail": "gate labels: product",
+          "weight": 0.16
+        },
+        {
+          "source": "relation",
+          "detail": "relation fields: P279",
+          "weight": 0.08
+        },
+        {
+          "source": "taxonomy_reference",
+          "detail": "matched product/Product taxonomy node SE00203001010103: 功率放大器芯片, level=9, parent=SE002030010101, leaf",
+          "weight": 0.18
+        },
+        {
+          "source": "statement",
+          "detail": "P9005 / frequency band",
+          "weight": 0.18
+        }
+      ],
+      "source_entity_ids": [
+        "QTX002"
+      ],
+      "review_required": false
+    },
+    {
+      "action": "add_property_type",
+      "entity_type": "Product",
+      "label": "inspection resolution",
+      "confidence": 0.99,
+      "domain": "product",
+      "module": "classification_relations",
+      "parent": null,
+      "field": "inspectionResolution",
+      "value": "inspection resolution",
+      "target_type": "text",
+      "support": 1,
+      "examples": [
+        "晶圆检测设备 -> inspectionResolution -> nanometer scale"
+      ],
+      "rationale": "Adds schema-level property for product inspection resolution.",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P176, P279, P31",
+          "weight": 0.56
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: product, equipment",
+          "weight": 0.16
+        },
+        {
+          "source": "category_gate_label",
+          "detail": "gate labels: product",
+          "weight": 0.16
+        },
+        {
+          "source": "relation",
+          "detail": "relation fields: P452",
+          "weight": 0.08
+        },
+        {
+          "source": "taxonomy_reference",
+          "detail": "matched product/Product taxonomy node SE001: 半导体设备, level=2, parent=04020101, non-leaf",
+          "weight": 0.18
+        },
+        {
+          "source": "statement",
+          "detail": "P9006 / inspection resolution",
+          "weight": 0.18
+        }
+      ],
+      "source_entity_ids": [
+        "QTX003"
+      ],
+      "review_required": false
+    },
+    {
+      "action": "add_property_type",
+      "entity_type": "Industry",
+      "label": "servicePhase",
+      "confidence": 0.75,
+      "domain": "policy",
+      "module": "applicability_relations",
+      "parent": null,
+      "field": "servicePhase",
+      "value": "service phase",
+      "target_type": "text",
+      "support": 1,
+      "examples": [
+        "生物医药研发服务 -> servicePhase -> preclinical research"
+      ],
+      "rationale": "Adds schema property servicePhase for Industry, supported by category and relation evidence.",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P123, P31, P452",
+          "weight": 0.56
+        },
+        {
+          "source": "relation",
+          "detail": "relation fields: P452",
+          "weight": 0.08
+        },
+        {
+          "source": "statement",
+          "detail": "P9008 / service phase",
+          "weight": 0.18
+        }
+      ],
+      "source_entity_ids": [
+        "QTX004"
+      ],
+      "review_required": false
+    },
+    {
+      "action": "add_property_type",
+      "entity_type": "Industry",
+      "label": "regulatory stage",
+      "confidence": 0.64,
+      "domain": "policy",
+      "module": "applicability_relations",
+      "parent": null,
+      "field": "regulatoryStage",
+      "value": "regulatory stage",
+      "target_type": "text",
+      "support": 1,
+      "examples": [
+        "生物医药研发服务 -> regulatoryStage -> IND enabling"
+      ],
+      "rationale": "Adding 'regulatory stage' as property type for Industry enriches schema with domain-specific concept.",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P123, P31, P452",
+          "weight": 0.56
+        },
+        {
+          "source": "relation",
+          "detail": "relation fields: P452",
+          "weight": 0.08
+        },
+        {
+          "source": "statement",
+          "detail": "P9009 / regulatory stage",
+          "weight": 0.18
+        }
+      ],
+      "source_entity_ids": [
+        "QTX004"
+      ],
+      "review_required": true
+    },
+    {
+      "action": "add_property_type",
+      "entity_type": "Industry",
+      "label": "application vehicle type",
+      "confidence": 0.99,
+      "domain": "product",
+      "module": "upstream_downstream_relations",
+      "parent": null,
+      "field": "applicationVehicleType",
+      "value": "application vehicle type",
+      "target_type": "text",
+      "support": 1,
+      "examples": [
+        "新能源汽车零部件 -> applicationVehicleType -> battery electric vehicle"
+      ],
+      "rationale": "Schema-level property type for application vehicle type, supported by statement and relation fields.",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P186, P279, P31, P527",
+          "weight": 0.56
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: product, component",
+          "weight": 0.16
+        },
+        {
+          "source": "category_gate_label",
+          "detail": "gate labels: product",
+          "weight": 0.16
+        },
+        {
+          "source": "relation",
+          "detail": "relation fields: P186, P527",
+          "weight": 0.16
+        },
+        {
+          "source": "statement",
+          "detail": "P9010 / application vehicle type",
+          "weight": 0.18
+        }
+      ],
+      "source_entity_ids": [
+        "QTX005"
+      ],
+      "review_required": false
+    },
+    {
+      "action": "add_property_type",
+      "entity_type": "Product",
+      "label": "energy density",
+      "confidence": 0.99,
+      "domain": "product",
+      "module": "upstream_downstream_relations",
+      "parent": null,
+      "field": "energyDensity",
+      "value": "energy density",
+      "target_type": "text",
+      "support": 1,
+      "examples": [
+        "固态电池 -> energyDensity -> 400 Wh/kg"
+      ],
+      "rationale": "Energy density is a measurable attribute generic to product class, not an instance value.",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P176, P186, P279, P31, P527",
+          "weight": 0.56
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: product",
+          "weight": 0.08
+        },
+        {
+          "source": "category_gate_label",
+          "detail": "gate labels: product",
+          "weight": 0.16
+        },
+        {
+          "source": "relation",
+          "detail": "relation fields: P186, P527",
+          "weight": 0.16
+        },
+        {
+          "source": "taxonomy_reference",
+          "detail": "matched product/Product taxonomy node EC001001: 电池, level=3, parent=FA004001, non-leaf",
+          "weight": 0.18
+        },
+        {
+          "source": "statement",
+          "detail": "P9012 / energy density",
+          "weight": 0.18
+        }
+      ],
+      "source_entity_ids": [
+        "QTX006"
+      ],
+      "review_required": false
+    },
+    {
+      "action": "add_property_type",
+      "entity_type": "Product",
+      "label": "exposure wavelength",
+      "confidence": 0.99,
+      "domain": "product",
+      "module": "hierarchy_relations",
+      "parent": null,
+      "field": "exposureWavelength",
+      "value": "exposure wavelength",
+      "target_type": "text",
+      "support": 1,
+      "examples": [
+        "光刻胶 -> exposureWavelength -> 193 nm"
+      ],
+      "rationale": "Property exposure wavelength is a relevant schema-level attribute for product ontology.",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P176, P186, P279, P31",
+          "weight": 0.56
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: product, material",
+          "weight": 0.16
+        },
+        {
+          "source": "category_gate_label",
+          "detail": "gate labels: product",
+          "weight": 0.16
+        },
+        {
+          "source": "relation",
+          "detail": "relation fields: P279",
+          "weight": 0.08
+        },
+        {
+          "source": "taxonomy_reference",
+          "detail": "matched product/Product taxonomy node EC00100611: 光刻胶, level=6, parent=CC0050150102, leaf",
+          "weight": 0.26
+        },
+        {
+          "source": "statement",
+          "detail": "P9018 / exposure wavelength",
+          "weight": 0.18
+        }
+      ],
+      "source_entity_ids": [
+        "QTX008"
+      ],
+      "review_required": false
+    },
+    {
+      "action": "add_property_type",
+      "entity_type": "Product",
+      "label": "viscosity",
+      "confidence": 0.99,
+      "domain": "product",
+      "module": "hierarchy_relations",
+      "parent": null,
+      "field": "viscosity",
+      "value": "viscosity",
+      "target_type": "text",
+      "support": 1,
+      "examples": [
+        "光刻胶 -> viscosity -> 20 cP"
+      ],
+      "rationale": "Viscosity is a schema-level property for products, supported by evidence.",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P176, P186, P279, P31",
+          "weight": 0.56
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: product, material",
+          "weight": 0.16
+        },
+        {
+          "source": "category_gate_label",
+          "detail": "gate labels: product",
+          "weight": 0.16
+        },
+        {
+          "source": "relation",
+          "detail": "relation fields: P279",
+          "weight": 0.08
+        },
+        {
+          "source": "taxonomy_reference",
+          "detail": "matched product/Product taxonomy node EC00100611: 光刻胶, level=6, parent=CC0050150102, leaf",
+          "weight": 0.26
+        },
+        {
+          "source": "statement",
+          "detail": "P9019 / viscosity",
+          "weight": 0.18
+        }
+      ],
+      "source_entity_ids": [
+        "QTX008"
+      ],
+      "review_required": false
+    },
+    {
+      "action": "add_property_type",
+      "entity_type": "Product",
+      "label": "stack power",
+      "confidence": 0.99,
+      "domain": "product",
+      "module": "hierarchy_relations",
+      "parent": null,
+      "field": "stackPower",
+      "value": "stack power",
+      "target_type": "number",
+      "support": 1,
+      "examples": [
+        "氢燃料电池系统 -> stackPower -> 100 kW"
+      ],
+      "rationale": "Adds schema-level property for stack power, a key attribute of fuel cell products.",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P176, P279, P31, P527",
+          "weight": 0.56
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: product",
+          "weight": 0.08
+        },
+        {
+          "source": "category_gate_label",
+          "detail": "gate labels: product",
+          "weight": 0.16
+        },
+        {
+          "source": "relation",
+          "detail": "relation fields: P279",
+          "weight": 0.08
+        },
+        {
+          "source": "taxonomy_reference",
+          "detail": "matched product/Product taxonomy node EC0010010208: 电池电堆, level=6, parent=P0000187, leaf",
+          "weight": 0.18
+        },
+        {
+          "source": "statement",
+          "detail": "P9020 / stack power",
+          "weight": 0.18
+        }
+      ],
+      "source_entity_ids": [
+        "QTX009"
+      ],
+      "review_required": false
+    },
+    {
+      "action": "add_property_type",
+      "entity_type": "Product",
+      "label": "cold start temperature",
+      "confidence": 0.99,
+      "domain": "product",
+      "module": "hierarchy_relations",
+      "parent": null,
+      "field": "coldStartTemperature",
+      "value": "cold start temperature",
+      "target_type": "text",
+      "support": 1,
+      "examples": [
+        "氢燃料电池系统 -> coldStartTemperature -> -30 °C"
+      ],
+      "rationale": "Adds schema-level property for cold start temperature, supported by taxonomy and relation evidence.",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P176, P279, P31, P527",
+          "weight": 0.56
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: product",
+          "weight": 0.08
+        },
+        {
+          "source": "category_gate_label",
+          "detail": "gate labels: product",
+          "weight": 0.16
+        },
+        {
+          "source": "relation",
+          "detail": "relation fields: P279",
+          "weight": 0.08
+        },
+        {
+          "source": "taxonomy_reference",
+          "detail": "matched product/Product taxonomy node EC0010010208: 电池电堆, level=6, parent=P0000187, leaf",
+          "weight": 0.18
+        },
+        {
+          "source": "statement",
+          "detail": "P9022 / cold start temperature",
+          "weight": 0.18
+        }
+      ],
+      "source_entity_ids": [
+        "QTX009"
+      ],
+      "review_required": false
+    },
+    {
+      "action": "add_property_type",
+      "entity_type": "Industry",
+      "label": "capital intensity",
+      "confidence": 0.99,
+      "domain": "industry",
+      "module": "classification_relations",
+      "parent": null,
+      "field": "capitalIntensity",
+      "value": "capital intensity",
+      "target_type": "text",
+      "support": 1,
+      "examples": [
+        "半导体制造行业 -> capitalIntensity -> high"
+      ],
+      "rationale": "Schema-level property for industry capital intensity, supported by evidence.",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P279, P31, P452",
+          "weight": 0.56
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: industry, sector",
+          "weight": 0.16
+        },
+        {
+          "source": "category_gate_label",
+          "detail": "gate labels: industry, manufacturing industry",
+          "weight": 0.32
+        },
+        {
+          "source": "relation",
+          "detail": "relation fields: P279",
+          "weight": 0.08
+        },
+        {
+          "source": "taxonomy_reference",
+          "detail": "matched industry/Industry taxonomy node 04020102: 半导体, level=4, parent=040201, non-leaf",
+          "weight": 0.18
+        },
+        {
+          "source": "statement",
+          "detail": "P9026 / capital intensity",
+          "weight": 0.18
+        }
+      ],
+      "source_entity_ids": [
+        "QTX011"
+      ],
+      "review_required": false
+    },
+    {
+      "action": "add_property_type",
+      "entity_type": "Industry",
+      "label": "process technology generation",
+      "confidence": 0.99,
+      "domain": "industry",
+      "module": "classification_relations",
+      "parent": null,
+      "field": "processTechnologyGeneration",
+      "value": "process technology generation",
+      "target_type": "text",
+      "support": 1,
+      "examples": [
+        "半导体制造行业 -> processTechnologyGeneration -> advanced node"
+      ],
+      "rationale": "Property adds schema-level attribute for industry technology generation.",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P279, P31, P452",
+          "weight": 0.56
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: industry, sector",
+          "weight": 0.16
+        },
+        {
+          "source": "category_gate_label",
+          "detail": "gate labels: industry, manufacturing industry",
+          "weight": 0.32
+        },
+        {
+          "source": "relation",
+          "detail": "relation fields: P279",
+          "weight": 0.08
+        },
+        {
+          "source": "taxonomy_reference",
+          "detail": "matched industry/Industry taxonomy node 04020102: 半导体, level=4, parent=040201, non-leaf",
+          "weight": 0.18
+        },
+        {
+          "source": "statement",
+          "detail": "P9028 / process technology generation",
+          "weight": 0.18
+        }
+      ],
+      "source_entity_ids": [
+        "QTX011"
+      ],
+      "review_required": false
+    },
+    {
+      "action": "add_property_type",
+      "entity_type": "Organization",
+      "label": "service phase",
+      "confidence": 0.65,
+      "domain": "organization",
+      "module": null,
+      "parent": null,
+      "field": "servicePhase",
+      "value": "service phase",
+      "target_type": "text",
+      "support": 1,
+      "examples": [
+        "药物发现CRO服务 -> servicePhase -> hit-to-lead discovery"
+      ],
+      "rationale": "Adds a general property for service phase of organizations, supported by ontology evidence.",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P31, P452",
+          "weight": 0.4
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: organization, research",
+          "weight": 0.16
+        },
+        {
+          "source": "statement",
+          "detail": "P9008 / service phase",
+          "weight": 0.18
+        }
+      ],
+      "source_entity_ids": [
+        "QTX012"
+      ],
+      "review_required": true
+    },
+    {
+      "action": "add_property_type",
+      "entity_type": "Organization",
+      "label": "delivery model",
+      "confidence": 0.56,
+      "domain": "organization",
+      "module": null,
+      "parent": null,
+      "field": "deliveryModel",
+      "value": "delivery model",
+      "target_type": "text",
+      "support": 1,
+      "examples": [
+        "药物发现CRO服务 -> deliveryModel -> fee-for-service"
+      ],
+      "rationale": "Adds schema-level property for organizational delivery model.",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P31, P452",
+          "weight": 0.4
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: organization, research",
+          "weight": 0.16
+        },
+        {
+          "source": "statement",
+          "detail": "P9030 / delivery model",
+          "weight": 0.18
+        }
+      ],
+      "source_entity_ids": [
+        "QTX012"
+      ],
+      "review_required": true
+    },
+    {
+      "action": "add_property_type",
+      "entity_type": "Product",
+      "label": "state of charge accuracy",
+      "confidence": 0.99,
+      "domain": "product",
+      "module": "hierarchy_relations",
+      "parent": null,
+      "field": "stateOfChargeAccuracy",
+      "value": "state of charge accuracy",
+      "target_type": "text",
+      "support": 1,
+      "examples": [
+        "动力电池管理系统 -> stateOfChargeAccuracy -> ±3%"
+      ],
+      "rationale": "Property for describing accuracy of state of charge in battery systems.",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P176, P279, P31, P527",
+          "weight": 0.56
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: product",
+          "weight": 0.08
+        },
+        {
+          "source": "category_gate_label",
+          "detail": "gate labels: product",
+          "weight": 0.16
+        },
+        {
+          "source": "relation",
+          "detail": "relation fields: P279",
+          "weight": 0.08
+        },
+        {
+          "source": "taxonomy_reference",
+          "detail": "matched product/Product taxonomy node EE00100606: 电池管理系统, level=5, parent=EE001006, leaf",
+          "weight": 0.18
+        },
+        {
+          "source": "statement",
+          "detail": "P9032 / state of charge accuracy",
+          "weight": 0.18
+        }
+      ],
+      "source_entity_ids": [
+        "QTX013"
+      ],
+      "review_required": false
+    },
+    {
+      "action": "add_property_type",
+      "entity_type": "Industry",
+      "label": "functional safety level",
+      "confidence": 0.88,
+      "domain": "product",
+      "module": "hierarchy_relations",
+      "parent": null,
+      "field": "functionalSafetyLevel",
+      "value": "functional safety level",
+      "target_type": "text",
+      "support": 1,
+      "examples": [
+        "车规级MCU -> functionalSafetyLevel -> ASIL-D"
+      ],
+      "rationale": "Adds schema-level property for functional safety level.",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P176, P279, P31",
+          "weight": 0.56
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: product",
+          "weight": 0.08
+        },
+        {
+          "source": "category_gate_label",
+          "detail": "gate labels: product",
+          "weight": 0.16
+        },
+        {
+          "source": "relation",
+          "detail": "relation fields: P279",
+          "weight": 0.08
+        },
+        {
+          "source": "statement",
+          "detail": "P9034 / functional safety level",
+          "weight": 0.18
+        }
+      ],
+      "source_entity_ids": [
+        "QTX014"
+      ],
+      "review_required": false
+    },
+    {
+      "action": "add_property_type",
+      "entity_type": "Industry",
+      "label": "core architecture",
+      "confidence": 0.88,
+      "domain": "product",
+      "module": "hierarchy_relations",
+      "parent": null,
+      "field": "coreArchitecture",
+      "value": "core architecture",
+      "target_type": "Text",
+      "support": 1,
+      "examples": [
+        "车规级MCU -> coreArchitecture -> Arm Cortex-M7"
+      ],
+      "rationale": "Adds schema-level property for core architecture as text for Industry, supported by relation and statement evidence.",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P176, P279, P31",
+          "weight": 0.56
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: product",
+          "weight": 0.08
+        },
+        {
+          "source": "category_gate_label",
+          "detail": "gate labels: product",
+          "weight": 0.16
+        },
+        {
+          "source": "relation",
+          "detail": "relation fields: P279",
+          "weight": 0.08
+        },
+        {
+          "source": "statement",
+          "detail": "P9035 / core architecture",
+          "weight": 0.18
+        }
+      ],
+      "source_entity_ids": [
+        "QTX014"
+      ],
+      "review_required": false
+    },
+    {
+      "action": "add_property_type",
+      "entity_type": "Product",
+      "label": "spindle speed",
+      "confidence": 0.99,
+      "domain": "product",
+      "module": "hierarchy_relations",
+      "parent": null,
+      "field": "spindleSpeed",
+      "value": "spindle speed",
+      "target_type": "text",
+      "support": 1,
+      "examples": [
+        "高端数控机床 -> spindleSpeed -> 20000 rpm"
+      ],
+      "rationale": "Schema-level property for product spindle speed, supported by taxonomy and statement.",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P176, P279, P31, P527",
+          "weight": 0.56
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: product, equipment",
+          "weight": 0.16
+        },
+        {
+          "source": "category_gate_label",
+          "detail": "gate labels: product",
+          "weight": 0.16
+        },
+        {
+          "source": "relation",
+          "detail": "relation fields: P279",
+          "weight": 0.08
+        },
+        {
+          "source": "taxonomy_reference",
+          "detail": "matched product/Product taxonomy node FA00700110: 数控机床, level=5, parent=FA007001, non-leaf",
+          "weight": 0.18
+        },
+        {
+          "source": "statement",
+          "detail": "P9038 / spindle speed",
+          "weight": 0.18
+        }
+      ],
+      "source_entity_ids": [
+        "QTX015"
+      ],
+      "review_required": false
+    },
+    {
+      "action": "add_property_type",
+      "entity_type": "Product",
+      "label": "positioning accuracy",
+      "confidence": 0.99,
+      "domain": "product",
+      "module": "hierarchy_relations",
+      "parent": null,
+      "field": "positioningAccuracy",
+      "value": "positioning accuracy",
+      "target_type": "text",
+      "support": 1,
+      "examples": [
+        "高端数控机床 -> positioningAccuracy -> ±0.005 mm"
+      ],
+      "rationale": "Valid ontology property addition for positioning accuracy in product domain.",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P176, P279, P31, P527",
+          "weight": 0.56
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: product, equipment",
+          "weight": 0.16
+        },
+        {
+          "source": "category_gate_label",
+          "detail": "gate labels: product",
+          "weight": 0.16
+        },
+        {
+          "source": "relation",
+          "detail": "relation fields: P279",
+          "weight": 0.08
+        },
+        {
+          "source": "taxonomy_reference",
+          "detail": "matched product/Product taxonomy node FA00700110: 数控机床, level=5, parent=FA007001, non-leaf",
+          "weight": 0.18
+        },
+        {
+          "source": "statement",
+          "detail": "P9039 / positioning accuracy",
+          "weight": 0.18
+        }
+      ],
+      "source_entity_ids": [
+        "QTX015"
+      ],
+      "review_required": false
+    },
+    {
+      "action": "add_property_type",
+      "entity_type": "Organization",
+      "label": "payloadClass",
+      "confidence": 0.48,
+      "domain": "organization",
+      "module": null,
+      "parent": null,
+      "field": "payloadClass",
+      "value": "payload class",
+      "target_type": "text",
+      "support": 1,
+      "examples": [
+        "ADC药物研发服务 -> payloadClass -> topoisomerase inhibitor"
+      ],
+      "rationale": "Adds property payloadClass for organizations, supported by wikidata property P9043.",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P31, P452",
+          "weight": 0.4
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: research",
+          "weight": 0.08
+        },
+        {
+          "source": "statement",
+          "detail": "P9043 / payload class",
+          "weight": 0.18
+        }
+      ],
+      "source_entity_ids": [
+        "QTX017"
+      ],
+      "review_required": true
+    },
+    {
+      "action": "add_property_type",
+      "entity_type": "EconomicSector",
+      "label": "specific capacity",
+      "confidence": 0.96,
+      "domain": "product",
+      "module": "hierarchy_relations",
+      "parent": null,
+      "field": "specificCapacity",
+      "value": "specific capacity",
+      "target_type": "text",
+      "support": 1,
+      "examples": [
+        "钠离子电池正极材料 -> specificCapacity -> 150 mAh/g"
+      ],
+      "rationale": "Property 'specificCapacity' is a schema-level attribute for EconomicSector, not an instance value.",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P176, P186, P279, P31",
+          "weight": 0.56
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: product, material",
+          "weight": 0.16
+        },
+        {
+          "source": "category_gate_label",
+          "detail": "gate labels: product",
+          "weight": 0.16
+        },
+        {
+          "source": "relation",
+          "detail": "relation fields: P279",
+          "weight": 0.08
+        },
+        {
+          "source": "statement",
+          "detail": "P9002 / specific capacity",
+          "weight": 0.18
+        }
+      ],
+      "source_entity_ids": [
+        "QTX018"
+      ],
+      "review_required": false
+    },
+    {
+      "action": "add_property_type",
+      "entity_type": "Industry",
+      "label": "bump pitch",
+      "confidence": 0.75,
+      "domain": "industry",
+      "module": null,
+      "parent": null,
+      "field": "bumpPitch",
+      "value": "bump pitch",
+      "target_type": "text",
+      "support": 1,
+      "examples": [
+        "先进封装服务 -> bumpPitch -> 40 um"
+      ],
+      "rationale": "Adds schema property bump pitch relevant to semiconductor manufacturing industry.",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P31, P452",
+          "weight": 0.4
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: manufacturing",
+          "weight": 0.08
+        },
+        {
+          "source": "taxonomy_reference",
+          "detail": "matched industry/Industry taxonomy node 04020102: 半导体, level=4, parent=040201, non-leaf",
+          "weight": 0.18
+        },
+        {
+          "source": "statement",
+          "detail": "P9049 / bump pitch",
+          "weight": 0.18
+        }
+      ],
+      "source_entity_ids": [
+        "QTX019"
+      ],
+      "review_required": false
+    },
+    {
+      "action": "add_relation_type",
+      "entity_type": "Industry",
+      "label": "appliesToIndustry",
+      "confidence": 0.64,
+      "domain": "policy",
+      "module": "applicability_relations",
+      "parent": null,
+      "field": "appliesToIndustry",
+      "value": "industry",
+      "target_type": "Industry",
+      "support": 1,
+      "examples": [
+        "生物医药研发服务 -> appliesToIndustry -> 制药"
+      ],
+      "rationale": "Adds a schema-level relation 'appliesToIndustry' for Policy domain, supported by P452 evidence.",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P123, P31, P452",
+          "weight": 0.56
+        },
+        {
+          "source": "relation",
+          "detail": "relation fields: P452",
+          "weight": 0.08
+        },
+        {
+          "source": "statement",
+          "detail": "P452 / industry",
+          "weight": 0.18
+        }
+      ],
+      "source_entity_ids": [
+        "QTX004"
+      ],
+      "review_required": true
+    },
+    {
+      "action": "add_relation_type",
+      "entity_type": "Industry",
+      "label": "has part",
+      "confidence": 1.0,
+      "domain": "product",
+      "module": "upstream_downstream_relations",
+      "parent": null,
+      "field": "component",
+      "value": "has part",
+      "target_type": "Product",
+      "support": 1,
+      "examples": [
+        "新能源汽车零部件 -> component -> battery thermal management system"
+      ],
+      "rationale": "Adds schema-level relation 'has part' between Industry and Product, supported by P527 evidence.",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P186, P279, P31, P527",
+          "weight": 0.56
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: product, component",
+          "weight": 0.16
+        },
+        {
+          "source": "category_gate_label",
+          "detail": "gate labels: product",
+          "weight": 0.16
+        },
+        {
+          "source": "relation",
+          "detail": "relation fields: P186, P527",
+          "weight": 0.16
+        },
+        {
+          "source": "statement",
+          "detail": "P527 / has part",
+          "weight": 0.18
+        }
+      ],
+      "source_entity_ids": [
+        "QTX005"
+      ],
+      "review_required": false
+    },
+    {
+      "action": "add_relation_type",
+      "entity_type": "Organization",
+      "label": "belongsToIndustry",
+      "confidence": 0.72,
+      "domain": "organization",
+      "module": "organization",
+      "parent": null,
+      "field": "belongsToIndustry",
+      "value": "industry",
+      "target_type": "Industry",
+      "support": 2,
+      "examples": [
+        "药物发现CRO服务 -> belongsToIndustry -> pharmaceutical industry",
+        "ADC药物研发服务 -> belongsToIndustry -> biopharmaceutical industry"
+      ],
+      "rationale": "Schema-level relation linking organizations to industries, supported by evidence.",
+      "evidence": [
+        {
+          "source": "category_gate",
+          "detail": "gate properties: P31, P452",
+          "weight": 0.4
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: organization, research",
+          "weight": 0.16
+        },
+        {
+          "source": "statement",
+          "detail": "P452 / industry",
+          "weight": 0.18
+        },
+        {
+          "source": "category_indicator",
+          "detail": "module terms: research",
+          "weight": 0.08
+        }
+      ],
+      "source_entity_ids": [
+        "QTX012",
+        "QTX017"
+      ],
+      "review_required": false
+    }
+  ],
+  "refinement_report": {
+    "total_candidates": 20,
+    "classified_candidates": 20,
+    "unclassified_candidates": 0,
+    "module_free_candidates": 3,
+    "category_counts": {
+      "product": 15,
+      "policy": 1,
+      "industry": 2,
+      "organization": 2
+    },
+    "module_counts": {
+      "upstream_downstream_relations": 3,
+      "hierarchy_relations": 9,
+      "classification_relations": 4,
+      "applicability_relations": 1
+    },
+    "uncovered_categories": [
+      "document",
+      "enterprise",
+      "event",
+      "index",
+      "person",
+      "region",
+      "technology"
+    ],
+    "uncovered_modules": [
+      "chunk_properties",
+      "common_properties",
+      "document_properties",
+      "source_properties",
+      "source_relations",
+      "business_registration_properties",
+      "innovation_relations",
+      "investment_relations",
+      "organization_relations",
+      "region_relations",
+      "supply_chain_relations",
+      "association_relations",
+      "event_properties",
+      "time_properties",
+      "index_properties",
+      "gics_mapping_properties",
+      "organization_properties",
+      "employment_relations",
+      "person_properties",
+      "issuance_relations",
+      "policy_properties",
+      "classification_properties",
+      "extension_properties",
+      "lifecycle_properties",
+      "product_description_properties",
+      "production_relations",
+      "specification_properties",
+      "technology_relations",
+      "term_relations",
+      "region_properties",
+      "patent_properties",
+      "technology_properties"
+    ]
+  }
+}
