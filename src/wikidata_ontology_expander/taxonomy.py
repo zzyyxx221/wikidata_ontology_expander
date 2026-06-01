@@ -3,6 +3,7 @@ from __future__ import annotations
 import re
 import zipfile
 from dataclasses import dataclass
+from dataclasses import replace
 from pathlib import Path
 from xml.etree import ElementTree as ET
 
@@ -18,6 +19,7 @@ class TaxonomyNode:
     level: int | None = None
     parent_code: str | None = None
     source_sheet: str | None = None
+    is_leaf: bool = False
 
 
 @dataclass(frozen=True)
@@ -69,7 +71,7 @@ class TaxonomyReference:
                     score=score,
                     evidence=Evidence(
                         "taxonomy_reference",
-                        f"matched {node.domain}/{node.entity_type} taxonomy node {node.code}: {node.label}",
+                        _taxonomy_evidence_detail(node),
                         score,
                     ),
                 )
@@ -83,7 +85,19 @@ def load_excel_taxonomy(path: Path) -> tuple[TaxonomyNode, ...]:
         _load_industry_sheet(workbook, nodes)
     if "行业+产品" in workbook.sheet_names:
         _load_product_sheet(workbook, nodes)
-    return tuple(nodes.values())
+    return _mark_leaf_nodes(tuple(nodes.values()))
+
+
+def _mark_leaf_nodes(nodes: tuple[TaxonomyNode, ...]) -> tuple[TaxonomyNode, ...]:
+    parent_codes = {node.parent_code for node in nodes if node.parent_code}
+    return tuple(replace(node, is_leaf=node.code not in parent_codes) for node in nodes)
+
+
+def _taxonomy_evidence_detail(node: TaxonomyNode) -> str:
+    level = f", level={node.level}" if node.level is not None else ""
+    parent = f", parent={node.parent_code}" if node.parent_code else ""
+    leaf = ", leaf" if node.is_leaf else ", non-leaf"
+    return f"matched {node.domain}/{node.entity_type} taxonomy node {node.code}: {node.label}{level}{parent}{leaf}"
 
 
 def _load_industry_sheet(workbook: "_XlsxWorkbook", nodes: dict[tuple[str, str], TaxonomyNode]) -> None:

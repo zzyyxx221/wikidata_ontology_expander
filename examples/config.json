@@ -168,6 +168,14 @@
       }
     }
   ],
+  "proposal_policy": {
+    "freeze_top_level_schema": true,
+    "allowed_schema_actions": ["add_category_gate", "add_module", "add_property_type", "add_relation_type"],
+    "restricted_schema_actions": ["add_concept"],
+    "require_taxonomy_context": false,
+    "taxonomy_context_domains": ["industry", "product"],
+    "prefer_leaf_taxonomy_evidence": false
+  },
   "model_review": {
     "enabled": false,
     "provider": "openai",

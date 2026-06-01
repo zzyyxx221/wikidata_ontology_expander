@@ -146,6 +146,9 @@ class ExpansionConfig:
     freeze_top_level_schema: bool = False
     allowed_schema_actions: tuple[str, ...] = ()
     restricted_schema_actions: tuple[str, ...] = ()
+    require_taxonomy_context: bool = False
+    taxonomy_context_domains: tuple[str, ...] = ("industry", "product")
+    prefer_leaf_taxonomy_evidence: bool = False
     max_candidates_per_seed: int = 5
     min_accept_score: float = 0.72
     min_review_score: float = 0.45
