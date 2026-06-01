@@ -265,6 +265,13 @@ examples/offline_wikidata_fixture_taxonomy.json
 - `晶圆检测设备`
 - `生物医药研发服务`
 - `新能源汽车零部件`
+- `固态电池`
+- `碳化硅MOSFET`
+- `光刻胶`
+- `氢燃料电池系统`
+- `工业机器人`
+- `半导体制造行业`
+- `药物发现CRO服务`
 
 这些实体会触发如下类型的 schema proposal：
 
@@ -278,6 +285,25 @@ examples/offline_wikidata_fixture_taxonomy.json
   - `waferSize`
   - `applicationVehicleType`
   - `safetyCertification`
+  - `energyDensity`
+  - `cycleLife`
+  - `electrolyteType`
+  - `breakdownVoltage`
+  - `onResistance`
+  - `operatingTemperature`
+  - `exposureWavelength`
+  - `viscosity`
+  - `stackPower`
+  - `hydrogenPurityRequirement`
+  - `coldStartTemperature`
+  - `payloadCapacity`
+  - `repeatability`
+  - `axisCount`
+  - `capitalIntensity`
+  - `waferFabType`
+  - `processTechnologyGeneration`
+  - `assayType`
+  - `deliveryModel`
 - `add_relation_type`
   - `manufacturer`
   - `developer`

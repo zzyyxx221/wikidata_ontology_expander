@@ -134,7 +134,11 @@ def _review_with_chat_completions(
         "messages": [
             {
                 "role": "system",
-                "content": "Return only one strict JSON object with no markdown or explanation.",
+                "content": (
+                    "You are a JSON-only API endpoint. Your entire response MUST be exactly one "
+                    "valid JSON object. Do not include markdown, code fences, comments, headings, "
+                    "analysis, chain-of-thought, or any text outside the JSON object."
+                ),
             },
             {"role": "user", "content": prompt},
         ],
@@ -204,7 +208,14 @@ def _extract_chat_message_text(payload: dict[str, Any]) -> str:
 
 
 def _parse_review_decision(text: str) -> ReviewDecision:
-    parsed = _find_review_decision_object(_loads_json_object(text))
+    try:
+        parsed = _find_review_decision_object(_loads_json_object(text))
+    except ValueError as exc:
+        return ReviewDecision(
+            accepted=False,
+            confidence=0.0,
+            rationale=str(exc)[:500],
+        )
     missing = [key for key in ("accepted", "confidence", "rationale") if key not in parsed]
     if missing:
         return ReviewDecision(
@@ -286,6 +297,28 @@ def _build_review_prompt(proposal: Change) -> str:
     ] or ["- no explicit evidence"]
     example_lines = [f"- {example}" for example in proposal.examples] or ["- no examples"]
     return f"""
+OUTPUT CONTRACT - FOLLOW EXACTLY:
+- Return exactly one valid JSON object and nothing else.
+- The first character of your response must be {{ and the last character must be }}.
+- Do not output markdown, code fences, prose, explanations, analysis, or chain-of-thought.
+- Use exactly these six keys: accepted, confidence, rationale, normalized_label, normalized_target_type, normalized_value.
+- accepted must be boolean true or false.
+- confidence must be a number between 0.0 and 1.0.
+- rationale must be a short string, max 30 words.
+- normalized_label, normalized_target_type, and normalized_value must each be a string or null.
+- If the proposal is ambiguous, instance-level, or unsupported, return accepted=false.
+
+Required JSON template:
+{{
+  "accepted": false,
+  "confidence": 0.0,
+  "rationale": "short reason",
+  "normalized_label": null,
+  "normalized_target_type": null,
+  "normalized_value": null
+}}
+
+Task:
 You are reviewing an ontology schema expansion proposal.
 Accept only if it adds schema-level knowledge that should likely be modeled in the ontology,
 not merely an instance value or a trivial restatement.
@@ -306,18 +339,11 @@ Examples:
 Evidence:
 {chr(10).join(evidence_lines)}
 
-Return strict JSON.
-Required JSON shape:
-{{
-  "accepted": true,
-  "confidence": 0.0,
-  "rationale": "short reason",
-  "normalized_label": null,
-  "normalized_target_type": null,
-  "normalized_value": null
-}}
 Rules:
 - Reject instance-level property values like descriptions, aliases, dates, URLs, or individual subclass links.
 - Prefer normalized schema labels such as concept names, property names, and relation names.
 - Keep rationale concise.
+
+FINAL REMINDER:
+Return only the JSON object. Do not write phrases like "We need to evaluate", "Here is", or "```json".
 """.strip()

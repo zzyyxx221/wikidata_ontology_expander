@@ -1,86 +1,1102 @@
 {
   "search": {
-    "镍钴锰酸锂": ["QTX001"],
-    "ncm cathode material": ["QTX001"],
-    "功率放大器芯片": ["QTX002"],
-    "power amplifier chip": ["QTX002"],
-    "晶圆检测设备": ["QTX003"],
-    "wafer inspection equipment": ["QTX003"],
-    "生物医药研发服务": ["QTX004"],
-    "cxo service": ["QTX004"],
-    "新能源汽车零部件": ["QTX005"],
-    "automotive electronics component": ["QTX005"]
+    "镍钴锰酸锂": [
+      "QTX001"
+    ],
+    "ncm cathode material": [
+      "QTX001"
+    ],
+    "功率放大器芯片": [
+      "QTX002"
+    ],
+    "power amplifier chip": [
+      "QTX002"
+    ],
+    "晶圆检测设备": [
+      "QTX003"
+    ],
+    "wafer inspection equipment": [
+      "QTX003"
+    ],
+    "生物医药研发服务": [
+      "QTX004"
+    ],
+    "cxo service": [
+      "QTX004"
+    ],
+    "新能源汽车零部件": [
+      "QTX005"
+    ],
+    "automotive electronics component": [
+      "QTX005"
+    ],
+    "固态电池": [
+      "QTX006"
+    ],
+    "solid-state battery": [
+      "QTX006"
+    ],
+    "碳化硅MOSFET": [
+      "QTX007"
+    ],
+    "sic mosfet": [
+      "QTX007"
+    ],
+    "光刻胶": [
+      "QTX008"
+    ],
+    "photoresist": [
+      "QTX008"
+    ],
+    "氢燃料电池系统": [
+      "QTX009"
+    ],
+    "hydrogen fuel cell system": [
+      "QTX009"
+    ],
+    "工业机器人": [
+      "QTX010"
+    ],
+    "industrial robot": [
+      "QTX010"
+    ],
+    "半导体制造行业": [
+      "QTX011"
+    ],
+    "semiconductor manufacturing industry": [
+      "QTX011"
+    ],
+    "药物发现CRO服务": [
+      "QTX012"
+    ],
+    "drug discovery cro service": [
+      "QTX012"
+    ],
+    "动力电池管理系统": [
+      "QTX013"
+    ],
+    "battery management system": [
+      "QTX013"
+    ],
+    "车规级MCU": [
+      "QTX014"
+    ],
+    "automotive mcu": [
+      "QTX014"
+    ],
+    "高端数控机床": [
+      "QTX015"
+    ],
+    "high-end cnc machine tool": [
+      "QTX015"
+    ],
+    "基因测序仪": [
+      "QTX016"
+    ],
+    "gene sequencer": [
+      "QTX016"
+    ],
+    "ADC药物研发服务": [
+      "QTX017"
+    ],
+    "adc drug development service": [
+      "QTX017"
+    ],
+    "钠离子电池正极材料": [
+      "QTX018"
+    ],
+    "sodium-ion battery cathode material": [
+      "QTX018"
+    ],
+    "先进封装服务": [
+      "QTX019"
+    ],
+    "advanced packaging service": [
+      "QTX019"
+    ],
+    "工业软件平台": [
+      "QTX020"
+    ],
+    "industrial software platform": [
+      "QTX020"
+    ]
   },
   "entities": [
     {
       "qid": "QTX001",
       "label": "镍钴锰酸锂",
       "description": "EC001001020101020502 leaf product; lithium-ion battery cathode material used in ternary positive electrode materials",
-      "aliases": ["NCM cathode material", "nickel cobalt manganese lithium oxide", "三元正极材料"],
+      "aliases": [
+        "NCM cathode material",
+        "nickel cobalt manganese lithium oxide",
+        "三元正极材料"
+      ],
       "statements": [
-        {"property_id": "P31", "property_label": "instance of", "value_id": "Q1", "value_label": "product"},
-        {"property_id": "P279", "property_label": "subclass of", "value_id": "QTX101", "value_label": "三元正极材料"},
-        {"property_id": "P176", "property_label": "manufacturer", "value_id": "QTX901", "value_label": "CATL"},
-        {"property_id": "P186", "property_label": "made from material", "value_id": "QTX102", "value_label": "nickel cobalt manganese precursor"},
-        {"property_id": "P527", "property_label": "has part", "value_id": "QTX103", "value_label": "cathode active material"},
-        {"property_id": "P9001", "property_label": "nominal voltage", "value_label": "3.7 V"},
-        {"property_id": "P9002", "property_label": "specific capacity", "value_label": "180 mAh/g"}
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q1",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "QTX101",
+          "value_label": "三元正极材料"
+        },
+        {
+          "property_id": "P176",
+          "property_label": "manufacturer",
+          "value_id": "QTX901",
+          "value_label": "CATL"
+        },
+        {
+          "property_id": "P186",
+          "property_label": "made from material",
+          "value_id": "QTX102",
+          "value_label": "nickel cobalt manganese precursor"
+        },
+        {
+          "property_id": "P527",
+          "property_label": "has part",
+          "value_id": "QTX103",
+          "value_label": "cathode active material"
+        },
+        {
+          "property_id": "P9001",
+          "property_label": "nominal voltage",
+          "value_label": "3.7 V"
+        },
+        {
+          "property_id": "P9002",
+          "property_label": "specific capacity",
+          "value_label": "180 mAh/g"
+        }
       ]
     },
     {
       "qid": "QTX002",
       "label": "功率放大器芯片",
       "description": "SE00203001010103 leaf product; radio-frequency integrated circuit product used in mobile communication terminals",
-      "aliases": ["power amplifier chip", "PA chip", "射频功率放大器芯片"],
+      "aliases": [
+        "power amplifier chip",
+        "PA chip",
+        "射频功率放大器芯片"
+      ],
       "statements": [
-        {"property_id": "P31", "property_label": "instance of", "value_id": "Q7397", "value_label": "product"},
-        {"property_id": "P279", "property_label": "subclass of", "value_id": "QTX201", "value_label": "射频芯片"},
-        {"property_id": "P176", "property_label": "manufacturer", "value_id": "QTX902", "value_label": "Qorvo"},
-        {"property_id": "P178", "property_label": "developer", "value_id": "QTX902", "value_label": "Qorvo"},
-        {"property_id": "P9003", "property_label": "process node", "value_label": "GaAs pHEMT"},
-        {"property_id": "P9004", "property_label": "package type", "value_label": "LGA"},
-        {"property_id": "P9005", "property_label": "frequency band", "value_label": "sub-6 GHz"}
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q7397",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "QTX201",
+          "value_label": "射频芯片"
+        },
+        {
+          "property_id": "P176",
+          "property_label": "manufacturer",
+          "value_id": "QTX902",
+          "value_label": "Qorvo"
+        },
+        {
+          "property_id": "P178",
+          "property_label": "developer",
+          "value_id": "QTX902",
+          "value_label": "Qorvo"
+        },
+        {
+          "property_id": "P9003",
+          "property_label": "process node",
+          "value_label": "GaAs pHEMT"
+        },
+        {
+          "property_id": "P9004",
+          "property_label": "package type",
+          "value_label": "LGA"
+        },
+        {
+          "property_id": "P9005",
+          "property_label": "frequency band",
+          "value_label": "sub-6 GHz"
+        }
       ]
     },
     {
       "qid": "QTX003",
       "label": "晶圆检测设备",
       "description": "semiconductor manufacturing equipment product used for wafer defect inspection and metrology",
-      "aliases": ["wafer inspection equipment", "semiconductor wafer inspection system", "晶圆检测系统"],
+      "aliases": [
+        "wafer inspection equipment",
+        "semiconductor wafer inspection system",
+        "晶圆检测系统"
+      ],
       "statements": [
-        {"property_id": "P31", "property_label": "instance of", "value_id": "Q1", "value_label": "product"},
-        {"property_id": "P279", "property_label": "subclass of", "value_id": "QTX301", "value_label": "半导体设备"},
-        {"property_id": "P176", "property_label": "manufacturer", "value_id": "QTX903", "value_label": "KLA Corporation"},
-        {"property_id": "P452", "property_label": "industry", "value_id": "QTX801", "value_label": "半导体设备"},
-        {"property_id": "P9006", "property_label": "inspection resolution", "value_label": "nanometer scale"},
-        {"property_id": "P9007", "property_label": "wafer size", "value_label": "300 mm"}
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q1",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "QTX301",
+          "value_label": "半导体设备"
+        },
+        {
+          "property_id": "P176",
+          "property_label": "manufacturer",
+          "value_id": "QTX903",
+          "value_label": "KLA Corporation"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "QTX801",
+          "value_label": "半导体设备"
+        },
+        {
+          "property_id": "P9006",
+          "property_label": "inspection resolution",
+          "value_label": "nanometer scale"
+        },
+        {
+          "property_id": "P9007",
+          "property_label": "wafer size",
+          "value_label": "300 mm"
+        }
       ]
     },
     {
       "qid": "QTX004",
       "label": "生物医药研发服务",
       "description": "contract research and development service in pharmaceutical and biotechnology industry",
-      "aliases": ["CXO service", "pharmaceutical R&D outsourcing", "医药研发外包服务"],
+      "aliases": [
+        "CXO service",
+        "pharmaceutical R&D outsourcing",
+        "医药研发外包服务"
+      ],
       "statements": [
-        {"property_id": "P31", "property_label": "instance of", "value_id": "Q7406919", "value_label": "service"},
-        {"property_id": "P452", "property_label": "industry", "value_id": "QTX802", "value_label": "制药"},
-        {"property_id": "P9008", "property_label": "service phase", "value_label": "preclinical research"},
-        {"property_id": "P9009", "property_label": "regulatory stage", "value_label": "IND enabling"},
-        {"property_id": "P123", "property_label": "publisher", "value_id": "QTX904", "value_label": "National Medical Products Administration"}
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q7406919",
+          "value_label": "service"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "QTX802",
+          "value_label": "制药"
+        },
+        {
+          "property_id": "P9008",
+          "property_label": "service phase",
+          "value_label": "preclinical research"
+        },
+        {
+          "property_id": "P9009",
+          "property_label": "regulatory stage",
+          "value_label": "IND enabling"
+        },
+        {
+          "property_id": "P123",
+          "property_label": "publisher",
+          "value_id": "QTX904",
+          "value_label": "National Medical Products Administration"
+        }
       ]
     },
     {
       "qid": "QTX005",
       "label": "新能源汽车零部件",
       "description": "automotive component product group covering electric-drive and battery thermal management parts",
-      "aliases": ["automotive electronics component", "new energy vehicle component", "电动车零部件"],
+      "aliases": [
+        "automotive electronics component",
+        "new energy vehicle component",
+        "电动车零部件"
+      ],
       "statements": [
-        {"property_id": "P31", "property_label": "instance of", "value_id": "Q1", "value_label": "product"},
-        {"property_id": "P279", "property_label": "subclass of", "value_id": "QTX501", "value_label": "汽车零部件与设备"},
-        {"property_id": "P527", "property_label": "has part", "value_id": "QTX502", "value_label": "battery thermal management system"},
-        {"property_id": "P186", "property_label": "made from material", "value_id": "QTX503", "value_label": "aluminum alloy"},
-        {"property_id": "P9010", "property_label": "application vehicle type", "value_label": "battery electric vehicle"},
-        {"property_id": "P9011", "property_label": "safety certification", "value_label": "IATF 16949"}
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q1",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "QTX501",
+          "value_label": "汽车零部件与设备"
+        },
+        {
+          "property_id": "P527",
+          "property_label": "has part",
+          "value_id": "QTX502",
+          "value_label": "battery thermal management system"
+        },
+        {
+          "property_id": "P186",
+          "property_label": "made from material",
+          "value_id": "QTX503",
+          "value_label": "aluminum alloy"
+        },
+        {
+          "property_id": "P9010",
+          "property_label": "application vehicle type",
+          "value_label": "battery electric vehicle"
+        },
+        {
+          "property_id": "P9011",
+          "property_label": "safety certification",
+          "value_label": "IATF 16949"
+        }
+      ]
+    },
+    {
+      "qid": "QTX006",
+      "label": "固态电池",
+      "description": "EC0010010201010207 leaf product; rechargeable battery product using solid electrolyte for electric vehicles",
+      "aliases": [
+        "solid-state battery",
+        "all-solid-state battery",
+        "固态锂电池"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q1",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "QTX601",
+          "value_label": "lithium-ion battery"
+        },
+        {
+          "property_id": "P176",
+          "property_label": "manufacturer",
+          "value_id": "QTX905",
+          "value_label": "Toyota"
+        },
+        {
+          "property_id": "P186",
+          "property_label": "made from material",
+          "value_id": "QTX602",
+          "value_label": "solid electrolyte material"
+        },
+        {
+          "property_id": "P527",
+          "property_label": "has part",
+          "value_id": "QTX603",
+          "value_label": "solid electrolyte separator"
+        },
+        {
+          "property_id": "P9012",
+          "property_label": "energy density",
+          "value_label": "400 Wh/kg"
+        },
+        {
+          "property_id": "P9013",
+          "property_label": "cycle life",
+          "value_label": "1000 cycles"
+        },
+        {
+          "property_id": "P9014",
+          "property_label": "electrolyte type",
+          "value_label": "sulfide solid electrolyte"
+        }
+      ]
+    },
+    {
+      "qid": "QTX007",
+      "label": "碳化硅MOSFET",
+      "description": "SE00203001010201 leaf product; silicon carbide power semiconductor device used in electric-drive inverters",
+      "aliases": [
+        "SiC MOSFET",
+        "silicon carbide MOSFET",
+        "碳化硅功率器件"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q7397",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "QTX701",
+          "value_label": "power semiconductor device"
+        },
+        {
+          "property_id": "P176",
+          "property_label": "manufacturer",
+          "value_id": "QTX906",
+          "value_label": "Infineon Technologies"
+        },
+        {
+          "property_id": "P186",
+          "property_label": "made from material",
+          "value_id": "QTX702",
+          "value_label": "silicon carbide"
+        },
+        {
+          "property_id": "P9015",
+          "property_label": "breakdown voltage",
+          "value_label": "1200 V"
+        },
+        {
+          "property_id": "P9016",
+          "property_label": "on resistance",
+          "value_label": "80 mOhm"
+        },
+        {
+          "property_id": "P9017",
+          "property_label": "operating temperature",
+          "value_label": "175 °C"
+        }
+      ]
+    },
+    {
+      "qid": "QTX008",
+      "label": "光刻胶",
+      "description": "semiconductor material product used in photolithography process for wafer patterning",
+      "aliases": [
+        "photoresist",
+        "semiconductor photoresist",
+        "晶圆光刻胶"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q1",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "QTX801",
+          "value_label": "semiconductor material"
+        },
+        {
+          "property_id": "P176",
+          "property_label": "manufacturer",
+          "value_id": "QTX907",
+          "value_label": "JSR Corporation"
+        },
+        {
+          "property_id": "P186",
+          "property_label": "made from material",
+          "value_id": "QTX802",
+          "value_label": "photoactive compound"
+        },
+        {
+          "property_id": "P9018",
+          "property_label": "exposure wavelength",
+          "value_label": "193 nm"
+        },
+        {
+          "property_id": "P9019",
+          "property_label": "viscosity",
+          "value_label": "20 cP"
+        }
+      ]
+    },
+    {
+      "qid": "QTX009",
+      "label": "氢燃料电池系统",
+      "description": "EC001001020201 leaf product; fuel cell powertrain subsystem for hydrogen electric vehicles",
+      "aliases": [
+        "hydrogen fuel cell system",
+        "fuel cell stack system",
+        "氢燃料电池电堆系统"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q1",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "QTX901",
+          "value_label": "new energy vehicle component"
+        },
+        {
+          "property_id": "P176",
+          "property_label": "manufacturer",
+          "value_id": "QTX908",
+          "value_label": "Ballard Power Systems"
+        },
+        {
+          "property_id": "P527",
+          "property_label": "has part",
+          "value_id": "QTX902",
+          "value_label": "proton exchange membrane"
+        },
+        {
+          "property_id": "P9020",
+          "property_label": "stack power",
+          "value_label": "100 kW"
+        },
+        {
+          "property_id": "P9021",
+          "property_label": "hydrogen purity requirement",
+          "value_label": "99.97%"
+        },
+        {
+          "property_id": "P9022",
+          "property_label": "cold start temperature",
+          "value_label": "-30 °C"
+        }
+      ]
+    },
+    {
+      "qid": "QTX010",
+      "label": "工业机器人",
+      "description": "industrial automation equipment product used in smart manufacturing production lines",
+      "aliases": [
+        "industrial robot",
+        "six-axis robot",
+        "工业机械臂"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q1",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "QTX1001",
+          "value_label": "industrial automation equipment"
+        },
+        {
+          "property_id": "P176",
+          "property_label": "manufacturer",
+          "value_id": "QTX909",
+          "value_label": "FANUC"
+        },
+        {
+          "property_id": "P527",
+          "property_label": "has part",
+          "value_id": "QTX1002",
+          "value_label": "robot controller"
+        },
+        {
+          "property_id": "P9023",
+          "property_label": "payload capacity",
+          "value_label": "20 kg"
+        },
+        {
+          "property_id": "P9024",
+          "property_label": "repeatability",
+          "value_label": "±0.02 mm"
+        },
+        {
+          "property_id": "P9025",
+          "property_label": "axis count",
+          "value_label": "6"
+        }
+      ]
+    },
+    {
+      "qid": "QTX011",
+      "label": "半导体制造行业",
+      "description": "industry sector covering wafer fabrication, semiconductor equipment, materials, and advanced packaging",
+      "aliases": [
+        "semiconductor manufacturing industry",
+        "wafer fabrication industry",
+        "半导体产业"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q8148",
+          "value_label": "industry"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "QTX1101",
+          "value_label": "manufacturing industry"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "QTX1102",
+          "value_label": "semiconductor industry"
+        },
+        {
+          "property_id": "P9026",
+          "property_label": "capital intensity",
+          "value_label": "high"
+        },
+        {
+          "property_id": "P9027",
+          "property_label": "wafer fab type",
+          "value_label": "foundry"
+        },
+        {
+          "property_id": "P9028",
+          "property_label": "process technology generation",
+          "value_label": "advanced node"
+        }
+      ]
+    },
+    {
+      "qid": "QTX012",
+      "label": "药物发现CRO服务",
+      "description": "contract research organization service for pharmaceutical discovery, screening, and preclinical validation",
+      "aliases": [
+        "drug discovery CRO service",
+        "contract research organization service",
+        "药物筛选外包服务"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q7406919",
+          "value_label": "service"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "QTX1201",
+          "value_label": "pharmaceutical industry"
+        },
+        {
+          "property_id": "P178",
+          "property_label": "developer",
+          "value_id": "QTX910",
+          "value_label": "WuXi AppTec"
+        },
+        {
+          "property_id": "P9008",
+          "property_label": "service phase",
+          "value_label": "hit-to-lead discovery"
+        },
+        {
+          "property_id": "P9029",
+          "property_label": "assay type",
+          "value_label": "high-throughput screening"
+        },
+        {
+          "property_id": "P9030",
+          "property_label": "delivery model",
+          "value_label": "fee-for-service"
+        }
+      ]
+    },
+    {
+      "qid": "QTX013",
+      "label": "动力电池管理系统",
+      "description": "EC001001020202 leaf product; battery electronics subsystem for monitoring electric vehicle power batteries",
+      "aliases": [
+        "battery management system",
+        "BMS",
+        "电池管理系统"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q1",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "QTX1301",
+          "value_label": "new energy vehicle electronics component"
+        },
+        {
+          "property_id": "P176",
+          "property_label": "manufacturer",
+          "value_id": "QTX911",
+          "value_label": "Bosch"
+        },
+        {
+          "property_id": "P527",
+          "property_label": "has part",
+          "value_id": "QTX1302",
+          "value_label": "battery monitoring unit"
+        },
+        {
+          "property_id": "P9031",
+          "property_label": "cell monitoring channels",
+          "value_label": "96 channels"
+        },
+        {
+          "property_id": "P9032",
+          "property_label": "state of charge accuracy",
+          "value_label": "±3%"
+        },
+        {
+          "property_id": "P9033",
+          "property_label": "communication protocol",
+          "value_label": "CAN bus"
+        }
+      ]
+    },
+    {
+      "qid": "QTX014",
+      "label": "车规级MCU",
+      "description": "SE002030010103 leaf product; automotive-grade microcontroller used in body control and electric-drive control units",
+      "aliases": [
+        "automotive MCU",
+        "vehicle-grade microcontroller",
+        "汽车微控制器"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q7397",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "QTX1401",
+          "value_label": "automotive semiconductor"
+        },
+        {
+          "property_id": "P176",
+          "property_label": "manufacturer",
+          "value_id": "QTX912",
+          "value_label": "NXP Semiconductors"
+        },
+        {
+          "property_id": "P178",
+          "property_label": "developer",
+          "value_id": "QTX912",
+          "value_label": "NXP Semiconductors"
+        },
+        {
+          "property_id": "P9034",
+          "property_label": "functional safety level",
+          "value_label": "ASIL-D"
+        },
+        {
+          "property_id": "P9035",
+          "property_label": "core architecture",
+          "value_label": "Arm Cortex-M7"
+        },
+        {
+          "property_id": "P9036",
+          "property_label": "flash memory size",
+          "value_label": "4 MB"
+        }
+      ]
+    },
+    {
+      "qid": "QTX015",
+      "label": "高端数控机床",
+      "description": "high-end industrial equipment product used for precision machining in advanced manufacturing",
+      "aliases": [
+        "high-end CNC machine tool",
+        "precision CNC machine",
+        "五轴数控机床"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q1",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "QTX1501",
+          "value_label": "industrial equipment"
+        },
+        {
+          "property_id": "P176",
+          "property_label": "manufacturer",
+          "value_id": "QTX913",
+          "value_label": "DMG Mori"
+        },
+        {
+          "property_id": "P527",
+          "property_label": "has part",
+          "value_id": "QTX1502",
+          "value_label": "numerical control system"
+        },
+        {
+          "property_id": "P9037",
+          "property_label": "axis configuration",
+          "value_label": "5-axis"
+        },
+        {
+          "property_id": "P9038",
+          "property_label": "spindle speed",
+          "value_label": "20000 rpm"
+        },
+        {
+          "property_id": "P9039",
+          "property_label": "positioning accuracy",
+          "value_label": "±0.005 mm"
+        }
+      ]
+    },
+    {
+      "qid": "QTX016",
+      "label": "基因测序仪",
+      "description": "biomedical equipment product used for high-throughput DNA sequencing and clinical genomics",
+      "aliases": [
+        "gene sequencer",
+        "DNA sequencer",
+        "高通量测序仪"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q1",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "QTX1601",
+          "value_label": "medical laboratory equipment"
+        },
+        {
+          "property_id": "P176",
+          "property_label": "manufacturer",
+          "value_id": "QTX914",
+          "value_label": "Illumina"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "QTX1602",
+          "value_label": "biotechnology industry"
+        },
+        {
+          "property_id": "P9040",
+          "property_label": "sequencing throughput",
+          "value_label": "600 Gb/run"
+        },
+        {
+          "property_id": "P9041",
+          "property_label": "read length",
+          "value_label": "150 bp paired-end"
+        },
+        {
+          "property_id": "P9042",
+          "property_label": "sample multiplexing capacity",
+          "value_label": "384 samples"
+        }
+      ]
+    },
+    {
+      "qid": "QTX017",
+      "label": "ADC药物研发服务",
+      "description": "contract research service for antibody-drug conjugate discovery, linker payload design, and preclinical evaluation",
+      "aliases": [
+        "ADC drug development service",
+        "antibody-drug conjugate CRO service",
+        "抗体偶联药物研发外包"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q7406919",
+          "value_label": "service"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "QTX1701",
+          "value_label": "biopharmaceutical industry"
+        },
+        {
+          "property_id": "P178",
+          "property_label": "developer",
+          "value_id": "QTX915",
+          "value_label": "Lonza"
+        },
+        {
+          "property_id": "P9043",
+          "property_label": "payload class",
+          "value_label": "topoisomerase inhibitor"
+        },
+        {
+          "property_id": "P9044",
+          "property_label": "linker chemistry",
+          "value_label": "cleavable linker"
+        },
+        {
+          "property_id": "P9045",
+          "property_label": "conjugation method",
+          "value_label": "site-specific conjugation"
+        }
+      ]
+    },
+    {
+      "qid": "QTX018",
+      "label": "钠离子电池正极材料",
+      "description": "EC0010010201010208 leaf product; cathode material product for sodium-ion battery cells",
+      "aliases": [
+        "sodium-ion battery cathode material",
+        "sodium layered oxide cathode",
+        "钠电正极材料"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q1",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "QTX1801",
+          "value_label": "battery cathode material"
+        },
+        {
+          "property_id": "P176",
+          "property_label": "manufacturer",
+          "value_id": "QTX916",
+          "value_label": "HiNa Battery"
+        },
+        {
+          "property_id": "P186",
+          "property_label": "made from material",
+          "value_id": "QTX1802",
+          "value_label": "sodium layered oxide"
+        },
+        {
+          "property_id": "P9002",
+          "property_label": "specific capacity",
+          "value_label": "150 mAh/g"
+        },
+        {
+          "property_id": "P9046",
+          "property_label": "sodium content",
+          "value_label": "high sodium stoichiometry"
+        },
+        {
+          "property_id": "P9047",
+          "property_label": "first cycle efficiency",
+          "value_label": "88%"
+        }
+      ]
+    },
+    {
+      "qid": "QTX019",
+      "label": "先进封装服务",
+      "description": "semiconductor manufacturing service covering chiplet integration, fan-out packaging, and 2.5D interposer assembly",
+      "aliases": [
+        "advanced packaging service",
+        "chiplet packaging service",
+        "半导体先进封装服务"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q7406919",
+          "value_label": "service"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "QTX1901",
+          "value_label": "semiconductor industry"
+        },
+        {
+          "property_id": "P178",
+          "property_label": "developer",
+          "value_id": "QTX917",
+          "value_label": "TSMC"
+        },
+        {
+          "property_id": "P9048",
+          "property_label": "packaging technology",
+          "value_label": "2.5D interposer"
+        },
+        {
+          "property_id": "P9049",
+          "property_label": "bump pitch",
+          "value_label": "40 um"
+        },
+        {
+          "property_id": "P9050",
+          "property_label": "substrate type",
+          "value_label": "silicon interposer"
+        }
+      ]
+    },
+    {
+      "qid": "QTX020",
+      "label": "工业软件平台",
+      "description": "industrial digital platform product for manufacturing execution, equipment connectivity, and production analytics",
+      "aliases": [
+        "industrial software platform",
+        "manufacturing execution platform",
+        "工业互联网平台"
+      ],
+      "statements": [
+        {
+          "property_id": "P31",
+          "property_label": "instance of",
+          "value_id": "Q1",
+          "value_label": "product"
+        },
+        {
+          "property_id": "P279",
+          "property_label": "subclass of",
+          "value_id": "QTX2001",
+          "value_label": "industrial software"
+        },
+        {
+          "property_id": "P178",
+          "property_label": "developer",
+          "value_id": "QTX918",
+          "value_label": "Siemens"
+        },
+        {
+          "property_id": "P452",
+          "property_label": "industry",
+          "value_id": "QTX2002",
+          "value_label": "industrial internet"
+        },
+        {
+          "property_id": "P9051",
+          "property_label": "deployment mode",
+          "value_label": "cloud-edge hybrid"
+        },
+        {
+          "property_id": "P9052",
+          "property_label": "supported protocol",
+          "value_label": "OPC UA"
+        },
+        {
+          "property_id": "P9053",
+          "property_label": "data ingestion rate",
+          "value_label": "1 million tags/min"
+        }
       ]
     }
   ]

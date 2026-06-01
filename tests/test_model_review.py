@@ -8,6 +8,7 @@ from wikidata_ontology_expander.engine import load_config
 from wikidata_ontology_expander.model_review import (
     NullSchemaProposalReviewer,
     OpenAIChatCompletionsReviewer,
+    _build_review_prompt,
     _parse_review_decision,
     _post_json,
     build_reviewer,
@@ -91,6 +92,9 @@ class ModelReviewTest(unittest.TestCase):
         body = json.loads(kwargs["data"])
         self.assertEqual(body["model"], "local-model")
         self.assertEqual(body["response_format"], {"type": "json_object"})
+        self.assertIn("JSON-only API endpoint", body["messages"][0]["content"])
+        self.assertIn("Return exactly one valid JSON object", body["messages"][1]["content"])
+        self.assertIn("Use exactly these six keys", body["messages"][1]["content"])
 
     def test_openai_provider_falls_back_to_chat_for_local_404_responses_api(self):
         import requests
@@ -164,9 +168,17 @@ Here is the review:
         self.assertEqual(decision.confidence, 0.77)
         self.assertEqual(decision.normalized_label, "Product")
 
-    def test_parse_review_decision_rejects_empty_text_with_clear_error(self):
-        with self.assertRaisesRegex(ValueError, "empty text"):
-            _parse_review_decision("")
+    def test_parse_review_decision_rejects_empty_text_without_crashing(self):
+        decision = _parse_review_decision("")
+        self.assertFalse(decision.accepted)
+        self.assertEqual(decision.confidence, 0.0)
+        self.assertIn("empty text", decision.rationale)
+
+    def test_parse_review_decision_rejects_prose_without_crashing(self):
+        decision = _parse_review_decision("We need to evaluate the proposal. It looks like a property value.")
+        self.assertFalse(decision.accepted)
+        self.assertEqual(decision.confidence, 0.0)
+        self.assertIn("invalid JSON", decision.rationale)
 
     def test_parse_review_decision_rejects_missing_required_fields(self):
         decision = _parse_review_decision('{"rationale": "not the requested schema"}')
@@ -191,6 +203,14 @@ Here is the review:
         )
         self.assertFalse(decision.accepted)
         self.assertEqual(decision.confidence, 0.4)
+
+    def test_review_prompt_strictly_requires_json_only_output(self):
+        prompt = _build_review_prompt(self._proposal())
+        self.assertIn("OUTPUT CONTRACT - FOLLOW EXACTLY", prompt)
+        self.assertIn("The first character of your response must be {", prompt)
+        self.assertIn("Use exactly these six keys", prompt)
+        self.assertIn("FINAL REMINDER", prompt)
+        self.assertIn("Do not write phrases like", prompt)
 
     def test_load_config_reads_model_review_block(self):
         with tempfile.TemporaryDirectory() as tmp:
