@@ -87,7 +87,12 @@ class OpenAIResponsesReviewer(SchemaProposalReviewer):
             "max_output_tokens": self.config.max_output_tokens,
             "temperature": self.config.temperature,
         }
-        response = _post_json(url, self.api_key, payload)
+        try:
+            response = _post_json(url, self.api_key, payload)
+        except requests.HTTPError as exc:
+            if _should_fallback_to_chat_completions(exc, self.config.api_base):
+                return _review_with_chat_completions(self.config, self.api_key, proposal)
+            raise
         data = response.json()
         text = _extract_output_text(data)
         return _parse_review_decision(text)
@@ -106,25 +111,7 @@ class OpenAIChatCompletionsReviewer(SchemaProposalReviewer):
         self.api_key = api_key
 
     def review(self, proposal: Change) -> ReviewDecision:
-        url = urljoin(self.config.api_base.rstrip("/") + "/", "chat/completions")
-        prompt = _build_review_prompt(proposal)
-        payload = {
-            "model": self.config.model,
-            "messages": [
-                {
-                    "role": "system",
-                    "content": "Return only one strict JSON object matching the requested schema.",
-                },
-                {"role": "user", "content": prompt},
-            ],
-            "response_format": {"type": "json_object"},
-            "max_tokens": self.config.max_output_tokens,
-            "temperature": self.config.temperature,
-        }
-        response = _post_json(url, self.api_key, payload)
-        data = response.json()
-        text = _extract_chat_message_text(data)
-        return _parse_review_decision(text)
+        return _review_with_chat_completions(self.config, self.api_key, proposal)
 
 
 def build_reviewer(config: ModelReviewConfig | None) -> SchemaProposalReviewer:
@@ -132,9 +119,33 @@ def build_reviewer(config: ModelReviewConfig | None) -> SchemaProposalReviewer:
         return NullSchemaProposalReviewer()
     if config.provider in {"openai", "openai_responses"}:
         return OpenAIResponsesReviewer(config)
-    if config.provider in {"openai_chat", "openai-compatible", "openai_compatible"}:
+    if config.provider in {"openai_chat", "openai-compatible", "openai_compatible", "litellm", "deepseek"}:
         return OpenAIChatCompletionsReviewer(config)
     raise ValueError(f"unsupported model review provider: {config.provider}")
+
+
+def _review_with_chat_completions(
+    config: ModelReviewConfig, api_key: str, proposal: Change
+) -> ReviewDecision:
+    url = urljoin(config.api_base.rstrip("/") + "/", "chat/completions")
+    prompt = _build_review_prompt(proposal)
+    payload = {
+        "model": config.model,
+        "messages": [
+            {
+                "role": "system",
+                "content": "Return only one strict JSON object matching the requested schema.",
+            },
+            {"role": "user", "content": prompt},
+        ],
+        "response_format": {"type": "json_object"},
+        "max_tokens": config.max_output_tokens,
+        "temperature": config.temperature,
+    }
+    response = _post_json(url, api_key, payload)
+    data = response.json()
+    text = _extract_chat_message_text(data)
+    return _parse_review_decision(text)
 
 
 def _post_json(url: str, api_key: str, payload: dict[str, Any]):
@@ -153,6 +164,14 @@ def _post_json(url: str, api_key: str, payload: dict[str, Any]):
         body = response.text[:1000] if response.text else "<empty response body>"
         raise requests.HTTPError(f"{exc}; response body: {body}", response=response) from exc
     return response
+
+
+def _should_fallback_to_chat_completions(exc: Exception, api_base: str) -> bool:
+    response = getattr(exc, "response", None)
+    if response is None or getattr(response, "status_code", None) != 404:
+        return False
+    normalized_base = api_base.rstrip("/").lower()
+    return normalized_base not in {"https://api.openai.com/v1", "http://api.openai.com/v1"}
 
 
 def _extract_output_text(payload: dict[str, Any]) -> str:

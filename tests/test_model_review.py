@@ -16,10 +16,11 @@ from wikidata_ontology_expander.models import Change, ModelReviewConfig
 
 
 class FakeResponse:
-    def __init__(self, payload=None, text="", status_error=None):
+    def __init__(self, payload=None, text="", status_error=None, status_code=200):
         self.payload = payload or {}
         self.text = text
         self.status_error = status_error
+        self.status_code = status_code
 
     def json(self):
         return self.payload
@@ -90,6 +91,49 @@ class ModelReviewTest(unittest.TestCase):
         body = json.loads(kwargs["data"])
         self.assertEqual(body["model"], "local-model")
         self.assertEqual(body["response_format"], {"type": "json_object"})
+
+    def test_openai_provider_falls_back_to_chat_for_local_404_responses_api(self):
+        import requests
+
+        config = ModelReviewConfig(
+            enabled=True,
+            provider="openai",
+            model="DeepSeek-V4-Flash",
+            api_base="http://10.130.138.46:8010",
+        )
+        responses_404 = FakeResponse(
+            text='{"error":{"message":"The API does not exist"}}',
+            status_error=requests.HTTPError("404 Client Error: Not Found"),
+            status_code=404,
+        )
+        chat_payload = {
+            "choices": [
+                {
+                    "message": {
+                        "content": json.dumps(
+                            {
+                                "accepted": True,
+                                "confidence": 0.9,
+                                "rationale": "schema-level relation",
+                                "normalized_label": "Product",
+                                "normalized_target_type": "Enterprise",
+                                "normalized_value": None,
+                            }
+                        )
+                    }
+                }
+            ]
+        }
+        with patch.dict("os.environ", {"OPENAI_API_KEY": "test-key"}), patch(
+            "wikidata_ontology_expander.model_review.requests.post",
+            side_effect=[responses_404, FakeResponse(chat_payload)],
+        ) as post:
+            reviewer = build_reviewer(config)
+            decision = reviewer.review(self._proposal())
+
+        self.assertTrue(decision.accepted)
+        self.assertEqual(post.call_args_list[0].args[0], "http://10.130.138.46:8010/responses")
+        self.assertEqual(post.call_args_list[1].args[0], "http://10.130.138.46:8010/chat/completions")
 
     def test_http_error_includes_response_body(self):
         import requests
