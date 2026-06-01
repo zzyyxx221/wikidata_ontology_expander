@@ -8,6 +8,7 @@ from wikidata_ontology_expander.engine import load_config
 from wikidata_ontology_expander.model_review import (
     NullSchemaProposalReviewer,
     OpenAIChatCompletionsReviewer,
+    _parse_review_decision,
     _post_json,
     build_reviewer,
 )
@@ -98,6 +99,30 @@ class ModelReviewTest(unittest.TestCase):
         with patch("wikidata_ontology_expander.model_review.requests.post", return_value=response):
             with self.assertRaisesRegex(requests.HTTPError, "unsupported parameter"):
                 _post_json("http://10.130.138.46:8010/responses", "test-key", {"model": "x"})
+
+    def test_parse_review_decision_accepts_markdown_json_block(self):
+        decision = _parse_review_decision(
+            """
+Here is the review:
+```json
+{
+  "accepted": true,
+  "confidence": 0.77,
+  "rationale": "schema-level relation",
+  "normalized_label": "Product",
+  "normalized_target_type": "Enterprise",
+  "normalized_value": null
+}
+```
+"""
+        )
+        self.assertTrue(decision.accepted)
+        self.assertEqual(decision.confidence, 0.77)
+        self.assertEqual(decision.normalized_label, "Product")
+
+    def test_parse_review_decision_rejects_empty_text_with_clear_error(self):
+        with self.assertRaisesRegex(ValueError, "empty text"):
+            _parse_review_decision("")
 
     def test_load_config_reads_model_review_block(self):
         with tempfile.TemporaryDirectory() as tmp:

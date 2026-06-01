@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 from dataclasses import dataclass
 from typing import Any
 from urllib.parse import urljoin
@@ -89,15 +90,7 @@ class OpenAIResponsesReviewer(SchemaProposalReviewer):
         response = _post_json(url, self.api_key, payload)
         data = response.json()
         text = _extract_output_text(data)
-        parsed: dict[str, Any] = json.loads(text)
-        return ReviewDecision(
-            accepted=bool(parsed["accepted"]),
-            confidence=float(parsed["confidence"]),
-            rationale=str(parsed["rationale"]),
-            normalized_label=parsed.get("normalized_label"),
-            normalized_target_type=parsed.get("normalized_target_type"),
-            normalized_value=parsed.get("normalized_value"),
-        )
+        return _parse_review_decision(text)
 
 
 class OpenAIChatCompletionsReviewer(SchemaProposalReviewer):
@@ -131,15 +124,7 @@ class OpenAIChatCompletionsReviewer(SchemaProposalReviewer):
         response = _post_json(url, self.api_key, payload)
         data = response.json()
         text = _extract_chat_message_text(data)
-        parsed: dict[str, Any] = json.loads(text)
-        return ReviewDecision(
-            accepted=bool(parsed["accepted"]),
-            confidence=float(parsed["confidence"]),
-            rationale=str(parsed["rationale"]),
-            normalized_label=parsed.get("normalized_label"),
-            normalized_target_type=parsed.get("normalized_target_type"),
-            normalized_value=parsed.get("normalized_value"),
-        )
+        return _parse_review_decision(text)
 
 
 def build_reviewer(config: ModelReviewConfig | None) -> SchemaProposalReviewer:
@@ -175,9 +160,14 @@ def _extract_output_text(payload: dict[str, Any]) -> str:
         return str(payload["output_text"])
     for item in payload.get("output", []):
         for content in item.get("content", []):
+            parsed = content.get("parsed")
+            if isinstance(parsed, dict):
+                return json.dumps(parsed)
             text = content.get("text")
             if text:
                 return str(text)
+            if content.get("type") == "refusal" and content.get("refusal"):
+                raise ValueError(f"model refused schema proposal review: {content['refusal']}")
     raise ValueError("Responses API payload did not contain output text")
 
 
@@ -186,9 +176,52 @@ def _extract_chat_message_text(payload: dict[str, Any]) -> str:
     if choices:
         message = choices[0].get("message") or {}
         content = message.get("content")
+        if isinstance(content, list):
+            parts = [str(part.get("text", "")) for part in content if isinstance(part, dict)]
+            content = "".join(parts)
         if content:
             return str(content)
     raise ValueError("Chat Completions payload did not contain message content")
+
+
+def _parse_review_decision(text: str) -> ReviewDecision:
+    parsed = _loads_json_object(text)
+    return ReviewDecision(
+        accepted=bool(parsed["accepted"]),
+        confidence=float(parsed["confidence"]),
+        rationale=str(parsed["rationale"]),
+        normalized_label=parsed.get("normalized_label"),
+        normalized_target_type=parsed.get("normalized_target_type"),
+        normalized_value=parsed.get("normalized_value"),
+    )
+
+
+def _loads_json_object(text: str) -> dict[str, Any]:
+    candidate = _extract_json_object_text(text)
+    try:
+        parsed = json.loads(candidate)
+    except json.JSONDecodeError as exc:
+        snippet = text[:500].replace("\n", "\\n")
+        raise ValueError(f"model review returned invalid JSON: {exc}; text starts with: {snippet!r}") from exc
+    if not isinstance(parsed, dict):
+        raise ValueError(f"model review JSON must be an object, got {type(parsed).__name__}")
+    return parsed
+
+
+def _extract_json_object_text(text: str) -> str:
+    stripped = text.strip()
+    if not stripped:
+        raise ValueError("model review returned empty text instead of JSON")
+
+    fence_match = re.search(r"```(?:json)?\s*(\{.*?\})\s*```", stripped, re.IGNORECASE | re.DOTALL)
+    if fence_match:
+        return fence_match.group(1)
+
+    start = stripped.find("{")
+    end = stripped.rfind("}")
+    if start != -1 and end > start:
+        return stripped[start : end + 1]
+    return stripped
 
 
 def _build_review_prompt(proposal: Change) -> str:
