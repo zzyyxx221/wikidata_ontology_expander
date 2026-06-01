@@ -134,7 +134,7 @@ def _review_with_chat_completions(
         "messages": [
             {
                 "role": "system",
-                "content": "Return only one strict JSON object matching the requested schema.",
+                "content": "Return only one strict JSON object with no markdown or explanation.",
             },
             {"role": "user", "content": prompt},
         ],
@@ -204,10 +204,17 @@ def _extract_chat_message_text(payload: dict[str, Any]) -> str:
 
 
 def _parse_review_decision(text: str) -> ReviewDecision:
-    parsed = _loads_json_object(text)
+    parsed = _find_review_decision_object(_loads_json_object(text))
+    missing = [key for key in ("accepted", "confidence", "rationale") if key not in parsed]
+    if missing:
+        return ReviewDecision(
+            accepted=False,
+            confidence=0.0,
+            rationale=f"model review returned JSON missing required fields: {', '.join(missing)}",
+        )
     return ReviewDecision(
-        accepted=bool(parsed["accepted"]),
-        confidence=float(parsed["confidence"]),
+        accepted=_parse_bool(parsed["accepted"]),
+        confidence=_parse_float(parsed["confidence"]),
         rationale=str(parsed["rationale"]),
         normalized_label=parsed.get("normalized_label"),
         normalized_target_type=parsed.get("normalized_target_type"),
@@ -243,6 +250,35 @@ def _extract_json_object_text(text: str) -> str:
     return stripped
 
 
+def _find_review_decision_object(payload: dict[str, Any]) -> dict[str, Any]:
+    if "accepted" in payload:
+        return payload
+    for key in ("review", "decision", "result", "schema_proposal_review"):
+        value = payload.get(key)
+        if isinstance(value, dict) and "accepted" in value:
+            return value
+    return payload
+
+
+def _parse_bool(value: Any) -> bool:
+    if isinstance(value, bool):
+        return value
+    if isinstance(value, str):
+        lowered = value.strip().lower()
+        if lowered in {"true", "yes", "1", "accept", "accepted"}:
+            return True
+        if lowered in {"false", "no", "0", "reject", "rejected"}:
+            return False
+    return bool(value)
+
+
+def _parse_float(value: Any) -> float:
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        return 0.0
+
+
 def _build_review_prompt(proposal: Change) -> str:
     evidence_lines = [
         f"- {e.source}: {e.detail} (weight={e.weight})"
@@ -271,6 +307,15 @@ Evidence:
 {chr(10).join(evidence_lines)}
 
 Return strict JSON.
+Required JSON shape:
+{{
+  "accepted": true,
+  "confidence": 0.0,
+  "rationale": "short reason",
+  "normalized_label": null,
+  "normalized_target_type": null,
+  "normalized_value": null
+}}
 Rules:
 - Reject instance-level property values like descriptions, aliases, dates, URLs, or individual subclass links.
 - Prefer normalized schema labels such as concept names, property names, and relation names.

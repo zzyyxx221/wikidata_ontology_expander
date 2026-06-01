@@ -168,6 +168,30 @@ Here is the review:
         with self.assertRaisesRegex(ValueError, "empty text"):
             _parse_review_decision("")
 
+    def test_parse_review_decision_rejects_missing_required_fields(self):
+        decision = _parse_review_decision('{"rationale": "not the requested schema"}')
+        self.assertFalse(decision.accepted)
+        self.assertEqual(decision.confidence, 0.0)
+        self.assertIn("missing required fields", decision.rationale)
+
+    def test_parse_review_decision_accepts_nested_decision_object(self):
+        decision = _parse_review_decision(
+            json.dumps(
+                {
+                    "result": {
+                        "accepted": "false",
+                        "confidence": "0.4",
+                        "rationale": "instance-level value",
+                        "normalized_label": None,
+                        "normalized_target_type": None,
+                        "normalized_value": None,
+                    }
+                }
+            )
+        )
+        self.assertFalse(decision.accepted)
+        self.assertEqual(decision.confidence, 0.4)
+
     def test_load_config_reads_model_review_block(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
